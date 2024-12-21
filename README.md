@@ -1,0 +1,48 @@
+
+
+# Feature insights into Somalia’s severe acute malnutrition admissions: a time series study (2019 - 2024)
+
+This repository contains an R implementation of a time series study
+aimed at gleaning feature insights from Somalia’s admissions data on
+severe acute malnutrition (SAM), and form a basis for evidence-based
+decision-making of the overall country nutrition information system and
+programming. The analysis is based on the use of monthly SAM admissions
+data at district level of the previous years as of January 2019 until
+December 2024.
+
+> [!NOTE]
+>
+> The analysis was made possible thanks to the collaboration of the
+> [Somalia Nutrition
+> Cluster](https://response.reliefweb.int/somalia/nutrition).
+
+All in all, the study seeks to:
+
+- **Identify trend patterns** in the admissions of SAM cases.
+- **Identify seasonality patterns**: recurring patterns that occurs in a
+  fixed and specific period every year.
+- **Quantify the seasonal influences on the admissions**: the extent to
+  which different times of the year impact on the number of SAM cases
+  admitted into the treatment program.
+- **Explore key drivers**: identify correlations between admissions and
+  contextual factors. This included analyzing the impact of the
+  2021/2022 drought on the admissions cases.
+- **Visualize data insights**: creating intuitive plots for clearer
+  interpretation and communication of results.
+
+The above objectives are addressed by decomposing the time series, by
+applying other feature extraction techniques, and by fitting a model.
+
+## Repository Structure
+
+- data/: a data.frame of class `tsibble`.
+- R/: the R script used for the analysis.
+- outputs/: analysis outputs: plots, tables and presentation in `.qmd`
+  format.
+
+## License
+
+## Feedback
+
+If you wish to give feedback, file issue or seek support, kindly do so
+[here](https://github.com/nutimes/som-sam-admit/issues).

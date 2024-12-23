@@ -168,11 +168,3 @@ manipulate_tsibble(
     y = "Number of cases admitted",
     y = "Time"
   )
-
-# ---- Quarterly -------------------------------------------------------------------------
-som_sam_admissions |> 
-  group_by(region, quarterly) |> 
-  summarise(admissions = sum(admissions, na.rm = TRUE)) |> 
-  tsibble(index = quarterly, key = region) |> 
-  filter(region == "Bay")
-  gg_season()

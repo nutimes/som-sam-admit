@@ -31,7 +31,22 @@ sam_admit <- read_csv(
       .before = admissions
     )
 
-# ---- Graphics --------------------------------------------------------------------------
+# ---- Remove districts with zero admissions --------------------------------------------
+list <- c("Ceel_Dheere", "Jalalasi", "Sablaale", "Adan Yabaal",
+ "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik"
+)
+som_sam_admissions <- som_sam_admissions |> 
+  filter(!(district %in% list)) |> 
+  as_tsibble(index = monthly, key = c(region, district))
+
+# ---- TS Features ----------------------------------------------------------------------
+## Sum of admissions by Region ----
+som_sam_admissions |> 
+  group_by(region) |> 
+  summarise(admissions = sum(admissions, na.rm = T)) |> 
+  features(admissions, quantile)
+
+# ---- Graphics -------------------------------------------------------------------------
 ## Ungrouped time plot ----
 manipulate_tsibble(
   ts = som_sam_admissions, 
@@ -47,21 +62,6 @@ manipulate_tsibble(
   )
 
 ### Time plot by Region ----
-manipulate_tsibble(
-  ts = som_sam_admissions, 
-  .by = "grouped"
-) |> 
-  autoplot() +
-  facet_wrap(vars(region)) +
-  labs(
-    title = "Time plot: Somalia's SAM admissions by Region",
-    subtitle = "From January 2019 - November 2024",
-    y = "Number of cases admitted",
-    x = "Time"
-  ) +
-  theme(legend.position = "none")
-
-#### Time plot without Banadir and Bay regions -----
 manipulate_tsibble(
   ts = som_sam_admissions, 
   .by = "grouped"
@@ -168,3 +168,4 @@ manipulate_tsibble(
     y = "Number of cases admitted",
     y = "Time"
   )
+

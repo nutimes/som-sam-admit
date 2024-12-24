@@ -35,9 +35,9 @@ applying other feature extraction techniques, and by fitting a model.
 
 ## Repository Structure
 
-- data/: a data.frame of class `tsibble`.
-- R/: the R script used for the analysis.
-- outputs/: analysis outputs: plots, tables and presentation in `.qmd`
+- `data/`: a data.frame of class `tsibble`.
+- `R/`: the R script used for the analysis.
+- `outputs/`: analysis outputs: plots, tables and presentation in `.qmd`
   format.
 
 ## License

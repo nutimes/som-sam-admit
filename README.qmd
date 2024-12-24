@@ -22,9 +22,9 @@ The above objectives are addressed by decomposing the time series, by applying o
 
 ## Repository Structure
 
-  + data/: a data.frame of class `tsibble`.
-  + R/: the R script used for the analysis.
-  + outputs/: analysis outputs: plots, tables and presentation in `.qmd` format.
+  + `data/`: a data.frame of class `tsibble`.
+  + `R/`: the R script used for the analysis.
+  + `outputs/`: analysis outputs: plots, tables and presentation in `.qmd` format.
 
 ## License
 

@@ -1,3 +1,12 @@
+# ---- Load required libraries -----------------------------------------------------------
+library(readr)
+library(tidyr)
+library(dplyr)
+library(lubridate)
+library(tsibble)
+library(feasts)
+library(ggplot2)
+
 # ---- Load data -------------------------------------------------------------------------
 sam_admit <- read_csv(
   file = "data/som_admissions.csv",
@@ -41,17 +50,20 @@ bay_banadir <- som_sam_admissions |>
 
 # ---- TS Features ----------------------------------------------------------------------
 ## Sum of admissions by Region ----
-bay_banadir |> 
+quantiles <- bay_banadir |> 
   group_by(region) |> 
   summarise(admissions = sum(admissions, na.rm = T)) |> 
   features(admissions, quantile)
 
 # ---- Graphics -------------------------------------------------------------------------
-## Ungrouped time plot ----
-bay_banadir |> 
-  group_by(region) |> 
-  select(Monthly, admissions) |> 
-  autoplot(admissions) +
+## Time plot ----
+bb <- manipulate_tsibble(
+  ts = bay_banadir,
+  .by = "grouped"
+)
+
+timeplt <- bb |> 
+  autoplot() +
   labs(
     title = "Time plot: Bay and Banadir's SAM admissions",
     subtitle = "From January 2019 - November 2024",
@@ -59,11 +71,8 @@ bay_banadir |>
   )
 
 ## Seasonal plot ----
-bay_banadir |> 
-  group_by(region) |> 
-  summarise(admissions = sum(admissions, na.rm = TRUE)) |> 
-  select(Monthly, admissions) |> 
-  gg_season(admissions) +
+sesonplt <- bb |> 
+  gg_season() +
   labs(
     title = "Seasonal plot: Bay and Banadir's SAM admissions",
     subtitle = "From January 2019 - November 2024",
@@ -71,13 +80,19 @@ bay_banadir |>
   )
 
 ## Subseries plot ----
-bay_banadir |> 
-  group_by(region) |> 
-  summarise(admissions = sum(admissions, na.rm = TRUE)) |> 
-  select(Monthly, admissions) |> 
-  gg_subseries(admissions) +
+subsplt <- bb |> 
+  gg_subseries() +
   labs(
     title = "Subseries plot: Bay and Banadir's SAM admissions",
     subtitle = "From January 2019 - November 2024",
     y = "Number of cases admitted"
   )
+
+# ---- Decomposition --------------------------------------------------------------
+### Decompose non-transformed data using STL ----
+dcmp <- bb |> 
+  model(stl = STL(admissions)) |> 
+  components()
+
+dcmp |> 
+  autoplot()

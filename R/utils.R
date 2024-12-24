@@ -5,30 +5,16 @@ manipulate_tsibble <- function(ts, .by = c("grouped", "ungrouped")) {
   ## Grouped time series ----
   if (.by == "grouped") {
     ts <- ts |> 
-    select(region, monthly, admissions) |> 
-      summarise(
-        admissions = sum(admissions, na.rm = TRUE),
-        .by = c(region, monthly)
-      ) |> 
-      as_tsibble(
-        index = monthly,
-        key = region
-      )
+    select(region, Monthly, admissions) |> 
+      group_by(region) |> 
+      summarise(admissions = sum(admissions, na.rm = TRUE))
   }
 
   ## Ungrouped time series ----
   if (.by == "ungrouped") {
     ts <- ts |> 
-      select(region, monthly, admissions) |> 
-        summarise(
-          admissions = sum(admissions, na.rm = TRUE),
-          .by = monthly
-        ) |> 
-        as_tsibble(
-          index = monthly
-        )
+      summarise(admissions = sum(admissions, na.rm = TRUE))
   }
-
   ## Return ----
   ts
 }

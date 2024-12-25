@@ -1,4 +1,16 @@
 
+#' 
+#' 
+#' Summarise time series data 
+#' 
+#' @param ts A time series object of class `tsibble`
+#' @param .group Logical. Whether the `tsibble` should be grouped or not, as 
+#'    it would be required in subsequent analysis. 
+#' @param time A choice of the time series interval. `"M"` for monthly data and 
+#'    `"Q"` for quarterly. 
+#' 
+#' 
+
 summarise_admissions <- function(ts, 
                                 .group = TRUE,
                                 time = c("M", "Q")) { 
@@ -11,7 +23,7 @@ summarise_admissions <- function(ts,
     if (time == "M") {
       ts <- ts |> 
         select(region, Monthly, admissions) |> 
-        group_by(region) |> 
+        group_by(region, Monthly) |> 
         summarise(
           admissions = sum(admissions, na.rm = TRUE), 
           .groups = "drop"
@@ -24,7 +36,7 @@ summarise_admissions <- function(ts,
      if (time == "Q") {
       ts <- ts |> 
         select(region, Quarterly, admissions) |> 
-        group_by(region) |> 
+        group_by(region, Quarterly) |> 
         summarise(
           admissions = sum(admissions, na.rm = TRUE),
           .groups = "drop"
@@ -38,8 +50,10 @@ summarise_admissions <- function(ts,
     if (time == "M") {
       ts <- ts |> 
         select(Monthly, admissions) |> 
+        group_by(Monthly) |> 
         summarise(
-          admissions = sum(admissions, na.rm = TRUE)
+          admissions = sum(admissions, na.rm = TRUE),
+          .groups = "drop"
         ) |> 
         as_tsibble(
           index = Monthly
@@ -49,8 +63,10 @@ summarise_admissions <- function(ts,
     if (time == "Q") {
       ts <- ts |> 
         select(Quarterly, admissions) |> 
+        group_by(Quarterly) |> 
         summarise(
-          admissions = sum(admissions, na.rm = TRUE)
+          admissions = sum(admissions, na.rm = TRUE),
+          .groups = "drop"
         ) |> 
         as_tsibble(
           index = Quarterly

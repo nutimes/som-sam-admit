@@ -1,17 +1,62 @@
 
-summarise_admissions <- function(ts, .group = TRUE) {
-  .group = match.arg(.group)
+summarise_admissions <- function(ts, 
+                                .group = TRUE,
+                                time = c("M", "Q")) { 
   
+  ## Enforce options in `time` ----
+  time <- match.arg(time)
+
   ## Grouped time series ----
   if (.group) {
-    ts <- ts |> 
-    select(region, Monthly, admissions) |> 
-      group_by(region) |> 
-      summarise(admissions = sum(admissions, na.rm = TRUE))
-  } else {
+    if (time == "M") {
       ts <- ts |> 
-        summarise(admissions = sum(admissions, na.rm = TRUE))
+        select(region, Monthly, admissions) |> 
+        group_by(region) |> 
+        summarise(
+          admissions = sum(admissions, na.rm = TRUE), 
+          .groups = "drop"
+        ) |> 
+          as_tsibble(
+            index = Monthly, 
+            key = region
+          )
     }
-  ## Return ----
-  ts
+     if (time == "Q") {
+      ts <- ts |> 
+        select(region, Quarterly, admissions) |> 
+        group_by(region) |> 
+        summarise(
+          admissions = sum(admissions, na.rm = TRUE),
+          .groups = "drop"
+        ) |> 
+        as_tsibble(
+          key = region, 
+          index = Quarterly
+        )
+    } 
+  } else {
+    if (time == "M") {
+      ts <- ts |> 
+        select(Monthly, admissions) |> 
+        summarise(
+          admissions = sum(admissions, na.rm = TRUE)
+        ) |> 
+        as_tsibble(
+          index = Monthly
+        )
+    } 
+    
+    if (time == "Q") {
+      ts <- ts |> 
+        select(Quarterly, admissions) |> 
+        summarise(
+          admissions = sum(admissions, na.rm = TRUE)
+        ) |> 
+        as_tsibble(
+          index = Quarterly
+        )
+    }
+  }
+## Return ----
+ts
 }

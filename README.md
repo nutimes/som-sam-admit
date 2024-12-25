@@ -43,7 +43,9 @@ applying other feature extraction techniques, and by fitting a model.
 ## License
 
 This repository is licensed under a GNU General Public License 3
-(GPL-3). \## Feedback
+(GPL-3).
+
+## Feedback
 
 If you wish to give feedback, file issue or seek support, kindly do so
 [here](https://github.com/nutimes/som-sam-admit/issues).

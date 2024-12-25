@@ -26,7 +26,7 @@ The above objectives are addressed by decomposing the time series, by applying o
   + `outputs/`: analysis outputs: plots, tables and presentation in `.qmd` format.
 
 ## License
-This repository is licensed under a GNU General Public License 3 (GPL-3). 
-## Feedback
+This repository is licensed under a GNU General Public License 3 (GPL-3).  
 
+## Feedback
 If you wish to give feedback, file issue or seek support, kindly do so [here](https://github.com/nutimes/som-sam-admit/issues).

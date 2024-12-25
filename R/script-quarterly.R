@@ -133,7 +133,7 @@ som_admissions_quarterly |>
   )|>
   gg_subseries() +
   labs(
-    title = "Subseries plot: Somalia's SAM admissions by quarter",
+    title = "Subseries plot: Somalia's SAM admissions by by Region by quarter",
     subtitle = "2019 Q1 : 2024 Q4",
     y = "Number of cases admitted"
   )

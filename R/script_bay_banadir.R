@@ -1,4 +1,4 @@
-# ---- Load required libraries -----------------------------------------------------------
+# ---- Load required libraries -------------------------------------------------
 library(readr)
 library(tidyr)
 library(dplyr)
@@ -7,14 +7,14 @@ library(tsibble)
 library(feasts)
 library(ggplot2)
 
-# ---- Load data -------------------------------------------------------------------------
+# ---- Load data ---------------------------------------------------------------
 sam_admit <- read_csv(
   file = "data/som_admissions.csv",
   col_types = NULL,
   col_select = -u5_population
 )
 
-# ---- Tidy the data ---------------------------------------------------------------------
+# ---- Tidy the data -----------------------------------------------------------
 som_sam_admissions <- sam_admit |> 
   pivot_longer(
     cols = !c(region, district),
@@ -31,7 +31,7 @@ som_sam_admissions <- sam_admit |>
     .before = admissions
 )
 
-# ---- Remove districts with zero admissions --------------------------------------------
+# ---- Remove districts with zero admissions -----------------------------------
 list <- c("Ceel_Dheere", "Jalalasi", "Sablaale", "Adan Yabaal",
  "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik")
 
@@ -39,7 +39,7 @@ som_sam_admissions <- som_sam_admissions |>
   filter(!(district %in% list)) |> 
   as_tsibble(index = Monthly, key = c(region, district))
 
-# ---- Keep Bay and Banadir  ------------------------------------------------------------
+# ---- Keep Bay and Banadir  ---------------------------------------------------
 list <- c("Bay", "Banadir")
 bay_banadir <- som_sam_admissions |> 
   filter(region %in% list) |> 
@@ -48,14 +48,14 @@ bay_banadir <- som_sam_admissions |>
     key = c(region, district)
   )
 
-# ---- TS Features ----------------------------------------------------------------------
+# ---- TS Features -------------------------------------------------------------
 ## Sum of admissions by Region ----
 quantiles <- bay_banadir |> 
   group_by(region) |> 
   summarise(admissions = sum(admissions, na.rm = T)) |> 
   features(admissions, quantile)
 
-# ---- Graphics -------------------------------------------------------------------------
+# ---- Graphics ----------------------------------------------------------------
 ## Time plot ----
 bb <- manipulate_tsibble(
   ts = bay_banadir,
@@ -71,7 +71,7 @@ timeplt <- bb |>
   )
 
 ## Seasonal plot ----
-sesonplt <- bb |> 
+seasonplt <- bb |> 
   gg_season() +
   labs(
     title = "Seasonal plot: Bay and Banadir's SAM admissions",
@@ -88,11 +88,11 @@ subsplt <- bb |>
     y = "Number of cases admitted"
   )
 
-# ---- Decomposition --------------------------------------------------------------
+# ---- Decomposition -----------------------------------------------------------
 ### Decompose non-transformed data using STL ----
 dcmp <- bb |> 
   model(stl = STL(admissions)) |> 
   components()
 
-dcmp |> 
+dd <- dcmp |> 
   autoplot()

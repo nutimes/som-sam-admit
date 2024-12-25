@@ -117,8 +117,20 @@ som_admissions_quarterly |>
   summarise_admissions(
     .group = FALSE,
     time = "Q"
-  )|> 
-  filter(year(Quarterly) == 2021) |> 
+  )|>
+  gg_subseries() +
+  labs(
+    title = "Subseries plot: Somalia's SAM admissions by quarter",
+    subtitle = "2019 Q1 : 2024 Q4",
+    y = "Number of cases admitted"
+  )
+
+### Subseries plot by Region ----
+som_admissions_quarterly |> 
+  summarise_admissions(
+    .group = TRUE,
+    time = "Q"
+  )|>
   gg_subseries() +
   labs(
     title = "Subseries plot: Somalia's SAM admissions by quarter",
@@ -128,25 +140,21 @@ som_admissions_quarterly |>
 
 # ---- Decomposition -----------------------------------------------------------
 ## Decompose with STL, non-transformed data ----
+### Grouped by Region ----
 cmpnts <- som_admissions_quarterly |> 
   summarise_admissions(
-    .group = FALSE,
+    .group = TRUE,
     time = "Q"
   )|> 
   model(STL(admissions)) |> 
   components()
 
-### Visualize the seasonal component ----
+#### Visualize the components by Region ----
+cmpnts |> 
+autoplot()
+
+#### Visualize the seasonal component by Region ----
 ### Seasonal component over years ----
 cmpnts |> 
   select(season_year) |> 
-  gg_season()
-
-cmpnts|> 
-  select(season_year) |> 
-  gg_subseries()
-
-### Trend component over years ----
-cmpnts |> 
-  select(trend) |> 
   gg_season()

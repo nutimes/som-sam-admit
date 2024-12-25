@@ -1,20 +1,78 @@
 
-manipulate_tsibble <- function(ts, .by = c("grouped", "ungrouped")) {
- .by = match.arg(.by)
-  
-  ## Grouped time series ----
-  if (.by == "grouped") {
-    ts <- ts |> 
-    select(region, Monthly, admissions) |> 
-      group_by(region) |> 
-      summarise(admissions = sum(admissions, na.rm = TRUE))
-  }
+#' 
+#' 
+#' Summarise time series data 
+#' 
+#' @param ts A time series object of class `tsibble`
+#' @param .group Logical. Whether the `tsibble` should be grouped or not, as 
+#'    it would be required in subsequent analysis. 
+#' @param time A choice of the time series interval. `"M"` for monthly data and 
+#'    `"Q"` for quarterly. 
+#' 
+#' 
 
-  ## Ungrouped time series ----
-  if (.by == "ungrouped") {
-    ts <- ts |> 
-      summarise(admissions = sum(admissions, na.rm = TRUE))
+summarise_admissions <- function(ts, 
+                                .group = TRUE,
+                                time = c("M", "Q")) { 
+  
+  ## Enforce options in `time` ----
+  time <- match.arg(time)
+
+  ## Grouped time series ----
+  if (.group) {
+    if (time == "M") {
+      ts <- ts |> 
+        select(region, Monthly, admissions) |> 
+        group_by(region, Monthly) |> 
+        summarise(
+          admissions = sum(admissions, na.rm = TRUE), 
+          .groups = "drop"
+        ) |> 
+          as_tsibble(
+            index = Monthly, 
+            key = region
+          )
+    }
+     if (time == "Q") {
+      ts <- ts |> 
+        select(region, Quarterly, admissions) |> 
+        group_by(region, Quarterly) |> 
+        summarise(
+          admissions = sum(admissions, na.rm = TRUE),
+          .groups = "drop"
+        ) |> 
+        as_tsibble(
+          key = region, 
+          index = Quarterly
+        )
+    } 
+  } else {
+    if (time == "M") {
+      ts <- ts |> 
+        select(Monthly, admissions) |> 
+        group_by(Monthly) |> 
+        summarise(
+          admissions = sum(admissions, na.rm = TRUE),
+          .groups = "drop"
+        ) |> 
+        as_tsibble(
+          index = Monthly
+        )
+    } 
+    
+    if (time == "Q") {
+      ts <- ts |> 
+        select(Quarterly, admissions) |> 
+        group_by(Quarterly) |> 
+        summarise(
+          admissions = sum(admissions, na.rm = TRUE),
+          .groups = "drop"
+        ) |> 
+        as_tsibble(
+          index = Quarterly
+        )
+    }
   }
-  ## Return ----
-  ts
+## Return ----
+ts
 }

@@ -1,4 +1,4 @@
-# Load required libraries ----
+# ---- Load required libraries -------------------------------------------------
 library(readr)
 library(tidyr)
 library(dplyr)
@@ -7,15 +7,18 @@ library(tsibble)
 library(feasts)
 library(ggplot2)
 
-# ---- Load data -------------------------------------------------------------------------
+# ---- Load utility functions --------------------------------------------------
+source("R/utils.R")
+
+# ---- Load data ---------------------------------------------------------------
 sam_admit <- read_csv(
   file = "data/som_admissions.csv",
   col_types = NULL,
   col_select = -u5_population
 )
 
-# ---- Tidy the data ---------------------------------------------------------------------
-som_sam_admissions <- sam_admit |> 
+# ---- Tidy the data -----------------------------------------------------------
+som_admissions_monthly <- sam_admit |> 
   pivot_longer(
     cols = !c(region, district),
     names_to = "time",
@@ -23,38 +26,39 @@ som_sam_admissions <- sam_admit |>
   ) |> 
   mutate(
     time = ymd(time),
-    Monthly = yearmonth(time),
-    quarterly = yearquarter(time)
+    Monthly = yearmonth(time)
   ) |> 
   relocate(
     Monthly, 
     .before = admissions
-) |> 
-  as_tsibble(
-    index = Monthly, 
-    key = c(region, district)
-  )
+)
 
-# ---- Remove districts with zero admissions --------------------------------------------
-list <- c("Ceel_Dheere", "Jalalasi", "Sablaale", "Adan Yabaal",
+# ---- Remove districts with zero admissions -----------------------------------
+list <- c("Ceel_Dheere", "Jalalaqsi", "Sablaale", "Adan Yabaal",
  "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik"
 )
-som_sam_admissions <- som_sam_admissions |> 
+som_admissions_monthly <- som_admissions_monthly |> 
   filter(!(district %in% list)) |> 
   filter(!(region %in% c("Bay", "Banadir")))
 
-# ---- TS Features ----------------------------------------------------------------------
+# ---- TS Features -------------------------------------------------------------
 ## Sum of admissions by Region ----
-som_sam_admissions |> 
-  group_by(region) |> 
-  summarise(admissions = sum(admissions, na.rm = T)) |> 
-  features(admissions, quantile)
+som_admissions_monthly |> 
+  summarise_admissions(
+    .group = TRUE,
+    time = "M"
+  ) |> 
+  features(
+    .var = admissions, 
+    features =quantile
+  )
 
-# ---- Graphics -------------------------------------------------------------------------
+# ---- Graphics ----------------------------------------------------------------
 ## Ungrouped time plot ----
-manipulate_tsibble(
-  ts = som_sam_admissions,
-  .by = "ungrouped"
+summarise_admissions(
+  ts = som_admissions_monthly,
+  .group = FALSE,
+  time = "M"
 )|> 
   autoplot() +
   labs(
@@ -64,9 +68,10 @@ manipulate_tsibble(
   )
 
 ### Time plot by Region ----
-manipulate_tsibble(
-  ts = som_sam_admissions, 
-  .by = "grouped"
+summarise_admissions(
+  ts = som_admissions_monthly, 
+  .group = TRUE,
+  time = "M"
 ) |> 
   autoplot() +
   facet_wrap(vars(region)) +
@@ -79,9 +84,9 @@ manipulate_tsibble(
   theme(legend.position = "none")
 
 ## Seasonal plot ----
-manipulate_tsibble(
-  ts = som_sam_admissions,
-  .by = "ungrouped"
+summarise_admissions(
+  ts = som_admissions_monthly,
+  .group = FALSE
 ) |> 
   gg_season(labels = "right") +
   labs(
@@ -92,12 +97,13 @@ manipulate_tsibble(
   )
 
 ### Seasonal plot facetted by Region ----
-manipulate_tsibble(
-  ts = som_sam_admissions,
-  .by = "grouped"
+summarise_admissions(
+  ts = som_admissions_monthly,
+  .group = TRUE,
+  time = "M"
 ) |> 
   gg_season() +
-  facet_wrap(vars(region)) +
+  facet_wrap(vars(region), scales = "free_y") +
   labs(
     title = "Seasonal plot: Somalia's SAM admissions by Region",
     subtitle = "January 2019 - November 2024",
@@ -105,9 +111,10 @@ manipulate_tsibble(
   )
 
 #### Seasonal plot before 2022 ----
-manipulate_tsibble(
-  ts = som_sam_admissions,
-  .by = "ungrouped"
+summarise_admissions(
+  ts = som_admissions_monthly,
+  .group = FALSE,
+  time = "M"
 ) |> 
   filter(year(Monthly) < 2022) |> 
   gg_season(labels = "right") +
@@ -119,9 +126,10 @@ manipulate_tsibble(
   )
 
 #### Seasonal plot after 2022 ----
-manipulate_tsibble(
-  ts = som_sam_admissions,
-  .by = "ungrouped"
+summarise_admissions(
+  ts = som_admissions_monthly,
+  .group = FALSE,
+  time = "M"
 ) |> 
   filter(year(Monthly) >= 2022) |> 
   gg_season(labels = "right") +
@@ -132,9 +140,10 @@ manipulate_tsibble(
   )
 
 ## Subseries plot ----
-manipulate_tsibble(
-  ts = som_sam_admissions,
-  .by = "ungrouped"
+summarise_admissions(
+  ts = som_admissions_monthly,
+  .group = FALSE,
+  time = "M"
 ) |> 
   gg_subseries() +
   labs(
@@ -145,9 +154,10 @@ manipulate_tsibble(
   )
 
 ### Subseries plot before 2022 ----
-manipulate_tsibble(
-  ts = som_sam_admissions,
-  .by = "ungrouped"
+summarise_admissions(
+  ts = som_admissions_monthly,
+  .group = FALSE,
+  time = "M"
 ) |> 
   filter(year(Monthly) < 2022) |> 
   gg_subseries() +
@@ -159,9 +169,10 @@ manipulate_tsibble(
   )
 
 ### Subseries plot as of 2022 ----
-manipulate_tsibble(
-  ts = som_sam_admissions,
-  .by = "ungrouped"
+summarise_admissions(
+  ts = som_admissions_monthly,
+  .group = FALSE,
+  time = "M"
 ) |> 
   filter(year(Monthly) >= 2022) |> 
   gg_subseries() +
@@ -172,49 +183,32 @@ manipulate_tsibble(
     y = "Time"
   )
 
-# ---- Decomposition --------------------------------------------------------------
-## Box-cox transformation to make evenly distributed the variation in the seasonal patterns ----
-### Calculate lambda ----
-lambda <- manipulate_tsibble(
-    ts = som_sam_admissions,
-    .by = "ungrouped"
-  ) |> 
-  features(admissions, features = guerrero) |> 
-  pull(lambda_guerrero)
-
-### Data transformation ----
-box_cox_transformed <- manipulate_tsibble(
-  ts = som_sam_admissions,
-  .by = "ungrouped"
-) |> 
-  mutate(
-    admissions = box_cox(x = admissions, lambda = lambda)
-  )
-
-### Decompose using STL ----
-box_cox_transformed |> 
-  filter(as.character(Monthly) != "2024 Dec") |> 
-  model(stl = STL(admissions)) |> 
-  components() |> 
-  autoplot()
-
-### Decompose non-transformed data using STL ----
-dcmp <- manipulate_tsibble(
-  ts = som_sam_admissions,
-  .by = "ungrouped"
+# ---- Decomposition -----------------------------------------------------------
+## Decompose non-transformed data using STL ----
+cmpnts_mo <- summarise_admissions(
+  ts = som_admissions_monthly,
+  .group = TRUE,
+  time = "M"
 ) |> 
   model(stl = STL(admissions)) |> 
   components()
 
-### View components ----
-autoplot(dcmp)
+## View components ----
+autoplot(cmpnts_mo)
 
-### Seasonal component over year ----
-dcmp |> 
+### Visualize the seasonal component by Region ----
+#### Seasonal component over years ----
+cmpnts_mo |> 
   select(season_year) |> 
   gg_season()
 
-### Trend component over year ----
-dcmp |> 
-  select(trend) |> 
+#### Using ungrouped data ----
+summarise_admissions(
+  ts = som_admissions_monthly,
+  .group = FALSE,
+  time = "M"
+) |> 
+  model(stl = STL(admissions)) |> 
+  components() |> 
+  select(season_year) |> 
   gg_season()

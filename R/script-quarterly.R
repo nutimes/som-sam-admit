@@ -125,3 +125,28 @@ som_admissions_quarterly |>
     subtitle = "2019 Q1 : 2024 Q4",
     y = "Number of cases admitted"
   )
+
+# ---- Decomposition -----------------------------------------------------------
+## Decompose with STL, non-transformed data ----
+cmpnts <- som_admissions_quarterly |> 
+  summarise_admissions(
+    .group = FALSE,
+    time = "Q"
+  )|> 
+  model(STL(admissions)) |> 
+  components()
+
+### Visualize the seasonal component ----
+### Seasonal component over years ----
+cmpnts |> 
+  select(season_year) |> 
+  gg_season()
+
+cmpnts|> 
+  select(season_year) |> 
+  gg_subseries()
+
+### Trend component over years ----
+cmpnts |> 
+  select(trend) |> 
+  gg_season()

@@ -6,6 +6,7 @@ library(lubridate)
 library(tsibble)
 library(feasts)
 library(ggplot2)
+library(fable)
 
 # ---- Load utility functions --------------------------------------------------
 source("R/utils.R")
@@ -157,3 +158,14 @@ autoplot()
 cmpnts |> 
   select(season_year) |> 
   gg_season()
+
+# ---- Multiple Regression Model -----------------------------------------------
+## Check trend linearity ----
+som_admissions_quarterly |> 
+  summarise_admissions(
+    .group = FALSE,
+    time = "Q"
+  ) |> 
+  ggplot(aes(x = Quarterly, y = admissions)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE)

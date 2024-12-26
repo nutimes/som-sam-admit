@@ -192,3 +192,11 @@ fit_admissions <- som_admissions_quarterly |>
 fit_admissions |> 
   select(piecewise) |> 
   gg_tsresiduals()
+
+### Report model estimates ----
+model_estimates <- report(fit_admissions)
+
+#### See details of the model estimate ----
+fit_admissions |> 
+  select(piecewise) |> 
+  report()

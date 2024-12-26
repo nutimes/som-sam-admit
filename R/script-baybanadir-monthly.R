@@ -7,6 +7,9 @@ library(tsibble)
 library(feasts)
 library(ggplot2)
 
+# ---- Load utility functions --------------------------------------------------
+source("R/utils.R")
+
 # ---- Load data ---------------------------------------------------------------
 sam_admit <- read_csv(
   file = "data/som_admissions.csv",

@@ -94,8 +94,7 @@ som_admissions_quarterly |>
   labs(
     title = "Seasonal plot: Somalia's SAM admissions by quarter",
     subtitle = "2019 Q1 : 2024 Q4",
-    y = "Number of cases admitted",
-    y = "Time"
+    y = "Number of cases admitted"
   )
 
 ### Seasonal plot facetted by Region ----

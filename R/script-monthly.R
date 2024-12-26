@@ -50,7 +50,7 @@ som_admissions_monthly |>
   ) |> 
   features(
     .var = admissions, 
-    features =quantile
+    features = quantile
   )
 
 # ---- Graphics ----------------------------------------------------------------
@@ -149,8 +149,7 @@ summarise_admissions(
   labs(
     title = "Subseries plot: Somalia's SAM admissions",
     subtitle = "January 2019 - November 2024",
-    y = "Number of cases admitted",
-    y = "Time"
+    y = "Number of cases admitted"
   )
 
 ### Subseries plot before 2022 ----
@@ -164,8 +163,7 @@ summarise_admissions(
   labs(
     title = "Subseries plot: Somalia's SAM admissions",
     subtitle = "January 2019 - December 2021",
-    y = "Number of cases admitted",
-    y = "Time"
+    y = "Number of cases admitted"
   )
 
 ### Subseries plot as of 2022 ----
@@ -179,8 +177,7 @@ summarise_admissions(
   labs(
     title = "Subseries plot: Somalia's SAM admissions",
     subtitle = "January 2022 - November 2024",
-    y = "Number of cases admitted",
-    y = "Time"
+    y = "Number of cases admitted"
   )
 
 # ---- Decomposition -----------------------------------------------------------

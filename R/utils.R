@@ -3,11 +3,13 @@
 #' 
 #' Summarise time series data 
 #' 
-#' @param ts A time series object of class `tsibble`
+#' @param ts A time series object of class `tsibble`. 
+#' 
 #' @param .group Logical. Whether the `tsibble` should be grouped or not, as 
-#'    it would be required in subsequent analysis. 
-#' @param time A choice of the time series interval. `"M"` for monthly data and 
-#'    `"Q"` for quarterly. 
+#'    it would be required in subsequent analysis.
+#' 
+#' @param time A choice of the time series interval of occurrence. 
+#' `"M"` for monthly and `"Q"` for quarterly. 
 #' 
 #' 
 

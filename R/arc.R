@@ -1,5 +1,8 @@
 
 # ---- Average Rate of Change --------------------------------------------------
+
+########################### QUARTERLY ANALYSIS #############################
+
 ## Ungrouped data ----
 ### Components ----
 cm <- som_admissions_quarterly |> 

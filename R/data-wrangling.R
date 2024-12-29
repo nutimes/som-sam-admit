@@ -18,6 +18,8 @@ sam_admit <- read_csv(
   col_select = -u5_population
 )
 
+########################### QUARTERLY ANALYSIS #############################
+
 # ---- Tidy the data -----------------------------------------------------------
 som_admissions_quarterly <- sam_admit |> 
   pivot_longer(
@@ -41,7 +43,6 @@ list <- c("Ceel_Dheere", "Jalalaqsi", "Sablaale", "Adan Yabaal",
 )
 som_admissions_quarterly <- som_admissions_quarterly |> 
   filter(!(district %in% list))
-  #filter(!(region %in% c("Bay", "Banadir")))
 
 # ---- TS Features -------------------------------------------------------------
 ## Sum of admissions by Region ----
@@ -54,3 +55,28 @@ som_admissions_quarterly |>
     .var = admissions, 
     features = quantile
   )
+
+############################# MONTHLY ANALYSIS #############################
+
+  som_admissions_monthly <- sam_admit |> 
+    pivot_longer(
+      cols = !c(region, district),
+      names_to = "time",
+      values_to = "admissions"
+    ) |> 
+    mutate(
+      time = ymd(time),
+      Monthly = yearmonth(time)
+    ) |> 
+    relocate(
+      Monthly, 
+      .before = admissions
+  )
+  
+  # ---- Remove districts with zero admissions -----------------------------------
+  list <- c("Ceel_Dheere", "Jalalaqsi", "Sablaale", "Adan Yabaal",
+   "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik"
+  )
+  som_admissions_monthly <- som_admissions_monthly |> 
+    filter(!(district %in% list))
+  

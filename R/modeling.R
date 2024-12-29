@@ -1,4 +1,7 @@
 # ---- Multiple Regression Model -----------------------------------------------
+
+########################### QUARTERLY ANALYSIS #############################
+
 ## Check trend linearity ----
 som_admissions_quarterly |> 
   summarise_admissions(

@@ -13,7 +13,7 @@ summarise_admissions(
   model(STL(admissions)) |> 
   components()
   
-### Trend plot of Piece 1: 2019 Q1 - 2019 Q4; variation: increase ----
+### Piecewise trend: 2019 Q1 - 2019 Q4; variation: increase ----
 cm |> 
 filter(Quarterly <= yearquarter("2019 Q4")) |> 
   select(trend) |> 
@@ -27,7 +27,7 @@ arc_2019 <- cm |>
     .for = "knots"
   )
 
-### Trend plot of Piece 2: 2020 Q1 - 2020 Q4; variation: decrease (Covid19) ----
+### Piecewise trend: 2020 Q1 - 2020 Q4; variation: decrease (Covid19) ----
 cm |> 
 filter(Quarterly >= yearquarter("2020 Q1") & Quarterly <= yearquarter("2020 Q4")) |> 
   select(trend) |> 
@@ -41,7 +41,7 @@ arc_2020 <- cm |>
     .for = "knots"
   )
 
-### Trend plot of Piece 3: 2021 Q1 - 2023 Q2; variation: increase (drought) ----
+### Piecewise trend: 2021 Q1 - 2023 Q2; variation: increase (drought) ----
 cm |> 
 filter(Quarterly >= yearquarter("2021 Q1") & Quarterly <= yearquarter("2023 Q2")) |> 
   select(trend) |> 
@@ -55,7 +55,7 @@ arc_2021 <- cm |>
     .for = "knots"
   )
 
-### Trend plot of Piece 4: 2023 Q3 - 2024 Q4; variation: decrease ----
+### Piecewise trend: 2023 Q3 - 2024 Q4; variation: decrease ----
 cm |> 
 filter(Quarterly >= yearquarter("2023 Q3") & Quarterly <= yearquarter("2024 Q4")) |> 
   select(trend) |> 

@@ -1,17 +1,6 @@
 # ---- Multiple Regression Model -----------------------------------------------
 
 ########################### QUARTERLY ANALYSIS #############################
-
-## Check trend linearity ----
-som_admissions_quarterly |> 
-  summarise_admissions(
-    .group = FALSE,
-    time = "Q"
-  ) |> 
-  ggplot(aes(x = Quarterly, y = admissions)) +
-  geom_point() +
-  geom_smooth(method = "loess", se = FALSE)
-
 ## Specify models ----
 fit_admissions <- som_admissions_quarterly |> 
   summarise_admissions(
@@ -23,10 +12,10 @@ fit_admissions <- som_admissions_quarterly |>
     exp_log_trend = TSLM(admissions ~ log(trend()) + season()),
     exp_log_admissions = TSLM(log(admissions) ~ log(trend()) + season()),
     piecewise = TSLM(
-      log(admissions) ~ trend(knots = c(yearquarter("2020 Q1"),
-                                   yearquarter("2020 Q2"),
-                                   yearquarter("2021 Q1"),
-                                   yearquarter("2023 Q1"))) + season()
+      log(admissions) ~ trend(knots = c(yearquarter("2019 Q4"),
+                                   yearquarter("2020 Q4"),
+                                   yearquarter("2023 Q2"),
+                                   yearquarter("2024 Q4"))) + season()
     )
   )
 

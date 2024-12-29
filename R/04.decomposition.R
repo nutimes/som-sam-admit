@@ -1,55 +1,75 @@
 # ---- Decomposition -----------------------------------------------------------
 
 ########################### QUARTERLY ANALYSIS #############################
+# Data shows variations that increase and decrease with the level of the serie
+# Apply transformation before decomposition
 
-## Decompose with STL, non-transformed data ----
-### Grouped by Region ----
-cmpnts <- som_admissions_quarterly |> 
+## Box-Cox transformation ----
+df <- som_admissions_quarterly |> 
   summarise_admissions(
-    .group = TRUE,
+    .group = FALSE,
     time = "Q"
-  )|> 
-  model(STL(admissions)) |> 
+  ) 
+
+  lambda <- df |> 
+    features(
+    .var = admissions, 
+    features = guerrero
+  ) |> 
+  pull(lambda_guerrero)
+
+## Visualize the time series after transformation ----
+df |> 
+  autoplot(box_cox(admissions, lambda = lambda))
+
+## Decompose with STL ----
+### Formula ----
+formula <- box_cox(admissions, lambda) ~ trend(window = 5) + season(window = 8)
+
+components <- df |> 
+  model(STL(formula)) |> 
   components()
 
-#### Visualize the components by Region ----
-cmpnts |> 
-autoplot()
+### Visualize the components ----
+autoplot(components)
 
-#### Visualize the seasonal component by Region ----
 ### Seasonal component over years ----
-cmpnts |> 
+components |> 
   select(season_year) |> 
   gg_season()
 
 
 ############################# MONTHLY ANALYSIS #############################
 
-## Decompose non-transformed data using STL ----
-cmpnts_mo <- summarise_admissions(
-  ts = som_admissions_monthly,
-  .group = TRUE,
-  time = "M"
-) |> 
-  model(stl = STL(admissions)) |> 
+## Box-Cox transformation ----
+df_mo <- som_admissions_monthly |> 
+  summarise_admissions(
+    .group = FALSE,
+    time = "M"
+  ) 
+
+  lambda <- df_mo |> 
+    features(
+    .var = admissions, 
+    features = guerrero
+  ) |> 
+  pull(lambda_guerrero)
+
+## Visualize the time series after transformation ----
+df_mo |> 
+  autoplot(box_cox(admissions, lambda = lambda))
+
+## Decompose with STL ----
+### Formula ----
+formula <- box_cox(admissions, lambda) ~ trend(window = 8) + season(window = 6)
+components_mo <- df_mo |> 
+  model(STL(formula)) |> 
   components()
 
-## View components ----
-autoplot(cmpnts_mo)
+### Visualize the components ----
+autoplot(components_mo)
 
-### Visualize the seasonal component by Region ----
-#### Seasonal component over years ----
-cmpnts_mo |> 
-  select(season_year) |> 
-  gg_season()
-
-#### Using ungrouped data ----
-summarise_admissions(
-  ts = som_admissions_monthly,
-  .group = FALSE,
-  time = "M"
-) |> 
-  model(stl = STL(admissions)) |> 
-  components() |> 
+### Seasonal component over years ----
+components_mo |> 
   select(season_year) |> 
   gg_season()

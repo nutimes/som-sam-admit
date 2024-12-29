@@ -7,6 +7,7 @@ library(tsibble)
 library(feasts)
 library(ggplot2)
 library(fable)
+library(forecast)
 
 # ---- Load utility functions --------------------------------------------------
 source("R/utils.R")

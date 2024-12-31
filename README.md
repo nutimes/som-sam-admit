@@ -18,15 +18,48 @@ Admissions spanned as of January 2019 to November 2024.
 
 All in all, the study seeks to:
 
-- **Identify trend patterns** in the admissions of SAM cases.
+- **Identify trend patterns** in the admissions of SAM cases: a
+  long-term direction or movement in the admissions that persists across
+  the series. This represents underlying patterns in the admissions
+  after removing short-term fluctuations. The analysis will entail in
+  identifying:
+
+  - The **direction** of the trend along the series: whether
+    - *upward*: a general increase over time.
+    - *donward*: a general decrease/decay over time.
+    - *flat*: relatively constant over time.
+  - The **Shape** of the trend:
+    - *Linear trend*: a straight line best fits the data along the
+      series, indicating a constant rate of change over time.
+    - *Nonlinear trend*: the trend follows a curved line, indicating
+      acceleration and deceleration of the rate of change.
+  - The **Stability**:
+    - *Stable trend*: one that remains consistent over the entire time
+      series.
+    - *Changing trend*: one that evolves over time, possibly with abrupt
+      shifts.
+
+The average rate of change (ARC) of the trend will be estimated.
+
 - **Identify seasonality patterns**: recurring patterns that occurs in a
-  fixed and specific period every year.
+  fixed and specific period every year. Seasonal patterns can be *fixed*
+  or *time-varying*. If the latter, analysis will explore:
+
+  - **Amplitute of changes**: when the strenght and intensity of the
+    peak or off-season variy over time.
+  - Phase shifts: when the timing of the peak season and off-season
+    changes over time.
+  - Irregular patters: when the periodicity of the seasonal patterns are
+    irregular.
+
 - **Quantify the seasonal influences on the admissions**: the extent to
   which different times of the year impact on the number of SAM cases
   admitted into the treatment program.
+
 - **Explore key drivers**: identify correlations between admissions and
   contextual factors. This included analyzing the impact of the
   2021/2022 drought on the admissions cases.
+
 - **Visualize data insights**: creating intuitive plots for clearer
   interpretation and communication of results.
 
@@ -35,10 +68,38 @@ applying other feature extraction techniques, and by fitting a model.
 
 ## Repository Structure
 
-- `data/`: a data.frame of class `tsibble`.
-- `R/`: the R script used for the analysis.
-- `outputs/`: analysis outputs: plots, tables and presentation in `.qmd`
-  format.
+The repository is structured in the following way:
+
+- `data/`: a data.frame of class `tsibble` containing the admissions of
+  SAM cases over time. Data is reported on a monthly basis, with a
+  reporting rate \>= 80%, as advised by the data owner. Reporting rate
+  is defined as the number of cacthment areas that reported in a given
+  month, divided by the overall number of cacthment areas that are
+  expected to report.
+- `R/`: A set of `R` scripts used for the analysis. These are split into
+  different files, based on the specific objective they address:
+  - `01-data-wrangling.R`: load required libraries, data and wrangle it.
+  - `02-eda-graphics.R`: graphical exploratory data analysis.
+  - `03-arc.R`: calculate the average rate of change of the trend.
+  - `04-decomposition.R`: decompose the time series into trend, seasonal
+    effect and ramainder.
+  - `05-modeling.R:` fit a time series model.
+  - `utils.R`: some handy user-defined functions to comply with the
+    principle of DRY.
+- `outputs/`: analysis report.
+
+## Reproducibility information
+
+The repository was created in `R` version 4.4.2. The following
+dependencies were used:  
+- `{readr}` version 2.1.5  
+- `{tidyr}` version 1.3.1  
+- `{dplyr}` version 1.1.4  
+- `{lubridate}` version 1.9.3  
+- `{tsibble}` version 1.1.5  
+- `{feasts}` version 0.4.1  
+- `{ggplot2}` version 3.5.1  
+- `{fable}` version 0.4.1
 
 ## License
 

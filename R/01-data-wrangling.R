@@ -7,7 +7,6 @@ library(tsibble)
 library(feasts)
 library(ggplot2)
 library(fable)
-library(forecast)
 
 # ---- Load utility functions --------------------------------------------------
 source("R/utils.R")
@@ -19,7 +18,7 @@ sam_admit <- read_csv(
   col_select = -u5_population
 )
 
-########################### QUARTERLY ANALYSIS #############################
+########################### QUARTERLY ANALYSIS #################################
 
 # ---- Tidy the data -----------------------------------------------------------
 som_admissions_quarterly <- sam_admit |> 
@@ -57,7 +56,7 @@ som_admissions_quarterly |>
     features = quantile
   )
 
-############################# MONTHLY ANALYSIS #############################
+############################# MONTHLY ANALYSIS #################################
 
   som_admissions_monthly <- sam_admit |> 
     pivot_longer(
@@ -74,7 +73,7 @@ som_admissions_quarterly |>
       .before = admissions
   )
   
-  # ---- Remove districts with zero admissions -----------------------------------
+  # ---- Remove districts with zero admissions ---------------------------------
   list <- c("Ceel_Dheere", "Jalalaqsi", "Sablaale", "Adan Yabaal",
    "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik"
   )

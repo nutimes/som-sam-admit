@@ -13,7 +13,7 @@ All in all, the study seeks to:
 
   + **Identify trend patterns** in the admissions of SAM cases: a long-term direction or movement in the admissions that persists across the series. This represents underlying 
   patterns in the admissions after removing short-term fluctuations. The analysis will entail in identifying:
-  
+
       - The **direction** of the trend along the series: whether 
           - *upward*: a general increase over time. 
           - *donward*: a general decrease/decay over time.
@@ -50,7 +50,19 @@ The repository is structured in the following way:
       - `03-arc.R`: calculate the average rate of change of the trend.
       - `04-decomposition.R`: decompose the time series into trend, seasonal effect and ramainder.
       - `05-modeling.R:` fit a time series model. 
-      - `utils.R`: some handy user-defined functions to comply with the principle of DRY. 
+      - `utils.R`: some handy user-defined functions to comply with the principle of DRY.  
+
+    The following workflow is recommended: 
+    ```{mermaid}
+    flowchart LR
+    A[Run `01-data-wrangling.R`] 
+    B(Run `02-eda-graphics.R`)
+    C(Run `03-arc.R`)
+    D(Run `04-decomposition.R`)
+    E(Run `05-modeling.R`)
+
+    A --> B --> C --> D --> E
+    ```
   + `outputs/`: analysis report.
 
 ## Reproducibility information

@@ -86,6 +86,20 @@ The repository is structured in the following way:
   - `05-modeling.R:` fit a time series model.
   - `utils.R`: some handy user-defined functions to comply with the
     principle of DRY.
+
+  The following workflow is recommended:
+
+``` mermaid
+    flowchart LR
+    A[Run `01-data-wrangling.R`] 
+    B(Run `02-eda-graphics.R`)
+    C(Run `03-arc.R`)
+    D(Run `04-decomposition.R`)
+    E(Run `05-modeling.R`)
+
+    A --> B --> C --> D --> E
+```
+
 - `outputs/`: analysis report.
 
 ## Reproducibility information

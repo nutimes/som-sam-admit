@@ -1,30 +1,30 @@
 
 
-# Feature insights into Somalia’s severe acute malnutrition admissions: a time series study (2019 - 2024)
+# Feature insights into Somalia’s severe acute malnutrition admissions (SAM): a time series analysis spanning from January 2019 to November 2024
 
-This repository contains an R implementation of a time series study
+This repository contains an R implementation of a time series analysis
 aimed at gleaning feature insights from Somalia’s severe acute
 malnutrition (SAM) admission data, and form a basis for evidence-based
 decision-making of the overall country nutrition information system and
-programming. The analysis is based on the use of monthly SAM admissions
-data reported at district level of 15 regions that constitutes Somalia.
-Admissions spanned as of January 2019 to November 2024.
+programming. Data is reported on a monthly basis, at district level, in
+15 regions that constitutes Somalia. The window of admissions spans from
+January 2019 to November 2024.
 
 > [!NOTE]
 >
 > The analysis was made possible thanks to the collaboration of the
 > [Somalia Nutrition
-> Cluster](https://response.reliefweb.int/somalia/nutrition).
+> Cluster](https://response.reliefweb.int/somalia/nutrition)
+> coordination team.
 
-All in all, the study seeks to:
+All in all, the analysis seeks to:
 
-- **Identify trend patterns** in the admissions of SAM cases: a
-  long-term direction or movement in the admissions that persists across
-  the series. This represents underlying patterns in the admissions
-  after removing short-term fluctuations. The analysis will entail in
-  identifying:
+- **Identify trend patterns**: a long-term direction or movement in the
+  admissions that persists across the series. This represents underlying
+  patterns in the admissions after removing short-term fluctuations. The
+  analysis will entail in identifying:
 
-  - The **direction** of the trend along the series: whether
+  - The **direction** of the trend along the series:
     - *upward*: a general increase over time.
     - *donward*: a general decrease/decay over time.
     - *flat*: relatively constant over time.
@@ -33,7 +33,7 @@ All in all, the study seeks to:
       series, indicating a constant rate of change over time.
     - *Nonlinear trend*: the trend follows a curved line, indicating
       acceleration and deceleration of the rate of change.
-  - The **Stability**:
+  - The **Stability** of the trend:
     - *Stable trend*: one that remains consistent over the entire time
       series.
     - *Changing trend*: one that evolves over time, possibly with abrupt
@@ -45,12 +45,12 @@ The average rate of change (ARC) of the trend will be estimated.
   fixed and specific period every year. Seasonal patterns can be *fixed*
   or *time-varying*. If the latter, analysis will explore:
 
-  - **Amplitute of changes**: when the strenght and intensity of the
-    peak or off-season variy over time.
-  - Phase shifts: when the timing of the peak season and off-season
+  - *Amplitute of changes*: when the strenght and intensity of the peak
+    or off-season vary over time.
+  - *Phase shifts*: when the timing of the peak season and off-season
     changes over time.
-  - Irregular patters: when the periodicity of the seasonal patterns are
-    irregular.
+  - *Irregular patters*: when the periodicity of the seasonal patterns
+    are irregular.
 
 - **Quantify the seasonal influences on the admissions**: the extent to
   which different times of the year impact on the number of SAM cases
@@ -73,9 +73,9 @@ The repository is structured in the following way:
 - `data/`: a data.frame of class `tsibble` containing the admissions of
   SAM cases over time. Data is reported on a monthly basis, with a
   reporting rate \>= 80%, as advised by the data owner. Reporting rate
-  is defined as the number of cacthment areas that reported in a given
-  month, divided by the overall number of cacthment areas that are
-  expected to report.
+  is defined as the number of catchment areas that submitted their
+  reported in a given month, divided by the overall number of catchment
+  areas that are expected to report.
 - `R/`: A set of `R` scripts used for the analysis. These are split into
   different files, based on the specific objective they address:
   - `01-data-wrangling.R`: load required libraries, data and wrangle it.
@@ -91,11 +91,11 @@ The repository is structured in the following way:
 
 ``` mermaid
     flowchart LR
-    A[Run `01-data-wrangling.R`] 
-    B(Run `02-eda-graphics.R`)
-    C(Run `03-arc.R`)
-    D(Run `04-decomposition.R`)
-    E(Run `05-modeling.R`)
+    A[Run 01-data-wrangling.R] 
+    B(Run 02-eda-graphics.R)
+    C(Run 03-arc.R)
+    D(Run 04-decomposition.R)
+    E(Run 05-modeling.R)
 
     A --> B --> C --> D --> E
 ```

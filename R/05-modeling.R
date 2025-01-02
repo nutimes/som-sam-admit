@@ -2,7 +2,7 @@
 
 ########################### QUARTERLY ANALYSIS #############################
 ## Specify models ----
-fit_admissions <- som_admissions_quarterly |> 
+fit_admissions <- quarterly_admissions |> 
   summarise_admissions(
     .group = FALSE,
     time = "Q"

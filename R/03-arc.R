@@ -5,7 +5,7 @@
 
 ## Ungrouped data ----
 ### Components ----
-cm <- som_admissions_quarterly |> 
+cm <- quarterly_admissions |> 
 summarise_admissions(
   .group = FALSE,
   time = "Q"

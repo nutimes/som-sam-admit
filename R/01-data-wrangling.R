@@ -40,12 +40,12 @@ quarterly_admissions <- admissions |>
 list <- c("Ceel_Dheere", "Jalalaqsi", "Sablaale", "Adan Yabaal",
  "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik"
 )
-som_admissions_quarterly <- som_admissions_quarterly |> 
+quarterly_admissions <- quarterly_admissions |> 
   filter(!(district %in% list))
 
 # ---- TS Features -------------------------------------------------------------
 ## Sum of admissions by Region ----
-som_admissions_quarterly |> 
+quarterly_admissions |> 
   summarise_admissions(
     .group = TRUE,
     time = "Q"
@@ -78,6 +78,6 @@ som_admissions_quarterly |>
   list <- c("Ceel_Dheere", "Jalalaqsi", "Sablaale", "Adan Yabaal",
    "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik"
   )
-  som_admissions_monthly <- som_admissions_monthly |> 
+  monthly_admissions <- monthly_admissions |> 
     filter(!(district %in% list))
   

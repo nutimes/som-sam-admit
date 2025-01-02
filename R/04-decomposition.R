@@ -5,7 +5,7 @@
 # Apply transformation before decomposition
 
 ## Box-Cox transformation ----
-df <- som_admissions_quarterly |> 
+df <- quarterly_admissions |> 
   summarise_admissions(
     .group = FALSE,
     time = "Q"
@@ -42,7 +42,7 @@ components |>
 ############################# MONTHLY ANALYSIS #############################
 
 ## Box-Cox transformation ----
-df_mo <- som_admissions_monthly |> 
+df_mo <- monthly_admissions |> 
   summarise_admissions(
     .group = FALSE,
     time = "M"

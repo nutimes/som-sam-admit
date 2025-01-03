@@ -1,0 +1,23 @@
+---
+title: "Feature insights into Somalia’s severe acute malnutrition admissions"
+subtitle: "A time series analysis spanning from January 2019 to November 2024"
+author: "Tomás Zaba"
+date: "01-03-2025"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    toc-expand: true
+    toc-title: Contents
+    code-links: repo
+    execute:
+      eval: true
+      echo: false
+      warning: false
+    bibliography: references.bib
+    cls: harvard-cite-them-right-11th-edition.csl
+    knitr: 
+      opts_chunk: 
+        collapse: true
+        comment: "#>"
+---

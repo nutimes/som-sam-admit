@@ -12,16 +12,15 @@ library(fable)
 source("R/utils.R")
 
 # ---- Load data ---------------------------------------------------------------
-sam_admit <- read_csv(
-  file = "data/som_admissions.csv",
-  col_types = NULL,
-  col_select = -u5_population
-)
+## Remove the "X"'s before the dates ----
+colnames(admissions) <- gsub("^X", "", colnames(admissions))
+colnames(admissions) <- gsub("\\.", "-", colnames(admissions))
 
 ########################### QUARTERLY ANALYSIS #################################
 
 # ---- Tidy the data -----------------------------------------------------------
-som_admissions_quarterly <- sam_admit |> 
+quarterly_admissions <- admissions |> 
+  select(2:75) |> 
   pivot_longer(
     cols = !c(region, district),
     names_to = "time",
@@ -41,12 +40,12 @@ som_admissions_quarterly <- sam_admit |>
 list <- c("Ceel_Dheere", "Jalalaqsi", "Sablaale", "Adan Yabaal",
  "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik"
 )
-som_admissions_quarterly <- som_admissions_quarterly |> 
+quarterly_admissions <- quarterly_admissions |> 
   filter(!(district %in% list))
 
 # ---- TS Features -------------------------------------------------------------
 ## Sum of admissions by Region ----
-som_admissions_quarterly |> 
+quarterly_admissions |> 
   summarise_admissions(
     .group = TRUE,
     time = "Q"
@@ -58,7 +57,8 @@ som_admissions_quarterly |>
 
 ############################# MONTHLY ANALYSIS #################################
 
-  som_admissions_monthly <- sam_admit |> 
+  monthly_admissions <- admissions |> 
+    select(2:75) |> 
     pivot_longer(
       cols = !c(region, district),
       names_to = "time",
@@ -71,12 +71,13 @@ som_admissions_quarterly |>
     relocate(
       Monthly, 
       .before = admissions
-  )
+  ) |> 
+    select(-time)
   
   # ---- Remove districts with zero admissions ---------------------------------
   list <- c("Ceel_Dheere", "Jalalaqsi", "Sablaale", "Adan Yabaal",
    "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik"
   )
-  som_admissions_monthly <- som_admissions_monthly |> 
+  monthly_admissions <- monthly_admissions |> 
     filter(!(district %in% list))
   

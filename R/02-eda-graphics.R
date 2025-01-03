@@ -3,7 +3,7 @@
 ########################### QUARTERLY ANALYSIS #############################
 
 ## Ungrouped quarterly time plot ----
-som_admissions_quarterly |> 
+quarterly_admissions |> 
   summarise_admissions(
     .group = FALSE,
     time = "Q"
@@ -16,7 +16,7 @@ som_admissions_quarterly |>
   )
 
 ### Quarterly time plot by Region ----
-som_admissions_quarterly |> 
+quarterly_admissions |> 
   summarise_admissions(
     .group = TRUE,
     time = "Q"
@@ -32,7 +32,7 @@ som_admissions_quarterly |>
 
 
 ### Seasonal plot ----
-som_admissions_quarterly |> 
+quarterly_admissions |> 
   summarise_admissions(
     .group = FALSE,
     time = "Q"
@@ -45,7 +45,7 @@ som_admissions_quarterly |>
   )
 
 ### Seasonal plot facetted by Region ----
-som_admissions_quarterly |> 
+quarterly_admissions |> 
   summarise_admissions(
     .group = TRUE,
     time = "Q"
@@ -59,7 +59,7 @@ som_admissions_quarterly |>
   )
 
 ### Subseries plot ----
-som_admissions_quarterly |> 
+quarterly_admissions |> 
   summarise_admissions(
     .group = FALSE,
     time = "Q"
@@ -72,7 +72,7 @@ som_admissions_quarterly |>
   )
 
 ### Subseries plot by Region ----
-som_admissions_quarterly |> 
+quarterly_admissions |> 
   summarise_admissions(
     .group = TRUE,
     time = "Q"
@@ -88,7 +88,7 @@ som_admissions_quarterly |>
 
 ## Ungrouped time plot ----
 summarise_admissions(
-  ts = som_admissions_monthly,
+  ts = monthly_admissions,
   .group = FALSE,
   time = "M"
 )|> 
@@ -101,7 +101,7 @@ summarise_admissions(
 
 ### Time plot by Region ----
 summarise_admissions(
-  ts = som_admissions_monthly, 
+  ts = monthly_admissions, 
   .group = TRUE,
   time = "M"
 ) |> 
@@ -116,7 +116,7 @@ summarise_admissions(
 
 ## Seasonal plot ----
 summarise_admissions(
-  ts = som_admissions_monthly,
+  ts = monthly_admissions,
   .group = FALSE
 ) |> 
   gg_season(labels = "right") +
@@ -128,7 +128,7 @@ summarise_admissions(
 
 ### Seasonal plot facetted by Region ----
 summarise_admissions(
-  ts = som_admissions_monthly,
+  ts = monthly_admissions,
   .group = TRUE,
   time = "M"
 ) |> 
@@ -142,7 +142,7 @@ summarise_admissions(
 
 #### Seasonal plot before 2022 ----
 summarise_admissions(
-  ts = som_admissions_monthly,
+  ts = monthly_admissions,
   .group = FALSE,
   time = "M"
 ) |> 
@@ -157,7 +157,7 @@ summarise_admissions(
 
 #### Seasonal plot after 2022 ----
 summarise_admissions(
-  ts = som_admissions_monthly,
+  ts = monthly_admissions,
   .group = FALSE,
   time = "M"
 ) |> 
@@ -171,7 +171,7 @@ summarise_admissions(
 
 ## Subseries plot ----
 summarise_admissions(
-  ts = som_admissions_monthly,
+  ts = monthly_admissions,
   .group = FALSE,
   time = "M"
 ) |> 
@@ -184,7 +184,7 @@ summarise_admissions(
 
 ### Subseries plot before 2022 ----
 summarise_admissions(
-  ts = som_admissions_monthly,
+  ts = monthly_admissions,
   .group = FALSE,
   time = "M"
 ) |> 
@@ -198,7 +198,7 @@ summarise_admissions(
 
 ### Subseries plot as of 2022 ----
 summarise_admissions(
-  ts = som_admissions_monthly,
+  ts = monthly_admissions,
   .group = FALSE,
   time = "M"
 ) |> 

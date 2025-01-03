@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Tomás Zaba">
-<meta name="dcterms.date" content="2025-01-03">
+<meta name="dcterms.date" content="2025-01-04">
 
 <title>Feature insights into Somalia’s severe acute malnutrition admissions</title>
 <style>
@@ -22,7 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="report_files/libs/clipboard/clipboard.min.js"></script>
@@ -43,8 +63,14 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  
-<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/nutimes/som-sam-admit/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a></li></ul></div></div>
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  </ul>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/nutimes/som-sam-admit/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a></li></ul></div></nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -67,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 3, 2025</p>
+      <p class="date">January 4, 2025</p>
     </div>
   </div>
   
@@ -79,9 +105,42 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Seasonality is an important element that influences the likelihood of the underlying and immediate factors leading to acute malnutrition. Seasonality or seasonal variation is defined as the repeating patterns/occurance of the variation of a given phenomenom within each year <span class="citation" data-cites="tsR">(<a href="#ref-tsR" role="doc-biblioref">Cowpertwait and Metcalfe 2009</a>)</span>. In this terms, seasonality of acute malnutrition would be times in year (months, quarters), when the number of cases of acute malnutrition increases or decreases each year.</p>
+<p>Understanding the seasonal variation of acute malnutrition is a cornestone for an evidence-based decision making. Whilst there is a general agreement of the seasonal variation of acute malnutrition, limited evidence is available in that support; as result, stakeholders overrely on the assumptions of a seasonal peak during the food security lean season <span class="citation" data-cites="africadry">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>)</span>. With that, nutrition surveys are routinely designed at that point in time every year a way of controling for seasonality.</p>
+<p>Some researchers that studies the seasonal variation of acute malnutrition in African drylands, using histocal survey datasets, have found that the complexity of the interaction between the acute malnutrition and the acute food insecurity do not always move along during all seasons, and across all livelihoods <span class="citation" data-cites="africadry anastasia">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>; <a href="#ref-anastasia" role="doc-biblioref">Marshak et al. 2021</a>)</span>.</p>
+<p>It is referred that the limited understanding of the seasonal variation of acute malnutrition is due to two major limiting factors: (i) the existance of analytical methods and (ii) the availability of primary data <span class="citation" data-cites="africadry">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>)</span>. These, however, can be addressed with secondary data such as the data on the admissions of acute malnutrition cases into treatment programmes, that are generated every month, provided that it is of high-quality.</p>
+<p>Thus, this analysis makes the use of Somalia’s 6 year’s admission data on severe acute malnutrition, to explore the patterns of the admissions: <strong>trend and seasonality</strong>.</p>
+<p>In Somalia, the seasonality of acute malnutrition is as well linked to the food security seasonality. There are five defined food security seasons as described by <span class="citation" data-cites="ENN_">Gwenaelle Luc (<a href="#ref-ENN_" role="doc-biblioref">2024</a>)</span>:</p>
+<ul>
+<li><strong>Jilaal (January - March)</strong>: the most extended dry season characterized, by livestock migration and decreased milk production in the pastoralist livelihoods.</li>
+<li><strong>Gu (April - June)</strong>: characterized by heavy rainfall, it constitutes Somalia’s 70% of the crop production season, and livestock production depends upon this season.</li>
+<li><strong>Post-Gu (July - August)</strong>: characterized by increase pasture and water availability for the livestock and increased availability of milk, fruits, vegetables. This is as well the peak season of a liquid butter made of milk know as <em>ghee</em><br>
+</li>
+<li><strong>Hagaa (July - September)</strong>: a dry season, characterized by light rainfalls.<br>
+</li>
+<li><strong>Deyr (October - December)</strong>: a rainy season, however localized and less reliable.</li>
+</ul>
+<p><strong>TALK ABOUT THE DRYLAND’s REPORT and then mention the IPC a bit</strong></p>
+<p>It is assumed that the seasonality of acute malnutrition reaches its peak at the end of the Jilaal season until the end of Hagaa season. An analysis by <span class="citation" data-cites="ENN_">Gwenaelle Luc (<a href="#ref-ENN_" role="doc-biblioref">2024</a>)</span>, using SMART surveys conducted by the Food Security and Nutrition Analysis Unit (FSNAU) and partners, collected between Gu and Deyr seasons from 2014 and 2021, and including other survey datasets from the Action Against Hunger (ACF) during the same period, identified two seasonal peaks: <strong>one in May/June (the beginning of Gu)</strong> and <strong>November (mid-Deyr)</strong>, with decline in between the lean season. The author did observed some varying patterns by livelihoods.</p>
 
+</section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-tsR" class="csl-entry" role="listitem">
+Cowpertwait, Paul S. P., and Andrew V. Metcalfe. 2009. <em>Introductory Time Series with <span>R</span></em>. New York: Springer.
+</div>
+<div id="ref-ENN_" class="csl-entry" role="listitem">
+Gwenaelle Luc, Baguinébié Bazongo, Modibo Keita. 2024. <span>“Special Focus: Wasting Patterns in Somalia.”</span> <em>Field Exchange 72 (En)</em> 72. <a href="https://www.ennonline.net/fex/72/special-focus-wasting-patterns-in-somalia">https://www.ennonline.net/fex/72/special-focus-wasting-patterns-in-somalia</a>.
+</div>
+<div id="ref-anastasia" class="csl-entry" role="listitem">
+Marshak, Anastasia, Aishwarya Venkat, Helen Young, and Elena N. Naumova. 2021. <span>“How Seasonality of Malnutrition Is Measured and Analyzed.”</span> <em>International Journal of Environmental Research and Public Health</em> 18 (4). <a href="https://doi.org/10.3390/ijerph18041828">https://doi.org/10.3390/ijerph18041828</a>.
+</div>
+<div id="ref-africadry" class="csl-entry" role="listitem">
+Venkat, Aishwarya, Anastasia Marshak, Helen Young, and Elena N. Naumova. 2023. <span>“Seasonality of Acute Malnutrition in African Drylands: Evidence from 15 Years of SMART Surveys.”</span> <em>Food and Nutrition Bulletin</em> 44 (2_suppl): S94–108. <a href="https://doi.org/10.1177/03795721231178344">https://doi.org/10.1177/03795721231178344</a>.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

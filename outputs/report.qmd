@@ -2,7 +2,7 @@
 title: "Feature insights into Somalia’s severe acute malnutrition admissions"
 subtitle: "A time series analysis spanning from January 2019 to November 2024"
 author: "Tomás Zaba"
-date: "01-03-2025"
+date: today
 format: 
   html:
     toc: true
@@ -21,3 +21,26 @@ format:
         collapse: true
         comment: "#>"
 ---
+
+# Introduction  
+Seasonality is an important element that influences the likelihood of the underlying and immediate factors leading to acute malnutrition. Seasonality or seasonal variation is defined as the repeating patterns/occurance of the variation of a given phenomenom within each year [@tsR]. In this terms, seasonality of acute malnutrition would be times in year (months, quarters), when the number of cases of acute malnutrition increases or decreases each year.  
+
+Understanding the seasonal variation of acute malnutrition is a cornestone for an evidence-based decision making. Whilst there is a general agreement of the seasonal variation of acute malnutrition, limited evidence is available in that support; as result, stakeholders overrely on the assumptions of a seasonal peak during the food security lean season [@africadry]. With that, nutrition surveys are routinely designed at that point in time every year a way of controling for seasonality. 
+
+Some researchers that studies the seasonal variation of acute malnutrition in African drylands, using histocal survey datasets, have found that the complexity of the interaction between the acute malnutrition and the acute food insecurity do not always move along during all seasons, and across all livelihoods [@africadry; @anastasia].
+
+It is referred that the limited understanding of the seasonal variation of acute malnutrition is due to two major limiting factors: (i) the existance of analytical methods and (ii) the availability of primary data [@africadry]. These, however, can be addressed with secondary data such as the data on the admissions of acute malnutrition cases into treatment programmes, that are generated every month, provided that it is of high-quality.
+
+Thus, this analysis makes the use of Somalia's 6 year's admission data on severe acute malnutrition, to explore the patterns of the admissions: **trend and seasonality**. 
+
+In Somalia, the seasonality of acute malnutrition is as well linked to the food security seasonality. There are five defined food security seasons as described by @ENN_:  
+
+  + **Jilaal (January - March)**: the most extended dry season characterized, by livestock migration and decreased milk production in the pastoralist livelihoods. 
+  + **Gu (April - June)**: characterized by heavy rainfall, it constitutes Somalia's 70% of the crop production season, and livestock production depends upon this season.
+  + **Post-Gu (July - August)**: characterized by increase pasture and water availability for the livestock and increased availability of milk, fruits, vegetables. This is as well the peak season of a liquid butter made of milk know as *ghee*  
+  + **Hagaa (July - September)**: a dry season, characterized by light rainfalls.  
+  + **Deyr (October - December)**: a rainy season, however localized and less reliable.
+
+**TALK ABOUT THE DRYLAND's REPORT and then mention the IPC a bit**
+
+It is assumed that the seasonality of acute malnutrition reaches its peak at the end of the Jilaal season until the end of Hagaa season. An analysis by @ENN_, using SMART surveys conducted by the Food Security and Nutrition Analysis Unit (FSNAU) and partners, collected between Gu and Deyr seasons from 2014 and 2021, and including other survey datasets from the Action Against Hunger (ACF) during the same period, identified two seasonal peaks: **one in May/June (the beginning of Gu)** and **November (mid-Deyr)**, with decline in between the lean season. The author did observed some varying patterns by livelihoods.

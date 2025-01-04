@@ -31,11 +31,11 @@ Understanding the seasonal variation of AMN is crucial for evidence-based decisi
 
 The limited understanding of AMN’s seasonal variation is attributed to two key challenges: (i) the availability of robust analytical methods and (ii) access to primary data [@africadry]. These challenges, however, can be mitigated by leveraging high-quality secondary data, such as survey datasets or treatment program admissions. Studies using 15 years of SMART survey data from African drylands have underscored the complex relationship between AMN and acute food insecurity, revealing that they do not always align across seasons or livelihoods [@africadry; @anastasia]. Notably, this research identified two AMN seasonal peaks: April-May and August-September [@africadry].  
 
-In Somalia, the seasonality of AMN is also generaly associated with that of the the food security seasonality. There are five defined food security seasons as described by @ENN:  
+In Somalia, the seasonality of AMN is also generaly associated with that of the food security seasonality. There are five defined food security seasons as described by @ENN:  
 
-  + **Jilaal (January - March)**: the most extended dry season characterized, by livestock migration and decreased milk production in the pastoralist livelihoods. 
+  + **Jilaal (January - March)**: the most extended dry season, is characterized by livestock migration and decreased milk production in the pastoralist livelihoods. 
   + **Gu (April - June)**: characterized by heavy rainfall, it constitutes Somalia's 70% of the crop production season, and livestock production depends upon this season.
-  + **Post-Gu (July - August)**: characterized by increase pasture and water availability for the livestock and increased availability of milk, fruits, vegetables. This is as well the peak season of a liquid butter made of milk know as *ghee*  
+  + **Post-Gu (July - August)**: characterized by increase pasture and water availability for the livestock and increased availability of milk, fruits, vegetables. This is as well the peak season of a liquid butter made of milk know as *ghee*.  
   + **Hagaa (July - September)**: a dry season, characterized by light rainfalls.  
   + **Deyr (October - December)**: a rainy season, however localized and less reliable.
 

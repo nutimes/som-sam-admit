@@ -1,0 +1,56 @@
+---
+title: "Feature insights into Somalia’s severe acute malnutrition admissions"
+subtitle: "A time series analysis spanning from January 2019 to November 2024"
+author: "Tomás Zaba"
+date: today
+format: 
+  html:
+    theme: 
+      dark: darkly
+    toc: true
+    toc-depth: 3
+    toc-expand: true
+    toc-title: Contents
+    code-links: repo
+    execute:
+      eval: true
+      echo: false
+      warning: false
+    bibliography: references.bib
+    cls: harvard-cite-them-right-11th-edition.csl
+    knitr: 
+      opts_chunk: 
+        collapse: true
+        comment: "#>"
+---
+
+# Context  
+Seasonality significantly impacts the underlying and immediate factors contributing to acute malnutrition (AMN). It refers to recurring patterns within a year [@tsR], such as specific months or quarters when AMN cases rise or fall.  
+
+Understanding the seasonal variation of AMN is crucial for evidence-based decision-making. However, despite a general awareness of its seasonality, limited evidence exists to substantiate it. Consequently, stakeholders often rely on assumptions of a seasonal peak during the food security lean season [@africadry]. To account for this, nutrition surveys are routinely timed to coincide with the lean season each year.
+
+The limited understanding of AMN’s seasonal variation is attributed to two key challenges: (i) the availability of robust analytical methods and (ii) access to primary data [@africadry]. These challenges, however, can be mitigated by leveraging high-quality secondary data, such as survey datasets or treatment program admissions. Studies using 15 years of SMART survey data from African drylands have underscored the complex relationship between AMN and acute food insecurity, revealing that they do not always align across seasons or livelihoods [@africadry; @anastasia]. Notably, this research identified two AMN seasonal peaks: April-May and August-September [@africadry].  
+
+In Somalia, the seasonality of AMN is also generaly associated with that of the food security seasonality. There are five defined food security seasons as described by @ENN:  
+
+  + **Jilaal (January - March)**: the most extended dry season, is characterized by livestock migration and decreased milk production in the pastoralist livelihoods. 
+  + **Gu (April - June)**: characterized by heavy rainfall, it constitutes Somalia's 70% of the crop production season, and livestock production depends upon this season.
+  + **Post-Gu (July - August)**: characterized by increase pasture and water availability for the livestock and increased availability of milk, fruits, vegetables. This is as well the peak season of a liquid butter made of milk know as *ghee*.  
+  + **Hagaa (July - September)**: a dry season, characterized by light rainfalls.  
+  + **Deyr (October - December)**: a rainy season, however localized and less reliable.
+
+It is generally assumed that AMN in Somalia peaks from the end of the Jilaal season to the end of the Hagaa season. An analysis by @ENN, based on SMART surveys conducted by the Food Security and Nutrition Analysis Unit (FSNAU) and partners, with data collected between the Gu and Deyr seasons from 2014 to 2021, identified two distinct seasonal peaks: **May/June (the beginning of Gu)** and **November (mid-Deyr)**, with a decline during the lean season. The study also highlighted variations in these patterns based on livelihood zones, including pastoralist, agro-pastoralist, and riverine/farming communities:
+
+  + Among pastoralist communities, the peak in AMN was observed in June (Gu). This does not align with the food security lean season, as pastoral consumption typically improves starting in April when animals give birth, coinciding with the onset of rainfall. During this period, households gain access to milk and meat and income from the sale of animals. A second peak was noted in November, a period when food insecurity is generally expected to be minimal following the Gu harvest [@ENN].
+
+  + In agropastoralist and farming areas, the seasonality followed the peaks described above [@ENN].
+
+## What does this analysis add?
+  This analysis examines six years of severe acute malnutrition (SAM) admission data from treatment programs in Somalia to explore patterns in admissions, focusing on **trends and seasonality** over time.
+
+### Objectives
+  + **Identify and describe trend patterns**: a long-term direction or movement in the admissions that persists across the series. This represents underlying patterns in the admissions after removing short-term fluctuations. 
+
+  + **Identify and describe the seasonality patterns**: recurring patterns that occur in a fixed and specific period every year. 
+
+  + **Quantify the seasonal influences on the admissions**: the extent to which different times of the year impact the number of SAM cases admitted into the treatment program

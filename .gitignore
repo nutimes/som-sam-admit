@@ -37,3 +37,6 @@ rsconnect/
 data/.DS_Store
 R/.DS_Store
 outputs/.DS_Store
+# produced quarto html
+outputs/*.html
+outputs/report_files

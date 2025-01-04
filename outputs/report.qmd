@@ -70,4 +70,52 @@ It is generally assumed that AMN in Somalia peaks from the end of the Jilaal sea
   + **Quantify the seasonal influences on the admissions**: the extent to which different times of the year impact the number of SAM cases admitted into the treatment program
 
 ## Methods
-Lorem Isupur
+### Data source
+The analysis uses [Somalia Nutrition Cluster's](https://response.reliefweb.int/somalia/nutrition) six years and countrywide SAM admission into AMN treatment program. The data is reported monthly, at district level. 
+
+Initially, the analysis was planned to use global acute malnutrition data; however, the Nutrition Cluster advised that, unlike SAM data, moderate acute malnutrition (MAM) data has a variance instability caused by the frequent stockouts of read-to-use supplementary food (RUSF) in the programme. Its use could lead to erroneous findings. Hence, MAM data was excluded from the analysis.
+
+
+### Data wrangling  
+It consisted in excluding districts with missing admissions from January to December; then by summing the total number of children admitted by quarter.
+```{mermaid}
+flowchart LR
+    A[(Dataset)]
+    B[Exclusion of districts with consistent missingness of admissions]
+    C[Sum the number of SAM cases admitted by **month** and by Region]
+    D[Sum the number of SAM cases admitted by **quarter** and by Region]
+    E[Time series]
+
+    A --> B --> C --> E
+    B --> D --> E
+```
+
+::: {.callout-note}
+Eight districts were excluded for missingness: Ceel_Dheere, Jalalaqsi, Sablaale, Adan Yabaal, Bu'aale, Jilib, Saakow/Salagle and Sheik
+:::
+
+### Analysis techniques  
+The analysis process consisted of graphical **exploratory data analysis**, then decomposing the time series into trend, seasonal effects and remainder. Then each component was used to describe furthern its patterns over time. 
+
+The trend component was used to described:
+
+ - The **direction** of the trend along the series:  
+      - *upward*: a general increase over time.  
+      - *downward*: a general decrease/decay over time.  
+      - *flat*: relatively constant over time.
+  - The **Shape** of the trend:
+      - *Linear trend*: a straight line best fits the data along the series, indicating a constant rate of change over time.
+      - *Nonlinear trend*: the trend follows a curved line, indicating acceleration and deceleration of the rate of change.
+  - The **Stability** of the trend:
+      - *Stable trend*: one that remains consistent over the entire time series.
+      - *Changing trend*: one that evolves over time, possibly with abrupt shifts.  
+
+The average rate of change (ARC) of the trend was estimated.
+
+The seasonal component was used to characterized the:  
+
+  - *Amplitute of changes*: when the strength and intensity of the peak or off-season vary over time.  
+  - *Phase shifts*: when the timing of the peak season and off-season changes over time.  
+  - *Irregular patterns*: when the periodicity of the seasonal patterns are irregular.  
+
+Then a time series regression model was fit to quantify the extent to which different times of the year impact the number of SAM cases admitted into the treatment program.

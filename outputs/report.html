@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Tomás Zaba">
-<meta name="dcterms.date" content="2025-01-04">
+<meta name="dcterms.date" content="2025-01-05">
 
 <title>Feature insights into Somalia’s severe acute malnutrition admissions</title>
 <style>
@@ -51,12 +51,15 @@ div.csl-indent {
 <script src="report_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="report_files/libs/quarto-html/anchor.min.js"></script>
 <link href="report_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="report_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="report_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="report_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="report_files/libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="report_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="report_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="report_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="report_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="report_files/libs/bootstrap/bootstrap-dark-7189104584608726a80707a12c970cfd.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="report_files/libs/quarto-diagram/mermaid.min.js"></script>
+<script src="report_files/libs/quarto-diagram/mermaid-init.js"></script>
+<link href="report_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -71,10 +74,13 @@ div.csl-indent {
   <ul>
   <li><a href="#context" id="toc-context" class="nav-link active" data-scroll-target="#context">Context</a>
   <ul class="collapse">
-  <li><a href="#what-does-this-analysis-add" id="toc-what-does-this-analysis-add" class="nav-link" data-scroll-target="#what-does-this-analysis-add">What does this analysis add?</a>
-  <ul class="collapse">
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#what-does-this-analysis-add" id="toc-what-does-this-analysis-add" class="nav-link" data-scroll-target="#what-does-this-analysis-add">What does this analysis add?</a></li>
   </ul></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">Data source</a></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data wrangling</a></li>
+  <li><a href="#analysis-techniques" id="toc-analysis-techniques" class="nav-link" data-scroll-target="#analysis-techniques">Analysis techniques</a></li>
   </ul></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/nutimes/som-sam-admit/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a></li></ul></div></nav>
@@ -101,7 +107,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 4, 2025</p>
+      <p class="date">January 5, 2025</p>
     </div>
   </div>
   
@@ -113,38 +119,140 @@ div.csl-indent {
 </header>
 
 
-<section id="context" class="level1">
-<h1>Context</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
 <p>Seasonality significantly impacts the underlying and immediate factors contributing to acute malnutrition (AMN). It refers to recurring patterns within a year <span class="citation" data-cites="tsR">(<a href="#ref-tsR" role="doc-biblioref">Cowpertwait and Metcalfe 2009</a>)</span>, such as specific months or quarters when AMN cases rise or fall.</p>
 <p>Understanding the seasonal variation of AMN is crucial for evidence-based decision-making. However, despite a general awareness of its seasonality, limited evidence exists to substantiate it. Consequently, stakeholders often rely on assumptions of a seasonal peak during the food security lean season <span class="citation" data-cites="africadry">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>)</span>. To account for this, nutrition surveys are routinely timed to coincide with the lean season each year.</p>
 <p>The limited understanding of AMN’s seasonal variation is attributed to two key challenges: (i) the availability of robust analytical methods and (ii) access to primary data <span class="citation" data-cites="africadry">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>)</span>. These challenges, however, can be mitigated by leveraging high-quality secondary data, such as survey datasets or treatment program admissions. Studies using 15 years of SMART survey data from African drylands have underscored the complex relationship between AMN and acute food insecurity, revealing that they do not always align across seasons or livelihoods <span class="citation" data-cites="africadry anastasia">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>; <a href="#ref-anastasia" role="doc-biblioref">Marshak et al. 2021</a>)</span>. Notably, this research identified two AMN seasonal peaks: April-May and August-September <span class="citation" data-cites="africadry">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>)</span>.</p>
 <p>In Somalia, the seasonality of AMN is also generaly associated with that of the food security seasonality. There are five defined food security seasons as described by <span class="citation" data-cites="ENN">Luc et al. (<a href="#ref-ENN" role="doc-biblioref">2024</a>)</span>:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">gantt
+    title  Somalia Food Security Seasonal Calendar
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+    Jilaal :1, 4
+    Gu     :4, 7
+    Post-Gu:7, 8
+    Hagaa  :7, 10
+    Deyr   :10, 12
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <ul>
-<li><strong>Jilaal (January - March)</strong>: the most extended dry season, is characterized by livestock migration and decreased milk production in the pastoralist livelihoods.</li>
-<li><strong>Gu (April - June)</strong>: characterized by heavy rainfall, it constitutes Somalia’s 70% of the crop production season, and livestock production depends upon this season.</li>
-<li><strong>Post-Gu (July - August)</strong>: characterized by increase pasture and water availability for the livestock and increased availability of milk, fruits, vegetables. This is as well the peak season of a liquid butter made of milk know as <em>ghee</em>.<br>
+<li><strong>Jilaal</strong>: the most extended dry season, is characterized by livestock migration and decreased milk production in the pastoralist livelihoods.</li>
+<li><strong>Gu</strong>: characterized by heavy rainfall, it constitutes Somalia’s 70% of the crop production season, and livestock production depends upon this season.</li>
+<li><strong>Post-Gu</strong>: characterized by increase pasture and water availability for the livestock and increased availability of milk, fruits, vegetables. This is as well the peak season of a liquid butter made of milk know as <em>ghee</em>.<br>
 </li>
-<li><strong>Hagaa (July - September)</strong>: a dry season, characterized by light rainfalls.<br>
+<li><strong>Hagaa</strong>: a dry season, characterized by light rainfalls.<br>
 </li>
-<li><strong>Deyr (October - December)</strong>: a rainy season, however localized and less reliable.</li>
+<li><strong>Deyr</strong>: a rainy season, however localized and less reliable.</li>
 </ul>
 <p>It is generally assumed that AMN in Somalia peaks from the end of the Jilaal season to the end of the Hagaa season. An analysis by <span class="citation" data-cites="ENN">Luc et al. (<a href="#ref-ENN" role="doc-biblioref">2024</a>)</span>, based on SMART surveys conducted by the Food Security and Nutrition Analysis Unit (FSNAU) and partners, with data collected between the Gu and Deyr seasons from 2014 to 2021, identified two distinct seasonal peaks: <strong>May/June (the beginning of Gu)</strong> and <strong>November (mid-Deyr)</strong>, with a decline during the lean season. The study also highlighted variations in these patterns based on livelihood zones, including pastoralist, agro-pastoralist, and riverine/farming communities:</p>
 <ul>
 <li><p>Among pastoralist communities, the peak in AMN was observed in June (Gu). This does not align with the food security lean season, as pastoral consumption typically improves starting in April when animals give birth, coinciding with the onset of rainfall. During this period, households gain access to milk and meat and income from the sale of animals. A second peak was noted in November, a period when food insecurity is generally expected to be minimal following the Gu harvest <span class="citation" data-cites="ENN">(<a href="#ref-ENN" role="doc-biblioref">Luc et al. 2024</a>)</span>.</p></li>
 <li><p>In agropastoralist and farming areas, the seasonality followed the peaks described above <span class="citation" data-cites="ENN">(<a href="#ref-ENN" role="doc-biblioref">Luc et al. 2024</a>)</span>.</p></li>
 </ul>
-<section id="what-does-this-analysis-add" class="level2">
-<h2 class="anchored" data-anchor-id="what-does-this-analysis-add">What does this analysis add?</h2>
+<section id="what-does-this-analysis-add" class="level3">
+<h3 class="anchored" data-anchor-id="what-does-this-analysis-add">What does this analysis add?</h3>
 <p>This analysis examines six years of severe acute malnutrition (SAM) admission data from treatment programs in Somalia to explore patterns in admissions, focusing on <strong>trends and seasonality</strong> over time.</p>
-<section id="objectives" class="level3">
-<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<section id="objectives" class="level4">
+<h4 class="anchored" data-anchor-id="objectives">Objectives</h4>
 <ul>
 <li><p><strong>Identify and describe trend patterns</strong>: a long-term direction or movement in the admissions that persists across the series. This represents underlying patterns in the admissions after removing short-term fluctuations.</p></li>
 <li><p><strong>Identify and describe the seasonality patterns</strong>: recurring patterns that occur in a fixed and specific period every year.</p></li>
 <li><p><strong>Quantify the seasonal influences on the admissions</strong>: the extent to which different times of the year impact the number of SAM cases admitted into the treatment program</p></li>
 </ul>
-
 </section>
+</section>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<section id="data-source" class="level3">
+<h3 class="anchored" data-anchor-id="data-source">Data source</h3>
+<p>The analysis uses <a href="https://response.reliefweb.int/somalia/nutrition">Somalia Nutrition Cluster’s</a> six years and countrywide SAM admission into AMN treatment program. The data is reported monthly, at district level.</p>
+<p>Initially, the analysis was planned to use global acute malnutrition data; however, the Nutrition Cluster advised that, unlike SAM data, moderate acute malnutrition (MAM) data has a variance instability caused by the frequent stockouts of read-to-use supplementary food (RUSF) in the programme. Its use could lead to erroneous findings. Hence, MAM data was excluded from the analysis.</p>
+</section>
+<section id="data-wrangling" class="level3">
+<h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
+<p>It consisted in excluding districts with missing admissions from January to December; then by summing the total number of children admitted by quarter.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[(Dataset)]
+    B[Exclusion of districts with consistent missingness of admissions]
+    C[Sum the number of SAM cases admitted by **month** and by Region]
+    D[Sum the number of SAM cases admitted by **quarter** and by Region]
+    E[Time series]
+
+    A --&gt; B --&gt; C --&gt; E
+    B --&gt; D --&gt; E
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Eight districts were excluded for missingness: Ceel_Dheere, Jalalaqsi, Sablaale, Adan Yabaal, Bu’aale, Jilib, Saakow/Salagle and Sheik</p>
+</div>
+</div>
+</section>
+<section id="analysis-techniques" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-techniques">Analysis techniques</h3>
+<p>The analysis process consisted of graphical <strong>exploratory data analysis</strong>, then decomposing the time series into trend, seasonal effects and remainder. Then each component was used to describe furthern its patterns over time.</p>
+<p>The trend component was used to described:</p>
+<ul>
+<li>The <strong>direction</strong> of the trend along the series:
+<ul>
+<li><em>upward</em>: a general increase over time.<br>
+</li>
+<li><em>downward</em>: a general decrease/decay over time.<br>
+</li>
+<li><em>flat</em>: relatively constant over time.</li>
+</ul></li>
+<li>The <strong>Shape</strong> of the trend:
+<ul>
+<li><em>Linear trend</em>: a straight line best fits the data along the series, indicating a constant rate of change over time.</li>
+<li><em>Nonlinear trend</em>: the trend follows a curved line, indicating acceleration and deceleration of the rate of change.</li>
+</ul></li>
+<li>The <strong>Stability</strong> of the trend:
+<ul>
+<li><em>Stable trend</em>: one that remains consistent over the entire time series.</li>
+<li><em>Changing trend</em>: one that evolves over time, possibly with abrupt shifts.</li>
+</ul></li>
+</ul>
+<p>The average rate of change (ARC) of the trend was estimated.</p>
+<p>The seasonal component was used to characterized the:</p>
+<ul>
+<li><em>Amplitute of changes</em>: when the strength and intensity of the peak or off-season vary over time.<br>
+</li>
+<li><em>Phase shifts</em>: when the timing of the peak season and off-season changes over time.<br>
+</li>
+<li><em>Irregular patterns</em>: when the periodicity of the seasonal patterns are irregular.</li>
+</ul>
+<p>Then a time series regression model was fit to quantify the extent to which different times of the year impact the number of SAM cases admitted into the treatment program.</p>
+
 </section>
 </section>
 
@@ -389,8 +497,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -501,7 +607,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

@@ -80,7 +80,7 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">Data source</a></li>
   <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data wrangling</a></li>
-  <li><a href="#analysis-techniques" id="toc-analysis-techniques" class="nav-link" data-scroll-target="#analysis-techniques">Analysis techniques</a></li>
+  <li><a href="#analysis-approach" id="toc-analysis-approach" class="nav-link" data-scroll-target="#analysis-approach">Analysis approach</a></li>
   </ul></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/nutimes/som-sam-admit/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a></li></ul></div></nav>
@@ -125,7 +125,7 @@ div.csl-indent {
 <p>Understanding the seasonal variation of AMN is crucial for evidence-based decision-making. However, despite a general awareness of its seasonality, limited evidence exists to substantiate it. Consequently, stakeholders often rely on assumptions of a seasonal peak during the food security lean season <span class="citation" data-cites="africadry">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>)</span>. To account for this, nutrition surveys are routinely timed to coincide with the lean season each year.</p>
 <p>The limited understanding of AMN’s seasonal variation is attributed to two key challenges: (i) the availability of robust analytical methods and (ii) access to primary data <span class="citation" data-cites="africadry">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>)</span>. These challenges, however, can be mitigated by leveraging high-quality secondary data, such as survey datasets or treatment program admissions. Studies using 15 years of SMART survey data from African drylands have underscored the complex relationship between AMN and acute food insecurity, revealing that they do not always align across seasons or livelihoods <span class="citation" data-cites="africadry anastasia">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>; <a href="#ref-anastasia" role="doc-biblioref">Marshak et al. 2021</a>)</span>. Notably, this research identified two AMN seasonal peaks: April-May and August-September <span class="citation" data-cites="africadry">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>)</span>.</p>
 <p>In Somalia, the seasonality of AMN is also generaly associated with that of the food security seasonality. There are five defined food security seasons as described by <span class="citation" data-cites="ENN">Luc et al. (<a href="#ref-ENN" role="doc-biblioref">2024</a>)</span>:</p>
-<div class="cell" data-layout-align="default">
+<div class="cell fig-cap-location-bottom" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -143,7 +143,7 @@ div.csl-indent {
     Deyr   :10, 12
 </pre>
 </div>
-<p></p></figure><p></p>
+<p></p><figcaption> Source: author’s adaptation</figcaption> </figure><p></p>
 </div>
 </div>
 </div>
@@ -178,12 +178,12 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
 <section id="data-source" class="level3">
 <h3 class="anchored" data-anchor-id="data-source">Data source</h3>
-<p>The analysis uses <a href="https://response.reliefweb.int/somalia/nutrition">Somalia Nutrition Cluster’s</a> six years and countrywide SAM admission into AMN treatment program. The data is reported monthly, at district level.</p>
-<p>Initially, the analysis was planned to use global acute malnutrition data; however, the Nutrition Cluster advised that, unlike SAM data, moderate acute malnutrition (MAM) data has a variance instability caused by the frequent stockouts of read-to-use supplementary food (RUSF) in the programme. Its use could lead to erroneous findings. Hence, MAM data was excluded from the analysis.</p>
+<p>The analysis used the <a href="https://response.reliefweb.int/somalia/nutrition">Somalia Nutrition Cluster’s</a> six years of countrywide data on SAM admission into AMN treatment program. The data is reported monthly at district level.</p>
+<p>Initially, the analysis was intended to use data on global acute malnutrition data. However, based on the advice from the Nutrition Cluster advised, moderate acute malnutrition (MAM) was excluded. Unlike SAM data, MAM data is affected by frequent stockouts of read-to-use supplementary food (RUSF), leading to unstable variance. Including this data could result in misleading findings.</p>
 </section>
 <section id="data-wrangling" class="level3">
 <h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
-<p>It consisted in excluding districts with missing admissions from January to December; then by summing the total number of children admitted by quarter.</p>
+<p>It consisted in excluding districts with missing admissions from January to December; then by aggregating the sum of the total number of children admitted by month and/by quarter at national level and by livelihood zones.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -191,16 +191,20 @@ div.csl-indent {
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
     A[(Dataset)]
-    B[Exclusion of districts with consistent missingness of admissions]
-    C[Sum the number of SAM cases admitted by **month** and by Region]
-    D[Sum the number of SAM cases admitted by **quarter** and by Region]
+    B[Exclusion of districts with consistent missingness of admissions data]
+    C[Summarise admissions by **month** at national level]
+    D[Summarise admissions by **month** by livelihood zone]
     E[Time series]
+    F([National])
+    G([By Livelihood zone])
 
     A --&gt; B --&gt; C --&gt; E
     B --&gt; D --&gt; E
+    E --&gt; F
+    E --&gt; G
 </pre>
 </div>
-<p></p></figure><p></p>
+<p></p><figcaption> Data wrangling workflow</figcaption> </figure><p></p>
 </div>
 </div>
 </div>
@@ -218,40 +222,11 @@ Note
 </div>
 </div>
 </section>
-<section id="analysis-techniques" class="level3">
-<h3 class="anchored" data-anchor-id="analysis-techniques">Analysis techniques</h3>
-<p>The analysis process consisted of graphical <strong>exploratory data analysis</strong>, then decomposing the time series into trend, seasonal effects and remainder. Then each component was used to describe furthern its patterns over time.</p>
-<p>The trend component was used to described:</p>
-<ul>
-<li>The <strong>direction</strong> of the trend along the series:
-<ul>
-<li><em>upward</em>: a general increase over time.<br>
-</li>
-<li><em>downward</em>: a general decrease/decay over time.<br>
-</li>
-<li><em>flat</em>: relatively constant over time.</li>
-</ul></li>
-<li>The <strong>Shape</strong> of the trend:
-<ul>
-<li><em>Linear trend</em>: a straight line best fits the data along the series, indicating a constant rate of change over time.</li>
-<li><em>Nonlinear trend</em>: the trend follows a curved line, indicating acceleration and deceleration of the rate of change.</li>
-</ul></li>
-<li>The <strong>Stability</strong> of the trend:
-<ul>
-<li><em>Stable trend</em>: one that remains consistent over the entire time series.</li>
-<li><em>Changing trend</em>: one that evolves over time, possibly with abrupt shifts.</li>
-</ul></li>
-</ul>
-<p>The average rate of change (ARC) of the trend was estimated.</p>
-<p>The seasonal component was used to characterized the:</p>
-<ul>
-<li><em>Amplitute of changes</em>: when the strength and intensity of the peak or off-season vary over time.<br>
-</li>
-<li><em>Phase shifts</em>: when the timing of the peak season and off-season changes over time.<br>
-</li>
-<li><em>Irregular patterns</em>: when the periodicity of the seasonal patterns are irregular.</li>
-</ul>
-<p>Then a time series regression model was fit to quantify the extent to which different times of the year impact the number of SAM cases admitted into the treatment program.</p>
+<section id="analysis-approach" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-approach">Analysis approach</h3>
+<p>The data was first explored visually through graphs to identify patterns over time. It was then broken down into components to examine the overall trend and seasonal variations. The average rate of change was calculated to better understand the trend. To account for the different livelihood zones within Somalia, the data was split into three separate time series, each representing a different livelihood group.</p>
+<p>A statistical model was used to measure the impact of the overall trend and seasonal changes on the number of admissions.</p>
+<p>The analysis was performed using standard statistical tools, which are available in the project’s repository for reference.</p>
 
 </section>
 </section>

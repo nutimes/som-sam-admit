@@ -98,7 +98,7 @@ flowchart LR
 ```
 
 ::: {.callout-note}
-Eight districts were excluded for missingness: Ceel_Dheere, Jalalaqsi, Sablaale, Adan Yabaal, Bu'aale, Jilib, Saakow/Salagle and Sheik
+Eight districts were excluded for missingness: Ceel_Dheere, Jalalaqsi, Sablaale, Adan Yabaal, Bu'aale, Jilib, Saakow/Salagle and Sheik.
 :::
 
 ### Analysis approach  

@@ -24,7 +24,7 @@ format:
         comment: "#>"
 ---
 
-# Context  
+## Context  
 Seasonality significantly impacts the underlying and immediate factors contributing to acute malnutrition (AMN). It refers to recurring patterns within a year [@tsR], such as specific months or quarters when AMN cases rise or fall.  
 
 Understanding the seasonal variation of AMN is crucial for evidence-based decision-making. However, despite a general awareness of its seasonality, limited evidence exists to substantiate it. Consequently, stakeholders often rely on assumptions of a seasonal peak during the food security lean season [@africadry]. To account for this, nutrition surveys are routinely timed to coincide with the lean season each year.
@@ -33,11 +33,27 @@ The limited understanding of AMN’s seasonal variation is attributed to two key
 
 In Somalia, the seasonality of AMN is also generaly associated with that of the food security seasonality. There are five defined food security seasons as described by @ENN:  
 
-  + **Jilaal (January - March)**: the most extended dry season, is characterized by livestock migration and decreased milk production in the pastoralist livelihoods. 
-  + **Gu (April - June)**: characterized by heavy rainfall, it constitutes Somalia's 70% of the crop production season, and livestock production depends upon this season.
-  + **Post-Gu (July - August)**: characterized by increase pasture and water availability for the livestock and increased availability of milk, fruits, vegetables. This is as well the peak season of a liquid butter made of milk know as *ghee*.  
-  + **Hagaa (July - September)**: a dry season, characterized by light rainfalls.  
-  + **Deyr (October - December)**: a rainy season, however localized and less reliable.
+```{mermaid}
+%%| fig-cap: "Source: author's adaptation"
+%%| fig-cap-location: bottom
+gantt
+    title  Somalia Food Security Seasonal Calendar
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+    Jilaal :1, 4
+    Gu     :4, 7
+    Post-Gu:7, 8
+    Hagaa  :7, 10
+    Deyr   :10, 12
+```
+
+  + **Jilaal**: the most extended dry season, is characterized by livestock migration and decreased milk production in the pastoralist livelihoods. 
+  + **Gu**: characterized by heavy rainfall, it constitutes Somalia's 70% of the crop production season, and livestock production depends upon this season.
+  + **Post-Gu**: characterized by increase pasture and water availability for the livestock and increased availability of milk, fruits, vegetables. This is as well the peak season of a liquid butter made of milk know as *ghee*.  
+  + **Hagaa**: a dry season, characterized by light rainfalls.  
+  + **Deyr**: a rainy season, however localized and less reliable.
 
 It is generally assumed that AMN in Somalia peaks from the end of the Jilaal season to the end of the Hagaa season. An analysis by @ENN, based on SMART surveys conducted by the Food Security and Nutrition Analysis Unit (FSNAU) and partners, with data collected between the Gu and Deyr seasons from 2014 to 2021, identified two distinct seasonal peaks: **May/June (the beginning of Gu)** and **November (mid-Deyr)**, with a decline during the lean season. The study also highlighted variations in these patterns based on livelihood zones, including pastoralist, agro-pastoralist, and riverine/farming communities:
 
@@ -45,12 +61,49 @@ It is generally assumed that AMN in Somalia peaks from the end of the Jilaal sea
 
   + In agropastoralist and farming areas, the seasonality followed the peaks described above [@ENN].
 
-## What does this analysis add?
+### What does this analysis add?
   This analysis examines six years of severe acute malnutrition (SAM) admission data from treatment programs in Somalia to explore patterns in admissions, focusing on **trends and seasonality** over time.
 
-### Objectives
+#### Objectives
   + **Identify and describe trend patterns**: a long-term direction or movement in the admissions that persists across the series. This represents underlying patterns in the admissions after removing short-term fluctuations. 
 
   + **Identify and describe the seasonality patterns**: recurring patterns that occur in a fixed and specific period every year. 
 
   + **Quantify the seasonal influences on the admissions**: the extent to which different times of the year impact the number of SAM cases admitted into the treatment program
+
+## Methods
+### Data source
+The analysis used the [Somalia Nutrition Cluster's](https://response.reliefweb.int/somalia/nutrition) six years of countrywide data on SAM admission into AMN treatment program. The data is reported monthly at district level. 
+
+Initially, the analysis was intended to use data on global acute malnutrition data. However, based on the advice from the Nutrition Cluster advised, moderate acute malnutrition (MAM) was excluded. Unlike SAM data, MAM data is affected by frequent stockouts of read-to-use supplementary food (RUSF), leading to unstable variance. Including this data could result in misleading findings.
+
+
+### Data wrangling  
+It consisted in excluding districts with missing admissions from January to December; then by aggregating the sum of the total number of children admitted by month and/by quarter at national level and by livelihood zones.
+```{mermaid}
+%%| fig-cap: Data wrangling workflow
+flowchart LR
+    A[(Dataset)]
+    B[Exclusion of districts with consistent missingness of admissions data]
+    C[Summarise admissions by **month** at national level]
+    D[Summarise admissions by **month** by livelihood zone]
+    E[Time series]
+    F([National])
+    G([By Livelihood zone])
+
+    A --> B --> C --> E
+    B --> D --> E
+    E --> F
+    E --> G
+```
+
+::: {.callout-note}
+Eight districts were excluded for missingness: Ceel_Dheere, Jalalaqsi, Sablaale, Adan Yabaal, Bu'aale, Jilib, Saakow/Salagle and Sheik.
+:::
+
+### Analysis approach  
+The data was first explored visually through graphs to identify patterns over time. It was then broken down into components to examine the overall trend and seasonal variations. The average rate of change was calculated to better understand the trend. To account for the different livelihood zones within Somalia, the data was split into three separate time series, each representing a different livelihood group.
+
+A statistical model was used to measure the impact of the overall trend and seasonal changes on the number of admissions.
+
+The analysis was performed using standard statistical tools, which are available in the project’s repository for reference.

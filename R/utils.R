@@ -24,27 +24,27 @@ summarise_admissions <- function(ts,
   if (.group) {
     if (time == "M") {
       ts <- ts |> 
-        select(region, Monthly, admissions) |> 
-        group_by(region, Monthly) |> 
+        select(lsystems, Monthly, admissions) |> 
+        group_by(lsystems, Monthly) |> 
         summarise(
           admissions = sum(admissions, na.rm = TRUE), 
           .groups = "drop"
         ) |> 
           as_tsibble(
             index = Monthly, 
-            key = region
+            key = lsystems
           )
     }
      if (time == "Q") {
       ts <- ts |> 
-        select(region, Quarterly, admissions) |> 
-        group_by(region, Quarterly) |> 
+        select(lsystems, Quarterly, admissions) |> 
+        group_by(lsystems, Quarterly) |> 
         summarise(
           admissions = sum(admissions, na.rm = TRUE),
           .groups = "drop"
         ) |> 
         as_tsibble(
-          key = region, 
+          key = lsystems, 
           index = Quarterly
         )
     } 

@@ -145,7 +145,7 @@ switch (.for,
   "knots" = {
     ## Filter out the time series based on the given time interval ----
     x <- ts |> 
-      filter(Quarterly >= start & Quarterly <= end)
+      filter(Monthly >= start & Monthly <= end)
 
     ## Pull the average admission cases at the start of the time interval ----
     average1 <- x |> 

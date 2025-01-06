@@ -188,86 +188,86 @@ sbsplot_lsystem <- summarise_admissions(
       plot.caption = element_text(colour = '#706E6D')
     )
 
-########################### QUARTERLY ANALYSIS #############################
+# ########################### QUARTERLY ANALYSIS #############################
 
-## Ungrouped quarterly time plot ----
-quarterly_admissions |> 
-  summarise_admissions(
-    .group = FALSE,
-    time = "Q"
-  ) |> 
-  autoplot() +
-  labs(
-    title = "Time plot: Somalia's SAM admissions by quarter",
-    subtitle = "2019 Q1 : 2024 Q4",
-    y = "Number of cases admitted"
-  )
+# ## Ungrouped quarterly time plot ----
+# quarterly_admissions |> 
+#   summarise_admissions(
+#     .group = FALSE,
+#     time = "Q"
+#   ) |> 
+#   autoplot() +
+#   labs(
+#     title = "Time plot: Somalia's SAM admissions by quarter",
+#     subtitle = "2019 Q1 : 2024 Q4",
+#     y = "Number of cases admitted"
+#   )
 
-### Quarterly time plot by Region ----
-quarterly_admissions |> 
-  summarise_admissions(
-    .group = TRUE,
-    time = "Q"
-  ) |> 
-  autoplot() +
-  facet_wrap(vars(region), scales = "free_y") +
-  labs(
-    title = "Time plot: Somalia's SAM admissions by Region by quarter",
-    subtitle = "2019 Q1 : 2024 Q4",
-    y = "Number of cases admitted"
-  ) +
-  theme(legend.position = "none")
+# ### Quarterly time plot by Region ----
+# quarterly_admissions |> 
+#   summarise_admissions(
+#     .group = TRUE,
+#     time = "Q"
+#   ) |> 
+#   autoplot() +
+#   facet_wrap(vars(region), scales = "free_y") +
+#   labs(
+#     title = "Time plot: Somalia's SAM admissions by Region by quarter",
+#     subtitle = "2019 Q1 : 2024 Q4",
+#     y = "Number of cases admitted"
+#   ) +
+#   theme(legend.position = "none")
 
 
-### Seasonal plot ----
-quarterly_admissions |> 
-  summarise_admissions(
-    .group = FALSE,
-    time = "Q"
-  ) |> 
-  gg_season(labels = "right") +
-  labs(
-    title = "Seasonal plot: Somalia's SAM admissions by quarter",
-    subtitle = "2019 Q1 : 2024 Q4",
-    y = "Number of cases admitted"
-  )
+# ### Seasonal plot ----
+# quarterly_admissions |> 
+#   summarise_admissions(
+#     .group = FALSE,
+#     time = "Q"
+#   ) |> 
+#   gg_season(labels = "right") +
+#   labs(
+#     title = "Seasonal plot: Somalia's SAM admissions by quarter",
+#     subtitle = "2019 Q1 : 2024 Q4",
+#     y = "Number of cases admitted"
+#   )
 
-### Seasonal plot facetted by Region ----
-quarterly_admissions |> 
-  summarise_admissions(
-    .group = TRUE,
-    time = "Q"
-  ) |> 
-  gg_season() +
-  facet_wrap(vars(region), scales = "free_y") +
-  labs(
-    title = "Seasonal plot: Somalia's SAM admissions by Region by quarter",
-    subtitle = "2019 Q1 : 2024 Q4",
-    y = "Number of cases admitted"
-  )
+# ### Seasonal plot facetted by Region ----
+# quarterly_admissions |> 
+#   summarise_admissions(
+#     .group = TRUE,
+#     time = "Q"
+#   ) |> 
+#   gg_season() +
+#   facet_wrap(vars(region), scales = "free_y") +
+#   labs(
+#     title = "Seasonal plot: Somalia's SAM admissions by Region by quarter",
+#     subtitle = "2019 Q1 : 2024 Q4",
+#     y = "Number of cases admitted"
+#   )
 
-### Subseries plot ----
-quarterly_admissions |> 
-  summarise_admissions(
-    .group = FALSE,
-    time = "Q"
-  )|>
-  gg_subseries() +
-  labs(
-    title = "Subseries plot: Somalia's SAM admissions by quarter",
-    subtitle = "2019 Q1 : 2024 Q4",
-    y = "Number of cases admitted"
-  )
+# ### Subseries plot ----
+# quarterly_admissions |> 
+#   summarise_admissions(
+#     .group = FALSE,
+#     time = "Q"
+#   )|>
+#   gg_subseries() +
+#   labs(
+#     title = "Subseries plot: Somalia's SAM admissions by quarter",
+#     subtitle = "2019 Q1 : 2024 Q4",
+#     y = "Number of cases admitted"
+#   )
 
-### Subseries plot by Region ----
-quarterly_admissions |> 
-  summarise_admissions(
-    .group = TRUE,
-    time = "Q"
-  )|>
-  gg_subseries() +
-  labs(
-    title = "Subseries plot: Somalia's SAM admissions by by Region by quarter",
-    subtitle = "2019 Q1 : 2024 Q4",
-    y = "Number of cases admitted"
-  )
+# ### Subseries plot by Region ----
+# quarterly_admissions |> 
+#   summarise_admissions(
+#     .group = TRUE,
+#     time = "Q"
+#   )|>
+#   gg_subseries() +
+#   labs(
+#     title = "Subseries plot: Somalia's SAM admissions by by Region by quarter",
+#     subtitle = "2019 Q1 : 2024 Q4",
+#     y = "Number of cases admitted"
+#   )

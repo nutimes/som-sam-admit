@@ -1,9 +1,0 @@
-Email someone with access to add you
-
-    hash: $HASH
-
-If you are using git, you will need to commit and push first:
-
-    git add .cyphr
-    git commit -m "Please add me to the dataset"
-    git push

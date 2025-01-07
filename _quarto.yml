@@ -1,0 +1,23 @@
+project: 
+  type: default
+  output-dir: reports
+
+format: 
+  html:
+    theme: 
+      dark: darkly
+    toc: true
+    toc-depth: 3
+    toc-expand: true
+    crossref: 
+      chapters: true
+    toc-title: Contents
+    code-links: repo
+    execute:
+      eval: true
+      echo: false
+      warning: false
+    fig-width: 10
+    fig-align: center
+bibliography: references.bib
+cls: harvard-cite-them-right-11th-edition.csl

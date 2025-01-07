@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tomás Zaba">
+<meta name="dcterms.date" content="2025-01-07">
+
+<title>Feature insights into Somalia’s severe acute malnutrition admissions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="report_files/libs/clipboard/clipboard.min.js"></script>
+<script src="report_files/libs/quarto-html/quarto.js"></script>
+<script src="report_files/libs/quarto-html/popper.min.js"></script>
+<script src="report_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="report_files/libs/quarto-html/anchor.min.js"></script>
+<link href="report_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="report_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="report_files/libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="report_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="report_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="report_files/libs/bootstrap/bootstrap-dark-7189104584608726a80707a12c970cfd.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="report_files/libs/quarto-diagram/mermaid.min.js"></script>
+<script src="report_files/libs/quarto-diagram/mermaid-init.js"></script>
+<link href="report_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#context" id="toc-context" class="nav-link active" data-scroll-target="#context">Context</a>
+  <ul class="collapse">
+  <li><a href="#what-does-this-analysis-add" id="toc-what-does-this-analysis-add" class="nav-link" data-scroll-target="#what-does-this-analysis-add">What does this analysis add?</a></li>
+  </ul></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">Data source</a></li>
+  <li><a href="#sec-data-wrangling" id="toc-sec-data-wrangling" class="nav-link" data-scroll-target="#sec-data-wrangling">Data wrangling</a></li>
+  <li><a href="#analysis-approach" id="toc-analysis-approach" class="nav-link" data-scroll-target="#analysis-approach">Analysis approach</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#sec-overview-national" id="toc-sec-overview-national" class="nav-link" data-scroll-target="#sec-overview-national">Overview of the admissions over time at National level</a></li>
+  <li><a href="#subseries" id="toc-subseries" class="nav-link" data-scroll-target="#subseries">Subseries</a></li>
+  <li><a href="#overview-of-the-admissions-over-time-by-livelihood-systems" id="toc-overview-of-the-admissions-over-time-by-livelihood-systems" class="nav-link" data-scroll-target="#overview-of-the-admissions-over-time-by-livelihood-systems">Overview of the admissions over time by livelihood systems</a></li>
+  <li><a href="#decomposing-the-time-series" id="toc-decomposing-the-time-series" class="nav-link" data-scroll-target="#decomposing-the-time-series">Decomposing the time series</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/nutimes/som-sam-admit/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Feature insights into Somalia’s severe acute malnutrition admissions</h1>
+<p class="subtitle lead">A time series analysis spanning from January 2019 to November 2024</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tomás Zaba </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 7, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Seasonality significantly impacts the underlying and immediate factors contributing to acute malnutrition (AMN). It refers to recurring patterns within a year <span class="citation" data-cites="tsR">(<a href="#ref-tsR" role="doc-biblioref">Cowpertwait and Metcalfe 2009</a>)</span>, such as specific months or quarters when AMN cases rise or fall.</p>
+<p>Understanding the seasonal variation of AMN is crucial for evidence-based decision-making. However, despite a general awareness of its seasonality, limited evidence exists to substantiate it. Consequently, stakeholders often rely on assumptions of a seasonal peak during the food security lean season <span class="citation" data-cites="africadry">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>)</span>. To account for this, nutrition surveys are routinely timed to coincide with the lean season each year.</p>
+<p>The limited understanding of AMN’s seasonal variation is attributed to two key challenges: (i) the availability of robust analytical methods and (ii) access to primary data <span class="citation" data-cites="africadry">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>)</span>. These challenges, however, can be mitigated by leveraging high-quality secondary data, such as survey datasets or treatment program admissions. Studies using 15 years of SMART survey data from African drylands have underscored the complex relationship between AMN and acute food insecurity, revealing that they do not always align across seasons or livelihoods <span class="citation" data-cites="africadry anastasia">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>; <a href="#ref-anastasia" role="doc-biblioref">Marshak et al. 2021</a>)</span>. Notably, this research identified two AMN seasonal peaks: April-May and August-September <span class="citation" data-cites="africadry">(<a href="#ref-africadry" role="doc-biblioref">Venkat et al. 2023</a>)</span>.</p>
+<p>In Somalia, the seasonality of AMN is also generaly associated with that of the food security seasonality. There are five defined food security seasons as described by <span class="citation" data-cites="ENN">Luc et al. (<a href="#ref-ENN" role="doc-biblioref">2024</a>)</span>:</p>
+<div class="cell fig-cap-location-bottom" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">gantt
+    title  Somalia Food Security Seasonal Calendar
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+    Jilaal :1, 4
+    Gu     :4, 7
+    Post-Gu:7, 8
+    Hagaa  :7, 10
+    Deyr   :10, 12
+</pre>
+</div>
+<p></p><figcaption> Source: author’s adaptation</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Jilaal</strong>: the most extended dry season, is characterized by livestock migration and decreased milk production in the pastoralist livelihoods.</li>
+<li><strong>Gu</strong>: characterized by heavy rainfall, it constitutes Somalia’s 70% of the crop production season, and livestock production depends upon this season.</li>
+<li><strong>Post-Gu</strong>: characterized by increase pasture and water availability for the livestock and increased availability of milk, fruits, vegetables. This is as well the peak season of a liquid butter made of milk know as <em>ghee</em>.<br>
+</li>
+<li><strong>Hagaa</strong>: a dry season, characterized by light rainfalls.<br>
+</li>
+<li><strong>Deyr</strong>: a rainy season, however localized and less reliable.</li>
+</ul>
+<p>It is generally assumed that AMN in Somalia peaks from the end of the Jilaal season to the end of the Hagaa season. An analysis by <span class="citation" data-cites="ENN">Luc et al. (<a href="#ref-ENN" role="doc-biblioref">2024</a>)</span>, based on SMART surveys conducted by the Food Security and Nutrition Analysis Unit (FSNAU) and partners, with data collected between the Gu and Deyr seasons from 2014 to 2021, identified two distinct seasonal peaks: <strong>May/June (the beginning of Gu)</strong> and <strong>November (mid-Deyr)</strong>, with a decline during the lean season. The study also highlighted variations in these patterns based on livelihood zones, including pastoralist, agro-pastoralist, and riverine/farming communities:</p>
+<ul>
+<li><p>Among pastoralist communities, the peak in AMN was observed in June (Gu). This does not align with the food security lean season, as pastoral consumption typically improves starting in April when animals give birth, coinciding with the onset of rainfall. During this period, households gain access to milk and meat and income from the sale of animals. A second peak was noted in November, a period when food insecurity is generally expected to be minimal following the Gu harvest <span class="citation" data-cites="ENN">(<a href="#ref-ENN" role="doc-biblioref">Luc et al. 2024</a>)</span>.</p></li>
+<li><p>In agropastoralist and farming areas, the seasonality followed the peaks described above <span class="citation" data-cites="ENN">(<a href="#ref-ENN" role="doc-biblioref">Luc et al. 2024</a>)</span>.</p></li>
+</ul>
+<section id="what-does-this-analysis-add" class="level3">
+<h3 class="anchored" data-anchor-id="what-does-this-analysis-add">What does this analysis add?</h3>
+<p>This analysis examines six years of severe acute malnutrition (SAM) admission data from treatment programs in Somalia to explore patterns in admissions, focusing on <strong>trends and seasonality</strong> over time.</p>
+<section id="objectives" class="level4">
+<h4 class="anchored" data-anchor-id="objectives">Objectives</h4>
+<ul>
+<li><p><strong>Identify and describe trend patterns</strong>: a long-term direction or movement in the admissions that persists across the series. This represents underlying patterns in the admissions after removing short-term fluctuations.</p></li>
+<li><p><strong>Identify and describe the seasonality patterns</strong>: recurring patterns that occur in a fixed and specific period every year.</p></li>
+<li><p><strong>Quantify the seasonal influences on the admissions</strong>: the extent to which different times of the year impact the number of SAM cases admitted into the treatment program</p></li>
+</ul>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<section id="data-source" class="level3">
+<h3 class="anchored" data-anchor-id="data-source">Data source</h3>
+<p>The analysis used the <a href="https://response.reliefweb.int/somalia/nutrition">Somalia Nutrition Cluster’s</a> six years of countrywide data on SAM admission into AMN treatment program. The data is reported monthly at district level.</p>
+<p>Initially, the analysis was intended to use data on global acute malnutrition data. However, based on the advice from the Nutrition Cluster advised, moderate acute malnutrition (MAM) was excluded. Unlike SAM data, MAM data is affected by frequent stockouts of read-to-use supplementary food (RUSF), leading to unstable variance. Including this data could result in misleading findings.</p>
+</section>
+<section id="sec-data-wrangling" class="level3">
+<h3 class="anchored" data-anchor-id="sec-data-wrangling">Data wrangling</h3>
+<p>It consisted in excluding districts with missing admissions from January to December; then by aggregating the sum of the total number of children admitted by month at national level and by livelihood systems (Pastoral, Agropastoral, Riverine and Urban/IDPs).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[(Dataset)]
+    B[Exclusion of districts with consistent missingness of admissions data]
+    C[Summarise admissions by **month** at national level]
+    D[Summarise admissions by **month** by livelihood systems]
+    E[Time series]
+    F([National])
+    G([By Livelihood systems])
+
+    A --&gt; B --&gt; C --&gt; E
+    B --&gt; D --&gt; E
+    E --&gt; F
+    E --&gt; G
+</pre>
+</div>
+<p></p><figcaption> Data wrangling workflow</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Eight districts were excluded for missingness: Ceel Dheere, Jalalaqsi, Jamaame, Kurtunwaarey Sablaale, Adan Yabaal, Bu’aale, Jilib, Saakow/Salagle, Sheik, Cadale, and Xarardheere.</p>
+</div>
+</div>
+</section>
+<section id="analysis-approach" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-approach">Analysis approach</h3>
+<p>The data was first explored visually through graphs to identify patterns over time. It was then broken down into components to examine the overall trend and seasonal variations. The average rate of change was calculated to better understand the trend. To account for the different livelihood systems within Somalia, the data was split into four separate time series, each representing a different livelihood system.</p>
+<p>A statistical model was used to measure the impact of the overall trend and seasonal changes on the number of admissions.</p>
+<p>The analysis was performed using standard statistical tools, which are available in the project’s repository for reference.</p>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>Results will first be presented and described for data grouped at national level, and then followed by the livelihood systems.</p>
+<section id="sec-overview-national" class="level3">
+<h3 class="anchored" data-anchor-id="sec-overview-national">Overview of the admissions over time at National level</h3>
+<p>Figure shows a display of the total number of SAM cases admitted into treatment program in Somalia over six years, starting from January 2019 to December 2024, on a monthly continuos scale. It shows a changing trend over time, with remarkable rise as of 2022, that was preceeded by a relatively stable trend, followed by a consistent decline as of 2023. On the other hand, it also shows an irregular seasonal pattern (the ups and downs on the figure), with the strenghts and the intensity of the peaks (amplitude) chaning over time.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-timeplot-national" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-timeplot-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-timeplot-national-1.png" id="fig-timeplot-national" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-timeplot-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>While this figure gives a glimpse of the underlying pattern of the trend and the seasonal variation in the admissions of SAM cases over time, these components are further explored and described in the following sections.</p>
+<section id="understanding-the-seasonal-variation" class="level4">
+<h4 class="anchored" data-anchor-id="understanding-the-seasonal-variation">Understanding the seasonal variation</h4>
+<p><a href="#fig-seasonal-plot-national" class="quarto-xref">Figure&nbsp;2</a> displays the evolution of the SAM admissions across months(x-axis) by year (y-axis). Each line represents a year along the months.</p>
+<p>From this figure, it is starting to be seen, with some clarity, the seasonal variation. Two patterns can be spotted from the figure: (i) before 2022, the seasonal variation seemed to be regular each year, with a relatively shallow amplitude between each lines. (ii) as of 2022, both the amplitude between lines, as well as</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>2022 was the year when Somalia was hit by a severe drought, and with that, most areas had been classified under the Risk of Famine, and two districts projected to be in Famine situation in 2022 <span class="citation" data-cites="ipcmanual">(<a href="#ref-ipcmanual" role="doc-biblioref">IPC Global Partners 2021</a>)</span>.</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-plot-national" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-plot-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-plot-national-1.png" id="fig-seasonal-plot-national" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-plot-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The patterns in the above figure can further be visualized below with the data split into admissions before 2022 and as of 2022.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Before 2022</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">As of 2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-plot-b2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-plot-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-plot-b2022-1.png" id="fig-seasonal-plot-b2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-plot-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-plot-a2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-plot-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-plot-a2022-1.png" id="fig-seasonal-plot-a2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-plot-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="subseries" class="level3">
+<h3 class="anchored" data-anchor-id="subseries">Subseries</h3>
+<p>The figure below is a plot of the evolution of the admissions in each month over years. It helps to visualize the patterns of the admissions in a given month as the years pass. The blue horizontal line represents the average number of admissions each month over years.</p>
+<p>Two patterns can be spotted from the figure: (i), the admissions are on average high in January every year, then it tends to decline until April, and then it rises in May-June, then followed by a slight decline from August to October, and then starts to rise again as of November. (ii) as of 2022, the admissions rised remarkably in every months, and then the decline in the trend is also natable in every months, with some months showing a strong decline than the others.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-subseries-national" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-subseries-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-subseries-national-1.png" id="fig-subseries-national" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-subseries-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The data can be visualized with splits before and as of 2022 as well. The underlying patterns gleaned are in accordance with those described in <a href="#fig-seasonal-plot-b2022" class="quarto-xref">Figure&nbsp;3</a> (for before 2022) and <a href="#fig-seasonal-plot-a2022" class="quarto-xref">Figure&nbsp;4</a> (for as of 2022).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Focus on the blue horizontal lines. Read the patterns they depict, and compare with those from the referenced figures above.</p>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Before 2022</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">As of 2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-subseries-plot-b2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-subseries-plot-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-subseries-plot-b2022-1.png" id="fig-subseries-plot-b2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-subseries-plot-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-subseries-plot-a2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-subseries-plot-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-subseries-plot-a2022-1.png" id="fig-subseries-plot-a2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-subseries-plot-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="overview-of-the-admissions-over-time-by-livelihood-systems" class="level3">
+<h3 class="anchored" data-anchor-id="overview-of-the-admissions-over-time-by-livelihood-systems">Overview of the admissions over time by livelihood systems</h3>
+<section id="distribution-of-the-number-of-district-per-livelihood-system" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-of-the-number-of-district-per-livelihood-system">Distribution of the number of district per livelihood system</h4>
+<p>Majority of the districts in Somalia are pastoral (34 districts), followed by agropastoral (19 district) <a href="#tbl-lsystem-districts" class="quarto-xref">Table&nbsp;1</a>. The table counts districts after excluding those with missing values, as described in <a href="#sec-data-wrangling" class="quarto-xref">Section&nbsp;0.2.2</a>.</p>
+<div id="tbl-lsystem-districts" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-lsystem-districts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Number of districts in each livelihood system
+</figcaption>
+<div aria-describedby="tbl-lsystem-districts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Livelihood system</th>
+<th style="text-align: center;">Number of districts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pastoral</td>
+<td style="text-align: center;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Agropastoral</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Riverine</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Urban/IDPs</td>
+<td style="text-align: center;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="a-glimpse-on-the-evolution-of-the-admissions-over-time" class="level4">
+<h4 class="anchored" data-anchor-id="a-glimpse-on-the-evolution-of-the-admissions-over-time">A glimpse on the evolution of the admissions over time</h4>
+<p>Similar to <a href="#fig-timeplot-national" class="quarto-xref">Figure&nbsp;1</a>, figure 7 shows the evolution of the SAM admissions over time, however this time with the data split into the four livelihood systems. All in all, the admissions in each livelihood system seems to follow the same pattern as that described in <a href="#sec-overview-national" class="quarto-xref">Section&nbsp;0.3.1</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-timeplot-lsystem" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-timeplot-lsystem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-timeplot-lsystem-1.png" id="fig-timeplot-lsystem" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-timeplot-lsystem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="decomposing-the-time-series" class="level3">
+<h3 class="anchored" data-anchor-id="decomposing-the-time-series">Decomposing the time series</h3>
+<p>Decomposition of a time series consists in extracting each component that constitutes a time series data: the trend, the seasonal variation and any other variation in the data that cannot be explained by the aforementioned components <span class="citation" data-cites="tsR">(<a href="#ref-tsR" role="doc-biblioref">Cowpertwait and Metcalfe 2009</a>)</span>. It helps to visualize clearly the underlying variation in the data that is due to the trend, and to seasonality, after removing on of them.</p>
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-tsR" class="csl-entry" role="listitem">
+Cowpertwait, Paul S. P., and Andrew V. Metcalfe. 2009. <em>Introductory Time Series with <span>R</span></em>. New York: Springer.
+</div>
+<div id="ref-ipcmanual" class="csl-entry" role="listitem">
+IPC Global Partners. 2021. <em>Integrated Food Security Phase Classification Technical Manual Version 3.1: Evidence and Standards for Better Food Security and Nutrition Decisions</em>. <a href="https://www.ipcinfo.org/ipcinfo-website/resources/ipc-manual/en/">https://www.ipcinfo.org/ipcinfo-website/resources/ipc-manual/en/</a>.
+</div>
+<div id="ref-ENN" class="csl-entry" role="listitem">
+Luc, Gwenaelle, Modibo Keita, Baguinébié Bazongo, Brahima Diarra, Angelina Virchenko, Claudia Okley, Tiphaine Seyvet, et al. 2024. <span>“Special Focus: Wasting Patterns in Somalia.”</span> <em>Field Exchange 72 (En)</em> 72. <a href="https://www.ennonline.net/fex/72/special-focus-wasting-patterns-in-somalia">https://www.ennonline.net/fex/72/special-focus-wasting-patterns-in-somalia</a>.
+</div>
+<div id="ref-anastasia" class="csl-entry" role="listitem">
+Marshak, Anastasia, Aishwarya Venkat, Helen Young, and Elena N. Naumova. 2021. <span>“How Seasonality of Malnutrition Is Measured and Analyzed.”</span> <em>International Journal of Environmental Research and Public Health</em> 18 (4). <a href="https://doi.org/10.3390/ijerph18041828">https://doi.org/10.3390/ijerph18041828</a>.
+</div>
+<div id="ref-africadry" class="csl-entry" role="listitem">
+Venkat, Aishwarya, Anastasia Marshak, Helen Young, and Elena N. Naumova. 2023. <span>“Seasonality of Acute Malnutrition in African Drylands: Evidence from 15 Years of SMART Surveys.”</span> <em>Food and Nutrition Bulletin</em> 44 (2_suppl): S94–108. <a href="https://doi.org/10.1177/03795721231178344">https://doi.org/10.1177/03795721231178344</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

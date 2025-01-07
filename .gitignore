@@ -40,3 +40,6 @@ outputs/.DS_Store
 # produced quarto html
 outputs/*.html
 outputs/report_files
+/.quarto/
+# dataset
+data-raw/admissions.csv

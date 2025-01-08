@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Tomás Zaba">
-<meta name="dcterms.date" content="2025-01-07">
+<meta name="dcterms.date" content="2025-01-08">
 
 <title>Feature insights into Somalia’s severe acute malnutrition admissions</title>
 <style>
@@ -84,10 +84,10 @@ div.csl-indent {
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
   <ul class="collapse">
-  <li><a href="#sec-overview-national" id="toc-sec-overview-national" class="nav-link" data-scroll-target="#sec-overview-national">Overview of the admissions over time at National level</a></li>
+  <li><a href="#sec-overview-national" id="toc-sec-overview-national" class="nav-link" data-scroll-target="#sec-overview-national">Overview of how admissions changed over time with data grouped at national level</a></li>
   <li><a href="#subseries" id="toc-subseries" class="nav-link" data-scroll-target="#subseries">Subseries</a></li>
-  <li><a href="#overview-of-the-admissions-over-time-by-livelihood-systems" id="toc-overview-of-the-admissions-over-time-by-livelihood-systems" class="nav-link" data-scroll-target="#overview-of-the-admissions-over-time-by-livelihood-systems">Overview of the admissions over time by livelihood systems</a></li>
-  <li><a href="#decomposing-the-time-series" id="toc-decomposing-the-time-series" class="nav-link" data-scroll-target="#decomposing-the-time-series">Decomposing the time series</a></li>
+  <li><a href="#overview-of-how-admissions-changed-by-over-time-by-livelihood-system" id="toc-overview-of-how-admissions-changed-by-over-time-by-livelihood-system" class="nav-link" data-scroll-target="#overview-of-how-admissions-changed-by-over-time-by-livelihood-system">Overview of how admissions changed by over time by livelihood system</a></li>
+  <li><a href="#identifying-the-trends-and-seasonal-patterns-in-admissions-over-time" id="toc-identifying-the-trends-and-seasonal-patterns-in-admissions-over-time" class="nav-link" data-scroll-target="#identifying-the-trends-and-seasonal-patterns-in-admissions-over-time">Identifying the trends and seasonal patterns in admissions over time</a></li>
   </ul></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/nutimes/som-sam-admit/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a></li></ul></div></nav>
@@ -114,7 +114,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 7, 2025</p>
+      <p class="date">January 8, 2025</p>
     </div>
   </div>
   
@@ -242,7 +242,7 @@ Note
 <h2 class="anchored" data-anchor-id="results">Results</h2>
 <p>Results will first be presented and described for data grouped at national level, and then followed by the livelihood systems.</p>
 <section id="sec-overview-national" class="level3">
-<h3 class="anchored" data-anchor-id="sec-overview-national">Overview of the admissions over time at National level</h3>
+<h3 class="anchored" data-anchor-id="sec-overview-national">Overview of how admissions changed over time with data grouped at national level</h3>
 <p>Figure shows a display of the total number of SAM cases admitted into treatment program in Somalia over six years, starting from January 2019 to December 2024, on a monthly continuos scale. It shows a changing trend over time, with remarkable rise as of 2022, that was preceeded by a relatively stable trend, followed by a consistent decline as of 2023. On the other hand, it also shows an irregular seasonal pattern (the ups and downs on the figure), with the strenghts and the intensity of the peaks (amplitude) chaning over time.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -259,8 +259,8 @@ Figure&nbsp;1
 </div>
 </div>
 <p>While this figure gives a glimpse of the underlying pattern of the trend and the seasonal variation in the admissions of SAM cases over time, these components are further explored and described in the following sections.</p>
-<section id="understanding-the-seasonal-variation" class="level4">
-<h4 class="anchored" data-anchor-id="understanding-the-seasonal-variation">Understanding the seasonal variation</h4>
+<section id="an-overview-of-the-seasonal-variation" class="level4">
+<h4 class="anchored" data-anchor-id="an-overview-of-the-seasonal-variation">An overview of the seasonal variation</h4>
 <p><a href="#fig-seasonal-plot-national" class="quarto-xref">Figure&nbsp;2</a> displays the evolution of the SAM admissions across months(x-axis) by year (y-axis). Each line represents a year along the months.</p>
 <p>From this figure, it is starting to be seen, with some clarity, the seasonal variation. Two patterns can be spotted from the figure: (i) before 2022, the seasonal variation seemed to be regular each year, with a relatively shallow amplitude between each lines. (ii) as of 2022, both the amplitude between lines, as well as</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -400,8 +400,8 @@ Figure&nbsp;7
 </div>
 </div>
 </section>
-<section id="overview-of-the-admissions-over-time-by-livelihood-systems" class="level3">
-<h3 class="anchored" data-anchor-id="overview-of-the-admissions-over-time-by-livelihood-systems">Overview of the admissions over time by livelihood systems</h3>
+<section id="overview-of-how-admissions-changed-by-over-time-by-livelihood-system" class="level3">
+<h3 class="anchored" data-anchor-id="overview-of-how-admissions-changed-by-over-time-by-livelihood-system">Overview of how admissions changed by over time by livelihood system</h3>
 <section id="distribution-of-the-number-of-district-per-livelihood-system" class="level4">
 <h4 class="anchored" data-anchor-id="distribution-of-the-number-of-district-per-livelihood-system">Distribution of the number of district per livelihood system</h4>
 <p>Majority of the districts in Somalia are pastoral (34 districts), followed by agropastoral (19 district) <a href="#tbl-lsystem-districts" class="quarto-xref">Table&nbsp;1</a>. The table counts districts after excluding those with missing values, as described in <a href="#sec-data-wrangling" class="quarto-xref">Section&nbsp;0.2.2</a>.</p>
@@ -441,8 +441,8 @@ Table&nbsp;1: Number of districts in each livelihood system
 </figure>
 </div>
 </section>
-<section id="a-glimpse-on-the-evolution-of-the-admissions-over-time" class="level4">
-<h4 class="anchored" data-anchor-id="a-glimpse-on-the-evolution-of-the-admissions-over-time">A glimpse on the evolution of the admissions over time</h4>
+<section id="how-admissions-changed-over-time" class="level4">
+<h4 class="anchored" data-anchor-id="how-admissions-changed-over-time">How admissions changed over time</h4>
 <p>Similar to <a href="#fig-timeplot-national" class="quarto-xref">Figure&nbsp;1</a>, figure 7 shows the evolution of the SAM admissions over time, however this time with the data split into the four livelihood systems. All in all, the admissions in each livelihood system seems to follow the same pattern as that described in <a href="#sec-overview-national" class="quarto-xref">Section&nbsp;0.3.1</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -460,10 +460,367 @@ Figure&nbsp;8
 </div>
 </section>
 </section>
-<section id="decomposing-the-time-series" class="level3">
-<h3 class="anchored" data-anchor-id="decomposing-the-time-series">Decomposing the time series</h3>
-<p>Decomposition of a time series consists in extracting each component that constitutes a time series data: the trend, the seasonal variation and any other variation in the data that cannot be explained by the aforementioned components <span class="citation" data-cites="tsR">(<a href="#ref-tsR" role="doc-biblioref">Cowpertwait and Metcalfe 2009</a>)</span>. It helps to visualize clearly the underlying variation in the data that is due to the trend, and to seasonality, after removing on of them.</p>
+<section id="identifying-the-trends-and-seasonal-patterns-in-admissions-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="identifying-the-trends-and-seasonal-patterns-in-admissions-over-time">Identifying the trends and seasonal patterns in admissions over time</h3>
+<section id="at-national-level" class="level4">
+<h4 class="anchored" data-anchor-id="at-national-level">At National level</h4>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-cmpnts-national" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cmpnts-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-cmpnts-national-1.png" id="fig-cmpnts-national" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="seasonal-pattern" class="level5">
+<h5 class="anchored" data-anchor-id="seasonal-pattern">Seasonal pattern</h5>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-national" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-national-1.png" id="fig-seasonal-pattern-national" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Before 2022</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">As of 2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-natioanal-b2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-natioanal-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-natioanal-b2022-1.png" id="fig-seasonal-pattern-natioanal-b2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-natioanal-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-natioanal-a2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-natioanal-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-natioanal-a2022-1.png" id="fig-seasonal-pattern-natioanal-a2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-natioanal-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="by-livelihood-systems" class="level4">
+<h4 class="anchored" data-anchor-id="by-livelihood-systems">By Livelihood systems</h4>
+<section id="pastoral" class="level5">
+<h5 class="anchored" data-anchor-id="pastoral">Pastoral</h5>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-cmpnts-pastoral" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cmpnts-pastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-cmpnts-pastoral-1.png" id="fig-cmpnts-pastoral" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-pastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="seasonal-pattern-1" class="level6">
+<h6 class="anchored" data-anchor-id="seasonal-pattern-1">Seasonal pattern</h6>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-pastoral" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-pastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-pastoral-1.png" id="fig-seasonal-pattern-pastoral" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-pastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Before 2022</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">As of 2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-pastoral-b2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-pastoral-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-pastoral-b2022-1.png" id="fig-seasonal-pattern-pastoral-b2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-pastoral-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-pastoral-a2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-pastoral-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-pastoral-a2022-1.png" id="fig-seasonal-pattern-pastoral-a2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-pastoral-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="agropastoral" class="level5">
+<h5 class="anchored" data-anchor-id="agropastoral">Agropastoral</h5>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-cmpnts-agropastoral" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cmpnts-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-cmpnts-agropastoral-1.png" id="fig-cmpnts-agropastoral" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="seasonal-pattern-2" class="level6">
+<h6 class="anchored" data-anchor-id="seasonal-pattern-2">Seasonal pattern</h6>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-agropastoral" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-agropastoral-1.png" id="fig-seasonal-pattern-agropastoral" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Before 2022</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">As of 2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-agropastoral-b2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-agropastoral-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-agropastoral-b2022-1.png" id="fig-seasonal-pattern-agropastoral-b2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-agropastoral-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-agropastoral-a2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-agropastoral-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-agropastoral-a2022-1.png" id="fig-seasonal-pattern-agropastoral-a2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-agropastoral-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="riverine" class="level5">
+<h5 class="anchored" data-anchor-id="riverine">Riverine</h5>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-cmpnts-riverine" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cmpnts-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-cmpnts-riverine-1.png" id="fig-cmpnts-riverine" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="seasonal-pattern-3" class="level6">
+<h6 class="anchored" data-anchor-id="seasonal-pattern-3">Seasonal pattern</h6>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-riverine" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-riverine-1.png" id="fig-seasonal-pattern-riverine" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Before 2022</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">As of 2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-riverine-b2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-riverine-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-riverine-b2022-1.png" id="fig-seasonal-pattern-riverine-b2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-riverine-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;23
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-riverine-a2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-riverine-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-riverine-a2022-1.png" id="fig-seasonal-pattern-riverine-a2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-riverine-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="urbanidps" class="level5">
+<h5 class="anchored" data-anchor-id="urbanidps">Urban/IDPs</h5>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-cmpnts-urban-idps" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cmpnts-urban-idps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-cmpnts-urban-idps-1.png" id="fig-cmpnts-urban-idps" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-urban-idps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;25
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="seasonal-pattern-4" class="level6">
+<h6 class="anchored" data-anchor-id="seasonal-pattern-4">Seasonal pattern</h6>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-urban-idps" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-urban-idps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-urban-idps-1.png" id="fig-seasonal-pattern-urban-idps" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-urban-idps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;26
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Before 2022</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">As of 2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-urban-idps-b2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-urban-idps-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-urban-idps-b2022-1.png" id="fig-seasonal-pattern-urban-idps-b2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-urban-idps-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;27
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seasonal-pattern-urban-idps-a2022" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seasonal-pattern-urban-idps-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-seasonal-pattern-urban-idps-a2022-1.png" id="fig-seasonal-pattern-urban-idps-a2022" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-urban-idps-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;28
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
+</section>
+</section>
+</section>
 </section>
 </section>
 

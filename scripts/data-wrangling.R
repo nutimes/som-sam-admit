@@ -27,7 +27,7 @@ monthly_admissions <- admissions |>
 ) |> 
   select(-time)
 
-# ---- Remove districts with zero admissions ---------------------------------
+## Remove districts with zero admissions ----
 list <- c("Ceel_Dheere", "Jalalaqsi", "Jamaame", "Kurtunwaarey", "Sablaale", 
 "Adan Yabaal", "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik", "Cadale", 
 "Xarardheere")

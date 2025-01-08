@@ -27,24 +27,54 @@ lambda_national <- na |>
 
 ### Visualize the transformation ----
 na |> 
-  autoplot(box_cox(admissions, lambda = lambda_national))
+  autoplot(box_cox(
+    x = admissions,
+    lambda = lambda_national
+  ))
 
 
 ## ---- Decomposition ----------------------------------------------------------
 cmpnts_national <- na |> 
   model(
-    STL(box_cox(x = admissions, lambda = lambda_national) ~ trend(window = 9) + season(window = 7))
+    STL(
+      box_cox(
+        x = admissions, 
+        lambda = lambda_national
+      ) ~ trend(window = 9) + season(window = 7)
+    )
   ) |> 
   components()
 
 ### Visualize the components ----
 cmpnts_plot_national <- cmpnts_national |> 
-  autoplot()
+  autoplot() + 
+  labs(
+    title = "The Components of the SAM Admissions at National Level",
+    subtitle = "Seasonal patterns shifted as of 2022"
+  )+
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
 
 ### Plot the seasonal component over years ----
 seasonal_cmpnt_national <- cmpnts_national |> 
   select(season_year) |> 
-  gg_season(y = season_year)
+  gg_season(y = season_year) +
+  labs(
+    title = "Seasonal Patterns Over Time at National Level",
+    subtitle = "The highest peak of admissions is reached in June every year",
+    caption = "",
+    y = "Seasonal effects",
+    colour = "Year"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(t = 5))
+  )
 
 
 ######################### BY LIVELIHOOD SYSTEMS ################################
@@ -100,22 +130,42 @@ lambda_urban_idps <- mo |>
 ### Pastoral ----
 mo |> 
   filter(lsystems == "Pastoral") |> 
-  autoplot(box_cox(admissions, lambda = lambda_pastoral))
+  autoplot(
+    box_cox(
+      x = admissions, 
+      lambda = lambda_pastoral
+    )
+  )
 
 ### Agropastoral ----
 mo |> 
   filter(lsystems == "Agropastoral") |> 
-  autoplot(box_cox(admissions, lambda = lambda_agropastoral))
+  autoplot(
+    box_cox(
+      x = admissions, 
+      lambda = lambda_agropastoral
+    )
+  )
 
 ### Riverine ----
 mo |> 
   filter(lsystems == "Riverine") |> 
-  autoplot(box_cox(admissions, lambda = lambda_rivernine))
+  autoplot(
+    box_cox(
+      x = admissions, 
+      lambda = lambda_rivernine
+    )
+  )
 
 ### Urban/IDPs ----
 mo |> 
   filter(lsystems == "Urban/IDPs") |> 
-  autoplot(box_cox(admissions, lambda = lambda_urban_idps))
+  autoplot(
+    box_cox(
+      x = admissions, 
+      lambda = lambda_urban_idps
+    )
+  )
 
 
 ## ---- Decomposition ----------------------------------------------------------
@@ -124,65 +174,169 @@ mo |>
 cmpnts_pastoral <- mo |> 
   filter(lsystems == "Pastoral") |> 
   model(
-    STL(box_cox(admissions, lambda_pastoral) ~ trend(window = 9) + season(window = 7))
+    STL(
+      box_cox(
+        x = admissions, 
+        lambda = lambda_pastoral
+      ) ~ trend(window = 9) + season(window = 7)
+    )
   ) |> 
   components()
 
 ### Visualize the components ----
 cmpnts_plot_pastoral <- cmpnts_pastoral |> 
-  autoplot()
+  autoplot() + 
+  labs(
+    title = "Trends and Seasonal Patterns in Pastoral Livelihood System",
+    subtitle = NULL
+  ) +
+  theme(
+    plot.title = element_text(size = 12, margin = margin(b = 10)),
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
+  
+  
 
 ### Plot the seasonal component over years ----
 seasonal_cmpnt_pastoral <- cmpnts_pastoral |> 
   select(season_year) |> 
-  gg_season(y = season_year)
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns in Pastoral Livelihood Systems",
+    subtitle = "Seasonal patterns shifted as of 2022",
+    y = "Seasonal effects"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
 
 ### Agropastoral ----
 cmpnts_agropastoral <- mo |> 
   filter(lsystems == "Agropastoral") |> 
   model(
-    STL(box_cox(admissions, lambda_agropastoral) ~ trend(window = 9) + season(window = 7))
+    STL(
+      box_cox(
+        x = admissions, 
+        lambda = lambda_agropastoral
+      ) ~ trend(window = 9) + season(window = 7)
+    )
   ) |> 
   components()
 
 ### Visualize the components ----
-cmpnts_plot_agropastoral <- autoplot(cmpnts_agropastoral)
+cmpnts_plot_agropastoral <- cmpnts_agropastoral |> 
+  autoplot() +
+  labs(
+    title = "Trends and Seasonal Patterns in Agropastoral Livelihood System",
+    subtitle = NULL,
+  ) +
+  theme(
+    plot.title = element_text(size = 12, margin = margin(b = 10)),
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
 
 ### Plot the seasonal component over years ----
 seasonal_cmpnt_agropastoral <- cmpnts_agropastoral |> 
   select(season_year) |> 
-  gg_season(y = season_year)
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns in Agropastoral Livelihood Systems",
+    subtitle = "The highest peak of admissions is reached in June every year",
+    y = "Seasonal effects"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
 
 ### Riverine ----
 cmpnts_riverine <- mo |> 
   filter(lsystems == "Riverine") |> 
   model(
-    STL(box_cox(admissions, lambda_rivernine) ~ trend(window = 9) + season(window = 7))
+    STL(
+      box_cox(
+        x = admissions, 
+        lambda = lambda_rivernine
+      ) ~ trend(window = 9) + season(window = 7)
+    )
   ) |> 
   components()
 
 ### Visualize the components ----
-cmpnts_plot_riverine <- autoplot(cmpnts_riverine)
+cmpnts_plot_riverine <- cmpnts_riverine |> 
+  autoplot() +
+  labs(
+    title = "Trends and Seasonal Patterns in Riverine Livelihood System",
+    subtitle = NULL,
+  ) +
+  theme(
+    plot.title = element_text(size = 12, margin = margin(b = 10)),
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
+  
 
 ### Plot the seasonal component over years ----
 seasonal_cmpnt_riverine <- cmpnts_riverine |> 
   select(season_year) |> 
-  gg_season(y = season_year)
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns in Riverine Livelihood Systems",
+    subtitle = "Several high peaks in the admissions",
+    y = "Seasonal effects",
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
 
 ### Urban/IDPs ----
 cmpnts_urban_idps <- mo |> 
   filter(lsystems == "Urban/IDPs") |> 
   model(
-    STL(box_cox(admissions, lambda_urban_idps) ~ trend(window = 9) + season(window = 7))
+    STL(
+      box_cox(
+        x = admissions, 
+        lambda = lambda_urban_idps
+      ) ~ trend(window = 9) + season(window = 7)
+    )
   ) |> 
   components()
 
 ### Visualize the components ----
-cmpnts_plot_urban_idps <- autoplot(cmpnts_urban_idps)
+cmpnts_plot_urban_idps <- cmpnts_urban_idps |> 
+  autoplot() + 
+  labs(
+    title = "Trends and Seasonal Patterns in Urban/IDPs Livelihood System",
+    subtitle = NULL,
+  ) +
+  theme(
+    plot.title = element_text(size = 12, margin = margin(b = 10)),
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
+
 
 ### Plot the seasonal component over years ----
 seasonal_cmpnt_urban_idps <- cmpnts_urban_idps |> 
   select(season_year) |> 
-  gg_season(y = season_year)
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns Over Time in Urban/IDPs Systems",
+    subtitle = "The highest peak of admissions is reached in June every year",
+    y = "Seasonal effects"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
 
 ################################### End ########################################

@@ -34,6 +34,8 @@ na |>
 
 
 ## ---- Decomposition ----------------------------------------------------------
+
+### Get components ----
 cmpnts_national <- na |> 
   model(
     STL(
@@ -76,6 +78,43 @@ seasonal_cmpnt_national <- cmpnts_national |>
     axis.title.x = element_text(size = 10, margin = margin(t = 5))
   )
 
+#### Subset the seasonal component before 2022 ----
+seasonal_cmpnt_national_b2022 <- cmpnts_national |> 
+  filter(year(Monthly) < 2022) |> 
+  select(season_year) |> 
+  gg_season(y = season_year) +
+  labs(
+    title = "Seasonal Patterns Over Time at National Level",
+    subtitle = "The highest peak of admissions is reached in June every year",
+    caption = "",
+    y = "Seasonal effects",
+    colour = "Year"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(t = 5))
+  )
+
+#### Subset the seasonal component as of 2022 ----
+seasonal_cmpnt_national_a2022 <- cmpnts_national |> 
+  filter(year(Monthly) >= 2022) |> 
+  select(season_year) |> 
+  gg_season(y = season_year) +
+  labs(
+    title = "Seasonal Patterns Over Time at National Level",
+    subtitle = "The highest peak of admissions is reached in June every year",
+    caption = "",
+    y = "Seasonal effects",
+    colour = "Year"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(t = 5))
+  )
 
 ######################### BY LIVELIHOOD SYSTEMS ################################
 
@@ -169,8 +208,9 @@ mo |>
 
 
 ## ---- Decomposition ----------------------------------------------------------
+### --------------------------------------------- Pastoral livelihood sytem ----
 
-### Pastoral ----
+#### Get components ----
 cmpnts_pastoral <- mo |> 
   filter(lsystems == "Pastoral") |> 
   model(
@@ -183,7 +223,7 @@ cmpnts_pastoral <- mo |>
   ) |> 
   components()
 
-### Visualize the components ----
+#### Visualize the components ----
 cmpnts_plot_pastoral <- cmpnts_pastoral |> 
   autoplot() + 
   labs(
@@ -196,7 +236,7 @@ cmpnts_plot_pastoral <- cmpnts_pastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
   
-### Plot the seasonal component over years ----
+#### Plot the seasonal component over years ----
 seasonal_cmpnt_pastoral <- cmpnts_pastoral |> 
   select(season_year) |> 
   gg_season(y = season_year) + 
@@ -212,7 +252,43 @@ seasonal_cmpnt_pastoral <- cmpnts_pastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-### Agropastoral ----
+##### Subset the seasonal component before 2022 ----
+seasonal_cmpnt_pastoral_b2022 <- cmpnts_pastoral |> 
+  filter(year(Monthly) < 2022) |> 
+  select(season_year) |> 
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns in Pastoral Livelihood Systems",
+    subtitle = "Seasonal patterns shifted as of 2022",
+    y = "Seasonal effects"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
+
+##### Subset the seasonal component as of 2022 ----
+seasonal_cmpnt_pastoral_a2022 <- cmpnts_pastoral |> 
+  filter(year(Monthly) >= 2022) |> 
+  select(season_year) |> 
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns in Pastoral Livelihood Systems",
+    subtitle = "Seasonal patterns shifted as of 2022",
+    y = "Seasonal effects"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
+
+### ----------------------------------------- Agropastoral livelihood sytem ----
+
+#### Get components ----
 cmpnts_agropastoral <- mo |> 
   filter(lsystems == "Agropastoral") |> 
   model(
@@ -225,7 +301,7 @@ cmpnts_agropastoral <- mo |>
   ) |> 
   components()
 
-### Visualize the components ----
+#### Visualize the components ----
 cmpnts_plot_agropastoral <- cmpnts_agropastoral |> 
   autoplot() +
   labs(
@@ -238,7 +314,7 @@ cmpnts_plot_agropastoral <- cmpnts_agropastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-### Plot the seasonal component over years ----
+#### Plot the seasonal component over years ----
 seasonal_cmpnt_agropastoral <- cmpnts_agropastoral |> 
   select(season_year) |> 
   gg_season(y = season_year) + 
@@ -253,7 +329,43 @@ seasonal_cmpnt_agropastoral <- cmpnts_agropastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-### Riverine ----
+#### Subset the seasonal component before 2022 ----
+seasonal_cmpnt_agropastoral_b2022 <- cmpnts_agropastoral |> 
+  filter(year(Monthly) < 2022) |> 
+  select(season_year) |> 
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns in Agropastoral Livelihood Systems",
+    subtitle = "Seasonal patterns shifted as of 2022",
+    y = "Seasonal effects"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
+
+#### Subset the seasonal component as of 2022 ----
+seasonal_cmpnt_agropastoral_a2022 <- cmpnts_agropastoral |> 
+  filter(year(Monthly) >= 2022) |> 
+  select(season_year) |> 
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns in Agropaastoral Livelihood Systems",
+    subtitle = "Seasonal patterns shifted as of 2022",
+    y = "Seasonal effects"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
+
+### --------------------------------------------- Riverine livelihood sytem ----
+
+#### Get components ----
 cmpnts_riverine <- mo |> 
   filter(lsystems == "Riverine") |> 
   model(
@@ -266,7 +378,7 @@ cmpnts_riverine <- mo |>
   ) |> 
   components()
 
-### Visualize the components ----
+#### Visualize the components ----
 cmpnts_plot_riverine <- cmpnts_riverine |> 
   autoplot() +
   labs(
@@ -279,7 +391,7 @@ cmpnts_plot_riverine <- cmpnts_riverine |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
   
-### Plot the seasonal component over years ----
+#### Plot the seasonal component over years ----
 seasonal_cmpnt_riverine <- cmpnts_riverine |> 
   select(season_year) |> 
   gg_season(y = season_year) + 
@@ -294,7 +406,43 @@ seasonal_cmpnt_riverine <- cmpnts_riverine |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-### Urban/IDPs ----
+##### Subset the seasonal component before 2022 ----
+seasonal_cmpnt_riverine_b2022 <- cmpnts_riverine |> 
+  filter(year(Monthly) < 2022) |> 
+  select(season_year) |> 
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns in Riverine Livelihood Systems",
+    subtitle = "Seasonal patterns shifted as of 2022",
+    y = "Seasonal effects"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
+
+##### Subset the seasonal component as of 2022 ----
+seasonal_cmpnt_riverine_a2022 <- cmpnts_riverine |> 
+  filter(year(Monthly) >= 2022) |> 
+  select(season_year) |> 
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns in Riverine Livelihood Systems",
+    subtitle = "Seasonal patterns shifted as of 2022",
+    y = "Seasonal effects"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
+
+### ------------------------------------------- Urban/IDPs livelihood sytem ----
+
+#### Get component ----
 cmpnts_urban_idps <- mo |> 
   filter(lsystems == "Urban/IDPs") |> 
   model(
@@ -307,7 +455,7 @@ cmpnts_urban_idps <- mo |>
   ) |> 
   components()
 
-### Visualize the components ----
+#### Visualize the components ----
 cmpnts_plot_urban_idps <- cmpnts_urban_idps |> 
   autoplot() + 
   labs(
@@ -320,8 +468,7 @@ cmpnts_plot_urban_idps <- cmpnts_urban_idps |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-
-### Plot the seasonal component over years ----
+#### Plot the seasonal component over years ----
 seasonal_cmpnt_urban_idps <- cmpnts_urban_idps |> 
   select(season_year) |> 
   gg_season(y = season_year) + 
@@ -332,6 +479,40 @@ seasonal_cmpnt_urban_idps <- cmpnts_urban_idps |>
   ) +
   theme(
     plot.subtitle = element_text(colour = "#706E6D"),
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
+
+#### Subset the seasonal component before 2022 ----
+seasonal_cmpnt_urban_idps_b2022 <- cmpnts_urban_idps |> 
+  filter(year(Monthly) < 2022) |> 
+  select(season_year) |> 
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns in Urban/IDPs Livelihood Systems",
+    subtitle = "Seasonal patterns shifted as of 2022",
+    y = "Seasonal effects"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
+    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
+    axis.title.x = element_text(size = 10, margin = margin(r = 5))
+  )
+
+#### Subset the seasonal component as of 2022 ----
+seasonal_cmpnt_urban_idps_a2022 <- cmpnts_urban_idps |> 
+  filter(year(Monthly) >= 2022) |> 
+  select(season_year) |> 
+  gg_season(y = season_year) + 
+  labs(
+    title = "Seasonal Patterns in Urban/IDPs Livelihood Systems",
+    subtitle = "Seasonal patterns shifted as of 2022",
+    y = "Seasonal effects"
+  ) +
+  theme(
+    plot.subtitle = element_text(colour = "#706E6D"),
+    plot.caption = element_text(colour = '#706E6D'), 
     axis.title.y = element_text(size = 10, margin = margin(r = 5)),
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )

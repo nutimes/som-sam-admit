@@ -196,8 +196,6 @@ cmpnts_plot_pastoral <- cmpnts_pastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
   
-  
-
 ### Plot the seasonal component over years ----
 seasonal_cmpnt_pastoral <- cmpnts_pastoral |> 
   select(season_year) |> 
@@ -281,7 +279,6 @@ cmpnts_plot_riverine <- cmpnts_riverine |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
   
-
 ### Plot the seasonal component over years ----
 seasonal_cmpnt_riverine <- cmpnts_riverine |> 
   select(season_year) |> 

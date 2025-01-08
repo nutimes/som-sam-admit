@@ -100,7 +100,7 @@ Results will first be presented and described for data grouped at national level
 source("script.R")
 ```
 
-### Overview of the admissions over time at National level {#sec-overview-national}
+### Overview of how admissions changed over time with data grouped at national level {#sec-overview-national}
 Figure shows a display of the total number of SAM cases admitted into treatment program in Somalia over six years, starting from January 2019 to December 2024, on a monthly continuos scale. It shows a changing trend over time, with remarkable rise as of 2022, that was preceeded by a relatively stable trend, followed by a consistent decline as of 2023. On the other hand, it also shows an irregular seasonal pattern (the ups and downs on the figure), with the strenghts and the intensity of the peaks (amplitude) chaning over time.  
 
 ```{r}
@@ -110,7 +110,7 @@ tsplot_national
 
 While this figure gives a glimpse of the underlying pattern of the trend and the seasonal variation in the admissions of SAM cases over time, these components are further explored and described in the following sections. 
 
-#### Understanding the seasonal variation  
+#### An overview of the seasonal variation  
 @fig-seasonal-plot-national displays the evolution of the SAM admissions across months(x-axis) by year (y-axis). Each line represents a year along the months. 
 
 From this figure, it is starting to be seen, with some clarity, the seasonal variation. Two patterns can be spotted from the figure: (i) before 2022, the seasonal variation seemed to be regular each year, with a relatively shallow amplitude between each lines. (ii) as of 2022, both the amplitude between lines, as well as 
@@ -168,7 +168,7 @@ sbsplot_national_a2022
 ```
 :::
 
-### Overview of the admissions over time by livelihood systems  
+### Overview of how admissions changed by over time by livelihood system
 #### Distribution of the number of district per livelihood system
 
 Majority of the districts in Somalia are pastoral (34 districts), followed by agropastoral (19 district) @tbl-lsystem-districts. The table counts districts after excluding those with missing values, as described in @sec-data-wrangling.
@@ -182,7 +182,7 @@ Majority of the districts in Somalia are pastoral (34 districts), followed by ag
 
 : Number of districts in each livelihood system {#tbl-lsystem-districts}
 
-#### A glimpse on the evolution of the admissions over time  
+#### How admissions changed over time 
 
 Similar to @fig-timeplot-national, figure 7 shows the evolution of the SAM admissions over time, however this time with the data split into the four livelihood systems. All in all, the admissions in each livelihood system seems to follow the same pattern as that described in @sec-overview-national.
 
@@ -191,7 +191,142 @@ Similar to @fig-timeplot-national, figure 7 shows the evolution of the SAM admis
 tsplot_lsysttem
 ```
 
-### Decomposing the time series
-Decomposition of a time series consists in extracting each component that constitutes a time series data: the trend, the seasonal variation and any other variation in the data that cannot be explained by the aforementioned components [@tsR]. It helps to visualize clearly the underlying variation in the data that is due to the trend, and to seasonality, after removing on of them. 
+{{< pagebreak >}}
 
+### Identifying the trends and seasonal patterns in admissions over time
+#### At National level
+```{r}
+#| label: fig-cmpnts-national
+cmpnts_plot_national
+```
 
+##### Seasonal pattern   
+```{r}
+#| label: fig-seasonal-pattern-national
+seasonal_cmpnt_national
+```
+
+::: {.panel-tabset}
+## Before 2022
+```{r}
+#| label: fig-seasonal-pattern-natioanal-b2022
+seasonal_cmpnt_national_b2022
+```
+
+## As of 2022
+```{r}
+#| label: fig-seasonal-pattern-natioanal-a2022
+seasonal_cmpnt_national_a2022
+```
+:::
+
+#### By Livelihood systems  
+##### Pastoral
+
+```{r}
+#| label: fig-cmpnts-pastoral
+cmpnts_plot_pastoral
+```
+
+###### Seasonal pattern   
+```{r}
+#| label: fig-seasonal-pattern-pastoral
+seasonal_cmpnt_pastoral
+```
+
+::: {.panel-tabset}
+## Before 2022
+```{r}
+#| label: fig-seasonal-pattern-pastoral-b2022
+seasonal_cmpnt_pastoral_b2022
+```
+
+## As of 2022
+```{r}
+#| label: fig-seasonal-pattern-pastoral-a2022
+seasonal_cmpnt_pastoral_a2022
+```
+:::
+
+##### Agropastoral
+
+```{r}
+#| label: fig-cmpnts-agropastoral
+cmpnts_plot_agropastoral
+```
+
+###### Seasonal pattern   
+```{r}
+#| label: fig-seasonal-pattern-agropastoral
+seasonal_cmpnt_agropastoral
+```
+
+::: {.panel-tabset}
+## Before 2022
+```{r}
+#| label: fig-seasonal-pattern-agropastoral-b2022
+seasonal_cmpnt_agropastoral_b2022
+```
+
+## As of 2022
+```{r}
+#| label: fig-seasonal-pattern-agropastoral-a2022
+seasonal_cmpnt_agropastoral_a2022
+```
+:::
+
+##### Riverine
+
+```{r}
+#| label: fig-cmpnts-riverine
+cmpnts_plot_riverine
+```
+
+###### Seasonal pattern   
+```{r}
+#| label: fig-seasonal-pattern-riverine
+seasonal_cmpnt_riverine
+```
+
+::: {.panel-tabset}
+## Before 2022
+```{r}
+#| label: fig-seasonal-pattern-riverine-b2022
+seasonal_cmpnt_riverine_b2022
+```
+
+## As of 2022
+```{r}
+#| label: fig-seasonal-pattern-riverine-a2022
+seasonal_cmpnt_riverine_a2022
+```
+:::
+
+##### Urban/IDPs
+
+```{r}
+#| label: fig-cmpnts-urban-idps
+cmpnts_plot_urban_idps
+```
+
+###### Seasonal pattern   
+```{r}
+#| label: fig-seasonal-pattern-urban-idps
+seasonal_cmpnt_urban_idps
+```
+
+::: {.panel-tabset}
+## Before 2022
+```{r}
+#| label: fig-seasonal-pattern-urban-idps-b2022
+seasonal_cmpnt_urban_idps_b2022
+```
+
+## As of 2022
+```{r}
+#| label: fig-seasonal-pattern-urban-idps-a2022
+seasonal_cmpnt_urban_idps_a2022
+```
+:::
+
+{{< pagebreak >}}

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Tomás Zaba">
-<meta name="dcterms.date" content="2025-01-08">
+<meta name="dcterms.date" content="2025-01-09">
 
 <title>Feature insights into Somalia’s severe acute malnutrition admissions</title>
 <style>
@@ -114,7 +114,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 8, 2025</p>
+      <p class="date">January 9, 2025</p>
     </div>
   </div>
   
@@ -134,10 +134,9 @@ div.csl-indent {
 <p>In Somalia, the seasonality of AMN is also generaly associated with that of the food security seasonality. There are five defined food security seasons as described by <span class="citation" data-cites="ENN">Luc et al. (<a href="#ref-ENN" role="doc-biblioref">2024</a>)</span>:</p>
 <div class="cell fig-cap-location-bottom" data-layout-align="center">
 <div class="cell-output-display">
+<div id="seasonal-calendar">
 <div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">gantt
+<pre class="mermaid mermaid-js" data-label="seasonal-calendar">gantt
     title  Somalia Food Security Seasonal Calendar
     dateFormat M
     axisFormat %b
@@ -150,7 +149,7 @@ div.csl-indent {
     Deyr   :10, 12
 </pre>
 </div>
-<p></p><figcaption> Source: author’s adaptation</figcaption> </figure><p></p>
+<p>Source: author’s adaptation</p>
 </div>
 </div>
 </div>
@@ -194,10 +193,9 @@ div.csl-indent {
 <p>It consisted in excluding districts with missing admissions from January to December; then by aggregating the sum of the total number of children admitted by month at national level and by livelihood systems (Pastoral, Agropastoral, Riverine and Urban/IDPs).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
+<div id="wrangling-workflow">
 <div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
+<pre class="mermaid mermaid-js" data-label="wrangling-workflow">flowchart LR
     A[(Dataset)]
     B[Exclusion of districts with consistent missingness of admissions data]
     C[Summarise admissions by **month** at national level]
@@ -212,7 +210,7 @@ div.csl-indent {
     E --&gt; G
 </pre>
 </div>
-<p></p><figcaption> Data wrangling workflow</figcaption> </figure><p></p>
+<p>Data wrangling workflow</p>
 </div>
 </div>
 </div>
@@ -402,8 +400,8 @@ Figure&nbsp;7
 </section>
 <section id="overview-of-how-admissions-changed-by-over-time-by-livelihood-system" class="level3">
 <h3 class="anchored" data-anchor-id="overview-of-how-admissions-changed-by-over-time-by-livelihood-system">Overview of how admissions changed by over time by livelihood system</h3>
-<section id="distribution-of-the-number-of-district-per-livelihood-system" class="level4">
-<h4 class="anchored" data-anchor-id="distribution-of-the-number-of-district-per-livelihood-system">Distribution of the number of district per livelihood system</h4>
+<section id="distribution-of-the-number-of-districts-per-livelihood-system" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-of-the-number-of-districts-per-livelihood-system">Distribution of the number of districts per livelihood system</h4>
 <p>Majority of the districts in Somalia are pastoral (34 districts), followed by agropastoral (19 district) <a href="#tbl-lsystem-districts" class="quarto-xref">Table&nbsp;1</a>. The table counts districts after excluding those with missing values, as described in <a href="#sec-data-wrangling" class="quarto-xref">Section&nbsp;0.2.2</a>.</p>
 <div id="tbl-lsystem-districts" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -458,12 +456,15 @@ Figure&nbsp;8
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </section>
 </section>
 <section id="identifying-the-trends-and-seasonal-patterns-in-admissions-over-time" class="level3">
 <h3 class="anchored" data-anchor-id="identifying-the-trends-and-seasonal-patterns-in-admissions-over-time">Identifying the trends and seasonal patterns in admissions over time</h3>
+<p>A time series can exhibit a variety of underlying patterns that may not be easly visible from a regular time plot. These can be gleaned by spliting the time series into its constituent components and clearly see them. The following sections displays the gleaned underlying patterns of the admissions data. The description starts with national level data, and then by livelihood system.</p>
 <section id="at-national-level" class="level4">
 <h4 class="anchored" data-anchor-id="at-national-level">At National level</h4>
+<p>In <a href="#fig-cmpnts-national" class="quarto-xref">Figure&nbsp;9</a>, the first graph (top-down) is the whole data (the admissions). This is the same graph shown in <a href="#fig-timeplot-national" class="quarto-xref">Figure&nbsp;1</a>. The second graph is the <strong>trend pattern alone</strong> over time. The thrid graph is <strong>seasonal pattern alone</strong> over time after removing the trend. The fourth graph represents any other variation in the admissions that are not caused by the trend or the seasonality.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-cmpnts-national" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
@@ -478,6 +479,185 @@ Figure&nbsp;9
 </div>
 </div>
 </div>
+<section id="the-trend-component" class="level5">
+<h5 class="anchored" data-anchor-id="the-trend-component">The trend component</h5>
+<p>All in all, as it was mentioned in the overview of the admissions (<a href="#sec-overview-national" class="quarto-xref">Section&nbsp;0.3.1</a>), in terms of <strong>shape</strong>, the trend pattern is non-linear; in terms of <strong>stability</strong>, the trend pattern is a changing trend that evolves over time (not stable). In terms of the <strong>direction</strong>, the trend shows that the admissions rose remarkably as of the last quarter of 2021, and started to decline in 2023.</p>
+<section id="the-arc-of-the-admissions-in-the-times-the-slope-of-the-admissions-changed-remarkably" class="level6">
+<h6 class="anchored" data-anchor-id="the-arc-of-the-admissions-in-the-times-the-slope-of-the-admissions-changed-remarkably">The ARC of the admissions in the times the slope of the admissions changed remarkably</h6>
+<div id="fig-piecewise-slopes" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-piecewise-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-1.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Slope Jan-Jun 2019
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-2.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Slope Jul-Oct 2019
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-3.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Slope Nov 2019-Feb 2020
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-4.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) Slope Mar 2020-Jan 2021
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-5.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(e) Slope Feb 2021-Mar 2023
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-6.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(f) Slope Apr 2023-Dec 2024
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-piecewise-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Trend line in pieces
+</figcaption>
+</figure>
+</div>
+<p>Considering the different remarkable fluctuations observed in the pattern at specific time-period, an average rate of change (ARC) <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="citation" data-cites="arc">(<a href="#ref-arc" role="doc-biblioref">Kelly 2029</a>)</span> was calculated for each pieces of the above slopes. Results are presented in <a href="#tbl-arc-national" class="quarto-xref">Table&nbsp;2</a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to read the table 2 in conjuntion with figure 10
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Example 1: increase</strong><br>
+In slope (a), the trend starts in January 2019 with an average admission of 21,029 cases. It increased to an average admission of 22,420 cases by June of the same year. Between this period of 5 months, the admissions increased by an average of 278 cases each month.</p>
+<p><strong>Example 2: decrease</strong><br>
+In slope (e), the trend starts in April 2023, with an average of admission of 52,801 cases. It decreased to an average admission of 32,388 cases by December 2024. During this period of 20 months, the admissions decreased by an average of -1,021 cases each month.</p>
+</div>
+</div>
+<div id="tbl-arc-national" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-arc-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: The average rate of change in the admissions by month in the time-intervals represented in figure 10
+</figcaption>
+<div aria-describedby="tbl-arc-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Slope</th>
+<th style="text-align: center;">Time interval</th>
+<th style="text-align: center;">Admissions<sub>i</sub></th>
+<th style="text-align: center;">Admissions<sub>f</sub></th>
+<th style="text-align: center;">ARC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">(a)</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">21,029</td>
+<td style="text-align: center;">22,420</td>
+<td style="text-align: center;">278</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(b)</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">22,051</td>
+<td style="text-align: center;">21,654</td>
+<td style="text-align: center;">-199</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(c)</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">21,763</td>
+<td style="text-align: center;">22,810</td>
+<td style="text-align: center;">349</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(d)</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">22,834</td>
+<td style="text-align: center;">19,709</td>
+<td style="text-align: center;">-312</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(e)</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">19,854</td>
+<td style="text-align: center;">53,259</td>
+<td style="text-align: center;">1,336</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(f)</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">52,801</td>
+<td style="text-align: center;">32,388</td>
+<td style="text-align: center;">-1,021</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-section" role="doc-footnote">
+<hr>
+<ol>
+<li id="fn1"><p>The ARC descrobes the average or typical rate of change (in the admissions of SAM cases in this case) over a determined time interval of interest in the time series.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+</section>
+</section>
 <section id="seasonal-pattern" class="level5">
 <h5 class="anchored" data-anchor-id="seasonal-pattern">Seasonal pattern</h5>
 <div class="cell">
@@ -488,7 +668,7 @@ Figure&nbsp;9
 <img src="report_files/figure-html/fig-seasonal-pattern-national-1.png" id="fig-seasonal-pattern-national" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10
+Figure&nbsp;11
 </figcaption>
 </figure>
 </div>
@@ -506,7 +686,7 @@ Figure&nbsp;10
 <img src="report_files/figure-html/fig-seasonal-pattern-natioanal-b2022-1.png" id="fig-seasonal-pattern-natioanal-b2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-natioanal-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11
+Figure&nbsp;12
 </figcaption>
 </figure>
 </div>
@@ -522,7 +702,7 @@ Figure&nbsp;11
 <img src="report_files/figure-html/fig-seasonal-pattern-natioanal-a2022-1.png" id="fig-seasonal-pattern-natioanal-a2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-natioanal-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12
+Figure&nbsp;13
 </figcaption>
 </figure>
 </div>
@@ -545,7 +725,7 @@ Figure&nbsp;12
 <img src="report_files/figure-html/fig-cmpnts-pastoral-1.png" id="fig-cmpnts-pastoral" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-pastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13
+Figure&nbsp;14
 </figcaption>
 </figure>
 </div>
@@ -561,7 +741,7 @@ Figure&nbsp;13
 <img src="report_files/figure-html/fig-seasonal-pattern-pastoral-1.png" id="fig-seasonal-pattern-pastoral" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-pastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14
+Figure&nbsp;15
 </figcaption>
 </figure>
 </div>
@@ -579,7 +759,7 @@ Figure&nbsp;14
 <img src="report_files/figure-html/fig-seasonal-pattern-pastoral-b2022-1.png" id="fig-seasonal-pattern-pastoral-b2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-pastoral-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15
+Figure&nbsp;16
 </figcaption>
 </figure>
 </div>
@@ -595,7 +775,7 @@ Figure&nbsp;15
 <img src="report_files/figure-html/fig-seasonal-pattern-pastoral-a2022-1.png" id="fig-seasonal-pattern-pastoral-a2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-pastoral-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16
+Figure&nbsp;17
 </figcaption>
 </figure>
 </div>
@@ -616,7 +796,7 @@ Figure&nbsp;16
 <img src="report_files/figure-html/fig-cmpnts-agropastoral-1.png" id="fig-cmpnts-agropastoral" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17
+Figure&nbsp;18
 </figcaption>
 </figure>
 </div>
@@ -632,7 +812,7 @@ Figure&nbsp;17
 <img src="report_files/figure-html/fig-seasonal-pattern-agropastoral-1.png" id="fig-seasonal-pattern-agropastoral" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18
+Figure&nbsp;19
 </figcaption>
 </figure>
 </div>
@@ -650,7 +830,7 @@ Figure&nbsp;18
 <img src="report_files/figure-html/fig-seasonal-pattern-agropastoral-b2022-1.png" id="fig-seasonal-pattern-agropastoral-b2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-agropastoral-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19
+Figure&nbsp;20
 </figcaption>
 </figure>
 </div>
@@ -666,7 +846,7 @@ Figure&nbsp;19
 <img src="report_files/figure-html/fig-seasonal-pattern-agropastoral-a2022-1.png" id="fig-seasonal-pattern-agropastoral-a2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-agropastoral-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20
+Figure&nbsp;21
 </figcaption>
 </figure>
 </div>
@@ -687,7 +867,7 @@ Figure&nbsp;20
 <img src="report_files/figure-html/fig-cmpnts-riverine-1.png" id="fig-cmpnts-riverine" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21
+Figure&nbsp;22
 </figcaption>
 </figure>
 </div>
@@ -703,7 +883,7 @@ Figure&nbsp;21
 <img src="report_files/figure-html/fig-seasonal-pattern-riverine-1.png" id="fig-seasonal-pattern-riverine" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;22
+Figure&nbsp;23
 </figcaption>
 </figure>
 </div>
@@ -721,7 +901,7 @@ Figure&nbsp;22
 <img src="report_files/figure-html/fig-seasonal-pattern-riverine-b2022-1.png" id="fig-seasonal-pattern-riverine-b2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-riverine-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23
+Figure&nbsp;24
 </figcaption>
 </figure>
 </div>
@@ -737,7 +917,7 @@ Figure&nbsp;23
 <img src="report_files/figure-html/fig-seasonal-pattern-riverine-a2022-1.png" id="fig-seasonal-pattern-riverine-a2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-riverine-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;24
+Figure&nbsp;25
 </figcaption>
 </figure>
 </div>
@@ -758,7 +938,7 @@ Figure&nbsp;24
 <img src="report_files/figure-html/fig-cmpnts-urban-idps-1.png" id="fig-cmpnts-urban-idps" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-urban-idps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;25
+Figure&nbsp;26
 </figcaption>
 </figure>
 </div>
@@ -774,7 +954,7 @@ Figure&nbsp;25
 <img src="report_files/figure-html/fig-seasonal-pattern-urban-idps-1.png" id="fig-seasonal-pattern-urban-idps" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-urban-idps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;26
+Figure&nbsp;27
 </figcaption>
 </figure>
 </div>
@@ -792,7 +972,7 @@ Figure&nbsp;26
 <img src="report_files/figure-html/fig-seasonal-pattern-urban-idps-b2022-1.png" id="fig-seasonal-pattern-urban-idps-b2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-urban-idps-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;27
+Figure&nbsp;28
 </figcaption>
 </figure>
 </div>
@@ -808,7 +988,7 @@ Figure&nbsp;27
 <img src="report_files/figure-html/fig-seasonal-pattern-urban-idps-a2022-1.png" id="fig-seasonal-pattern-urban-idps-a2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-urban-idps-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;28
+Figure&nbsp;29
 </figcaption>
 </figure>
 </div>
@@ -817,6 +997,7 @@ Figure&nbsp;28
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 
 </section>
 </section>
@@ -830,6 +1011,9 @@ Cowpertwait, Paul S. P., and Andrew V. Metcalfe. 2009. <em>Introductory Time Ser
 </div>
 <div id="ref-ipcmanual" class="csl-entry" role="listitem">
 IPC Global Partners. 2021. <em>Integrated Food Security Phase Classification Technical Manual Version 3.1: Evidence and Standards for Better Food Security and Nutrition Decisions</em>. <a href="https://www.ipcinfo.org/ipcinfo-website/resources/ipc-manual/en/">https://www.ipcinfo.org/ipcinfo-website/resources/ipc-manual/en/</a>.
+</div>
+<div id="ref-arc" class="csl-entry" role="listitem">
+Kelly, Ken. 2029. <span>“The Average Rate of Change for Continuous Time Models.”</span> <em>Behavior Research Methods</em> 41: 268–78. <a href="https://doi.org/10.3758/BRM.41.2.268">https://doi.org/10.3758/BRM.41.2.268</a>.
 </div>
 <div id="ref-ENN" class="csl-entry" role="listitem">
 Luc, Gwenaelle, Modibo Keita, Baguinébié Bazongo, Brahima Diarra, Angelina Virchenko, Claudia Okley, Tiphaine Seyvet, et al. 2024. <span>“Special Focus: Wasting Patterns in Somalia.”</span> <em>Field Exchange 72 (En)</em> 72. <a href="https://www.ennonline.net/fex/72/special-focus-wasting-patterns-in-somalia">https://www.ennonline.net/fex/72/special-focus-wasting-patterns-in-somalia</a>.

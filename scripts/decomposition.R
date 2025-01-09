@@ -27,10 +27,12 @@ lambda_national <- na |>
 
 ### Visualize the transformation ----
 na |> 
-  autoplot(box_cox(
-    x = admissions,
-    lambda = lambda_national
-  ))
+  autoplot(
+    box_cox(
+      x = admissions,
+      lambda = lambda_national
+    )
+  )
 
 
 ## ---- Decomposition ----------------------------------------------------------
@@ -208,7 +210,7 @@ mo |>
 
 
 ## ---- Decomposition ----------------------------------------------------------
-### --------------------------------------------- Pastoral livelihood sytem ----
+### -------------------------------------------- Pastoral livelihood system ----
 
 #### Get components ----
 cmpnts_pastoral <- mo |> 
@@ -286,7 +288,7 @@ seasonal_cmpnt_pastoral_a2022 <- cmpnts_pastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-### ----------------------------------------- Agropastoral livelihood sytem ----
+### ---------------------------------------- Agropastoral livelihood system ----
 
 #### Get components ----
 cmpnts_agropastoral <- mo |> 
@@ -363,7 +365,7 @@ seasonal_cmpnt_agropastoral_a2022 <- cmpnts_agropastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-### --------------------------------------------- Riverine livelihood sytem ----
+### -------------------------------------------- Riverine livelihood system ----
 
 #### Get components ----
 cmpnts_riverine <- mo |> 
@@ -440,7 +442,7 @@ seasonal_cmpnt_riverine_a2022 <- cmpnts_riverine |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-### ------------------------------------------- Urban/IDPs livelihood sytem ----
+### ------------------------------------------ Urban/IDPs livelihood system ----
 
 #### Get component ----
 cmpnts_urban_idps <- mo |> 

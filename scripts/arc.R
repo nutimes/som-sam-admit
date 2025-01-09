@@ -10,19 +10,9 @@ trend_national <- cmpnts_national |>
 ## ---------------  Piecewise trend: 2019 Jan-2019 Jun; variation: increase ----
 
 ### Plot the slope ----
-arc_beforeJul2019 <- trend_national |> 
+slope_beforeJul2019 <- trend_national |> 
   filter(Monthly <= yearmonth("2019 Jun")) |> 
-  autoplot() +
-  labs(
-    title = "Trend Slope in SAM Cases Admitted from January to June 2019",
-    y = "Average number of cases admitted"
-  ) + 
-  theme(
-    plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
-    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
-    axis.title.x = element_text(size = 10, margin = margin(t = 5))
-  )
+  autoplot()
 
 ### ARC ----
 arc_beforeJul2019 <- trend_national |> 
@@ -37,17 +27,7 @@ arc_beforeJul2019 <- trend_national |>
 ### Plot the slope ----
 slope_aug2019_oct2019 <- trend_national |> 
   filter(Monthly >= yearmonth("2019 Aug") & Monthly <= yearmonth("2019 Oct")) |> 
-  autoplot() +
-  labs(
-    title = "Trend Slope in SAM Cases Admitted from August to October 2019",
-    y = "Average number of cases admitted"
-  ) + 
-  theme(
-    plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
-    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
-    axis.title.x = element_text(size = 10, margin = margin(t = 5))
-  )
+  autoplot()
 
 ### ARC ----
 arc_aug2019_oct2019 <- trend_national |> 
@@ -62,17 +42,7 @@ arc_aug2019_oct2019 <- trend_national |>
 ### Plot the slope ----
 slope_nov2019_feb2020 <- trend_national |> 
   filter(Monthly >= yearmonth("2019 Nov") & Monthly <= yearmonth("2020 Feb")) |> 
-  autoplot() +
-  labs(
-    title = "Trend Slope in SAM Cases Admitted from November 2019 to February 2020",
-    y = "Average number of cases admitted"
-  ) + 
-  theme(
-    plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
-    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
-    axis.title.x = element_text(size = 10, margin = margin(t = 5))
-  )
+  autoplot()
 
 ### ARC ----
 arc_nov2019_feb2020 <- trend_national |> 
@@ -85,22 +55,12 @@ arc_nov2019_feb2020 <- trend_national |>
 ## --------------------- Piecewise trend: Mar 2020-Jan 2021; variation: decrease ----
 
 ### Plot the slope ----
-slope_feb2020_jan2021 <- trend_national |> 
+slope_mar2020_jan2021 <- trend_national |> 
   filter(Monthly >= yearmonth("2020 Mar") & Monthly <= yearmonth("2021 Jan")) |> 
-  autoplot() +
-  labs(
-    title = "Trend Slope in SAM Cases Admitted from March 2020 to January 2021",
-    y = "Average number of cases admitted"
-  ) + 
-  theme(
-    plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
-    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
-    axis.title.x = element_text(size = 10, margin = margin(t = 5))
-  )
+  autoplot()
 
 ### ARC ----
-arc_feb2020_jan2021 <- trend_national |> 
+arc_mar2020_jan2021 <- trend_national |> 
   ARC(
     start = yearmonth("2020 Mar"),
     end = yearmonth("2021 Jan"),
@@ -113,17 +73,7 @@ arc_feb2020_jan2021 <- trend_national |>
 ### Plot the slope ----
 slope_feb2021_mar2023 <- trend_national |> 
   filter(Monthly >= yearmonth("2021 Feb") & Monthly <= yearmonth("2023 Mar")) |> 
-  autoplot() +
-  labs(
-    title = "Trend Slope in SAM Cases Admitted from February 2021 to March 2023",
-    y = "Average number of cases admitted"
-  ) + 
-  theme(
-    plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
-    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
-    axis.title.x = element_text(size = 10, margin = margin(t = 5))
-  )
+  autoplot()
 
 ### ARC ----
 arc_feb2021_mar2023 <- trend_national |> 
@@ -139,17 +89,7 @@ arc_feb2021_mar2023 <- trend_national |>
 ### Plot the slope ----
 slope_april2023_dec2024 <- trend_national |> 
   filter(Monthly >= yearmonth("2023 Apr")) |> 
-  autoplot() +
-  labs(
-    title = "Trend Slope in SAM Cases Admitted from February 2021 to March 2023",
-    y = "Average number of cases admitted"
-  ) + 
-  theme(
-    plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
-    axis.title.y = element_text(size = 10, margin = margin(r = 5)),
-    axis.title.x = element_text(size = 10, margin = margin(t = 5))
-  )
+  autoplot()
 
 ### ARC ----
 arc_april2023_dec2024 <- trend_national |> 

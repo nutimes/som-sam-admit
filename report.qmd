@@ -15,6 +15,7 @@ The limited understanding of AMN’s seasonal variation is attributed to two key
 In Somalia, the seasonality of AMN is also generaly associated with that of the food security seasonality. There are five defined food security seasons as described by @ENN:  
 
 ```{mermaid}
+%%| label: seasonal-calendar
 %%| fig-cap: "Source: author's adaptation"
 %%| fig-cap-location: bottom
 gantt
@@ -63,6 +64,7 @@ Initially, the analysis was intended to use data on global acute malnutrition da
 ### Data wrangling {#sec-data-wrangling} 
 It consisted in excluding districts with missing admissions from January to December; then by aggregating the sum of the total number of children admitted by month at national level and by livelihood systems (Pastoral, Agropastoral, Riverine and Urban/IDPs).
 ```{mermaid}
+%%| label: wrangling-workflow
 %%| fig-cap: Data wrangling workflow
 flowchart LR
     A[(Dataset)]
@@ -169,7 +171,7 @@ sbsplot_national_a2022
 :::
 
 ### Overview of how admissions changed by over time by livelihood system
-#### Distribution of the number of district per livelihood system
+#### Distribution of the number of districts per livelihood system
 
 Majority of the districts in Somalia are pastoral (34 districts), followed by agropastoral (19 district) @tbl-lsystem-districts. The table counts districts after excluding those with missing values, as described in @sec-data-wrangling.
 
@@ -193,18 +195,81 @@ tsplot_lsysttem
 
 {{< pagebreak >}}
 
-### Identifying the trends and seasonal patterns in admissions over time
-#### At National level
+### Identifying the trends and seasonal patterns in admissions over time  
+A time series can exhibit a variety of underlying patterns that may not be easly visible from a regular time plot. These can be gleaned by spliting the time series into its constituent components and clearly see them. The following sections displays the gleaned underlying patterns of the admissions data. The description starts with national level data, and then by livelihood system. 
+
+#### At National level  
+In @fig-cmpnts-national, the first graph (top-down) is the whole data (the admissions). This is the same graph shown in @fig-timeplot-national. The second graph is the **trend pattern alone** over time. The thrid graph is **seasonal pattern alone** over time after removing the trend. The fourth graph represents any other variation in the admissions that are not caused by the trend or the seasonality.  
+
 ```{r}
 #| label: fig-cmpnts-national
 cmpnts_plot_national
 ```
+
+##### The trend component 
+
+All in all, as it was mentioned in the overview of the admissions (@sec-overview-national), in terms of **shape**, the trend pattern is non-linear; in terms of **stability**, the trend pattern is a changing trend that evolves over time (not stable). In terms of the **direction**, the trend shows that the admissions rose remarkably as of the last quarter of 2021, and started to decline in 2023.  
+
+###### The ARC of the admissions in the times the slope of the admissions changed remarkably
+
+```{r}
+#| label: fig-piecewise-slopes
+#| fig-cap: "Trend line in pieces"
+#| fig-subcap: 
+#|   - "Slope Jan-Jun 2019"
+#|   - "Slope Jul-Oct 2019"
+#|   - "Slope Nov 2019-Feb 2020"
+#|   - "Slope Mar 2020-Jan 2021"
+#|   - "Slope Feb 2021-Mar 2023"
+#|   - "Slope Apr 2023-Dec 2024"
+#| layout-ncol: 3
+#| layout-nrow: 2
+
+slope_beforeJul2019
+
+slope_aug2019_oct2019
+
+slope_nov2019_feb2020
+
+slope_mar2020_jan2021
+
+slope_feb2021_mar2023
+
+slope_april2023_dec2024
+```
+
+Considering the different remarkable fluctuations observed in the pattern at specific time-period, an average rate of change (ARC) [^1] [@arc] was calculated for each pieces of the above slopes. Results are presented in @tbl-arc-national.
+
+::: {.callout-note}
+## How to read the table 2 in conjuntion with figure 10 
+
+**Example 1: increase**  
+In slope (a), the trend starts in January 2019 with an average admission of `r format(round(arc_beforeJul2019[[1]]),F,big.mark=",")` cases. It increased to an average admission of `r format(round(arc_beforeJul2019[[3]]),F,big.mark=",")` cases by June of the same year. Between this period of `r arc_beforeJul2019[[5]]` months, the admissions increased by an average of `r round(arc_beforeJul2019[[6]])` cases each month.
+
+**Example 2: decrease**  
+In slope (e), the trend starts in April 2023, with an average of admission of `r format(round(arc_april2023_dec2024[[1]]),F, big.mark=",")` cases. It decreased to an average admission of `r format(round(arc_april2023_dec2024[[3]]),F,big.mark=",")` cases by December 2024. During this period of `r arc_april2023_dec2024[[5]]` months, the admissions decreased by an average of `r format(round(arc_april2023_dec2024[[6]]),big.mark=",")` cases each month. 
+:::
+
+[^1]: The ARC descrobes the average or typical rate of change (in the admissions of SAM cases in this case) over a determined time interval of interest in the time series. 
+
+| Slope | Time interval | Admissions~i~ | Admissions~f~ | ARC |  
+| :---: | :---: | :---: | :---: | :---: |
+| (a) | `r arc_beforeJul2019[[5]]` | `r format(round(arc_beforeJul2019[[1]]),F,big.mark=",")` | `r format(round(arc_beforeJul2019[[3]]),F,big.mark=",")` | `r round(arc_beforeJul2019[[6]])` |  
+| (b) | `r arc_aug2019_oct2019[[5]]` | `r format(round(arc_aug2019_oct2019[[1]]),F, big.mark=",")` | `r format(round(arc_aug2019_oct2019[[3]]),F,big.mark=",")` | `r round(arc_aug2019_oct2019[[6]])` | 
+| (c) | `r arc_nov2019_feb2020[[5]]` | `r format(round(arc_nov2019_feb2020[[1]]),F,big.mark=",")` | `r format(round(arc_nov2019_feb2020[[3]]),F,big.mark=",")` | `r round(arc_nov2019_feb2020[[6]])` | 
+| (d) | `r arc_mar2020_jan2021[[5]]` | `r format(round(arc_mar2020_jan2021[[1]]),F,big.mark=",")` | `r format(round(arc_mar2020_jan2021[[3]]),F,big.mark=",")` | `r round(arc_mar2020_jan2021[[6]])` | 
+| (e) | `r arc_feb2021_mar2023[[5]]` | `r format(round(arc_feb2021_mar2023[[1]]),F,big.mark=",")` | `r format(round(arc_feb2021_mar2023[[3]]),F, big.mark=",")` | `r format(round(arc_feb2021_mar2023[[6]]),big.mark=",")` | 
+| (f) | `r arc_april2023_dec2024[[5]]` | `r format(round(arc_april2023_dec2024[[1]]),F, big.mark=",")` | `r format(round(arc_april2023_dec2024[[3]]),F,big.mark=",")` | `r format(round(arc_april2023_dec2024[[6]]),big.mark=",")` | 
+
+: The average rate of change in the admissions by month in the time-intervals represented in figure 10 {#tbl-arc-national}
 
 ##### Seasonal pattern   
 ```{r}
 #| label: fig-seasonal-pattern-national
 seasonal_cmpnt_national
 ```
+
+
 
 ::: {.panel-tabset}
 ## Before 2022

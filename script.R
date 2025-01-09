@@ -18,11 +18,11 @@ source("scripts/data-wrangling.R")
 # ---- Exploratory Data Analysis -----------------------------------------------
 source("scripts/eda-graphics.R")
 
-# ---- Average Rate of Change --------------------------------------------------
-source("scripts/arc.R")
-
 # ---- Decomposition  ----------------------------------------------------------
 source("scripts/decomposition.R")
+
+# ---- Average Rate of Change --------------------------------------------------
+source("scripts/arc.R")
 
 # ---- Modeling  ---------------------------------------------------------------
 source("scripts/modeling.R")

@@ -13,6 +13,8 @@ format:
       chapters: true
     toc-title: Contents
     code-links: repo
+    footnotes-hover: true
+    reference-location: section
     execute:
       eval: true
       echo: false

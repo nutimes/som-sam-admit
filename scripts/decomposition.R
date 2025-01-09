@@ -39,13 +39,9 @@ na |>
 
 ### Get components ----
 cmpnts_national <- na |> 
+  mutate(admissions = box_cox(x = admissions, lambda = lambda_national)) |> 
   model(
-    STL(
-      box_cox(
-        x = admissions, 
-        lambda = lambda_national
-      ) ~ trend(window = 9) + season(window = 7)
-    )
+    STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |> 
   components()
 
@@ -214,14 +210,10 @@ mo |>
 
 #### Get components ----
 cmpnts_pastoral <- mo |> 
+  mutate(admissions = box_cox(x = admissions, lambda = lambda_pastoral)) |> 
   filter(lsystems == "Pastoral") |> 
   model(
-    STL(
-      box_cox(
-        x = admissions, 
-        lambda = lambda_pastoral
-      ) ~ trend(window = 9) + season(window = 7)
-    )
+    STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |> 
   components()
 
@@ -293,13 +285,9 @@ seasonal_cmpnt_pastoral_a2022 <- cmpnts_pastoral |>
 #### Get components ----
 cmpnts_agropastoral <- mo |> 
   filter(lsystems == "Agropastoral") |> 
+  mutate(admissions = box_cox(x = admissions, lambda = lambda_agropastoral)) |> 
   model(
-    STL(
-      box_cox(
-        x = admissions, 
-        lambda = lambda_agropastoral
-      ) ~ trend(window = 9) + season(window = 7)
-    )
+    STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |> 
   components()
 
@@ -370,13 +358,9 @@ seasonal_cmpnt_agropastoral_a2022 <- cmpnts_agropastoral |>
 #### Get components ----
 cmpnts_riverine <- mo |> 
   filter(lsystems == "Riverine") |> 
+  mutate(admissions = box_cox(x = admissions, lambda = lambda_rivernine)) |> 
   model(
-    STL(
-      box_cox(
-        x = admissions, 
-        lambda = lambda_rivernine
-      ) ~ trend(window = 9) + season(window = 7)
-    )
+    STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |> 
   components()
 
@@ -447,13 +431,9 @@ seasonal_cmpnt_riverine_a2022 <- cmpnts_riverine |>
 #### Get component ----
 cmpnts_urban_idps <- mo |> 
   filter(lsystems == "Urban/IDPs") |> 
+  mutate(admissions = box_cox(x = admissions, lambda = lambda_agropastoral)) |> 
   model(
-    STL(
-      box_cox(
-        x = admissions, 
-        lambda = lambda_urban_idps
-      ) ~ trend(window = 9) + season(window = 7)
-    )
+    STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |> 
   components()
 

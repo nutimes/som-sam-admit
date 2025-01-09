@@ -76,32 +76,35 @@ The repository is structured in the following way:
   rate is defined as the number of catchment areas that submitted their
   reported in a given month, divided by the overall number of catchment
   areas that are expected to report.
-- `R/`: A set of `R` scripts used for the analysis. These are split into
-  different files, based on the specific objective they address:
-  - `01-data-wrangling.R`: load required libraries, then data and then
+- `R/`: some handy user-defined functions to comply with the principle
+  of DRY.  
+- `reports/`: The analysis report.
+- `scripts/`: A set of `R` scripts used for the analysis. These are
+  split into different files, based on the specific objective they
+  address:
+  - `data-wrangling.R`: load required libraries, then data and then
     wrangle it.
-  - `02-eda-graphics.R`: graphical exploratory data analysis.
-  - `03-arc.R`: calculate the average rate of change of the trend.
-  - `04-decomposition.R`: decompose the time series into trend, seasonal
+  - `eda-graphics.R`: graphical exploratory data analysis.
+  - `decomposition.R`: decompose the time series into trend, seasonal
     effect, and ramainder.
-  - `05-modeling.R:` fit a time series model.
-  - `utils.R`: some handy user-defined functions to comply with the
-    principle of DRY.
+  - `arc.R`: calculate the average rate of change of the trend.
+  - `modeling.R:` fit a time series model.
 
   The following workflow is recommended:
 
 ``` mermaid
     flowchart LR
-    A[Run 01-data-wrangling.R] 
-    B(Run 02-eda-graphics.R)
-    C(Run 03-arc.R)
-    D(Run 04-decomposition.R)
+    A[Run data-wrangling.R] 
+    B(Run eda-graphics.R)
+    C(Run decomposition.R)
+    D(Run arc.R)
     E(Run 05-modeling.R)
 
     A --> B --> C --> D --> E
 ```
 
-- `outputs/`: analysis report.
+The above flowchart can be implemented simply by running the `scrip.R`
+file.
 
 ## Reproducibility information
 

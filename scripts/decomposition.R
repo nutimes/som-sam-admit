@@ -142,7 +142,7 @@ lambda_agropastoral <- mo |>
   pull(lambda_guerrero)
 
 #### For Riverine ----
-lambda_rivernine <- mo |> 
+lambda_riverine <- mo |> 
   filter(lsystems == "Riverine") |> 
   features(
     .var = admissions,
@@ -187,7 +187,7 @@ mo |>
   autoplot(
     box_cox(
       x = admissions, 
-      lambda = lambda_rivernine
+      lambda = lambda_riverine
     )
   )
 
@@ -360,7 +360,7 @@ seasonal_cmpnt_agropastoral_a2022 <- cmpnts_agropastoral |>
 #### Get components ----
 cmpnts_riverine <- mo |> 
   filter(lsystems == "Riverine") |> 
-  mutate(admissions = box_cox(x = admissions, lambda = lambda_rivernine)) |> 
+  mutate(admissions = box_cox(x = admissions, lambda = lambda_riverine)) |> 
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |> 

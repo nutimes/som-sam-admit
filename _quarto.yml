@@ -7,7 +7,7 @@ format:
     theme: 
       dark: darkly
     toc: true
-    toc-depth: 3
+    toc-depth: 5
     toc-expand: true
     crossref: 
       chapters: true

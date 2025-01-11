@@ -102,7 +102,8 @@ Results will first be presented and described for data grouped at national level
 source("script.R")
 ```
 
-### Overview of how admissions changed over time with data grouped at national level {#sec-overview-national}  
+### A glimpse on the evolution of admissions over time {#sec-glimpse-national}  
+#### At National-level  
 The figure displays the total number of SAM cases admitted into treatment programs in Somalia over six years, from January 2019 to December 2024, on a continuous monthly scale. It highlights a shifting trend over time: a relatively stable period before 2022, followed by a significant rise, and then a consistent decline beginning in 2023. Additionally, the figure reveals an irregular seasonal pattern, characterized by fluctuations (ups and downs) in admissions, with the amplitude of the peaks varying over time.
 
 ```{r}
@@ -110,9 +111,7 @@ The figure displays the total number of SAM cases admitted into treatment progra
 tsplot_national
 ```
 
-While this figure gives a glimpse of the underlying pattern of the trend and the seasonal variation of admissions over time, these components are further analyzed and described in detail in the following sections.. 
-
-#### An overview of the seasonal variation  
+##### A glimpse on the seasonal variation  
 @fig-seasonal-plot-national displays the evolution of admissions across months(x-axis) by year (y-axis). Each line represents a year along the months. 
 
 From this figure, it is starting to be seen, with some clarity, the seasonal variation. Two patterns can be spotted from the figure:  
@@ -120,9 +119,6 @@ From this figure, it is starting to be seen, with some clarity, the seasonal var
   1. Before 2022, the seasonal variation seemed to be regular each year, with a relatively shallow amplitude between each lines.  
   2. As of 2022, both the amplitude between lines, as well as 
 
-::: {.callout-note}
-2022 was the year when Somalia was hit by a severe drought, and with that, most areas had been classified under the Risk of Famine, and two districts projected to be in Famine situation in 2022 [@ipcmanual].
-:::
 ```{r}
 #| label: fig-seasonal-plot-national
 ssnplot_national
@@ -144,7 +140,7 @@ ssplot_national_a2022
 ```
 :::
 
-### Subseries  
+###### Subseries  
 The figure below illustrates the monthly evolution of admissions over the years, highlighting seasonal patterns and long-term trends. The blue horizontal line indicates the average number of admissions per month across all years.
 
 Two key patterns emerge:  
@@ -177,9 +173,7 @@ sbsplot_national_a2022
 ```
 :::
 
-### Overview of how admissions changed by over time by livelihood system
-#### Distribution of the number of districts per livelihood system
-
+#### By livelihood systems  
 The Majority of the districts in Somalia are pastoral (34 districts), followed by agropastoral (19 districts) @tbl-lsystem-districts. The table counts districts after excluding those with missing values, as described in @sec-data-wrangling.
 
 | Livelihood system | Number of districts |
@@ -191,23 +185,24 @@ The Majority of the districts in Somalia are pastoral (34 districts), followed b
 
 : Number of districts in each livelihood system {#tbl-lsystem-districts}
 
-#### How admissions changed over time 
-
 Similar to @fig-timeplot-national, figure 7 shows the evolution of admissions over time, however, this time the data split into the four livelihood systems.  
 
-All in all, the admissions in each livelihood system seem to follow the same pattern as that described in @sec-overview-national.
+All in all, the admissions in each livelihood system seem to follow the same pattern as that described in @sec-glimpse-national.
 
 ```{r}
 #| label: fig-timeplot-lsystem
 tsplot_lsysttem
 ```
 
+::: {.callout-note}
+While this figure gives a glimpse of the underlying pattern of the trend and the seasonal variation of admissions over time, these components are further analyzed and described in detail in the following sections.
+:::
 {{< pagebreak >}}
 
-### Identifying the trends and seasonal patterns in admissions over time  
+### Unveiling the Trend and Seasonal Patterns in Admissions  
 A time series can exhibit a variety of underlying patterns that may not be easliy visible from a regular time plot. By decomposing the time series into its constituent components, these hidden patterns can be brought to light. The following sections reveal the extracted patterns from the admissions data, beginning with the national-level analysis, followed by insights at the livelihood system. 
 
-#### At National level  
+#### At National-level  
 In @fig-cmpnts-national, the first graph (top-down) is the whole data (the admissions). This is the same graph shown in @fig-timeplot-national. The second graph is the **trend pattern alone** over time. The third graph is **seasonal pattern alone** over time after removing the trend. The fourth graph represents any other variation in the admissions that is not caused by the trend or by the seasonality.  
 
 ```{r}
@@ -215,42 +210,37 @@ In @fig-cmpnts-national, the first graph (top-down) is the whole data (the admis
 cmpnts_plot_national
 ```
 
-##### The trend component 
+##### Analyzing the trend component 
 
-All in all, as highlighted in the overview of admissions (@sec-overview-national), the trend pattern demonstrates distinct characteristics. In terms of **shape**, it is non-linear. Regarding **stability**, the trend evolves over time, indicating a dynamic rather than stable pattern. In terms of **direction**, it exhibits an notable rise in admissions starting in the last quarter of 2021, followed by a decline that started to decline in 2023.  
+All in all, as highlighted in the overview of admissions (@sec-glimpse-national), the trend pattern demonstrates distinct characteristics. In terms of **shape**, it is non-linear. Regarding **stability**, the trend evolves over time, indicating a dynamic rather than stable pattern. In terms of **direction**, it exhibits an notable rise in admissions starting in the last quarter of 2021, followed by a decline that started to decline in 2023.  
 
-###### The ARC of the admissions in the times the slope of the admissions changed remarkably
+The figure below illustrates the trend line split into the times when there was a significant change in the direction of the trend over time.
 
 ```{r}
 #| label: fig-piecewise-slopes
-#| fig-cap: "Trend line in pieces"
+#| fig-cap: "Periods of significant shifts in trend direction"
 #| fig-subcap: 
-#|   - "Slope Jan-Jun 2019"
-#|   - "Slope Jul-Oct 2019"
-#|   - "Slope Nov 2019-Feb 2020"
-#|   - "Slope Mar 2020-Jan 2021"
-#|   - "Slope Feb 2021-Mar 2023"
-#|   - "Slope Apr 2023-Dec 2024"
+#|   - "Jan-Jun 2019"
+#|   - "Jul-Oct 2019"
+#|   - "Nov 2019-Feb 2020"
+#|   - "Mar 2020-Jan 2021"
+#|   - "Feb 2021-Mar 2023"
+#|   - "Apr 2023-Dec 2024"
 #| layout-ncol: 3
 #| layout-nrow: 2
 
 slope_beforeJul2019
-
 slope_aug2019_oct2019
-
 slope_nov2019_feb2020
-
 slope_mar2020_jan2021
-
 slope_feb2021_mar2023
-
 slope_april2023_dec2024
 ```
 
-Given the notable fluctuations observed in the pattern during specific time periods, an average rate of change (ARC) [^1] [@arc] was calculated for each segment of the slopes described above. The results are summarized in @tbl-arc-national.
+The average rate of change (ARC) [^1] [@arc] was calculated for each slope. The results are summarized in @tbl-arc-national.
 
-::: {.callout-note}
-## How to read the table 2 in conjuntion with figure 10 
+::: {#nte-read-arc .callout-note}
+## How to read the table 2 in conjuntion with figure 10
 
 **Example 1: increase**  
 In slope (a), the trend starts in January 2019 with an average admission of `r format(round(arc_beforeJul2019[[1]]),F,big.mark=",")` cases. It increased to an average admission of `r format(round(arc_beforeJul2019[[3]]),F,big.mark=",")` cases by June of the same year. Between this period of `r arc_beforeJul2019[[5]]` months, the admissions increased by an average of `r round(arc_beforeJul2019[[6]])` cases each month.
@@ -270,12 +260,14 @@ In slope (e), the trend starts in April 2023, with an average of admission of `r
 | (e) | `r arc_feb2021_mar2023[[5]]` | `r format(round(arc_feb2021_mar2023[[1]]),F,big.mark=",")` | `r format(round(arc_feb2021_mar2023[[3]]),F, big.mark=",")` | `r format(round(arc_feb2021_mar2023[[6]]),big.mark=",")` | 
 | (f) | `r arc_april2023_dec2024[[5]]` | `r format(round(arc_april2023_dec2024[[1]]),F, big.mark=",")` | `r format(round(arc_april2023_dec2024[[3]]),F,big.mark=",")` | `r format(round(arc_april2023_dec2024[[6]]),big.mark=",")` | 
 
-: The average rate of change in the admissions by month in the time-intervals represented in figure 10 {#tbl-arc-national}
+: The average rate of change of admissions by month in the time-intervals represented in figure 10 {#tbl-arc-national}
 
-##### Seasonal pattern {#sec-sp-national}  
-All in all, the seasonal component of the national-level data reveals a consistent seasonal pattern in the admissions, though it is **time-varying**. The **highest peak** of admissions occurs in **May and June**, preceded by a **lower trough consistently observed in April**, starting in February. A second peak is also seen in January, following an increase in admissions starting in November.
+##### Examining the seasonal component  {#sec-sp-national}  
+All in all, the seasonal component of the national-level data reveals a consistent seasonal pattern in the admissions, though it is **time-varying**. The **highest peak** of admissions occurs in **May-June**, preceded by a **lower trough consistently observed in April**, which starts in February. The first peak occurs in January, following an increase in admissions starting in November.
 
-While the patterns remain consistent over the years, the amplitude[^2] of both the peaks and troughs has varied over time. Prior to 2022, the peak amplitude was higher, with a sharper peak, while the trough amplitude was relatively low. However, from 2022 onwards, the peak amplitude decreased, while the trough amplitude increased significantly
+While the patterns remain consistent over the years, the amplitude[^2] of both the peaks and troughs has varied over time. Prior to 2022, the peak amplitude was higher, with a sharper peak, while the trough amplitude was relatively low. However, from 2022 onwards, the peak amplitude decreased, while the trough amplitude increased significantly.  
+
+[^2]: The amplitude of a peak or trough refers to the difference between the peak or trough's value and the average trend the level. The latter is represented by zero on the y-axis of the seasonal plot. 
 
 ```{r}
 #| label: fig-seasonal-pattern-national
@@ -301,12 +293,50 @@ seasonal_cmpnt_national_a2022
 #### By Livelihood systems  
 ##### Pastoral  
 
+The figure below illustrates the components of admissions in the pastoral livelihood system, which are further detailed in the following sections. 
+
 ```{r}
 #| label: fig-cmpnts-pastoral
 cmpnts_plot_pastoral
 ```
 
-###### Seasonal pattern {#sec-sp-pastoral}   
+###### Analyzing the trend component  
+The trend’s direction has undergone six significant shifts, as illustrated below, with the ARC summarized in @tbl-arc-pastoral.
+```{r}
+#| label: fig-piecewise-slopes-pastoral
+#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-subcap: 
+#|   - "Jan-May 2019"
+#|   - "Jun-Sep 2019"
+#|   - "Oct 2019-Aug 2020"
+#|   - "Sep 2020-Apr 2021"
+#|   - "May 2021-Dec 2022"
+#|   - "Jan 2023-Dec 2024"
+#| layout-ncol: 3
+#| layout-nrow: 2
+
+slope_pastoral_beforemay2019
+slope_pastoral_jun_sep2019
+slope_pastoral_oct2019_aug2020
+slope_pastoral_sep2020_apr2021
+slope_pastoral_may2021_dec2022
+slope_pastoral_jan2023_dec2024
+```
+
+To read and interpret this table, refer to @nte-read-arc.
+
+| Slope | Time interval | Admissions~i~ | Admissions~f~ | ARC |  
+| :---: | :---: | :---: | :---: | :---: |
+| (a) | `r arc_pastoral_beforemay2019[[5]]` | `r format(round(arc_pastoral_beforemay2019[[1]]),F,big.mark=",")` | `r format(round(arc_pastoral_beforemay2019[[3]]),F,big.mark=",")` | `r round(arc_pastoral_beforemay2019[[6]])` |  
+| (b) | `r arc_pastoral_jun_sep2019[[5]]` | `r format(round(arc_pastoral_jun_sep2019[[1]]),F, big.mark=",")` | `r format(round(arc_pastoral_jun_sep2019[[3]]),F,big.mark=",")` | `r round(arc_pastoral_jun_sep2019[[6]])` | 
+| (c) | `r arc_pastoral_oct2019_aug2020[[5]]` | `r format(round(arc_pastoral_oct2019_aug2020[[1]]),F,big.mark=",")` | `r format(round(arc_pastoral_oct2019_aug2020[[3]]),F,big.mark=",")` | `r round(arc_pastoral_oct2019_aug2020[[6]])` | 
+| (d) | `r arc_pastoral_sep2020_apr2021[[5]]` | `r format(round(arc_pastoral_sep2020_apr2021[[1]]),F,big.mark=",")` | `r format(round(arc_pastoral_sep2020_apr2021[[3]]),F,big.mark=",")` | `r round(arc_pastoral_sep2020_apr2021[[6]])` | 
+| (e) | `r arc_pastoral_may2021_dec2022[[5]]` | `r format(round(arc_pastoral_may2021_dec2022[[1]]),F,big.mark=",")` | `r format(round(arc_pastoral_may2021_dec2022[[3]]),F, big.mark=",")` | `r format(round(arc_pastoral_may2021_dec2022[[6]]),big.mark=",")` | 
+| (f) | `r arc_pastoral_jan2023_dec2024[[5]]` | `r format(round(arc_pastoral_jan2023_dec2024[[1]]),F, big.mark=",")` | `r format(round(arc_pastoral_jan2023_dec2024[[3]]),F,big.mark=",")` | `r format(round(arc_pastoral_jan2023_dec2024[[6]]),big.mark=",")` | 
+
+: The average rate of change of admissions by month in the time-intervals represented in @fig-piecewise-slopes-pastoral {#tbl-arc-pastoral}  
+
+###### Examining the seasonal component  {#sec-sp-pastoral}   
 n this livelihood system, the seasonal pattern mirrors that observed in @sec-sp-national, with a few key differences. It exhibits three distinct peaks: the highest peak in May-June, a second peak in January, and a third peak in November, with the increase beginning in September. Additionally, there is a more pronounced trough in April. Notably, the seasonal patterns underwent a shift starting in 2022
 
 ```{r}
@@ -330,14 +360,46 @@ seasonal_cmpnt_pastoral_a2022
 ```
 :::
 
-##### Agropastoral
+##### Agropastoral  
+The figure below illustrates the components of admissions in the agropastoral livelihood system, which are further detailed in the following sections. 
 
 ```{r}
 #| label: fig-cmpnts-agropastoral
 cmpnts_plot_agropastoral
 ```
 
-###### Seasonal pattern   
+###### Analyzing the trend component   
+The trend’s direction has undergone four significant shifts, as illustrated below, with the ARC summarized in @tbl-arc-riverine.
+```{r}
+#| label: fig-piecewise-slopes-agropastoral
+#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-subcap: 
+#|   - "Jan 2019-Jan 2020"
+#|   - "Feb 2020-Jan 2021"
+#|   - "Feb 2021-Feb 2023"
+#|   - "Mar 2023-Dec 2024"
+#| layout-ncol: 2
+#| layout-nrow: 2
+
+slope_agropastoral_beforefeb2020
+slope_agropastoral_feb2020_jan2021
+slope_agropastoral_feb2021_feb2023
+slope_agropastoral_mar2023_dec2024
+```
+
+
+To read and interpret this table, refer to @nte-read-arc.
+
+| Slope | Time interval | Admissions~i~ | Admissions~f~ | ARC |  
+| :---: | :---: | :---: | :---: | :---: |
+| (a) | `r arc_agropastoral_beforefeb2020[[5]]` | `r format(round(arc_agropastoral_beforefeb2020[[1]]),F,big.mark=",")` | `r format(round(arc_agropastoral_beforefeb2020[[3]]),F,big.mark=",")` | `r round(arc_agropastoral_beforefeb2020[[6]])` |  
+| (b) | `r arc_agropastoral_feb2020_jan2021[[5]]` | `r format(round(arc_agropastoral_feb2020_jan2021[[1]]),F, big.mark=",")` | `r format(round(arc_agropastoral_feb2020_jan2021[[3]]),F,big.mark=",")` | `r round(arc_agropastoral_feb2020_jan2021[[6]])` | 
+| (c) | `r arc_agropastoral_feb2021_feb2023[[5]]` | `r format(round(arc_agropastoral_feb2021_feb2023[[1]]),F,big.mark=",")` | `r format(round(arc_agropastoral_feb2021_feb2023[[3]]),F,big.mark=",")` | `r round(arc_agropastoral_feb2021_feb2023[[6]])` | 
+| (d) | `r arc_agropastoral_mar2023_dec2024[[5]]` | `r format(round(arc_agropastoral_mar2023_dec2024[[1]]),F,big.mark=",")` | `r format(round(arc_agropastoral_mar2023_dec2024[[3]]),F,big.mark=",")` | `r round(arc_agropastoral_mar2023_dec2024[[6]])` | 
+
+: The average rate of change of admissions by month in the time-intervals represented in @fig-piecewise-slopes-agropastoral {#tbl-arc-agropastoral}  
+
+###### Examining the seasonal component   
 In this livelihood system, the seasonal pattern largely mirrors those described in @sec-sp-national. The highest peak is observed in May-June, with a second peak in January, beginning its rise in December. The lowest trough is also observed in April.
 
 ```{r}
@@ -361,14 +423,53 @@ seasonal_cmpnt_agropastoral_a2022
 ```
 :::
 
-##### Riverine  
+##### Riverine  {#sec-riverine}
+The figure below illustrates the components of admissions in the riverine livelihood system, which are further detailed in the following sections
 
 ```{r}
 #| label: fig-cmpnts-riverine
 cmpnts_plot_riverine
 ```
 
-###### Seasonal pattern   
+###### Analyzing the trend component  
+The trend’s direction has undergone six significant shifts, as illustrated below, with the ARC summarized in @tbl-arc-riverine
+```{r}
+#| label: fig-piecewise-slopes-riverine
+#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-subcap: 
+#|   - "Jan 2019-May 2020"
+#|   - "Jun 2019-Nov 2020"
+#|   - "Dec 2020-Apr 2021"
+#|   - "May 2021-Sep 2021"
+#|   - "Oct 2021-Aug 2023"
+#|   - "Sep 2023-Dec 2024"
+#| layout-ncol: 3
+#| layout-nrow: 2
+
+slope_riverine_beforemay2020
+slope_riverine_jun_nov2020
+slope_riverine_dec2020_apr2021
+slope_riverine_may2021_sep2021
+slope_riverine_oct2021_aug2023
+slope_riverine_sep2023_dec2024
+```
+
+
+To read and interpret this table, refer to @nte-read-arc.
+
+| Slope | Time interval | Admissions~i~ | Admissions~f~ | ARC |  
+| :---: | :---: | :---: | :---: | :---: |
+| (a) | `r arc_riverine_beforemay2020[[5]]` | `r format(round(arc_riverine_beforemay2020[[1]]),F,big.mark=",")` | `r format(round(arc_riverine_beforemay2020[[3]]),F,big.mark=",")` | `r round(arc_riverine_beforemay2020[[6]])` |  
+| (b) | `r arc_riverine_jun_nov2020[[5]]` | `r format(round(arc_riverine_jun_nov2020[[1]]),F, big.mark=",")` | `r format(round(arc_riverine_jun_nov2020[[3]]),F,big.mark=",")` | `r round(arc_riverine_jun_nov2020[[6]])` | 
+| (c) | `r arc_riverine_dec2020_apr2021[[5]]` | `r format(round(arc_riverine_dec2020_apr2021[[1]]),F,big.mark=",")` | `r format(round(arc_riverine_dec2020_apr2021[[3]]),F,big.mark=",")` | `r round(arc_riverine_dec2020_apr2021[[6]])` | 
+| (d) | `r arc_riverine_may2021_sep2021[[5]]` | `r format(round(arc_riverine_may2021_sep2021[[1]]),F,big.mark=",")` | `r format(round(arc_riverine_may2021_sep2021[[3]]),F,big.mark=",")` | `r round(arc_riverine_may2021_sep2021[[6]])` | 
+| (e) | `r arc_riverine_oct2021_aug2023[[5]]` | `r format(round(arc_riverine_oct2021_aug2023[[1]]),F,big.mark=",")` | `r format(round(arc_riverine_oct2021_aug2023[[3]]),F,big.mark=",")` | `r round(arc_riverine_oct2021_aug2023[[6]])` | 
+| (f) | `r arc_riverine_sep2023_dec2024[[5]]` | `r format(round(arc_riverine_sep2023_dec2024[[1]]),F,big.mark=",")` | `r format(round(arc_riverine_sep2023_dec2024[[3]]),F, big.mark=",")` | `r format(round(arc_riverine_sep2023_dec2024[[6]]),big.mark=",")` | 
+
+: The average rate of change of admissions by month in the time-intervals represented in @fig-piecewise-slopes-riverine {#tbl-arc-riverine}  
+
+
+###### Examining the seasonal component   
 The seasonal pattern in this livelihood system demonstrates a distinctly time-varying nature, with significant changes in amplitude, as clearly shown in the “before and as of 2022” plots.
 
 ```{r}
@@ -397,14 +498,15 @@ seasonal_cmpnt_riverine_a2022
 :::{.callout-note}
 The Riverine and Pastoral livelihood systems are the only ones where, after the drop in admissions in February, there is an increase in March before the higher trough in April.
 :::
-##### Urban/IDPs
+##### Urban/IDPs  
+The figure below illustrates the components of admissions in the Urban/IDPs livelihood system, which are further detailed in the following sections
 
 ```{r}
 #| label: fig-cmpnts-urban-idps
 cmpnts_plot_urban_idps
 ```
 
-###### Seasonal pattern   
+###### Examining the seasonal component   
 Interestingly, in the Urban/IDP livelihood system, the seasonal pattern shows that admissions in January tend to align with the trend level. From February onwards, admissions decrease to reach a lower trough in April. Between May and June, admissions rise to their higher peak, followed by a second peak in November.
 
 :::{.callout-important}

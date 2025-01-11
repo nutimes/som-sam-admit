@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Tomás Zaba">
-<meta name="dcterms.date" content="2025-01-10">
+<meta name="dcterms.date" content="2025-01-11">
 
 <title>Feature insights into Somalia’s severe acute malnutrition admissions</title>
 <style>
@@ -73,21 +73,43 @@ div.csl-indent {
    
   <ul>
   <li><a href="#context" id="toc-context" class="nav-link active" data-scroll-target="#context">Context</a>
-  <ul class="collapse">
-  <li><a href="#what-does-this-analysis-add" id="toc-what-does-this-analysis-add" class="nav-link" data-scroll-target="#what-does-this-analysis-add">What does this analysis add?</a></li>
+  <ul>
+  <li><a href="#what-does-this-analysis-add" id="toc-what-does-this-analysis-add" class="nav-link" data-scroll-target="#what-does-this-analysis-add">What does this analysis add?</a>
+  <ul>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">Data source</a></li>
   <li><a href="#sec-data-wrangling" id="toc-sec-data-wrangling" class="nav-link" data-scroll-target="#sec-data-wrangling">Data wrangling</a></li>
   <li><a href="#analysis-approach" id="toc-analysis-approach" class="nav-link" data-scroll-target="#analysis-approach">Analysis approach</a></li>
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul>
+  <li><a href="#sec-glimpse-national" id="toc-sec-glimpse-national" class="nav-link" data-scroll-target="#sec-glimpse-national">A glimpse on the evolution of admissions over time</a>
+  <ul>
+  <li><a href="#at-national-level" id="toc-at-national-level" class="nav-link" data-scroll-target="#at-national-level">At National-level</a>
   <ul class="collapse">
-  <li><a href="#sec-overview-national" id="toc-sec-overview-national" class="nav-link" data-scroll-target="#sec-overview-national">Overview of how admissions changed over time with data grouped at national level</a></li>
-  <li><a href="#subseries" id="toc-subseries" class="nav-link" data-scroll-target="#subseries">Subseries</a></li>
-  <li><a href="#overview-of-how-admissions-changed-by-over-time-by-livelihood-system" id="toc-overview-of-how-admissions-changed-by-over-time-by-livelihood-system" class="nav-link" data-scroll-target="#overview-of-how-admissions-changed-by-over-time-by-livelihood-system">Overview of how admissions changed by over time by livelihood system</a></li>
-  <li><a href="#identifying-the-trends-and-seasonal-patterns-in-admissions-over-time" id="toc-identifying-the-trends-and-seasonal-patterns-in-admissions-over-time" class="nav-link" data-scroll-target="#identifying-the-trends-and-seasonal-patterns-in-admissions-over-time">Identifying the trends and seasonal patterns in admissions over time</a></li>
+  <li><a href="#a-glimpse-on-the-seasonal-variation" id="toc-a-glimpse-on-the-seasonal-variation" class="nav-link" data-scroll-target="#a-glimpse-on-the-seasonal-variation">A glimpse on the seasonal variation</a></li>
+  </ul></li>
+  <li><a href="#by-livelihood-systems" id="toc-by-livelihood-systems" class="nav-link" data-scroll-target="#by-livelihood-systems">By livelihood systems</a></li>
+  </ul></li>
+  <li><a href="#unveiling-the-trend-and-seasonal-patterns-in-admissions" id="toc-unveiling-the-trend-and-seasonal-patterns-in-admissions" class="nav-link" data-scroll-target="#unveiling-the-trend-and-seasonal-patterns-in-admissions">Unveiling the Trend and Seasonal Patterns in Admissions</a>
+  <ul>
+  <li><a href="#at-national-level-1" id="toc-at-national-level-1" class="nav-link" data-scroll-target="#at-national-level-1">At National-level</a>
+  <ul class="collapse">
+  <li><a href="#analyzing-the-trend-component" id="toc-analyzing-the-trend-component" class="nav-link" data-scroll-target="#analyzing-the-trend-component">Analyzing the trend component</a></li>
+  <li><a href="#sec-sp-national" id="toc-sec-sp-national" class="nav-link" data-scroll-target="#sec-sp-national">Examining the seasonal component</a></li>
+  </ul></li>
+  <li><a href="#by-livelihood-systems-1" id="toc-by-livelihood-systems-1" class="nav-link" data-scroll-target="#by-livelihood-systems-1">By Livelihood systems</a>
+  <ul class="collapse">
+  <li><a href="#pastoral" id="toc-pastoral" class="nav-link" data-scroll-target="#pastoral">Pastoral</a></li>
+  <li><a href="#agropastoral" id="toc-agropastoral" class="nav-link" data-scroll-target="#agropastoral">Agropastoral</a></li>
+  <li><a href="#sec-riverine" id="toc-sec-riverine" class="nav-link" data-scroll-target="#sec-riverine">Riverine</a></li>
+  <li><a href="#urbanidps" id="toc-urbanidps" class="nav-link" data-scroll-target="#urbanidps">Urban/IDPs</a></li>
+  </ul></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/nutimes/som-sam-admit/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a></li></ul></div></nav>
@@ -114,7 +136,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 10, 2025</p>
+      <p class="date">January 11, 2025</p>
     </div>
   </div>
   
@@ -239,8 +261,10 @@ Note
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
 <p>Results will first be presented and described for data grouped at national level, and then followed by the livelihood systems.</p>
-<section id="sec-overview-national" class="level3">
-<h3 class="anchored" data-anchor-id="sec-overview-national">Overview of how admissions changed over time with data grouped at national level</h3>
+<section id="sec-glimpse-national" class="level3">
+<h3 class="anchored" data-anchor-id="sec-glimpse-national">A glimpse on the evolution of admissions over time</h3>
+<section id="at-national-level" class="level4">
+<h4 class="anchored" data-anchor-id="at-national-level">At National-level</h4>
 <p>The figure displays the total number of SAM cases admitted into treatment programs in Somalia over six years, from January 2019 to December 2024, on a continuous monthly scale. It highlights a shifting trend over time: a relatively stable period before 2022, followed by a significant rise, and then a consistent decline beginning in 2023. Additionally, the figure reveals an irregular seasonal pattern, characterized by fluctuations (ups and downs) in admissions, with the amplitude of the peaks varying over time.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -256,9 +280,8 @@ Figure&nbsp;1
 </div>
 </div>
 </div>
-<p>While this figure gives a glimpse of the underlying pattern of the trend and the seasonal variation of admissions over time, these components are further analyzed and described in detail in the following sections..</p>
-<section id="an-overview-of-the-seasonal-variation" class="level4">
-<h4 class="anchored" data-anchor-id="an-overview-of-the-seasonal-variation">An overview of the seasonal variation</h4>
+<section id="a-glimpse-on-the-seasonal-variation" class="level5">
+<h5 class="anchored" data-anchor-id="a-glimpse-on-the-seasonal-variation">A glimpse on the seasonal variation</h5>
 <p><a href="#fig-seasonal-plot-national" class="quarto-xref">Figure&nbsp;2</a> displays the evolution of admissions across months(x-axis) by year (y-axis). Each line represents a year along the months.</p>
 <p>From this figure, it is starting to be seen, with some clarity, the seasonal variation. Two patterns can be spotted from the figure:</p>
 <ol type="1">
@@ -266,19 +289,6 @@ Figure&nbsp;1
 </li>
 <li>As of 2022, both the amplitude between lines, as well as</li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>2022 was the year when Somalia was hit by a severe drought, and with that, most areas had been classified under the Risk of Famine, and two districts projected to be in Famine situation in 2022 <span class="citation" data-cites="ipcmanual">(<a href="#ref-ipcmanual" role="doc-biblioref">IPC Global Partners 2021</a>)</span>.</p>
-</div>
-</div>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-seasonal-plot-national" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
@@ -331,10 +341,8 @@ Figure&nbsp;4
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="subseries" class="level3">
-<h3 class="anchored" data-anchor-id="subseries">Subseries</h3>
+<section id="subseries" class="level6">
+<h6 class="anchored" data-anchor-id="subseries">Subseries</h6>
 <p>The figure below illustrates the monthly evolution of admissions over the years, highlighting seasonal patterns and long-term trends. The blue horizontal line indicates the average number of admissions per month across all years.</p>
 <p>Two key patterns emerge:</p>
 <ol type="1">
@@ -407,10 +415,10 @@ Figure&nbsp;7
 </div>
 </div>
 </section>
-<section id="overview-of-how-admissions-changed-by-over-time-by-livelihood-system" class="level3">
-<h3 class="anchored" data-anchor-id="overview-of-how-admissions-changed-by-over-time-by-livelihood-system">Overview of how admissions changed by over time by livelihood system</h3>
-<section id="distribution-of-the-number-of-districts-per-livelihood-system" class="level4">
-<h4 class="anchored" data-anchor-id="distribution-of-the-number-of-districts-per-livelihood-system">Distribution of the number of districts per livelihood system</h4>
+</section>
+</section>
+<section id="by-livelihood-systems" class="level4">
+<h4 class="anchored" data-anchor-id="by-livelihood-systems">By livelihood systems</h4>
 <p>The Majority of the districts in Somalia are pastoral (34 districts), followed by agropastoral (19 districts) <a href="#tbl-lsystem-districts" class="quarto-xref">Table&nbsp;1</a>. The table counts districts after excluding those with missing values, as described in <a href="#sec-data-wrangling" class="quarto-xref">Section&nbsp;0.2.2</a>.</p>
 <div id="tbl-lsystem-districts" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -447,11 +455,8 @@ Table&nbsp;1: Number of districts in each livelihood system
 </div>
 </figure>
 </div>
-</section>
-<section id="how-admissions-changed-over-time" class="level4">
-<h4 class="anchored" data-anchor-id="how-admissions-changed-over-time">How admissions changed over time</h4>
 <p>Similar to <a href="#fig-timeplot-national" class="quarto-xref">Figure&nbsp;1</a>, figure 7 shows the evolution of admissions over time, however, this time the data split into the four livelihood systems.</p>
-<p>All in all, the admissions in each livelihood system seem to follow the same pattern as that described in <a href="#sec-overview-national" class="quarto-xref">Section&nbsp;0.3.1</a>.</p>
+<p>All in all, the admissions in each livelihood system seem to follow the same pattern as that described in <a href="#sec-glimpse-national" class="quarto-xref">Section&nbsp;0.3.1</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-timeplot-lsystem" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
@@ -466,14 +471,27 @@ Figure&nbsp;8
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>While this figure gives a glimpse of the underlying pattern of the trend and the seasonal variation of admissions over time, these components are further analyzed and described in detail in the following sections.</p>
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </section>
 </section>
-<section id="identifying-the-trends-and-seasonal-patterns-in-admissions-over-time" class="level3">
-<h3 class="anchored" data-anchor-id="identifying-the-trends-and-seasonal-patterns-in-admissions-over-time">Identifying the trends and seasonal patterns in admissions over time</h3>
+<section id="unveiling-the-trend-and-seasonal-patterns-in-admissions" class="level3">
+<h3 class="anchored" data-anchor-id="unveiling-the-trend-and-seasonal-patterns-in-admissions">Unveiling the Trend and Seasonal Patterns in Admissions</h3>
 <p>A time series can exhibit a variety of underlying patterns that may not be easliy visible from a regular time plot. By decomposing the time series into its constituent components, these hidden patterns can be brought to light. The following sections reveal the extracted patterns from the admissions data, beginning with the national-level analysis, followed by insights at the livelihood system.</p>
-<section id="at-national-level" class="level4">
-<h4 class="anchored" data-anchor-id="at-national-level">At National level</h4>
+<section id="at-national-level-1" class="level4">
+<h4 class="anchored" data-anchor-id="at-national-level-1">At National-level</h4>
 <p>In <a href="#fig-cmpnts-national" class="quarto-xref">Figure&nbsp;9</a>, the first graph (top-down) is the whole data (the admissions). This is the same graph shown in <a href="#fig-timeplot-national" class="quarto-xref">Figure&nbsp;1</a>. The second graph is the <strong>trend pattern alone</strong> over time. The third graph is <strong>seasonal pattern alone</strong> over time after removing the trend. The fourth graph represents any other variation in the admissions that is not caused by the trend or by the seasonality.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -489,11 +507,10 @@ Figure&nbsp;9
 </div>
 </div>
 </div>
-<section id="the-trend-component" class="level5">
-<h5 class="anchored" data-anchor-id="the-trend-component">The trend component</h5>
-<p>All in all, as highlighted in the overview of admissions (<a href="#sec-overview-national" class="quarto-xref">Section&nbsp;0.3.1</a>), the trend pattern demonstrates distinct characteristics. In terms of <strong>shape</strong>, it is non-linear. Regarding <strong>stability</strong>, the trend evolves over time, indicating a dynamic rather than stable pattern. In terms of <strong>direction</strong>, it exhibits an notable rise in admissions starting in the last quarter of 2021, followed by a decline that started to decline in 2023.</p>
-<section id="the-arc-of-the-admissions-in-the-times-the-slope-of-the-admissions-changed-remarkably" class="level6">
-<h6 class="anchored" data-anchor-id="the-arc-of-the-admissions-in-the-times-the-slope-of-the-admissions-changed-remarkably">The ARC of the admissions in the times the slope of the admissions changed remarkably</h6>
+<section id="analyzing-the-trend-component" class="level5">
+<h5 class="anchored" data-anchor-id="analyzing-the-trend-component">Analyzing the trend component</h5>
+<p>All in all, as highlighted in the overview of admissions (<a href="#sec-glimpse-national" class="quarto-xref">Section&nbsp;0.3.1</a>), the trend pattern demonstrates distinct characteristics. In terms of <strong>shape</strong>, it is non-linear. Regarding <strong>stability</strong>, the trend evolves over time, indicating a dynamic rather than stable pattern. In terms of <strong>direction</strong>, it exhibits an notable rise in admissions starting in the last quarter of 2021, followed by a decline that started to decline in 2023.</p>
+<p>The figure below illustrates the trend line split into the times when there was a significant change in the direction of the trend over time.</p>
 <div id="fig-piecewise-slopes" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-piecewise-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -505,7 +522,7 @@ Figure&nbsp;9
 <img src="report_files/figure-html/fig-piecewise-slopes-1.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Slope Jan-Jun 2019
+(a) Jan-Jun 2019
 </figcaption>
 </figure>
 </div>
@@ -517,7 +534,7 @@ Figure&nbsp;9
 <img src="report_files/figure-html/fig-piecewise-slopes-2.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Slope Jul-Oct 2019
+(b) Jul-Oct 2019
 </figcaption>
 </figure>
 </div>
@@ -529,7 +546,7 @@ Figure&nbsp;9
 <img src="report_files/figure-html/fig-piecewise-slopes-3.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(c) Slope Nov 2019-Feb 2020
+(c) Nov 2019-Feb 2020
 </figcaption>
 </figure>
 </div>
@@ -543,7 +560,7 @@ Figure&nbsp;9
 <img src="report_files/figure-html/fig-piecewise-slopes-4.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(d) Slope Mar 2020-Jan 2021
+(d) Mar 2020-Jan 2021
 </figcaption>
 </figure>
 </div>
@@ -555,7 +572,7 @@ Figure&nbsp;9
 <img src="report_files/figure-html/fig-piecewise-slopes-5.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(e) Slope Feb 2021-Mar 2023
+(e) Feb 2021-Mar 2023
 </figcaption>
 </figure>
 </div>
@@ -567,7 +584,7 @@ Figure&nbsp;9
 <img src="report_files/figure-html/fig-piecewise-slopes-6.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(f) Slope Apr 2023-Dec 2024
+(f) Apr 2023-Dec 2024
 </figcaption>
 </figure>
 </div>
@@ -575,18 +592,18 @@ Figure&nbsp;9
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-piecewise-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: Trend line in pieces
+Figure&nbsp;10: Periods of significant shifts in trend direction
 </figcaption>
 </figure>
 </div>
-<p>Given the notable fluctuations observed in the pattern during specific time periods, an average rate of change (ARC) <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="citation" data-cites="arc">(<a href="#ref-arc" role="doc-biblioref">Kelly 2029</a>)</span> was calculated for each segment of the slopes described above. The results are summarized in <a href="#tbl-arc-national" class="quarto-xref">Table&nbsp;2</a>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<p>The average rate of change (ARC) <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="citation" data-cites="arc">(<a href="#ref-arc" role="doc-biblioref">Kelly 2029</a>)</span> was calculated for each slope. The results are summarized in <a href="#tbl-arc-national" class="quarto-xref">Table&nbsp;2</a>.</p>
+<div id="nte-read-arc" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-How to read the table 2 in conjuntion with figure 10
+Note&nbsp;1: How to read the table 2 in conjuntion with figure 10
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -599,7 +616,7 @@ In slope (e), the trend starts in April 2023, with an average of admission of 52
 <div id="tbl-arc-national" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-arc-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: The average rate of change in the admissions by month in the time-intervals represented in figure 10
+Table&nbsp;2: The average rate of change of admissions by month in the time-intervals represented in figure 10
 </figcaption>
 <div aria-describedby="tbl-arc-national-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -667,11 +684,10 @@ Table&nbsp;2: The average rate of change in the admissions by month in the time-
 </ol>
 </aside>
 </section>
-</section>
 <section id="sec-sp-national" class="level5">
-<h5 class="anchored" data-anchor-id="sec-sp-national">Seasonal pattern</h5>
-<p>All in all, the seasonal component of the national-level data reveals a consistent seasonal pattern in the admissions, though it is <strong>time-varying</strong>. The <strong>highest peak</strong> of admissions occurs in <strong>May and June</strong>, preceded by a <strong>lower trough consistently observed in April</strong>, starting in February. A second peak is also seen in January, following an increase in admissions starting in November.</p>
-<p>While the patterns remain consistent over the years, the amplitude[^2] of both the peaks and troughs has varied over time. Prior to 2022, the peak amplitude was higher, with a sharper peak, while the trough amplitude was relatively low. However, from 2022 onwards, the peak amplitude decreased, while the trough amplitude increased significantly</p>
+<h5 class="anchored" data-anchor-id="sec-sp-national">Examining the seasonal component</h5>
+<p>All in all, the seasonal component of the national-level data reveals a consistent seasonal pattern in the admissions, though it is <strong>time-varying</strong>. The <strong>highest peak</strong> of admissions occurs in <strong>May-June</strong>, preceded by a <strong>lower trough consistently observed in April</strong>, which starts in February. The first peak occurs in January, following an increase in admissions starting in November.</p>
+<p>While the patterns remain consistent over the years, the amplitude<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> of both the peaks and troughs has varied over time. Prior to 2022, the peak amplitude was higher, with a sharper peak, while the trough amplitude was relatively low. However, from 2022 onwards, the peak amplitude decreased, while the trough amplitude increased significantly.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-seasonal-pattern-national" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
@@ -724,12 +740,19 @@ Figure&nbsp;13
 </div>
 </div>
 </div>
+<aside id="footnotes-2" class="footnotes footnotes-end-of-section" role="doc-footnote">
+<hr>
+<ol start="2">
+<li id="fn2"><p>The amplitude of a peak or trough refers to the difference between the peak or trough’s value and the average trend the level. The latter is represented by zero on the y-axis of the seasonal plot.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
 </section>
 </section>
-<section id="by-livelihood-systems" class="level4">
-<h4 class="anchored" data-anchor-id="by-livelihood-systems">By Livelihood systems</h4>
+<section id="by-livelihood-systems-1" class="level4">
+<h4 class="anchored" data-anchor-id="by-livelihood-systems-1">By Livelihood systems</h4>
 <section id="pastoral" class="level5">
 <h5 class="anchored" data-anchor-id="pastoral">Pastoral</h5>
+<p>The figure below illustrates the components of admissions in the pastoral livelihood system, which are further detailed in the following sections.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-cmpnts-pastoral" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
@@ -744,9 +767,163 @@ Figure&nbsp;14
 </div>
 </div>
 </div>
+<section id="analyzing-the-trend-component-1" class="level6">
+<h6 class="anchored" data-anchor-id="analyzing-the-trend-component-1">Analyzing the trend component</h6>
+<p>The trend’s direction has undergone six significant shifts, as illustrated below, with the ARC summarized in <a href="#tbl-arc-pastoral" class="quarto-xref">Table&nbsp;3</a>.</p>
+<div id="fig-piecewise-slopes-pastoral" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-piecewise-slopes-pastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-pastoral" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-pastoral-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-pastoral-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-pastoral-1.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-pastoral" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-pastoral-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Jan-May 2019
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-pastoral" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-pastoral-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-pastoral-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-pastoral-2.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-pastoral" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-pastoral-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Jun-Sep 2019
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-pastoral" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-pastoral-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-pastoral-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-pastoral-3.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-pastoral" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-pastoral-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Oct 2019-Aug 2020
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-pastoral" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-pastoral-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-pastoral-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-pastoral-4.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-pastoral" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-pastoral-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) Sep 2020-Apr 2021
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-pastoral" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-pastoral-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-pastoral-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-pastoral-5.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-pastoral" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-pastoral-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(e) May 2021-Dec 2022
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-pastoral" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-pastoral-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-pastoral-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-pastoral-6.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-pastoral" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-pastoral-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(f) Jan 2023-Dec 2024
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-piecewise-slopes-pastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Periods of significant shifts in trend direction
+</figcaption>
+</figure>
+</div>
+<p>To read and interpret this table, refer to <a href="#nte-read-arc" class="quarto-xref">Note&nbsp;1</a>.</p>
+<div id="tbl-arc-pastoral" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-arc-pastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: The average rate of change of admissions by month in the time-intervals represented in <a href="#fig-piecewise-slopes-pastoral" class="quarto-xref">Figure&nbsp;15</a>
+</figcaption>
+<div aria-describedby="tbl-arc-pastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Slope</th>
+<th style="text-align: center;">Time interval</th>
+<th style="text-align: center;">Admissions<sub>i</sub></th>
+<th style="text-align: center;">Admissions<sub>f</sub></th>
+<th style="text-align: center;">ARC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">(a)</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4,580</td>
+<td style="text-align: center;">5,218</td>
+<td style="text-align: center;">160</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(b)</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5,122</td>
+<td style="text-align: center;">4,571</td>
+<td style="text-align: center;">-184</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(c)</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">4,571</td>
+<td style="text-align: center;">5,297</td>
+<td style="text-align: center;">66</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(d)</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">5,227</td>
+<td style="text-align: center;">4,621</td>
+<td style="text-align: center;">-87</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(e)</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">4,630</td>
+<td style="text-align: center;">11,276</td>
+<td style="text-align: center;">350</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(f)</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">11,211</td>
+<td style="text-align: center;">6,784</td>
+<td style="text-align: center;">-192</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
 <section id="sec-sp-pastoral" class="level6">
-<h6 class="anchored" data-anchor-id="sec-sp-pastoral">Seasonal pattern</h6>
-<p>n this livelihood system, the seasonal pattern mirrors that observed in <a href="#sec-sp-national" class="quarto-xref">Section&nbsp;0.3.4.1.2</a>, with a few key differences. It exhibits three distinct peaks: the highest peak in May-June, a second peak in January, and a third peak in November, with the increase beginning in September. Additionally, there is a more pronounced trough in April. Notably, the seasonal patterns underwent a shift starting in 2022</p>
+<h6 class="anchored" data-anchor-id="sec-sp-pastoral">Examining the seasonal component</h6>
+<p>n this livelihood system, the seasonal pattern mirrors that observed in <a href="#sec-sp-national" class="quarto-xref">Section&nbsp;0.3.2.1.2</a>, with a few key differences. It exhibits three distinct peaks: the highest peak in May-June, a second peak in January, and a third peak in November, with the increase beginning in September. Additionally, there is a more pronounced trough in April. Notably, the seasonal patterns underwent a shift starting in 2022</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-seasonal-pattern-pastoral" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
@@ -755,13 +932,13 @@ Figure&nbsp;14
 <img src="report_files/figure-html/fig-seasonal-pattern-pastoral-1.png" id="fig-seasonal-pattern-pastoral" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-pastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15
+Figure&nbsp;16
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>As of 2022, the first high peak shifted to January (<a href="#fig-seasonal-pattern-pastoral-a2022" class="quarto-xref">Figure&nbsp;17</a>). The May-June period maintained a high peak, with an amplitude similar to the November peak, which begins in October and continues through January. From January onward, there is a gradual decline, less intense compared to the sharper decline observed in the pre-2022 pattern. Regarding the trough, its amplitude significantly increased starting in 2022.</p>
+<p>As of 2022, the first high peak shifted to January (<a href="#fig-seasonal-pattern-pastoral-a2022" class="quarto-xref">Figure&nbsp;18</a>). The May-June period maintained a high peak, with an amplitude similar to the November peak, which begins in October and continues through January. From January onward, there is a gradual decline, less intense compared to the sharper decline observed in the pre-2022 pattern. Regarding the trough, its amplitude significantly increased starting in 2022.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Before 2022</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">As of 2022</a></li></ul>
 <div class="tab-content">
@@ -774,7 +951,7 @@ Figure&nbsp;15
 <img src="report_files/figure-html/fig-seasonal-pattern-pastoral-b2022-1.png" id="fig-seasonal-pattern-pastoral-b2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-pastoral-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16
+Figure&nbsp;17
 </figcaption>
 </figure>
 </div>
@@ -790,7 +967,7 @@ Figure&nbsp;16
 <img src="report_files/figure-html/fig-seasonal-pattern-pastoral-a2022-1.png" id="fig-seasonal-pattern-pastoral-a2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-pastoral-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17
+Figure&nbsp;18
 </figcaption>
 </figure>
 </div>
@@ -803,6 +980,7 @@ Figure&nbsp;17
 </section>
 <section id="agropastoral" class="level5">
 <h5 class="anchored" data-anchor-id="agropastoral">Agropastoral</h5>
+<p>The figure below illustrates the components of admissions in the agropastoral livelihood system, which are further detailed in the following sections.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-cmpnts-agropastoral" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
@@ -811,15 +989,131 @@ Figure&nbsp;17
 <img src="report_files/figure-html/fig-cmpnts-agropastoral-1.png" id="fig-cmpnts-agropastoral" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18
+Figure&nbsp;19
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="seasonal-pattern" class="level6">
-<h6 class="anchored" data-anchor-id="seasonal-pattern">Seasonal pattern</h6>
-<p>In this livelihood system, the seasonal pattern largely mirrors those described in <a href="#sec-sp-national" class="quarto-xref">Section&nbsp;0.3.4.1.2</a>. The highest peak is observed in May-June, with a second peak in January, beginning its rise in December. The lowest trough is also observed in April.</p>
+<section id="analyzing-the-trend-component-2" class="level6">
+<h6 class="anchored" data-anchor-id="analyzing-the-trend-component-2">Analyzing the trend component</h6>
+<p>The trend’s direction has undergone four significant shifts, as illustrated below, with the ARC summarized in <a href="#tbl-arc-riverine" class="quarto-xref">Table&nbsp;5</a>.</p>
+<div id="fig-piecewise-slopes-agropastoral" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-piecewise-slopes-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-agropastoral" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-agropastoral-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-agropastoral-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-agropastoral-1.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-agropastoral" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-agropastoral-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Jan 2019-Jan 2020
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-agropastoral" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-agropastoral-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-agropastoral-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-agropastoral-2.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-agropastoral" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-agropastoral-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Feb 2020-Jan 2021
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-agropastoral" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-agropastoral-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-agropastoral-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-agropastoral-3.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-agropastoral" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-agropastoral-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Feb 2021-Feb 2023
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-agropastoral" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-agropastoral-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-agropastoral-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-agropastoral-4.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-agropastoral" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-agropastoral-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) Mar 2023-Dec 2024
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-piecewise-slopes-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: Periods of significant shifts in trend direction
+</figcaption>
+</figure>
+</div>
+<p>To read and interpret this table, refer to <a href="#nte-read-arc" class="quarto-xref">Note&nbsp;1</a>.</p>
+<div id="tbl-arc-agropastoral" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-arc-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: The average rate of change of admissions by month in the time-intervals represented in <a href="#fig-piecewise-slopes-agropastoral" class="quarto-xref">Figure&nbsp;20</a>
+</figcaption>
+<div aria-describedby="tbl-arc-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Slope</th>
+<th style="text-align: center;">Time interval</th>
+<th style="text-align: center;">Admissions<sub>i</sub></th>
+<th style="text-align: center;">Admissions<sub>f</sub></th>
+<th style="text-align: center;">ARC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">(a)</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">6,512</td>
+<td style="text-align: center;">7,156</td>
+<td style="text-align: center;">54</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(b)</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">7,156</td>
+<td style="text-align: center;">4,987</td>
+<td style="text-align: center;">-181</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(c)</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">5,141</td>
+<td style="text-align: center;">15,805</td>
+<td style="text-align: center;">444</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(d)</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">15,768</td>
+<td style="text-align: center;">8,874</td>
+<td style="text-align: center;">-328</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="examining-the-seasonal-component" class="level6">
+<h6 class="anchored" data-anchor-id="examining-the-seasonal-component">Examining the seasonal component</h6>
+<p>In this livelihood system, the seasonal pattern largely mirrors those described in <a href="#sec-sp-national" class="quarto-xref">Section&nbsp;0.3.2.1.2</a>. The highest peak is observed in May-June, with a second peak in January, beginning its rise in December. The lowest trough is also observed in April.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-seasonal-pattern-agropastoral" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
@@ -828,13 +1122,13 @@ Figure&nbsp;18
 <img src="report_files/figure-html/fig-seasonal-pattern-agropastoral-1.png" id="fig-seasonal-pattern-agropastoral" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-agropastoral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19
+Figure&nbsp;21
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>As shown in <a href="#fig-seasonal-pattern-agropastoral-b2022" class="quarto-xref">Figure&nbsp;20</a>, before 2022, the seasonal pattern exhibited a higher amplitude during the May-June peak. However, as of 2022, the amplitude of the May-June peak decreased, while the amplitude of the April trough significantly increased, as illustrated in <a href="#fig-seasonal-pattern-agropastoral-a2022" class="quarto-xref">Figure&nbsp;21</a>.</p>
+<p>As shown in <a href="#fig-seasonal-pattern-agropastoral-b2022" class="quarto-xref">Figure&nbsp;22</a>, before 2022, the seasonal pattern exhibited a higher amplitude during the May-June peak. However, as of 2022, the amplitude of the May-June peak decreased, while the amplitude of the April trough significantly increased, as illustrated in <a href="#fig-seasonal-pattern-agropastoral-a2022" class="quarto-xref">Figure&nbsp;23</a>.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Before 2022</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">As of 2022</a></li></ul>
 <div class="tab-content">
@@ -847,7 +1141,7 @@ Figure&nbsp;19
 <img src="report_files/figure-html/fig-seasonal-pattern-agropastoral-b2022-1.png" id="fig-seasonal-pattern-agropastoral-b2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-agropastoral-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20
+Figure&nbsp;22
 </figcaption>
 </figure>
 </div>
@@ -863,7 +1157,7 @@ Figure&nbsp;20
 <img src="report_files/figure-html/fig-seasonal-pattern-agropastoral-a2022-1.png" id="fig-seasonal-pattern-agropastoral-a2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-agropastoral-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21
+Figure&nbsp;23
 </figcaption>
 </figure>
 </div>
@@ -874,8 +1168,9 @@ Figure&nbsp;21
 </div>
 </section>
 </section>
-<section id="riverine" class="level5">
-<h5 class="anchored" data-anchor-id="riverine">Riverine</h5>
+<section id="sec-riverine" class="level5">
+<h5 class="anchored" data-anchor-id="sec-riverine">Riverine</h5>
+<p>The figure below illustrates the components of admissions in the riverine livelihood system, which are further detailed in the following sections</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-cmpnts-riverine" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
@@ -884,14 +1179,168 @@ Figure&nbsp;21
 <img src="report_files/figure-html/fig-cmpnts-riverine-1.png" id="fig-cmpnts-riverine" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;22
+Figure&nbsp;24
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="seasonal-pattern-1" class="level6">
-<h6 class="anchored" data-anchor-id="seasonal-pattern-1">Seasonal pattern</h6>
+<section id="analyzing-the-trend-component-3" class="level6">
+<h6 class="anchored" data-anchor-id="analyzing-the-trend-component-3">Analyzing the trend component</h6>
+<p>The trend’s direction has undergone six significant shifts, as illustrated below, with the ARC summarized in <a href="#tbl-arc-riverine" class="quarto-xref">Table&nbsp;5</a></p>
+<div id="fig-piecewise-slopes-riverine" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-piecewise-slopes-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-riverine" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-riverine-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-riverine-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-riverine-1.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-riverine" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-riverine-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Jan 2019-May 2020
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-riverine" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-riverine-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-riverine-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-riverine-2.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-riverine" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-riverine-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Jun 2019-Nov 2020
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-riverine" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-riverine-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-riverine-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-riverine-3.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-riverine" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-riverine-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Dec 2020-Apr 2021
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-riverine" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-riverine-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-riverine-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-riverine-4.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-riverine" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-riverine-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) May 2021-Sep 2021
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-riverine" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-riverine-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-riverine-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-riverine-5.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-riverine" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-riverine-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(e) Oct 2021-Aug 2023
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-piecewise-slopes-riverine" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-piecewise-slopes-riverine-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-piecewise-slopes-riverine-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_files/figure-html/fig-piecewise-slopes-riverine-6.png" class="img-fluid figure-img" data-ref-parent="fig-piecewise-slopes-riverine" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-piecewise-slopes-riverine-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(f) Sep 2023-Dec 2024
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-piecewise-slopes-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;25: Periods of significant shifts in trend direction
+</figcaption>
+</figure>
+</div>
+<p>To read and interpret this table, refer to <a href="#nte-read-arc" class="quarto-xref">Note&nbsp;1</a>.</p>
+<div id="tbl-arc-riverine" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-arc-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: The average rate of change of admissions by month in the time-intervals represented in <a href="#fig-piecewise-slopes-riverine" class="quarto-xref">Figure&nbsp;25</a>
+</figcaption>
+<div aria-describedby="tbl-arc-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Slope</th>
+<th style="text-align: center;">Time interval</th>
+<th style="text-align: center;">Admissions<sub>i</sub></th>
+<th style="text-align: center;">Admissions<sub>f</sub></th>
+<th style="text-align: center;">ARC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">(a)</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">1,583</td>
+<td style="text-align: center;">3,110</td>
+<td style="text-align: center;">95</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(b)</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3,125</td>
+<td style="text-align: center;">2,803</td>
+<td style="text-align: center;">-64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(c)</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2,835</td>
+<td style="text-align: center;">3,117</td>
+<td style="text-align: center;">70</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(d)</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3,071</td>
+<td style="text-align: center;">2,632</td>
+<td style="text-align: center;">-110</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(e)</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">2,792</td>
+<td style="text-align: center;">5,553</td>
+<td style="text-align: center;">126</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(f)</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">5,717</td>
+<td style="text-align: center;">3,257</td>
+<td style="text-align: center;">-164</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="examining-the-seasonal-component-1" class="level6">
+<h6 class="anchored" data-anchor-id="examining-the-seasonal-component-1">Examining the seasonal component</h6>
 <p>The seasonal pattern in this livelihood system demonstrates a distinctly time-varying nature, with significant changes in amplitude, as clearly shown in the “before and as of 2022” plots.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -901,14 +1350,14 @@ Figure&nbsp;22
 <img src="report_files/figure-html/fig-seasonal-pattern-riverine-1.png" id="fig-seasonal-pattern-riverine" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-riverine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23
+Figure&nbsp;26
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Before 2022, the highest peak occurred in December and the second peak in May-June. Two distinct troughs were observed, one in April and the other in November, both with nearly the same amplitude every year (<a href="#fig-seasonal-pattern-riverine-b2022" class="quarto-xref">Figure&nbsp;24</a>).</p>
-<p>However, as of 2022, there was a significant change in the amplitude patterns. Several peaks now appear throughout the year. Unlike the other livelihood systems, the months of May and June no longer exhibit the highest peak. Instead, the highest peak is observed in December, followed by three additional peaks of similar amplitude in January, March, and August (<a href="#fig-seasonal-pattern-riverine-a2022" class="quarto-xref">Figure&nbsp;25</a>). Notably, in the Riverine system, and in contrast to all other areas, the month of March shows an increase in admissions.</p>
+<p>Before 2022, the highest peak occurred in December and the second peak in May-June. Two distinct troughs were observed, one in April and the other in November, both with nearly the same amplitude every year (<a href="#fig-seasonal-pattern-riverine-b2022" class="quarto-xref">Figure&nbsp;27</a>).</p>
+<p>However, as of 2022, there was a significant change in the amplitude patterns. Several peaks now appear throughout the year. Unlike the other livelihood systems, the months of May and June no longer exhibit the highest peak. Instead, the highest peak is observed in December, followed by three additional peaks of similar amplitude in January, March, and August (<a href="#fig-seasonal-pattern-riverine-a2022" class="quarto-xref">Figure&nbsp;28</a>). Notably, in the Riverine system, and in contrast to all other areas, the month of March shows an increase in admissions.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Before 2022</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">As of 2022</a></li></ul>
 <div class="tab-content">
@@ -921,7 +1370,7 @@ Figure&nbsp;23
 <img src="report_files/figure-html/fig-seasonal-pattern-riverine-b2022-1.png" id="fig-seasonal-pattern-riverine-b2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-riverine-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;24
+Figure&nbsp;27
 </figcaption>
 </figure>
 </div>
@@ -937,7 +1386,7 @@ Figure&nbsp;24
 <img src="report_files/figure-html/fig-seasonal-pattern-riverine-a2022-1.png" id="fig-seasonal-pattern-riverine-a2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-riverine-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;25
+Figure&nbsp;28
 </figcaption>
 </figure>
 </div>
@@ -963,6 +1412,7 @@ Note
 </section>
 <section id="urbanidps" class="level5">
 <h5 class="anchored" data-anchor-id="urbanidps">Urban/IDPs</h5>
+<p>The figure below illustrates the components of admissions in the Urban/IDPs livelihood system, which are further detailed in the following sections</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-cmpnts-urban-idps" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
@@ -971,14 +1421,14 @@ Note
 <img src="report_files/figure-html/fig-cmpnts-urban-idps-1.png" id="fig-cmpnts-urban-idps" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cmpnts-urban-idps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;26
+Figure&nbsp;29
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="seasonal-pattern-2" class="level6">
-<h6 class="anchored" data-anchor-id="seasonal-pattern-2">Seasonal pattern</h6>
+<section id="examining-the-seasonal-component-2" class="level6">
+<h6 class="anchored" data-anchor-id="examining-the-seasonal-component-2">Examining the seasonal component</h6>
 <p>Interestingly, in the Urban/IDP livelihood system, the seasonal pattern shows that admissions in January tend to align with the trend level. From February onwards, admissions decrease to reach a lower trough in April. Between May and June, admissions rise to their higher peak, followed by a second peak in November.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1001,7 +1451,7 @@ Important
 <img src="report_files/figure-html/fig-seasonal-pattern-urban-idps-1.png" id="fig-seasonal-pattern-urban-idps" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-urban-idps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;27
+Figure&nbsp;30
 </figcaption>
 </figure>
 </div>
@@ -1020,7 +1470,7 @@ Figure&nbsp;27
 <img src="report_files/figure-html/fig-seasonal-pattern-urban-idps-b2022-1.png" id="fig-seasonal-pattern-urban-idps-b2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-urban-idps-b2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;28
+Figure&nbsp;31
 </figcaption>
 </figure>
 </div>
@@ -1036,7 +1486,7 @@ Figure&nbsp;28
 <img src="report_files/figure-html/fig-seasonal-pattern-urban-idps-a2022-1.png" id="fig-seasonal-pattern-urban-idps-a2022" class="img-fluid figure-img" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-pattern-urban-idps-a2022-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;29
+Figure&nbsp;32
 </figcaption>
 </figure>
 </div>
@@ -1056,9 +1506,6 @@ Figure&nbsp;29
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-tsR" class="csl-entry" role="listitem">
 Cowpertwait, Paul S. P., and Andrew V. Metcalfe. 2009. <em>Introductory Time Series with <span>R</span></em>. New York: Springer.
-</div>
-<div id="ref-ipcmanual" class="csl-entry" role="listitem">
-IPC Global Partners. 2021. <em>Integrated Food Security Phase Classification Technical Manual Version 3.1: Evidence and Standards for Better Food Security and Nutrition Decisions</em>. <a href="https://www.ipcinfo.org/ipcinfo-website/resources/ipc-manual/en/">https://www.ipcinfo.org/ipcinfo-website/resources/ipc-manual/en/</a>.
 </div>
 <div id="ref-arc" class="csl-entry" role="listitem">
 Kelly, Ken. 2029. <span>“The Average Rate of Change for Continuous Time Models.”</span> <em>Behavior Research Methods</em> 41: 268–78. <a href="https://doi.org/10.3758/BRM.41.2.268">https://doi.org/10.3758/BRM.41.2.268</a>.

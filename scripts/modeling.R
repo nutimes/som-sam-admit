@@ -1,33 +1,25 @@
 # ---- Multiple Regression Model -----------------------------------------------
 
-# ########################### QUARTERLY ANALYSIS #############################
-# ## Specify models ----
-# fit_admissions <- quarterly_admissions |> 
-#   summarise_admissions(
-#     .group = FALSE,
-#     time = "Q"
-#   ) |> 
+# ################################## NATIONAL ####################################
+# ## Specify models ---- 
+# fit_admissions <- summarise_admissions(
+#   ts = monthly_admissions,
+#   .group = FALSE,
+#   time = "M"
+# ) |> 
 #   model(
-#     linear = TSLM(
-#       admissions ~ trend() + season()
-#     ),
-#     exp_log_trend = TSLM(
-#       admissions ~ log(trend()) + season()
-#     ),
-#     exp_log_admissions = TSLM(
-#       log(admissions) ~ log(trend()) + season()
-#     ),
-#     piecewise = TSLM(
-#       log(admissions) ~ trend(knots = c(yearquarter("2019 Q4"),
-#                                    yearquarter("2020 Q4"),
-#                                    yearquarter("2023 Q2"),
-#                                    yearquarter("2024 Q4"))) + season()
-#     ),
+#     linear = TSLM(admissions ~ trend() + season()),
+#     exp_log_trend = TSLM(admissions ~ log(trend()) + season()),
+#     exp_log_admissions = TSLM(log(admissions) ~ log(trend()) + season()),
 #     box_cox = TSLM(
-#       box_cox(admissions, lambda) ~ trend(knots = c(yearquarter("2019 Q4"),
-#                                                     yearquarter("2020 Q4"),
-#                                                     yearquarter("2023 Q2"),
-#                                                     yearquarter("2024 Q4"))) + season())
+#       box_cox(admissions, lambda_national) ~ trend(
+#         knots = c(
+#           yearmonth("2019 Jun"), 
+#           yearmonth("2019 Oct"),
+#           yearmonth("2020 Feb"),
+#           yearmonth("2021 Jan"),
+#           yearmonth("2023 Mar"),
+#           yearmonth("2024 Dec"))) + season())
 #   )
 
 # ### Evaluate residuals ----

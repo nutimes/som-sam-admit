@@ -84,9 +84,11 @@ Twelve districts were excluded for missingness: Ceel Dheere, Jalalaqsi, Jamaame,
 :::
 
 ### Analysis approach  
-The data was first explored visually through graphs to identify patterns over time. Then, it was broken down into components to examine the overall monthly trend and seasonal variation. The average rate of change was calculated to better understand the trend. To account for the different livelihood systems within Somalia, the data was split into four separate time series, each representing a different livelihood system.
+The data was first explored visually through graphs to identify patterns over time. Then, it was broken down into components to examine the overall monthly trend and seasonal variation. The average rate of change (ARC) [^1] was calculated to better understand the trend. To account for the different livelihood systems within Somalia, the data was split into four separate time series, each representing a different livelihood system.
 
-The analysis was performed using standard statistical tools, which are available in the project’s repository for reference.
+The analysis was performed using standard statistical tools, which are available in the project’s repository for reference. 
+
+[^1]: The ARC describes the average or typical rate of change (in the admissions of SAM cases in this case) over a determined time interval of interest in the time series. 
 
 {{< pagebreak >}}
 
@@ -198,7 +200,7 @@ slope_feb2021_mar2023
 slope_april2023_dec2024
 ```
 
-The average rate of change (ARC) [^1] [@arc] was calculated for each slope. The results are summarized in @tbl-arc-national.
+The ARC [@arc] was calculated for each slope. The results are summarized in @tbl-arc-national.
 
 ::: {#nte-read-arc .callout-note}
 ## How to read the table 2 in conjuntion with the figure 10
@@ -209,8 +211,6 @@ In slope (a), the trend starts in January 2019 with an average admission of `r f
 **Example 2: decrease**  
 In slope (e), the trend starts in April 2023, with an average of admission of `r format(round(arc_april2023_dec2024[[1]]),F, big.mark=",")` cases. It decreased to an average admission of `r format(round(arc_april2023_dec2024[[3]]),F,big.mark=",")` cases by December 2024. During this period of `r arc_april2023_dec2024[[5]]` months, the admissions decreased by an average of `r format(round(arc_april2023_dec2024[[6]]),big.mark=",")` cases each month. 
 :::
-
-[^1]: The ARC describes the average or typical rate of change (in the admissions of SAM cases in this case) over a determined time interval of interest in the time series. 
 
 | Slope | Time interval | Admissions~i~ | Admissions~f~ | ARC |  
 | :---: | :---: | :---: | :---: | :---: |

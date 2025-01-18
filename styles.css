@@ -1,0 +1,36 @@
+/* Style for the main title */
+h1.title {
+  font-size: 4rem; /* Adjust size as needed */
+  color: #555; /* Optional: Adjust the color */
+  font-weight: bold; /* Optional: Change font weight */
+  text-align: center; /* Optional: Center the text */
+}
+
+/* Style for the subtitle */
+h2.subtitle {
+  font-size: 2rem; /* Adjust size as needed */
+  color: #979090; /* Optional: Adjust the color */
+  font-style: italic; /* Optional: Make it italic */
+}
+
+/* Style for ## titles in reveal.js */
+.reveal h1 {
+  font-size: 2rem; /* Adjust font size */
+  color: #555;     /* Change text color */
+  font-style: bold; /* Optional: Make it italic */
+}
+
+/* Style for ## titles in reveal.js */
+.reveal h2 {
+  font-size: 3rem; /* Adjust font size */
+  color: #555;     /* Change text color */
+  font-style: bold; /* Optional: Make it italic */
+  text-align: left; /* Optional: Center-align the text */
+  margin-bottom: 15px; /* Adjust spacing below the title */
+}
+
+/* Style for ## titles in reveal.js */
+.reveal h3 {
+  font-size: 2rem; /* Adjust font size */
+  color: #979090;     /* Change text color */
+}

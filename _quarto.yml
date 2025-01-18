@@ -21,5 +21,18 @@ format:
       warning: false
     fig-width: 10
     fig-align: center
+  
+  revealjs:
+     theme: default
+     css: styles.css
+     execute:
+       eval: true
+       echo: false
+       warning: false
+     fig-width: 8
+     fig-align: center
+     progress: true
+     font-scale: 90
+
 bibliography: references.bib
 cls: harvard-cite-them-right-11th-edition.csl

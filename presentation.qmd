@@ -1,0 +1,409 @@
+---
+title: "Feature insights into Somalia’s severe acute malnutrition admissions"
+subtitle: "A time series analysis spanning from January 2019 to November 2024"
+author: "Tomás Zaba"
+date: today
+format: revealjs
+---
+
+## Context {.smaller} 
+
+::: {.incremental}
++ Seasonality/seasonal refers to recurring patterns that occurs at specific times of the year. 
++ It has impact on the underlying and immediate factors that drives acute malnutrition (AMN). 
++ It is known that AMN has a seasonal variation, however limited evidence is available to substantiate that.  
+  - Stakeholders often rely on assumptions of an AMN seasonal peak during the food security lean season.  
+    - Nutrition surveys are routinely timed to coincide with the lean season each year. 
+::: 
+
+## Somalia's Food Security Seasonal Calendar {.smaller} 
+
+::: {.incremental}
+```{mermaid}
+%%| label: seasonal-calendar
+%%| fig-cap-location: bottom
+%%| fig-height: 4
+%%| fig-width: 12
+gantt
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+    Jilaal :1, 4
+    Gu     :4, 7
+    Post-Gu:7, 8
+    Hagaa  :7, 10
+    Deyr   :10, 12
+```
+
++ It is generally assumed that AMN in Somalia peaks from the end of the Jilaal season to the end of the Hagaa season??
+:::
+
+## The regional literature {.smaller}
+
+A few studies where conducted in the region using SMART survey data: 
+
+::: {.incremental}
++ 2 studies using 15 years of SMART survey data **in African drylands** (excluding Somalia) underscored the complex relationship between AMN and acute food insecurity: 
+  - AMN and food security seasons do not always align across seasons or livelihoods. 
+  - Identified two AMN seasonal peaks: **April-May** and **August-September**  
+
++ Somalia specific analysis used 8 years FSNAU and ACF SMART surveys (2014-2021):  
+
+  - Seasonal peak 1: **May/June (the beginning of Gu)** 
+  - Seasonal peak 2: **November (mid-Deyr)** with a decline during the lean season.
+  - There were variations in the patterns according to the livelihood system (pastoralist, agropastoralist and farming)
+
+:::
+
+## What does this analysis add? {.smaller} 
+
+This analysis examines six years of severe acute malnutrition (SAM) admission data from treatment programs in Somalia to explore patterns in admissions, focusing on **trends and seasonality** over time.  
+
+### Objectives  
+
+  + **Identify and describe trend patterns**: a long-term direction or movement in the admissions that persists across the series. This represents underlying patterns in the admissions after removing short-term fluctuations. 
+
+  + **Identify and describe the seasonal patterns**: recurring patterns that occur in a fixed and specific period every year. In this study, this refers to monthly recurring patterns over the years.
+
+# Methods
+## Data source {.smaller} 
+[Somalia Nutrition Cluster's](https://response.reliefweb.int/somalia/nutrition) six years SAM admissions. 
+
+  - The data is reported monthly at district level.
+
+## Data wrangling {.smaller} 
+```{mermaid}
+%%| label: wrangling-workflow
+%%| fig-width: 5
+%%| fig-height: 5
+flowchart TD
+    A[(Dataset)]
+    B[Exclusion of districts with consistent missingness of admissions data]
+    C[Summarise admissions by **month** at national level]
+    D[Summarise admissions by **month** by livelihood systems]
+    E[Time series]
+    F([National])
+    G([By livelihood systems])
+
+    A --> B --> C --> E
+    B --> D --> E
+    E --> F
+    E --> G
+```
+
+::: {.callout-note}
+## Excluded districts
+Twelve districts were excluded for missingness: Ceel Dheere, Jalalaqsi, Jamaame, Kurtunwaarey, Sablaale, Adan Yabaal, Bu'aale, Jilib, Saakow/Salagle, Sheik, Cadale, and Xarardheere.
+:::
+
+## Analysis approach {.smaller}  
+::: {.incremental}
+1. Explored visually through graphs to identify patterns over time
+2. It was broken down into components to examine the overall monthly trend and seasonal variation
+3. The average rate of change (ARC) ^[The ARC describes the average or typical rate of change (in the admissions of SAM cases in this case) over a determined time interval of interest in the time series.] was calculated to better understand the trend  
+
+Data was split into livelihood systems.
+:::
+
+# Results  
+National
+```{r}
+#| label: source-script
+source("script.R")
+```
+
+## A glimpse on the evolution of admissions over time {.smaller}
+### National 
+```{r}
+#| label: fig-timeplot-national
+#| fig-width: 12
+#| fig-height: 4.3
+tsplot_national
+```
+
+## A glimpse on the seasonal variation {.smaller}
+```{r}
+#| label: fig-seasonal-plot-national
+#| fig-width: 13
+#| fig-height: 7
+ssnplot_national
+```
+
+## A glimpse on the seasonal variation {.smaller}
+:::: {.columns}
+
+::: {.column width="50%" style="text-align: center;"}
+Before 2022
+
+```{r}
+#| label: fig-seasonal-plot-b2022
+#| fig-height: 8
+ssplot_national_b2022
+```
+:::
+
+::: {.column width="50%" style="text-align: center;"}
+As of 2022
+
+```{r}
+#| label: fig-seasonal-plot-a2022
+#| fig-height: 8
+ssplot_national_a2022
+```
+:::
+
+::::
+
+# Results  
+By Livelihood Systems
+
+## Number of districts per livelihood system
+
+| Livelihood system | Number of districts |
+| :-- | :-: |
+| Pastoral | 34 |
+| Agropastoral | 19 |
+| Riverine | 5 |
+| Urban/IDPs | 5 |  
+
+: Number of districts in each livelihood system {#tbl-lsystem-districts}
+
+## Evolution of admissions over time {.smaller}
+
+```{r}
+#| label: fig-timeplot-lsystem
+#| fig-width: 13
+#| fig-height: 7
+tsplot_lsysttem
+```
+
+# Results
+The time series components: **National level** 
+
+## The components {.smaller}
+```{r}
+#| label: fig-cmpnts-national
+#| fig-width: 13
+#| fig-height: 7
+cmpnts_plot_national
+```
+
+## Trend {.smaller}
+```{r}
+#| label: fig-piecewise-slopes
+#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-subcap: 
+#|   - "Jan-Jun 2019"
+#|   - "Jul-Oct 2019"
+#|   - "Nov 2019-Feb 2020"
+#|   - "Mar 2020-Jan 2021"
+#|   - "Feb 2021-Mar 2023"
+#|   - "Apr 2023-Dec 2024"
+#| layout-ncol: 3
+#| layout-nrow: 2
+
+slope_beforeJul2019
+slope_aug2019_oct2019
+slope_nov2019_feb2020
+slope_mar2020_jan2021
+slope_feb2021_mar2023
+slope_april2023_dec2024
+```
+
+## The average rate of change (ARC) of the trend {.smaller}  
+
+| Slope | Time interval | Admissions~i~ | Admissions~f~ | ARC |  
+| :---: | :---: | :---: | :---: | :---: |
+| (a) | `r arc_beforeJul2019[[5]]` | `r format(round(arc_beforeJul2019[[1]]),F,big.mark=",")` | `r format(round(arc_beforeJul2019[[3]]),F,big.mark=",")` | `r round(arc_beforeJul2019[[6]])` |  
+| (b) | `r arc_aug2019_oct2019[[5]]` | `r format(round(arc_aug2019_oct2019[[1]]),F, big.mark=",")` | `r format(round(arc_aug2019_oct2019[[3]]),F,big.mark=",")` | `r round(arc_aug2019_oct2019[[6]])` | 
+| (c) | `r arc_nov2019_feb2020[[5]]` | `r format(round(arc_nov2019_feb2020[[1]]),F,big.mark=",")` | `r format(round(arc_nov2019_feb2020[[3]]),F,big.mark=",")` | `r round(arc_nov2019_feb2020[[6]])` | 
+| (d) | `r arc_mar2020_jan2021[[5]]` | `r format(round(arc_mar2020_jan2021[[1]]),F,big.mark=",")` | `r format(round(arc_mar2020_jan2021[[3]]),F,big.mark=",")` | `r round(arc_mar2020_jan2021[[6]])` | 
+| (e) | `r arc_feb2021_mar2023[[5]]` | `r format(round(arc_feb2021_mar2023[[1]]),F,big.mark=",")` | `r format(round(arc_feb2021_mar2023[[3]]),F, big.mark=",")` | `r format(round(arc_feb2021_mar2023[[6]]),big.mark=",")` | 
+| (f) | `r arc_april2023_dec2024[[5]]` | `r format(round(arc_april2023_dec2024[[1]]),F, big.mark=",")` | `r format(round(arc_april2023_dec2024[[3]]),F,big.mark=",")` | `r format(round(arc_april2023_dec2024[[6]]),big.mark=",")` | 
+
+: The average rate of change of admissions by month in the time-intervals {#tbl-arc-national}
+
+## The seasonal variation {.smaller}
+```{r}
+#| label: fig-seasonal-pattern-national
+#| fig-width: 13
+#| fig-height: 7
+seasonal_cmpnt_national
+```
+
+## Seasonal variation before and as of 2022 {.smaller}
+:::: {.columns}
+
+::: {.column width="50%" style="text-align: center;"}
+```{r}
+#| label: fig-seasonal-pattern-natioanal-b2022
+#| fig-height: 8
+seasonal_cmpnt_national_b2022
+```
+:::
+
+::: {.column width="50%" style="text-align: center;"}
+```{r}
+#| label: fig-seasonal-pattern-natioanal-a2022
+#| fig-height: 8
+seasonal_cmpnt_national_a2022
+```
+:::
+
+::::
+
+# Results
+The time series components: **By Livelihood Systems**  
+
+  + _Pastoral_  
+
+## The components {.smaller}
+```{r}
+#| label: fig-cmpnts-pastoral
+#| fig-width: 13
+#| fig-height: 7
+cmpnts_plot_pastoral
+```
+
+## Trend {.smaller}
+```{r}
+#| label: fig-piecewise-slopes-pastoral
+#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-subcap: 
+#|   - "Jan-May 2019"
+#|   - "Jun-Sep 2019"
+#|   - "Oct 2019-Aug 2020"
+#|   - "Sep 2020-Apr 2021"
+#|   - "May 2021-Dec 2022"
+#|   - "Jan 2023-Dec 2024"
+#| layout-ncol: 3
+#| layout-nrow: 2
+
+slope_pastoral_beforemay2019
+slope_pastoral_jun_sep2019
+slope_pastoral_oct2019_aug2020
+slope_pastoral_sep2020_apr2021
+slope_pastoral_may2021_dec2022
+slope_pastoral_jan2023_dec2024
+```
+
+## Seasonal variation {.smaller}
+```{r}
+#| label: fig-seasonal-pattern-pastoral
+#| fig-width: 13
+#| fig-height: 7
+seasonal_cmpnt_pastoral
+```
+
+# Results
+The time series components: **By Livelihood Systems**  
+
+  + _Agropastoral_  
+
+## The components {.smaller}
+```{r}
+#| label: fig-cmpnts-agropastoral
+#| fig-width: 13
+#| fig-height: 7
+cmpnts_plot_agropastoral
+```
+
+## Trend {.smaller}
+```{r}
+#| label: fig-piecewise-slopes-agropastoral
+#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-subcap: 
+#|   - "Jan 2019-Jan 2020"
+#|   - "Feb 2020-Jan 2021"
+#|   - "Feb 2021-Feb 2023"
+#|   - "Mar 2023-Dec 2024"
+#| layout-ncol: 2
+#| layout-nrow: 2
+
+slope_agropastoral_beforefeb2020
+slope_agropastoral_feb2020_jan2021
+slope_agropastoral_feb2021_feb2023
+slope_agropastoral_mar2023_dec2024
+```
+
+## Seasonal variation {.smaller}
+```{r}
+#| label: fig-seasonal-pattern-agropastoral
+#| fig-width: 13
+#| fig-height: 7
+seasonal_cmpnt_agropastoral
+```
+
+# Results
+The time series components: **By Livelihood Systems**  
+
+  + _Riverine_  
+
+## The components {.smaller}
+```{r}
+#| label: fig-cmpnts-riverine
+#| fig-width: 13
+#| fig-height: 7
+cmpnts_plot_riverine
+```
+
+## Trend {.smaller}
+```{r}
+#| label: fig-piecewise-slopes-riverine
+#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-subcap: 
+#|   - "Jan 2019-May 2020"
+#|   - "Jun 2019-Nov 2020"
+#|   - "Dec 2020-Apr 2021"
+#|   - "May 2021-Sep 2021"
+#|   - "Oct 2021-Aug 2023"
+#|   - "Sep 2023-Dec 2024"
+#| layout-ncol: 3
+#| layout-nrow: 2
+
+slope_riverine_beforemay2020
+slope_riverine_jun_nov2020
+slope_riverine_dec2020_apr2021
+slope_riverine_may2021_sep2021
+slope_riverine_oct2021_aug2023
+slope_riverine_sep2023_dec2024
+```
+
+## Seasonal variation {.smaller}
+```{r}
+#| label: fig-seasonal-pattern-riverine
+#| fig-width: 13
+#| fig-height: 7
+seasonal_cmpnt_riverine
+```
+
+# Results
+The time series components: **By Livelihood Systems**  
+
+  + _Urban/IDPs_  
+
+## The components {.smaller}
+```{r}
+#| label: fig-cmpnts-urban-idps
+#| fig-width: 13
+#| fig-height: 7
+cmpnts_plot_urban_idps
+```
+
+## Trend {.smaller}
+```{r}
+1+1
+```
+
+## Seasonal variation {.smaller}
+```{r}
+#| label: fig-seasonal-pattern-urban-idps
+#| fig-width: 13
+#| fig-height: 7
+seasonal_cmpnt_urban_idps
+```
+
+# Discussion  
+
+{{< lorem 50 >}}

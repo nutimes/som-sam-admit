@@ -8,11 +8,11 @@ date: today
 ## Context  
 Seasonality significantly impacts the underlying and immediate factors contributing to acute malnutrition (AMN). It refers to recurring patterns within a year [@tsR], such as specific months or quarters when AMN cases rise or fall.  
 
-Understanding the seasonal variation of AMN is crucial for evidence-based decision-making. However, despite a general awareness of its seasonality, limited evidence exists to substantiate it. Consequently, stakeholders often rely on assumptions of a seasonal peak during the food security lean season [@africadry]. To account for this, nutrition surveys are routinely timed to coincide with the lean season each year.
+Understanding the seasonal variation of AMN is crucial for evidence-based decision-making. Nonetheless, despite a general awareness of its seasonality, limited evidence exists to substantiate it. Consequently, stakeholders often rely on assumptions of an AMN seasonal peak during the food security lean season [@africadry] and, to account for this, nutrition surveys are routinely timed to coincide with the lean season each year.
 
 The limited understanding of AMN’s seasonal variation is attributed to two key challenges: (i) the availability of robust analytical methods and (ii) access to primary data [@africadry]. The second challenge, can be mitigated by leveraging high-quality secondary data, such as survey datasets or treatment program admissions. Studies using 15 years of SMART survey data from African drylands have underscored the complex relationship between AMN and acute food insecurity, revealing that they do not always align across seasons or livelihoods [@africadry; @anastasia]. Notably, this research identified two AMN seasonal peaks: April-May and August-September [@africadry].  
 
-In Somalia, the seasonality of AMN is also generaly associated with food security's. There are five defined food security seasons as described by @ENN:  
+In Somalia, the seasonality of AMN is generaly associated with the seasonality of food security as well. There are five defined food security seasons as described by @ENN:  
 
 ```{mermaid}
 %%| label: seasonal-calendar
@@ -39,7 +39,7 @@ gantt
 
 It is generally assumed that AMN in Somalia peaks from the end of the Jilaal season to the end of the Hagaa season??. An analysis by @ENN, based on SMART surveys conducted by the Food Security and Nutrition Analysis Unit (FSNAU) and partners, with data collected between the Gu and Deyr seasons from 2014 to 2021, identified two distinct seasonal peaks: **May/June (the beginning of Gu)** and **November (mid-Deyr)**, with a decline during the lean season. The study also highlighted variations in these patterns based on livelihood zones, including pastoralist, agro-pastoralist, and riverine/farming communities:
 
-  + Among pastoralist communities, the peak in AMN was observed in June (Gu). This does not align with the food security lean season, as pastoral consumption typically improves starting in April when animals give birth, coinciding with the onset of rainfall. During this period, households gain access to milk and meat and income from the sale of animals. A second peak was noted in November, a period when food insecurity is generally expected to be minimal following the Gu harvest [@ENN].
+  + Among pastoralist communities, the peak in AMN was observed in June (Gu), which did not align with the food security lean season, as pastoral consumption typically improves starting in April when animals give birth, coinciding with the onset of rainfall; during this period, households gain access to milk and meat and income from the sale of animals [@ENN]. Additionally, a second peak was noted in November, a period when food insecurity is generally expected to be minimal following the Gu harvest [@ENN].
 
   + In agropastoralist and farming areas, the seasonality followed the peaks described above [@ENN].
 
@@ -49,9 +49,7 @@ It is generally assumed that AMN in Somalia peaks from the end of the Jilaal sea
 #### Objectives
   + **Identify and describe trend patterns**: a long-term direction or movement in the admissions that persists across the series. This represents underlying patterns in the admissions after removing short-term fluctuations. 
 
-  + **Identify and describe the seasonality patterns**: recurring patterns that occur in a fixed and specific period every year. 
-
-  + **Quantify the seasonal influences on the admissions**: the extent to which different times of the year impact the number of SAM cases admitted into the treatment program
+  + **Identify and describe the seasonal patterns**: recurring patterns that occur in a fixed and specific period every year. In this study, this refers to monthly recurring patterns over the years.
 
 {{< pagebreak >}}
 
@@ -59,7 +57,7 @@ It is generally assumed that AMN in Somalia peaks from the end of the Jilaal sea
 ### Data source
 The analysis used the [Somalia Nutrition Cluster's](https://response.reliefweb.int/somalia/nutrition) six years of countrywide data on SAM admission into AMN treatment program. The data is reported monthly at district level. 
 
-Initially, the analysis was intended to use data on global acute malnutrition data. However, based on the advice from the Nutrition Cluster advised, moderate acute malnutrition (MAM) was excluded. Unlike SAM data, MAM data is affected by frequent stockouts of read-to-use supplementary food (RUSF), leading to unstable variance. Including this data could result in misleading findings.
+The initial analysis aimed to use data on global acute malnutrition. However, data on moderate acute malnutrition (MAM) was excluded due to unstable variance caused by frequenty stockouts of read-to-use supplementary food (RUSF). Including MAM data in the analysis could have led to misleading findings.
 
 ### Data wrangling {#sec-data-wrangling} 
 It consisted in excluding districts with missing admissions from January to December; then by aggregating the sum of the total number of children admitted by month at national level, and by livelihood systems (Pastoral, Agropastoral, Riverine and Urban/IDPs).
@@ -86,9 +84,7 @@ Twelve districts were excluded for missingness: Ceel Dheere, Jalalaqsi, Jamaame,
 :::
 
 ### Analysis approach  
-The data was first explored visually through graphs to identify patterns over time. It was then broken down into components to examine the overall trend and seasonal variations. The average rate of change was calculated to better understand the trend. To account for the different livelihood systems within Somalia, the data was split into four separate time series, each representing a different livelihood system.
-
-A statistical model was used to measure the impact of the overall trend and seasonal changes on the number of admissions.
+The data was first explored visually through graphs to identify patterns over time. Then, it was broken down into components to examine the overall monthly trend and seasonal variation. The average rate of change was calculated to better understand the trend. To account for the different livelihood systems within Somalia, the data was split into four separate time series, each representing a different livelihood system.
 
 The analysis was performed using standard statistical tools, which are available in the project’s repository for reference.
 
@@ -140,39 +136,6 @@ ssplot_national_a2022
 ```
 :::
 
-###### Admissions patterns by month over years  
-The figure below illustrates the monthly evolution of admissions over the years, highlighting seasonal patterns and long-term trends. The blue horizontal line indicates the average number of admissions per month across all years.
-
-Two key patterns emerge:  
-
-  1. Admissions consistently peak in January, decline through April, rise again in May-June, and then experience a slight dip from August to October before increasing from November onward.  
-
-  2. Starting in 2022, admissions rose significantly in all months, followed by a notable decline, with some months exhibiting sharper decreases than others.
-```{r}
-#| label: fig-subseries-national
-sbsplot_national
-```
-
-The data can be visualized with splits before and as of 2022 as well. The underlying patterns gleaned are in accordance with those described in @fig-seasonal-plot-b2022 (before 2022) and @fig-seasonal-plot-a2022 (as of 2022).  
-
-::: {.callout-tip}
-Focus on the blue horizontal lines. Read the patterns they depict, and compare with those from the referenced figures above.
-:::
-
-::: {.panel-tabset}
-## Before 2022
-```{r}
-#| label: fig-subseries-plot-b2022
-sbsplot_national_b2022
-```
-
-## As of 2022
-```{r}
-#| label: fig-subseries-plot-a2022
-sbsplot_national_a2022
-```
-:::
-
 #### By livelihood systems  
 The majority of the districts in Somalia are pastoral (34 districts), followed by agropastoral (19 districts) @tbl-lsystem-districts. The table counts districts after excluding those with missing values, as described in @sec-data-wrangling.
 
@@ -201,7 +164,7 @@ While this figure gives a glimpse of the underlying pattern of the trend and the
 A time series can exhibit a variety of underlying patterns that may not be easliy visible from a regular time plot (attempt made in above sections, however without a clear visual). By decomposing the time series into its constituent components, these hidden patterns can be brought to light. The following sections reveal the extracted patterns from the admissions data, beginning with the national-level analysis, followed by insights at the livelihood system. 
 
 #### At National-level  
-In @fig-cmpnts-national, the first graph (top-down) is the whole data (the admissions). This is the same graph shown in @fig-timeplot-national. The second graph is the **trend pattern alone** over time. The third graph is **seasonal pattern alone** over time after removing the trend. The fourth graph represents any other variation in the admissions that is not caused by the trend or by the seasonality.  
+In the figure below, the first graph (top-down) is the whole data (the admissions). This is the same graph shown in @fig-timeplot-national. The second graph is the **trend pattern alone** over time. The third graph is **seasonal pattern alone** over time after removing the trend. The fourth graph represents any other variation in the admissions that is not caused by the trend or by the seasonality.  
 
 ```{r}
 #| label: fig-cmpnts-national
@@ -534,22 +497,20 @@ seasonal_cmpnt_urban_idps_a2022
 {{< pagebreak >}}  
 
 ## Discussion  
-Tackling acute malnutrition necessitates comprehensive and up-to-date information on its evolution over time and space, the times of the year when cases rise or fall, and the magnitude of cases.  
+Tackling acute malnutrition necessitates comprehensive and up-to-date information on its evolution over time and space, the times of the year when cases rise or fall, and its corresponding magnitude. This analysis aimed to provide evidence-based information on the evolution of the trend of SAM cases and its corresponding seasonal variation over the past 6 years. It was based on the use of SAM admission data as they are.  It is worth remembering that admissions are fundamentally a function of case-finding capacity and program effectiveness. Consequently, the analysis results are, also, a reflection of that. This means that if these factors are suboptimal, the observed patterns may represent false patterns, or artifacts of incomplete data. However, the data used in this analysis had an optimal (≥80%) reporting rate across catchement areas over months and years. This strengthens the reliability of the data and the confidence in the patterns gleaned, suggesting that they likely reflect the genuine trends and seasonal variation in SAM admissions rather than being result of incomplete data.
 
-This analysis reveals that **magnitude of children admitted into treatment programs has increased remarkably** as of the third quarter of 2021, until in 2023 it started to exhibit a downward trend (`r arc_feb2021_mar2023[[5]]` months) (@tbl-arc-national). The average number of cases admitted during this period increased by `r format(round(arc_feb2021_mar2023[[6]]),big.mark=",")` cases each month. The end of 2021, was the time when the country was hit by a severe drought that had aggravated even more the already existing vulnerabilities. As a result, several livelihoods were on the brink of Famine [@FRC]. The increased trend reflects the intensified program response at the time, to fit the also increased needs.  
+All in all, the analysis reveals that the **magnitude of children admitted into treatment programs has increased remarkably** as of the third quarter of 2021, until in 2023 (`r arc_feb2021_mar2023[[5]]` months) when it started to exhibit a downward trend (@tbl-arc-national). The average number of cases admitted during this period increased by `r format(round(arc_feb2021_mar2023[[6]]),big.mark=",")` cases each month. The end of 2021, was the time when the country was hit by a severe drought that had aggravated even more the already existing vulnerabilities. As a result, several livelihoods were on the brink of Famine [@FRC]. The increased trend reflects the intensified program response at the time, to fit the also increased needs. The results shows, as well, that even after the drought has passed, the magnitude of the admissions remained excessively high, compared to years before the drought, although it shows a downward trend. This suggests that the program response remained high even after. The shallow decline observed in the slope suggests that the magnitude could remain high still in the following years before catching up with the pattern before the drought. This means that in case the program becomes underfunded in the short-term, the trend line might portray a false improvement in the situation (by lowering the magnitude), as this would be the result of many children left untreated due to the scale-down of program capacity.    
 
-Even after the drought passed, the magnitude of the admissions remained excessively high, compared to years before the drought, although it shows a downward trend. This suggests that the program response remained high even after. The shallow decline observed in the slope suggests that the magnitude could remain high still in the following years before catching up with the pattern before the drought. This means that in case the program becomes underfunded in the short-term, the trend line might portray a false improvement in the situation (by lowering the magnitude), as this would be the result of many children left untreated due to the scale-down.    
-
-As for the **seasonality**, all in all, May-June is the month when the higher peak is recorded, with the increase beginning in May. These patterns tend to be consistent with those identified by @ENN, whereby 8-year SMART surveys conducted by the Somalia Food Security and Nutrition Analysis Unit (FSNAU) in rural areas, however, with some nuances. @ENN identified two peaks in the prevalence of acute malnutrition: May-June and November. One peculiar difference is that in this study, the high peak was recorded in November where the average monthly wasting was estimated above 17.5%; May-June was the second high peak. This current analysis contrasts considerably on this in the opposite way: May-June is the time when the highest peak is observed. This pattern has been consistently noticeable over the years.  
+As for the **seasonality**, all in all, May-June is the month when the higher peak is recorded, with the increase beginning in May. These patterns tend to be consistent with those identified by @ENN using 8-year SMART surveys conducted by the Somalia Food Security and Nutrition Analysis Unit (FSNAU) in rural areas, however, with some nuances. @ENN identified two peaks in the prevalence of acute malnutrition: May-June and November. One peculiar difference is that in this study, the high peak was recorded in November where the average monthly wasting was estimated above 17.5%; May-June was the second high peak. This current analysis contrasts considerably on this in the opposite way: May-June is the time when the highest peak is observed. This pattern has been consistently noticeable over the years.  
 
 With regard to the second peak, whilst @ENN identified a second peak in November, this analysis' second high peak is January, however with an increase beginning in November. 
 On to the trough, this analysis' lower trough is in April every year. @ENN identified a lower trough in August and a second in December. From this analysis findings, August used to be the second lower trough before 2022 with the data aggregated at national-level. However, as of 2022, this pattern has shifted to September, although the extent of the shift is minimal.  
 
-Seasonal patterns exhibit notable variations across livelihood systems. In the *pastoral and agropastoral* systems, the primary peak is consistently observed in May-June, with a secondary peak in January. This secondary peak begins in November for the pastoral system and in December for the agropastoral system. The lowest trough occurs in April in both systems. These findings align with @ENN, except for a slight deviation in the agropastoral system, where the second peak shifts from November (as identified by @ENN) to December in this analysis.  
+Seasonal patterns exhibit notable variations across livelihood systems. In the *pastoral and agropastoral* systems, the primary peak is consistently observed in May-June, with a secondary peak in January. This secondary peak begins in November for the pastoral system, and in December for the agropastoral system. The lowest trough occurs in April in both systems. These findings align with @ENN, except for a slight deviation in the agropastoral system, where the second peak shifts from November (as identified by @ENN) to December in this analysis.  
 
-In contrast, the patterns in the riverine system differ significantly from those in other livelihood systems. **It is the only system where the primary peak does not occur in May-June**. These patterns also diverge from @ENN’s observations, which identified the higher peak in November. In this analysis, November consistently represents the lowest trough. The highest peak occurs in December-January, followed by several smaller peaks throughout the year, indicating a more fragmented seasonal pattern.  
+In contrast, the patterns in the riverine system differ significantly from those in other livelihood systems. **It is the only system where the primary peak does not occur in May-June**. These patterns also diverge from @ENN observations, which identified the higher peak in November. In this analysis, November consistently represents the lowest trough. The highest peak occurs in December-January, followed by several smaller peaks throughout the year, indicating a more fragmented seasonal pattern.  
 
-::: {.callout-important}
+::: {.callout-note}
 An insteresting finding is that the riverine and pastoral, are they one livelihood systems where there is a peak in March before the lower trough in April.
 **Why is that??** *Question to the Nutrition Cluster members.*
 :::  
@@ -557,8 +518,12 @@ An insteresting finding is that the riverine and pastoral, are they one liveliho
 Regarding the *Urban/IDPs livelihood system*, this system exhibits a unique and intriguing pattern compared to the others. While the highest peak consistently occurs in May-June, similar to most other systems (except the riverine), the admissions in January notably align with the trend line (baseline) every year. From February onward, the admissions begin a continuous decline, reaching the common lowest trough in April. This distinct pattern could not be compared to previous studies, as they did not include a specific livelihood category for urban areas and/or IDPs.  
 **Why is that??** *Question to the Nutrition Cluster members.*   
 
-### Do these seasonal patterns agree with food security's?  
-The unveiled AMN seasonal patterns do not agree with or adhere to the food security's Jilaal, Gu and Hagaa's season, as it would, theoretically, be expected, but they do agree (to some extent) with the Deyr season.  
+::: {.callout-important}
+The discrepancies in the months in @ENN 's findings may be related to the fact that the survey data used were collected over a specific time period, while the admissions are reported monthly over the years. This also explains the absence of a trough in April in the author's study, as all surveys were undertook starting in May and then November to December.
+:::
+
+### Do these seasonal patterns agree with the seasonality of food security?  
+The unveiled AMN seasonal patterns do not agree with or adhere to to food security Jilaal, Gu and Hagaa's season, as it would, theoretically, be expected, but they do agree (to some extent) with the Deyr season.  
 
   - **Jilaal** is Somalia's extended dry season, with low milk availability and increased livestock migration in pastoralist, in particular. Despite that, during its length, the admissions follow a decreasing behaviour from February with its lower trough in April. This is true for all livelihood system, though there some shallow peaks in March in the Riverine and Pastoral. This raises questions on what non-food security factors could be playing a role.  
 
@@ -569,4 +534,4 @@ The unveiled AMN seasonal patterns do not agree with or adhere to the food secur
   Even with that, the admissions rise. This seem to indicate the existence of other key drivers in the play that tends to deteriorate, and likely inhibit food utilization. 
 
 ## Limitations  
-The analysis was based on the use of SAM data only. MAM data has an inherent programme-influenced variation; it depends on the availability of supplies. Therefore, the overall global acute malnutrition (GAM) was not used. This raises questions about whether the patterns also would be the same if GAM was used.
+As noted, MAM data was excluded from the analysis due to its variance being influenced by program stockouts, resulting in the study not encompassing GAM data. This raises questions about whether similar patterns would emerge if GAM had been analyzed. Additionally, the SAM reporting system does not differentiate admissions originating from IDPs versus those from other livelihood systems. This poses a significant limitation in understanding the specific patterns among IDPs. Furthermore, the results reveal that SAM admissions follow a distinct seasonality compared to acute food insecurity, with declines in admissions observed during the lean season. Understanding the factors potentially driving this decline would be critical, but this analysis could not explore these aspects further due to data limitations.

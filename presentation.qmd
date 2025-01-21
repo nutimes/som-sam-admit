@@ -1,6 +1,6 @@
 ---
 title: "Feature insights into Somalia’s severe acute malnutrition admissions"
-subtitle: "A time series analysis spanning from January 2019 to November 2024"
+subtitle: "A time series analysis spanning from January 2019 to December 2024"
 author: "Tomás Zaba"
 date: today
 format: revealjs
@@ -75,8 +75,8 @@ This analysis examines six years of severe acute malnutrition (SAM) admission da
 ## Data wrangling {.smaller} 
 ```{mermaid}
 %%| label: wrangling-workflow
-%%| fig-width: 5
-%%| fig-height: 5
+%%| fig-width: 10
+%%| fig-height: 8
 flowchart TD
     A[(Dataset)]
     B[Exclusion of districts with consistent missingness of admissions data]
@@ -103,7 +103,10 @@ Twelve districts were excluded for missingness: Ceel Dheere, Jalalaqsi, Jamaame,
 2. It was broken down into components to examine the overall monthly trend and seasonal variation
 3. The average rate of change (ARC) ^[The ARC describes the average or typical rate of change (in the admissions of SAM cases in this case) over a determined time interval of interest in the time series.] was calculated to better understand the trend  
 
-Data was split into livelihood systems.
+    $ARC = \frac{\text{admission}_{f}  -  \text{admission}_{i}}{\text{time}_{f}  -  \text{time}_{i}}$
+
+
+4. Data was split into livelihood systems.
 :::
 
 # Results  
@@ -405,5 +408,3 @@ seasonal_cmpnt_urban_idps
 ```
 
 # Discussion  
-
-{{< lorem 50 >}}

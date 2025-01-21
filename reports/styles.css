@@ -14,6 +14,13 @@ h2.subtitle {
 }
 
 /* Style for ## titles in reveal.js */
+.reveal h1 {
+  font-size: 2rem; /* Adjust font size */
+  color: #555;     /* Change text color */
+  font-style: bold; /* Optional: Make it italic */
+}
+
+/* Style for ## titles in reveal.js */
 .reveal h2 {
   font-size: 3rem; /* Adjust font size */
   color: #555;     /* Change text color */
@@ -23,14 +30,24 @@ h2.subtitle {
 }
 
 /* Style for ## titles in reveal.js */
-.reveal h1 {
-  font-size: 2rem; /* Adjust font size */
-  color: #555;     /* Change text color */
-  font-style: bold; /* Optional: Make it italic */
-}
-
-/* Style for ## titles in reveal.js */
 .reveal h3 {
   font-size: 2rem; /* Adjust font size */
   color: #979090;     /* Change text color */
+}
+
+/* Center formula horizontally */
+.reveal .math {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 40px;
+  text-align: 40px;
+}
+
+/* Center formula vertically in the slide */
+.reveal section {
+  display: flex;
+  justify-content: center;  /* Horizontally center */
+  align-items: center;      /* Vertically center */
+  height: 100vh;            /* Full slide height */
 }

@@ -24,6 +24,8 @@ format:
   
   revealjs:
      theme: default
+     slide-number: true
+     math: mathjax
      css: styles.css
      execute:
        eval: true

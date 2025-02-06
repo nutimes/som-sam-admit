@@ -1,36 +1,35 @@
 /* Style for the main title */
 h1.title {
-  font-size: 4rem; /* Adjust size as needed */
-  color: #555; /* Optional: Adjust the color */
-  font-weight: bold; /* Optional: Change font weight */
-  text-align: center; /* Optional: Center the text */
+  font-size: 40px;
+  color:#1A4D8F;
+  font-weight: bold;
+  text-align: center;
 }
 
-/* Style for the subtitle */
-h2.subtitle {
-  font-size: 2rem; /* Adjust size as needed */
-  color: #979090; /* Optional: Adjust the color */
-  font-style: italic; /* Optional: Make it italic */
+/* Style for the author's name */
+div.quarto-title-author-name {
+  font-size: 25px;
+  text-align: center;
+  color:#90a7d6;
+  padding-top: 50px ;
 }
 
-/* Style for ## titles in reveal.js */
-.reveal h1 {
-  font-size: 2rem; /* Adjust font size */
-  color: #555;     /* Change text color */
-  font-style: bold; /* Optional: Make it italic */
+/* Style for titles one, two and three */
+.reveal h1, .reveal h2, .reveal h3 {color:#1A4D8F;}
+
+/* Style for body text */
+.reveal p {color:#4A4A4A;}
+
+/* Style for subtitle */
+p.subtitle {
+  font-size: 35px;
+  color:#1A4D8F;
+  text-align: center;
 }
 
-/* Style for ## titles in reveal.js */
-.reveal h2 {
-  font-size: 3rem; /* Adjust font size */
-  color: #555;     /* Change text color */
-  font-style: bold; /* Optional: Make it italic */
-  text-align: left; /* Optional: Center-align the text */
-  margin-bottom: 15px; /* Adjust spacing below the title */
-}
-
-/* Style for ## titles in reveal.js */
-.reveal h3 {
-  font-size: 2rem; /* Adjust font size */
-  color: #979090;     /* Change text color */
+/* Style for date */
+p.date {
+  font-size: 25px;
+  text-align: center;
+  color:#90a7d6;
 }

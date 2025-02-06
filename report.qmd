@@ -5,6 +5,12 @@ author: "Tomás Zaba"
 date: today
 ---
 
+```{r}
+#| label: source-script
+#| message: false
+source("script.R")
+```
+
 ## Context  
 Seasonality significantly impacts the underlying and immediate factors contributing to acute malnutrition (AMN). It refers to recurring patterns within a year [@tsR], such as specific months or quarters when AMN cases rise or fall.  
 
@@ -83,6 +89,15 @@ flowchart LR
 Twelve districts were excluded for missingness: Ceel Dheere, Jalalaqsi, Jamaame, Kurtunwaarey, Sablaale, Adan Yabaal, Bu'aale, Jilib, Saakow/Salagle, Sheik, Cadale, and Xarardheere.
 :::
 
+```{r}
+#| label: exclusion-inclusion
+#| fig-width: 5
+#| fig-height: 3
+#| fig-dpi: 300
+#| dev: "png"
+map_incl_excl
+```
+
 ### Analysis approach  
 The data was first explored visually through graphs to identify patterns over time. Then, it was broken down into components to examine the overall monthly trend and seasonal variation. The average rate of change (ARC) [^1] was calculated to better understand the trend. To account for the different livelihood systems within Somalia, the data was split into four separate time series, each representing a different livelihood system.
 
@@ -95,10 +110,6 @@ The analysis was performed using standard statistical tools, which are available
 ## Results  
 
 Results will first be presented and described for data grouped at national level, and then by livelihood systems.
-```{r}
-#| label: source-script
-source("script.R")
-```
 
 ### A glimpse on the evolution of admissions over time {#sec-glimpse-national}  
 #### At National-level  
@@ -141,6 +152,9 @@ ssplot_national_a2022
 #### By livelihood systems  
 The majority of the districts in Somalia are pastoral (34 districts), followed by agropastoral (19 districts) @tbl-lsystem-districts. The table counts districts after excluding those with missing values, as described in @sec-data-wrangling.
 
+### The livelihood systems 
+::: {.panel-tabset}
+## Table 
 | Livelihood system | Number of districts |
 | :-- | :-: |
 | Pastoral | 34 |
@@ -149,6 +163,19 @@ The majority of the districts in Somalia are pastoral (34 districts), followed b
 | Urban/IDPs | 5 |  
 
 : Number of districts in each livelihood system {#tbl-lsystem-districts}
+
+## Map
+```{r}
+#| label: livelihood-systems
+#| fig-width: 5
+#| fig-height: 3
+#| fig-dpi: 300
+#| out.width: "100%"
+#| dev: "png"
+map_lsystems
+```
+:::
+
 
 All in all, the admissions in each livelihood system seem to follow the same pattern described in @sec-glimpse-national.
 

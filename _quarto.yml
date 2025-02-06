@@ -4,6 +4,7 @@ project:
 
 format: 
   html:
+    embed-resources: true
     theme: 
       dark: darkly
     toc: true
@@ -19,11 +20,15 @@ format:
       eval: true
       echo: false
       warning: false
+      message: false
     fig-width: 10
     fig-align: center
   
   revealjs:
      theme: default
+     embed-resources: true
+     width: 1280
+     height: 720
      slide-number: true
      math: mathjax
      css: styles.css
@@ -31,10 +36,12 @@ format:
        eval: true
        echo: false
        warning: false
+       message: false
      fig-width: 8
      fig-align: center
      progress: true
-     font-scale: 90
+     transition: fade
+     fig-responsive: true
 
 bibliography: references.bib
 cls: harvard-cite-them-right-11th-edition.csl

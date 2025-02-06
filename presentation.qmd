@@ -6,6 +6,11 @@ date: today
 format: revealjs
 ---
 
+```{r}
+#| label: source-script
+source("script.R")
+```
+
 ## Context {.smaller} 
 
 ::: {.incremental}
@@ -73,35 +78,36 @@ This analysis examines six years of severe acute malnutrition (SAM) admission da
   - The data is reported monthly at district level.
 
 ## Data wrangling {.smaller} 
-```{mermaid}
-%%| label: wrangling-workflow
-%%| fig-width: 10
-%%| fig-height: 8
-flowchart TD
-    A[(Dataset)]
-    B[Exclusion of districts with consistent missingness of admissions data]
-    C[Summarise admissions by **month** at national level]
-    D[Summarise admissions by **month** by livelihood systems]
-    E[Time series]
-    F([National])
-    G([By livelihood systems])
 
-    A --> B --> C --> E
-    B --> D --> E
-    E --> F
-    E --> G
-```
+![](wrangling-workflow.png){width=300}
 
-::: {.callout-note}
-## Excluded districts
-Twelve districts were excluded for missingness: Ceel Dheere, Jalalaqsi, Jamaame, Kurtunwaarey, Sablaale, Adan Yabaal, Bu'aale, Jilib, Saakow/Salagle, Sheik, Cadale, and Xarardheere.
+## Exclusion and Inclusion Criteria {.smaller}
+:::: {.columns}
+::: {.column width="50%" style="text-align: center;"}
+
+1. Districts with consistent reporting rate >80%
+
 :::
+
+::: {.column width="50%" style="text-align: center;"}
+
+```{r}
+#| label: exclusion-inclusion
+#| fig-width: 10
+#| fig-height: 12
+#| fig-dpi: 400
+#| out.width: "100%"
+#| dev: "png"
+map_incl_excl
+```
+:::
+::::
 
 ## Analysis approach {.smaller}  
 ::: {.incremental}
 1. Explored visually through graphs to identify patterns over time
 2. It was broken down into components to examine the overall monthly trend and seasonal variation
-3. The average rate of change (ARC) ^[The ARC describes the average or typical rate of change (in the admissions of SAM cases in this case) over a determined time interval of interest in the time series.] was calculated to better understand the trend  
+3. The average rate of change (ARC) ^[The ARC describes the average or typical rate of change (in the admissions of SAM cases in this case) over a determined time interval of interest in the time series.] was calculated to better understand the trend: 
 
     $ARC = \frac{\text{admission}_{f}  -  \text{admission}_{i}}{\text{time}_{f}  -  \text{time}_{i}}$
 
@@ -111,12 +117,8 @@ Twelve districts were excluded for missingness: Ceel Dheere, Jalalaqsi, Jamaame,
 
 # Results  
 National
-```{r}
-#| label: source-script
-source("script.R")
-```
 
-## A glimpse on the evolution of admissions over time {.smaller}
+## A glimpse of admissions over time {.smaller}
 ### National 
 ```{r}
 #| label: fig-timeplot-national
@@ -125,7 +127,7 @@ source("script.R")
 tsplot_national
 ```
 
-## A glimpse on the seasonal variation {.smaller}
+## A glimpse of the seasonal variation {.smaller}
 ```{r}
 #| label: fig-seasonal-plot-national
 #| fig-width: 13
@@ -133,7 +135,7 @@ tsplot_national
 ssnplot_national
 ```
 
-## A glimpse on the seasonal variation {.smaller}
+## A glimpse of the seasonal variation {.smaller}
 :::: {.columns}
 
 ::: {.column width="50%" style="text-align: center;"}
@@ -161,7 +163,10 @@ ssplot_national_a2022
 # Results  
 By Livelihood Systems
 
-## Number of districts per livelihood system
+## Number of districts per livelihood system {.smaller} 
+
+:::: {.columns}
+::: {.column width="40%" style="text-align: center;"}
 
 | Livelihood system | Number of districts |
 | :-- | :-: |
@@ -171,6 +176,20 @@ By Livelihood Systems
 | Urban/IDPs | 5 |  
 
 : Number of districts in each livelihood system {#tbl-lsystem-districts}
+:::
+
+::: {.column width="60%" style="text-align: center;"}
+```{r}
+#| label: livelihood-systems
+#| fig-width: 10
+#| fig-height: 12
+#| fig-dpi: 400
+#| out.width: "100%"
+#| dev: "png"
+map_lsystems
+```
+:::
+::::
 
 ## Evolution of admissions over time {.smaller}
 
@@ -407,4 +426,18 @@ cmpnts_plot_urban_idps
 seasonal_cmpnt_urban_idps
 ```
 
-# Discussion  
+# Discussion 
+
+## AA
+
+::: {.incremental}
++ The magnitude of children admitted into treatment programs has increased remarkably as of the third quarter of 2021, until in 2023 (25 months) when it started to exhibit a downward trend.  
+
+  - The average number of cases admitted during this period increased by 1,336 cases each month
+:::
+
+::: {.incremental}
+## Do these seasonal patterns agree with the seasonality of food security?
+
++ **NO,** they do not agree with or adhere to to food security Jilaal, Gu and Hagaa’s season, as it would, theoretically, be expected, but **they do agree (to some extent) with the Deyr season**
+:::

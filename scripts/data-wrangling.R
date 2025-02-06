@@ -4,8 +4,7 @@ source("R/utils.R")
 
 # ---- Read data ---------------------------------------------------------------
 admissions <- read_csv(
-  file = "data-raw/admissions.csv",
-  col_select = -u5_population
+  file = "data-raw/admissions.csv"
 )
 
 ########################### FOR MONTHLY ANALYSIS ###############################
@@ -18,7 +17,7 @@ monthly_admissions <- admissions |>
     values_to = "admissions"
   ) |> 
   mutate(
-    time = ymd(time),
+    time = ymd(as.Date(time, format = "%d/%m/%Y")),
     Monthly = yearmonth(time)
   ) |> 
   relocate(

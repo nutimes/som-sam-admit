@@ -5,7 +5,10 @@
 
 ## ---- Read in Somalia shapefile ----------------------------------------------
 
-somalia <- st_read(dsn = "data/som_admbnda_adm2_ocha_20250108.shp") |> 
+somalia <- st_read(
+  dsn = "data/som_admbnda_adm2_ocha_20250108.shp", 
+  quiet = TRUE
+) |> 
   st_transform(crs = 20538)
 
 ## ---- Plot a map of the excluded districts -----------------------------------
@@ -24,7 +27,6 @@ map_incl_excl <- somalia |>
     excl = ifelse(inc_exc == 1, ADM2_EN, NA)
   ) |> 
   ggplot() +
-  geom_sf(data = regions, color = "grey", fill = NA, linewidth = 0.1) +
   geom_sf(
     aes(fill = factor(inc_exc)), 
     show.legend = TRUE, 
@@ -46,11 +48,6 @@ map_incl_excl <- somalia |>
   theme(
     legend.position = "right",
     plot.title = element_text(size = 14, face = "bold")
-  ) +
-  annotation_north_arrow(
-    location = "tl",
-    which_north = "grid",
-    style = north_arrow_fancy_orienteering()
   )
 
 ## ---- Plot a map of livelihood systems ---------------------------------------
@@ -124,11 +121,6 @@ map_lsystems <- somalia |>
   theme(
     legend.position = "right",
     plot.title = element_text(size = 14, face = "bold")
-  ) +
-  annotation_north_arrow(
-    location = "tl",
-    which_north = "grid",
-    style = north_arrow_fancy_orienteering()
   )
 
 #################################### End #######################################

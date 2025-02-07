@@ -1,6 +1,6 @@
 
 
-# Feature insights into Somalia’s severe acute malnutrition admissions (SAM): a time series analysis spanning from January 2019 to November 2024
+# Feature insights into Somalia’s severe acute malnutrition admissions (SAM): a time series analysis spanning from January 2019 to December 2024
 
 This repository contains an R implementation of a time series analysis
 aimed at gleaning feature insights from Somalia’s severe acute
@@ -8,7 +8,7 @@ malnutrition (SAM) admission data and forming a basis for evidence-based
 decision-making regarding the overall country’s nutrition information
 system and programming. Data is reported on a monthly basis, at district
 level, in 15 regions that constitute Somalia. The window of admissions
-spans from January 2019 to November 2024.
+spans from January 2019 to December 2024.
 
 > [!NOTE]
 >
@@ -78,7 +78,7 @@ The repository is structured in the following way:
   areas that are expected to report.
 - `R/`: some handy user-defined functions to comply with the principle
   of DRY.  
-- `reports/`: The analysis report.
+- `reports/`: The analysis report and presentation.
 - `scripts/`: A set of `R` scripts used for the analysis. These are
   split into different files, based on the specific objective they
   address:
@@ -95,10 +95,10 @@ The repository is structured in the following way:
 ``` mermaid
     flowchart LR
     A[Run data-wrangling.R] 
-    B(Run eda-graphics.R)
-    C(Run decomposition.R)
-    D(Run arc.R)
-    E(Run 05-modeling.R)
+    B(Run maps.R)
+    C(Run eda-graphics.R)
+    D(Run decomposition.R)
+    E(Run arc.R)
 
     A --> B --> C --> D --> E
 ```
@@ -117,7 +117,8 @@ dependencies were used:
 - `{tsibble}` version 1.1.5  
 - `{feasts}` version 0.4.1  
 - `{ggplot2}` version 3.5.1  
-- `{fable}` version 0.4.1
+- `{fable}` version 0.4.1  
+- `{sf}` version 1.0.19
 
 ## License
 
@@ -128,3 +129,7 @@ This repository is licensed under a GNU General Public License 3
 
 If you wish to give feedback, file an issue or seek support, kindly do
 so [here](https://github.com/nutimes/som-sam-admit/issues).
+
+## Author
+
+Tomás Zaba

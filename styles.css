@@ -1,0 +1,35 @@
+/* Style for the main title */
+h1.title {
+  font-size: 40px;
+  color:#1A4D8F;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Style for the author's name */
+div.quarto-title-author-name {
+  font-size: 25px;
+  text-align: center;
+  color:#75a6e6;
+  padding-top: 50px ;
+}
+
+/* Style for titles one, two and three */
+.reveal h1, .reveal h2, .reveal h3 {color:#1A4D8F;}
+
+/* Style for body text */
+.reveal p {color:#4A4A4A;}
+
+/* Style for subtitle */
+p.subtitle {
+  font-size: 35px;
+  color:#1A4D8F;
+  text-align: center;
+}
+
+/* Style for date */
+p.date {
+  font-size: 25px;
+  text-align: center;
+  color:#75a6e6;
+}

@@ -11,9 +11,13 @@ library(tsibble)
 library(feasts)
 library(ggplot2)
 library(fable)
+library(sf)
 
 # ---- Data wrangling ----------------------------------------------------------
 source("scripts/data-wrangling.R")
+
+# ---- Maps --------------------------------------------------------------------
+source("scripts/maps.R")
 
 # ---- Exploratory Data Analysis -----------------------------------------------
 source("scripts/eda-graphics.R")

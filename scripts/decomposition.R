@@ -6,18 +6,20 @@
 #   Decomposition is done at national and then split into livelihood systems.
 ################################################################################
 
-################################# NATIONAL #####################################
 
-## ---- Box-Cox transformation -------------------------------------------------
 
-### Summarise data ----
+## ---- Decomposition at National level ----------------------------------------
+
+### ------------------------------------------------- Box-Cox transformation ----
+
+#### Summarise data ----
 na <- monthly_admissions |> 
   summarise_admissions(
     .group = FALSE,
     time = "M"
   )
 
-### Get lambda ----
+#### Get lambda ----
 lambda_national <- na |> 
   features(
     .var = admissions,
@@ -25,7 +27,7 @@ lambda_national <- na |>
   ) |> 
   pull(lambda_guerrero)
 
-### Visualize the transformation ----
+#### Visualize the transformation ----
 na |> 
   autoplot(
     box_cox(
@@ -35,9 +37,9 @@ na |>
   )
 
 
-## ---- Decomposition ----------------------------------------------------------
+### --------------------------------------------------------- Decomposition ----
 
-### Get components ----
+#### Get components ----
 cmpnts_national <- na |> 
   mutate(admissions = box_cox(x = admissions, lambda = lambda_national)) |> 
   model(
@@ -45,7 +47,7 @@ cmpnts_national <- na |>
   ) |> 
   components()
 
-### Visualize the components ----
+#### Visualize the components ----
 cmpnts_plot_national <- cmpnts_national |> 
   autoplot() + 
   labs(
@@ -58,7 +60,7 @@ cmpnts_plot_national <- cmpnts_national |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-### Plot the seasonal component over years ----
+#### Plot the seasonal component over years ----
 seasonal_cmpnt_national <- cmpnts_national |> 
   select(season_year) |> 
   gg_season(y = season_year) +
@@ -75,7 +77,7 @@ seasonal_cmpnt_national <- cmpnts_national |>
     axis.title.x = element_text(size = 10, margin = margin(t = 5))
   )
 
-#### Subset the seasonal component before 2022 ----
+##### Subset the seasonal component before 2022 ----
 seasonal_cmpnt_national_b2022 <- cmpnts_national |> 
   filter(year(Monthly) < 2022) |> 
   select(season_year) |> 
@@ -93,7 +95,7 @@ seasonal_cmpnt_national_b2022 <- cmpnts_national |>
     axis.title.x = element_text(size = 10, margin = margin(t = 5))
   )
 
-#### Subset the seasonal component as of 2022 ----
+##### Subset the seasonal component as of 2022 ----
 seasonal_cmpnt_national_a2022 <- cmpnts_national |> 
   filter(year(Monthly) >= 2022) |> 
   select(season_year) |> 
@@ -111,19 +113,20 @@ seasonal_cmpnt_national_a2022 <- cmpnts_national |>
     axis.title.x = element_text(size = 10, margin = margin(t = 5))
   )
 
-######################### BY LIVELIHOOD SYSTEMS ################################
 
-### Summarise data ----
+## ---- Decomposition by Livelihood systems ------------------------------------
+
+### -------------------------------------------------------- Summarise data ----
 mo <- monthly_admissions |> 
   summarise_admissions(
     .group = TRUE,
     time = "M"
   )
 
-## ---- Box-Cox transformation -------------------------------------------------
+### ------------------------------------------------ Box-Cox transformation ----
 
-### Get lambda for livelihood systems ----
-#### For Pastoral ----
+#### Get lambda for livelihood systems ----
+##### For Pastoral ----
 lambda_pastoral <- mo |> 
   filter(lsystems == "Pastoral") |> 
   features(
@@ -132,7 +135,7 @@ lambda_pastoral <- mo |>
   ) |> 
   pull(lambda_guerrero)
 
-#### For Agropastoral ----
+##### For Agropastoral ----
 lambda_agropastoral <- mo |> 
   filter(lsystems == "Agropastoral") |> 
   features(
@@ -141,7 +144,7 @@ lambda_agropastoral <- mo |>
   ) |> 
   pull(lambda_guerrero)
 
-#### For Riverine ----
+##### For Riverine ----
 lambda_riverine <- mo |> 
   filter(lsystems == "Riverine") |> 
   features(
@@ -150,7 +153,7 @@ lambda_riverine <- mo |>
   ) |> 
   pull(lambda_guerrero)
 
-#### For Urban/IDP's ----
+##### For Urban/IDP's ----
 lambda_urban_idps <- mo |> 
   filter(lsystems == "Urban/IDPs") |> 
   features(
@@ -160,8 +163,9 @@ lambda_urban_idps <- mo |>
   pull(lambda_guerrero)
 
 
-## Visualize the time series after transformation ----
-### Pastoral ----
+### ------------------------ Visualize the time series after transformation ----
+
+#### Pastoral ----
 mo |> 
   filter(lsystems == "Pastoral") |> 
   autoplot(
@@ -171,7 +175,7 @@ mo |>
     )
   )
 
-### Agropastoral ----
+#### Agropastoral ----
 mo |> 
   filter(lsystems == "Agropastoral") |> 
   autoplot(
@@ -181,7 +185,7 @@ mo |>
     )
   )
 
-### Riverine ----
+#### Riverine ----
 mo |> 
   filter(lsystems == "Riverine") |> 
   autoplot(
@@ -191,7 +195,7 @@ mo |>
     )
   )
 
-### Urban/IDPs ----
+#### Urban/IDPs ----
 mo |> 
   filter(lsystems == "Urban/IDPs") |> 
   autoplot(
@@ -507,4 +511,4 @@ seasonal_cmpnt_urban_idps_a2022 <- cmpnts_urban_idps |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-################################### End ########################################
+############################## End of workflow #################################

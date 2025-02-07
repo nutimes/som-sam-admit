@@ -1,16 +1,18 @@
+################################################################################
+#                                DATA WRANGLING                                #
+################################################################################
 
-# ---- Load utility functions --------------------------------------------------
+
+
+## ---- Load utility functions -------------------------------------------------
 source("R/utils.R")
 
-# ---- Read data ---------------------------------------------------------------
+## ---- Read data --------------------------------------------------------------
 admissions <- read_csv(
-  file = "data-raw/admissions.csv",
-  col_select = -u5_population
+  file = "data-raw/admissions.csv"
 )
 
-########################### FOR MONTHLY ANALYSIS ###############################
-
-# ---- Tidy the data -----------------------------------------------------------
+## ---- Tidy the data ----------------------------------------------------------
 monthly_admissions <- admissions |> 
   pivot_longer(
     cols = !c(region, district, lsystems),
@@ -18,7 +20,7 @@ monthly_admissions <- admissions |>
     values_to = "admissions"
   ) |> 
   mutate(
-    time = ymd(time),
+    time = ymd(as.Date(time, format = "%d/%m/%Y")),
     Monthly = yearmonth(time)
   ) |> 
   relocate(
@@ -27,10 +29,16 @@ monthly_admissions <- admissions |>
 ) |> 
   select(-time)
 
-## Remove districts with zero admissions ----
+## ---- Remove districts with zero admissions ----------------------------------
+
+### --------------------------------------- List of district to be excluded ----
 list <- c("Ceel_Dheere", "Jalalaqsi", "Jamaame", "Kurtunwaarey", "Sablaale", 
 "Adan Yabaal", "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik", "Cadale", 
 "Xarardheere")
 
+### --------------------------------------------------- Apply the exclusion ----
 monthly_admissions <- monthly_admissions |> 
   filter(!(district %in% list))
+
+
+############################## End of workflow #################################

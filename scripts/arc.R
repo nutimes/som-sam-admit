@@ -1,13 +1,16 @@
-# ---- Average Rate of Change --------------------------------------------------
+################################################################################
+#                          AVERAGE RATE OF CHANGE                              #
+################################################################################
 
-################################# NATIONAL #####################################
+
+# ---- National ----------------------------------------------------------------
 
 ### Reverse Box-Cox transformation done in the `decomposition.R` file ----
 trend_national <- cmpnts_national |> 
   select(trend) |> 
   mutate(trend = inv_box_cox(x = trend, lambda = lambda_national))
 
-## ----  Piecewise trend; direction: increase ----------------------------------
+## ----------------------------------- Piecewise trend; direction: increase ----
 
 ### Slope ----
 slope_beforeJul2019 <- trend_national |> 
@@ -22,7 +25,7 @@ arc_beforeJul2019 <- trend_national |>
     .for = "knots"
   )
 
-## ---- Piecewise trend; direction: decrease -----------------------------------
+## ----------------------------------- Piecewise trend; direction: decrease ----
 
 ### Slope ----
 slope_aug2019_oct2019 <- trend_national |> 
@@ -37,7 +40,7 @@ arc_aug2019_oct2019 <- trend_national |>
     .for = "knots"
   )
 
-## ---- Piecewise trend; direction: decrease -----------------------------------
+## ----------------------------------- Piecewise trend; direction: decrease ---- 
 
 ### Slope ----
 slope_nov2019_feb2020 <- trend_national |> 
@@ -52,7 +55,7 @@ arc_nov2019_feb2020 <- trend_national |>
     .for = "knots"
   )
 
-## ---- Piecewise trend; direction: decrease -----------------------------------
+## ----------------------------------- Piecewise trend; direction: decrease ----
 
 ### Slope ----
 slope_mar2020_jan2021 <- trend_national |> 
@@ -68,7 +71,7 @@ arc_mar2020_jan2021 <- trend_national |>
   )
 
 
-## ---- Piecewise trend; direction: increase -----------------------------------
+## ----------------------------------- Piecewise trend; direction: increase ----
 
 ### Slope ----
 slope_feb2021_mar2023 <- trend_national |> 
@@ -84,7 +87,7 @@ arc_feb2021_mar2023 <- trend_national |>
   )
 
 
-## ---- Piecewise trend; direction: decrease -----------------------------------
+## ----------------------------------- Piecewise trend; direction: decrease ----
 
 ### Slope ----
 slope_april2023_dec2024 <- trend_national |> 
@@ -100,9 +103,9 @@ arc_april2023_dec2024 <- trend_national |>
   )
 
 
-######################### BY LIVELIHOOD SYSTEMS ################################
+# ---- By Livelihood systems ---------------------------------------------------
 
-### -------------------------------------------- PASTORAL LIVELIHOOD SYSTEM ----
+## -------------------------------------------- PASTORAL LIVELIHOOD SYSTEM -----
 trend_pastoral <- cmpnts_pastoral |> 
   select(trend) |> 
   mutate(trend = inv_box_cox(x = trend, lambda = lambda_pastoral))
@@ -362,6 +365,5 @@ arc_riverine_sep2023_dec2024 <- ARC(
 )
 
 ### ------------------------------------------ URBAN/IDPs LIVELIHOOD SYSTEM ----
-
 
 ################################### End ########################################

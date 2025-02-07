@@ -1,7 +1,11 @@
-# ---- Exploratory Data Analysis: Graphic --------------------------------------
+################################################################################
+#                           EXPLORATORY DATA ANALYIS
+################################################################################
 
-## Admissions grouped at national level ----
-## Time plot ----
+
+## ---- National level ---------------------------------------------------------
+
+### ------------------------------------------------------------- Time plot ----
 tsplot_national <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE,
@@ -22,7 +26,7 @@ tsplot_national <- summarise_admissions(
     plot.title = element_text(size = 12)
   )
 
-## Seasonal plot ----
+### --------------------------------------------------------- Seasonal plot ----
 ssnplot_national <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE
@@ -96,7 +100,7 @@ ssplot_national_a2022 <- summarise_admissions(
   )
 
 
-## Subseries plot ----
+### -------------------------------------------------------- Subseries plot ----
 sbsplot_national <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE,
@@ -117,7 +121,7 @@ sbsplot_national <- summarise_admissions(
     plot.title = element_text(size = 12)
   )
 
-### Subseries plot before 2022 ----
+#### Subseries plot before 2022 ----
 sbsplot_national_b2022 <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE,
@@ -138,7 +142,7 @@ sbsplot_national_b2022 <- summarise_admissions(
     plot.title = element_text(size = 12)
   )
 
-### Subseries plot as of 2022 ----
+#### Subseries plot as of 2022 ----
 sbsplot_national_a2022 <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE,
@@ -159,9 +163,9 @@ sbsplot_national_a2022 <- summarise_admissions(
     plot.title = element_text(size = 12)
   )
 
-######################### BY LIVELIHOOD SYSTEM #################################
+## ---- Livelihood systems -----------------------------------------------------
 
-### Time plot ----
+### ------------------------------------------------------------- Time plot ----
 tsplot_lsysttem <- summarise_admissions(
   ts = monthly_admissions, 
   .group = TRUE,
@@ -184,7 +188,7 @@ tsplot_lsysttem <- summarise_admissions(
     plot.title = element_text(size = 12)
   )
 
-### Seasonal plot ----
+#### Seasonal plot ----
 ssnplot_lsystem <- summarise_admissions(
   ts = monthly_admissions,
   .group = TRUE,
@@ -206,7 +210,7 @@ ssnplot_lsystem <- summarise_admissions(
     plot.title = element_text(size = 12)
   )
 
-### Seasonal plot ----
+#### Seasonal plot ----
 sbsplot_lsystem <- summarise_admissions(
   ts = monthly_admissions,
   .group = TRUE,
@@ -226,4 +230,4 @@ sbsplot_lsystem <- summarise_admissions(
     plot.title = element_text(size = 12)
   )
 
-################################### End ########################################
+################################ End of workflow ################################

@@ -78,7 +78,7 @@ The repository is structured in the following way:
   areas that are expected to report.
 - `R/`: some handy user-defined functions to comply with the principle
   of DRY.  
-- `reports/`: The analysis report.
+- `reports/`: The analysis report and presentation.
 - `scripts/`: A set of `R` scripts used for the analysis. These are
   split into different files, based on the specific objective they
   address:

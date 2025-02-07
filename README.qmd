@@ -45,7 +45,7 @@ The repository is structured in the following way:
 
   + `data/`: a data.frame of class `tsibble` containing the admissions of SAM cases over time. Data is reported on a monthly basis, with a reporting rate >= 80%, as advised by the data owner. The reporting rate is defined as the number of catchment areas that submitted their reported in a given month, divided by the overall number of catchment areas that are expected to report. 
   + `R/`: some handy user-defined functions to comply with the principle of DRY.  
-  + `reports/`: The analysis report.
+  + `reports/`: The analysis report and presentation.
   + `scripts/`: A set of `R` scripts used for the analysis. These are split into different files, based on the specific objective they address: 
       - `data-wrangling.R`: load required libraries, then data and then wrangle it. 
       - `eda-graphics.R`: graphical exploratory data analysis.

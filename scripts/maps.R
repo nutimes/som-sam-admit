@@ -35,14 +35,14 @@ map_incl_excl <- somalia |>
   geom_sf_label(
     aes(label = excl), 
     na.rm = TRUE,
-    label.padding = unit(0.5, "mm"),
+    label.padding = unit(0.09, "mm"),
     label.size = 0.01,
-    size = 1.5
+    size = 0.8
   ) +
   scale_fill_manual(
     values = c("0" = "#7AA691", "1" = "#FDFEFD"),
     labels = c("Included", "Excluded"),  
-    name = "District Status"
+    name = "District status"
   ) +
   theme_void() +
   theme(

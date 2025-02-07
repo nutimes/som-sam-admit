@@ -10,7 +10,7 @@ h1.title {
 div.quarto-title-author-name {
   font-size: 25px;
   text-align: center;
-  color:#90a7d6;
+  color:#75a6e6;
   padding-top: 50px ;
 }
 
@@ -31,5 +31,5 @@ p.subtitle {
 p.date {
   font-size: 25px;
   text-align: center;
-  color:#90a7d6;
+  color:#75a6e6;
 }

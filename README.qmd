@@ -1,9 +1,9 @@
 ---
 format: gfm
 ---
-#  Feature insights into Somalia’s severe acute malnutrition admissions (SAM): a  time series analysis spanning from January 2019 to November 2024
+#  Feature insights into Somalia’s severe acute malnutrition admissions (SAM): a  time series analysis spanning from January 2019 to December 2024
 
-This repository contains an R implementation of a time series analysis aimed at gleaning feature insights from Somalia's severe acute malnutrition (SAM) admission data and forming a basis for evidence-based decision-making regarding the overall country's nutrition information system and programming. Data is reported on a monthly basis, at district level, in 15 regions that constitute Somalia. The window of admissions spans from January 2019 to November 2024.
+This repository contains an R implementation of a time series analysis aimed at gleaning feature insights from Somalia's severe acute malnutrition (SAM) admission data and forming a basis for evidence-based decision-making regarding the overall country's nutrition information system and programming. Data is reported on a monthly basis, at district level, in 15 regions that constitute Somalia. The window of admissions spans from January 2019 to December 2024.
 
 ::: {.callout-note}
 The analysis was made possible thanks to the collaboration of the [Somalia Nutrition Cluster](https://response.reliefweb.int/somalia/nutrition) coordination team.
@@ -57,10 +57,10 @@ The repository is structured in the following way:
     ```{mermaid}
     flowchart LR
     A[Run data-wrangling.R] 
-    B(Run eda-graphics.R)
-    C(Run decomposition.R)
-    D(Run arc.R)
-    E(Run 05-modeling.R)
+    B(Run maps.R)
+    C(Run eda-graphics.R)
+    D(Run decomposition.R)
+    E(Run arc.R)
 
     A --> B --> C --> D --> E
     ```
@@ -76,9 +76,13 @@ The repository was created in `R` version 4.4.2, and the following dependencies 
   - `{feasts}` version 0.4.1  
   - `{ggplot2}` version 3.5.1  
   - `{fable}` version 0.4.1  
+  - `{sf}` version 1.0.19
 
 ## License
 This repository is licensed under a GNU General Public License 3 (GPL-3).  
 
 ## Feedback
 If you wish to give feedback, file an issue or seek support, kindly do so [here](https://github.com/nutimes/som-sam-admit/issues).
+
+## Author
+Tomás Zaba

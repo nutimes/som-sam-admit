@@ -12,8 +12,6 @@ library(feasts)
 library(ggplot2)
 library(fable)
 library(sf)
-library(ggspatial)
-library(stringr)
 
 # ---- Data wrangling ----------------------------------------------------------
 source("scripts/data-wrangling.R")

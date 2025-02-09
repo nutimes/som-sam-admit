@@ -1,0 +1,197 @@
+/* ---- Style the seasonal calendar ------------------------------------------*/
+
+/* -------------------------------------------- Pastoral High AMN season ---- */
+.gantt-pastoral #task1,
+.gantt-pastoral #task3,
+.gantt-pastoral #task5 {
+  fill:#FF4500 !important;
+  stroke:#FF4500  !important;
+  stroke-width: 2px;
+}
+
+/* --------------------------------------------- Pastoral Low AMN season ---- */
+.gantt-pastoral #task2,
+.gantt-pastoral #task4 {
+  fill:#1E90FF !important;
+  stroke:#1E90FF  !important;
+  stroke-width: 2px;
+}
+
+/* ---------------------------------------- Agropastoral High AMN season ---- */
+.gantt-agropastoral #task1,
+.gantt-agropastoral #task3,
+.gantt-agropastoral #task5 {
+  fill:#FF4500 !important;
+  stroke:#FF4500  !important;
+  stroke-width: 2px;
+}
+
+/* ----------------------------------------- Agropastoral Low AMN season ---- */
+.gantt-agropastoral #task2,
+.gantt-agropastoral #task4 {
+  fill:#1E90FF !important;
+  stroke:#1E90FF  !important;
+  stroke-width: 2px;
+}
+
+/* -------------------------------------------- Riverine High AMN season ---- */
+.gantt-riverine #task1,
+.gantt-riverine #task3,
+.gantt-riverine #task5 {
+  fill:#FF4500 !important;
+  stroke:#FF4500  !important;
+  stroke-width: 2px;
+}
+
+/* --------------------------------------------- Riverine Low AMN season ---- */
+.gantt-riverine #task2,
+.gantt-riverine #task4,
+.gantt-riverine #task6  {
+  fill:#1E90FF !important;
+  stroke:#1E90FF  !important;
+  stroke-width: 2px;
+}
+
+/* ------------------------------------------ Urban/IDPs High AMN season ---- */
+.gantt-urban-idps #task1,
+.gantt-urban-idps #task3 {
+  fill:#1E90FF !important;
+  stroke:#1E90FF  !important;
+  stroke-width: 2px;
+}
+
+/* ------------------------------------------- Urban/IDPs Low AMN season ---- */
+.gantt-urban-idps #task2,
+.gantt-urban-idps #task4 {
+  fill:#FF4500 !important;
+  stroke:#FF4500  !important;
+  stroke-width: 2px;
+}
+
+/* ---- Pastoral AFI season vs AMN season ----------------------------------- */
+
+/* --------------------------------------------------------- AFI seasons ---- */
+.gantt-afiamn-pastoral #afi1,
+.gantt-afiamn-pastoral #afi2,
+.gantt-afiamn-pastoral #afi3,
+.gantt-afiamn-pastoral #afi4,
+.gantt-afiamn-pastoral #afi5 {
+  fill:#8a90dd !important;
+  stroke:#534fbc  !important;
+  stroke-width: 2px;
+}
+
+/* --------------------------------------------------------- AMN seasons ---- */
+/* High AMN */
+.gantt-afiamn-pastoral #amn1,
+.gantt-afiamn-pastoral #amn3,
+.gantt-afiamn-pastoral #amn5 {
+  fill:#FF4500 !important;
+  stroke:#FF4500  !important;
+  stroke-width: 2px;
+}
+
+/* Low AMN */
+.gantt-afiamn-pastoral #amn2,
+.gantt-afiamn-pastoral #amn4 {
+  fill:#1E90FF !important;
+  stroke:#1E90FF  !important;
+  stroke-width: 2px;
+}
+
+/* ---- Agropastoral AFI season vs AMN season ----------------------------------- */
+
+/* --------------------------------------------------------- AFI seasons ---- */
+.gantt-afiamn-agropastoral #afi1,
+.gantt-afiamn-agropastoral #afi2,
+.gantt-afiamn-agropastoral #afi3,
+.gantt-afiamn-agropastoral #afi4,
+.gantt-afiamn-agropastoral #afi5 {
+  fill:#8a90dd !important;
+  stroke:#534fbc  !important;
+  stroke-width: 2px;
+}
+
+/* --------------------------------------------------------- AMN seasons ---- */
+/* High AMN */
+.gantt-afiamn-agropastoral #amn1,
+.gantt-afiamn-agropastoral #amn3,
+.gantt-afiamn-agropastoral #amn5 {
+  fill:#FF4500 !important;
+  stroke:#FF4500  !important;
+  stroke-width: 2px;
+}
+
+/* Low AMN */
+.gantt-afiamn-agropastoral #amn2,
+.gantt-afiamn-agropastoral #amn4 {
+  fill:#1E90FF !important;
+  stroke:#1E90FF  !important;
+  stroke-width: 2px;
+}
+
+/* ---- Riverine AFI season vs AMN season ----------------------------------- */
+
+/* --------------------------------------------------------- AFI seasons ---- */
+.gantt-afiamn-riverine #afi1,
+.gantt-afiamn-riverine #afi2,
+.gantt-afiamn-riverine #afi3,
+.gantt-afiamn-riverine #afi4,
+.gantt-afiamn-riverine #afi5 {
+  fill:#8a90dd !important;
+  stroke:#534fbc  !important;
+  stroke-width: 2px;
+}
+
+/* --------------------------------------------------------- AMN seasons ---- */
+/* High AMN */
+.gantt-afiamn-riverine #amn1,
+.gantt-afiamn-riverine #amn3,
+.gantt-afiamn-riverine #amn5 {
+  fill:#FF4500 !important;
+  stroke:#FF4500  !important;
+  stroke-width: 2px;
+}
+
+/* Low AMN */
+.gantt-afiamn-riverine #amn2,
+.gantt-afiamn-riverine #amn4,
+.gantt-afiamn-riverine #amn6 {
+  fill:#1E90FF !important;
+  stroke:#1E90FF  !important;
+  stroke-width: 2px;
+}
+
+/* ---- Urban/IDPs AFI season vs AMN season --------------------------------- */
+
+/* --------------------------------------------------------- AFI seasons ---- */
+.gantt-afiamn-riverine #afi1,
+.gantt-afiamn-riverine #afi2,
+.gantt-afiamn-riverine #afi3,
+.gantt-afiamn-riverine #afi4,
+.gantt-afiamn-riverine #afi5 {
+  fill:#8a90dd !important;
+  stroke:#534fbc  !important;
+  stroke-width: 2px;
+}
+
+/* --------------------------------------------------------- AMN seasons ---- */
+/* Low AMN */
+.gantt-afiamn-urban #amn1,
+.gantt-afiamn-urban #amn3 {
+  fill:#1E90FF !important;
+  stroke:#1E90FF  !important;
+  stroke-width: 2px;
+}
+
+/* High AMN */
+.gantt-afiamn-urban #amn2,
+.gantt-afiamn-urban #amn4 {
+  fill:#FF4500 !important;
+  stroke:#FF4500  !important;
+  stroke-width: 2px;
+}
+
+.gantt-afiamn-agropastoral .taskText {
+  transform: translateY(3px); /* Moves text down slightly */
+}

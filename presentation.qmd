@@ -497,85 +497,10 @@ cmpnts_plot_urban_idps
 seasonal_cmpnt_urban_idps
 ```
 
-# Discussion 
 
-## An article on ENN 
-![https://www.ennonline.net/fex-article/special-focus-wasting-patterns-somalia](data/enn-paper.png)
-
-## Trend
-
-<br> 
-
-+ The magnitude of admissions increased remarkably as of the 3rd quarter of 2021 until 2023 (`r arc_feb2021_mar2023[[5]]` months) when it started to decrease slowly.
-
-+ The average number of cases admitted during this period increased by `r format(round(arc_feb2021_mar2023[[6]]),big.mark=",")` cases each month.
-
-+ The increased trend reflects the intensified program response at the time, to fit the also increased needs.
-    - even after the drought has passed, the magnitude of the admissions remained excessively high, compared to years before the drought, although it shows a downward trend
-
-::: {.callout-caution}
-This suggests that the program response remained high even after. This means that in case the program becomes underfunded in a short-term, many children will be left untreated due to the scale-down of program capacity.
-:::
-
-## Seasonal variation (1/4)
-
-<br> 
-
-+ **Pastoral and agropastoral** livelihood systems: 
-
-    - The primary peak is consistently observed in May-June;
-    - Secondary peak in January, with a start in **November for the pastoral**, and in **December for the agropastoral** systems.
-    - The lowest trough occurs in April in both systems. 
-
-<br> 
-
-:::{.callout-note}
-These findings align with except for a slight deviation in the agropastoral system, where the second peak shifts from November (as identified by ?? to December in this analysis
-:::
-
-## Seasonal variation (2/4)
-
-<br>
-
-+ **Riverine livelihood system**: 
-    - The highest peak occurs in December-January, followed by several smaller peaks throughout the year, indicating a more fragmented seasonal pattern.
-    - The pattern in the riverine differ remarkably from the other system. **It is the only system where the primary peak does not occur in May-June**
-
-::: {.callout-note}
-These patterns also diverge from Luc., et all (2024) observations, which identified the higher peak in November
-:::
-
-::: {.callout-important}
-An insteresting finding is that the riverine and pastoral, are the only livelihood systems where there is a peak in March before the lower trough in April.
-**Why is that??** *Question to the Nutrition Cluster members.*
-:::
-
-## Seasonal variation (3/4)
-
-+ **Urban/IDPs livelihood system**: 
-    - Exhibits a unique and intriguing pattern compared to the others.
-    - While the highest peak consistently occurs in May-June, similar to most other systems (except the riverine), the admissions in January notably align with the trend line (baseline) every year; 
-    - From February onward, the admissions begin a continuous decline, reaching the common lowest trough in April.
-
-::: {.callout-note}
-This distinct pattern could not be compared to previous studies, as they did not include a specific livelihood category for urban areas and/or IDPs.
-:::
+# Implications on the IPC AMN analysis parameters 🤔
 
 ## 
-
-
-+ The discrepancies in the months in findings may be related to the fact that the survey data used were collected over a specific time period, while the admissions are reported monthly over the years. 
-
-<br>
-
-+ This also explains the absence of a trough in April in the author's study, as all surveys were undertook starting in May and then November to December.
-
-## Implications on the IPC AMN analysis parameters
-
-<br> 
-
-+ Any? 🤔
-
 ::: {.incremental}
 
 Current analysis parameters for **Gu**- and **Deyr**-based assessments
@@ -600,8 +525,6 @@ Following seasonal calendars were developed based on this analysis findings:
 <br> 
 
 ### Pastoral livelihood system
-
-<br> 
 
 ::: {.gantt-pastoral}
 ```{mermaid}
@@ -636,8 +559,6 @@ gantt
 
 ### Agropastoral livelihood system
 
-<br> 
-
 ::: {.gantt-agropastoral}
 ```{mermaid}
 %%| label: amn-seasonal-calendar-agropastoral
@@ -670,8 +591,6 @@ gantt
 <br> 
 
 ### Riverine livelihood system
-
-<br> 
 
 ::: {.gantt-riverine}
 ```{mermaid}
@@ -706,8 +625,6 @@ gantt
 <br> 
 
 ### Urban/IDPs livelihood system
-
-<br> 
 
 ::: {.gantt-urban-idps}
 ```{mermaid}
@@ -858,5 +775,79 @@ gantt
 
 + **NO,** they do not agree with or adhere to to food security Jilaal, Gu and Hagaa’s season, as it would, theoretically, be expected, but **they do agree (to some extent) with the Deyr season**
 :::
+
+
+# Discussion 
+
+## An article on ENN 
+![https://www.ennonline.net/fex-article/special-focus-wasting-patterns-somalia](data/enn-paper.png)
+
+## Trend
+
+<br> 
+
++ The magnitude of admissions increased remarkably as of the 3rd quarter of 2021 until 2023 (`r arc_feb2021_mar2023[[5]]` months) when it started to decrease slowly.
+
++ The average number of cases admitted during this period increased by `r format(round(arc_feb2021_mar2023[[6]]),big.mark=",")` cases each month.
+
++ The increased trend reflects the intensified program response at the time, to fit the also increased needs.
+    - even after the drought has passed, the magnitude of the admissions remained excessively high, compared to years before the drought, although it shows a downward trend
+
+::: {.callout-caution}
+This suggests that the program response remained high even after. This means that in case the program becomes underfunded in a short-term, many children will be left untreated due to the scale-down of program capacity.
+:::
+
+## Seasonal variation (1/4)
+
+<br> 
+
++ **Pastoral and agropastoral** livelihood systems: 
+
+    - The primary peak is consistently observed in May-June;
+    - Secondary peak in January, with a start in **November for the pastoral**, and in **December for the agropastoral** systems.
+    - The lowest trough occurs in April in both systems. 
+
+<br> 
+
+:::{.callout-note}
+These findings align with except for a slight deviation in the agropastoral system, where the second peak shifts from November (as identified by ?? to December in this analysis
+:::
+
+## Seasonal variation (2/4)
+
+<br>
+
++ **Riverine livelihood system**: 
+    - The highest peak occurs in December-January, followed by several smaller peaks throughout the year, indicating a more fragmented seasonal pattern.
+    - The pattern in the riverine differ remarkably from the other system. **It is the only system where the primary peak does not occur in May-June**
+
+::: {.callout-note}
+These patterns also diverge from Luc., et all (2024) observations, which identified the higher peak in November
+:::
+
+::: {.callout-important}
+An insteresting finding is that the riverine and pastoral, are the only livelihood systems where there is a peak in March before the lower trough in April.
+**Why is that??** *Question to the Nutrition Cluster members.*
+:::
+
+## Seasonal variation (3/4)
+
++ **Urban/IDPs livelihood system**: 
+    - Exhibits a unique and intriguing pattern compared to the others.
+    - While the highest peak consistently occurs in May-June, similar to most other systems (except the riverine), the admissions in January notably align with the trend line (baseline) every year; 
+    - From February onward, the admissions begin a continuous decline, reaching the common lowest trough in April.
+
+::: {.callout-note}
+This distinct pattern could not be compared to previous studies, as they did not include a specific livelihood category for urban areas and/or IDPs.
+:::
+
+## 
+
+
++ The discrepancies in the months in findings may be related to the fact that the survey data used were collected over a specific time period, while the admissions are reported monthly over the years. 
+
+<br>
+
++ This also explains the absence of a trough in April in the author's study, as all surveys were undertook starting in May and then November to December.
 
 # ...Mahadsanid 😀

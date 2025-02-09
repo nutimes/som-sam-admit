@@ -98,7 +98,7 @@ This analysis examines six years of severe acute malnutrition (SAM) admission da
 
 <br> 
 
-![](wrangling-workflow.png){width=300}
+![](data/wrangling-workflow.png){width=300}
 
 
 ## Exclusion and Inclusion Criteria {.smaller}
@@ -497,10 +497,257 @@ cmpnts_plot_urban_idps
 seasonal_cmpnt_urban_idps
 ```
 
+
+# Translating the graphs into a plain AMN seasonal calendar 📅
+
+## 
+::: {.incremental}
+
++ Currently, the analyses parameters of the AMN go hand-in-hand with those of the IPC AFI
+
+![](data/som-ipc-parameters.png)
+
++ This analysis's findings suggest that the AMN analysis parameters need to be rethought to match the times when AMN evolution changes de facto. 
+    - This should be sensitive to the existing livelihood systems. 
+
+:::
+
+## Pastoral livelihood system {.smaller}
+
+::: {.gantt-pastoral}
+```{mermaid}
+%%| label: amn-seasonal-calendar-pastoral
+%%| fig-cap-location: bottom
+%%| fig-height: 4
+%%| fig-width: 13.7
+gantt
+    title  AMN seasonal calendar for pastoral livelihood systems
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+        High AMN :1, 2
+        Low AMN :2, 5
+        High AMN :5, 7
+        Low AMN :7, 10
+        High AMN :10, 12
+```
+:::
+
+ <br> 
+
+ + **Summary:**
+    - 2 High AMN seasons
+    - 2 Low AMN seasons
+
+## Agropastoral livelihood system {.smaller}
+
+::: {.gantt-agropastoral}
+```{mermaid}
+%%| label: amn-seasonal-calendar-agropastoral
+%%| fig-cap-location: bottom
+%%| fig-height: 4
+%%| fig-width: 13.7
+gantt
+    title  AMN seasonal calendar for agropastoral livelihood systems
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+        High AMN :1, 2
+        Low AMN :2, 5
+        High AMN :5, 8
+        Low AMN :8, 11
+        High AMN : 11, 12
+```
+:::
+
+ <br>
+
+ + **Summary:**
+    - 2 High AMN seasons
+    - 2 Low AMN seasons
+
+## Riverine livelihood system {.smaller}
+
+::: {.gantt-riverine}
+```{mermaid}
+%%| label: amn-seasonal-calendar-riverine
+%%| fig-cap-location: bottom
+%%| fig-height: 4
+%%| fig-width: 13.7
+gantt
+    title  AMN seasonal calendar for riverine livelihood systems
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+        High AMN :1, 3
+        Low AMN :3, 5
+        High AMN :5, 9
+        Low AMN :9, 11
+        High AMN :11, 12
+```
+:::
+
+ <br>
+
+ + **Summary:**
+    - 3 High AMN seasons
+    - 3 Low AMN seasons
+
+::: {.notes}
++ I find this graph difficult to extract a tidy seasonal calendar. 
++ Seasonal variation in February goes down to the trend line, so I considered high as it comes from high. 
+:::
+
+## Urban/IDPs livelihood system {.smaller}
+
+::: {.gantt-urban-idps}
+```{mermaid}
+%%| label: amn-seasonal-calendar-urbanipds
+%%| fig-cap-location: bottom
+%%| fig-height: 4
+%%| fig-width: 13.7
+gantt
+    title  AMN seasonal calendar for urban/IDPs livelihood systems
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+        Low AMN :1, 5
+        High AMN :5, 8
+        Low AMN :8, 10
+        High AMN :10, 12
+```
+:::
+
+ <br>
+
+ + **Summary:**
+    - 2 High AMN seasons
+    - 2 Low AMN seasons
+
+
+# Do these seasonal patterns agree with the seasonality of food security 🧐 🤔 ?
+
+## Pastoral livelihood system
+
+::: {.gantt-afiamn-pastoral}
+```{mermaid}
+%%| label: afi-amn-calendar-pastoral
+%%| fig-cap-location: bottom
+%%| fig-height: 4
+%%| fig-width: 13.7
+
+gantt
+    title AFI seasonal calendar vs AMN seasonal calendar
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+        Jilaal :afi1, 1, 4
+        High AMN :amn1, 1, 2
+        Gu     :afi2, 4, 7
+        Low AMN :amn2, 2, 5
+        Post-Gu:afi3, 7, 8
+        High AMN :amn3, 5, 7
+        Hagaa  :afi4, 7, 10
+        Low AMN :amn4, 7, 10
+        Deyr   :afi5, 10, 12
+        High AMN : amn5, 10, 12
+```
+:::
+
+## Agropastoral livelihood system
+
+::: {.gantt-afiamn-agropastoral}
+```{mermaid}
+%%| label: afi-amn-calendar-agropastoral
+%%| fig-cap-location: bottom
+%%| fig-height: 4
+%%| fig-width: 13.7
+
+gantt
+    title AFI seasonal calendar vs AMN seasonal calendar
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+        Jilaal :afi1, 1, 4
+        High AMN :amn1, 1, 2
+        Gu     :afi2, 4, 7
+        Low AMN :amn2, 2, 5
+        Post-Gu:afi3, 7, 8
+        High AMN :amn3, 5, 8
+        Hagaa  :afi4, 7, 10
+        Low AMN :amn4, 8, 11
+        Deyr   :afi5, 10, 12
+        High AMN : amn5, 11, 12
+```
+:::
+
+## Riverine livelihood system
+
+::: {.gantt-afiamn-riverine}
+```{mermaid}
+%%| label: afi-amn-calendar-riverine
+%%| fig-cap-location: bottom
+%%| fig-height: 4
+%%| fig-width: 13.7
+
+gantt
+    title AFI seasonal calendar vs AMN seasonal calendar
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+        Jilaal :afi1, 1, 4
+        High AMN :amn1, 1, 3
+        Gu     :afi2, 4, 7
+        Low AMN :amn2, 3, 5
+        Post-Gu :afi3, 7, 8
+        High AMN :amn3, 5, 7
+        Hagaa  :afi4, 7, 10
+        Low AMN :amn4, 7, 8
+        Deyr   :afi5, 10, 12
+        High AMN : amn5, 8, 10
+        Low AMN  : amn6, 10, 12
+```
+:::
+
+## Urban/IDPs livelihood system
+
+::: {.gantt-afiamn-urban}
+```{mermaid}
+%%| label: afi-amn-calendar-urbanidps
+%%| fig-cap-location: bottom
+%%| fig-height: 4
+%%| fig-width: 13.7
+
+gantt
+    title AFI seasonal calendar vs AMN seasonal calendar
+    dateFormat M
+    axisFormat %b
+    todayMarker off
+    section Seasons
+        Jilaal :afi1, 1, 4
+        Low AMN :amn1, 1, 5
+        Gu     :afi2, 4, 7
+        High AMN :amn2, 5, 8
+        Post-Gu:afi3, 7, 8
+        Low AMN :amn3, 8, 10
+        Hagaa  :afi4, 7, 10
+        High AMN :amn4, 10, 12
+        Deyr   :afi5, 10, 12
+```
+:::
+
+
 # Discussion 
 
 ## An article on ENN 
-![https://www.ennonline.net/fex-article/special-focus-wasting-patterns-somalia](enn-paper.png)
+![https://www.ennonline.net/fex-article/special-focus-wasting-patterns-somalia](data/enn-paper.png)
 
 ## Trend
 
@@ -569,20 +816,5 @@ This distinct pattern could not be compared to previous studies, as they did not
 <br>
 
 + This also explains the absence of a trough in April in the author's study, as all surveys were undertook starting in May and then November to December.
-
-
-## Do these seasonal patterns agree with the seasonality of food security?
-
-::: {.incremental}
-
-+ **NO,** they do not agree with or adhere to to food security Jilaal, Gu and Hagaa’s season, as it would, theoretically, be expected, but **they do agree (to some extent) with the Deyr season**
-:::
-
-## Brainstorming on the implications for IPC analysis
-
-<br> 
-
-+ Any? 🤔
-
 
 # ...Mahadsanid 😀

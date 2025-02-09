@@ -16,6 +16,7 @@ format:
     code-links: repo
     footnotes-hover: true
     reference-location: section
+    css: styles-html.css
     execute:
       eval: true
       echo: false
@@ -31,7 +32,7 @@ format:
      height: 720
      slide-number: true
      math: mathjax
-     css: styles.css
+     css: styles-reveal.css
      execute:
        eval: true
        echo: false

@@ -147,7 +147,7 @@
 /* High AMN */
 .gantt-afiamn-riverine #amn1,
 .gantt-afiamn-riverine #amn3,
-.gantt-afiamn-riverine #amn5 {
+.gantt-afiamn-riverine #amn6 {
   fill:#FF4500 !important;
   stroke:#FF4500  !important;
   stroke-width: 2px;
@@ -156,7 +156,7 @@
 /* Low AMN */
 .gantt-afiamn-riverine #amn2,
 .gantt-afiamn-riverine #amn4,
-.gantt-afiamn-riverine #amn6 {
+.gantt-afiamn-riverine #amn5 {
   fill:#1E90FF !important;
   stroke:#1E90FF  !important;
   stroke-width: 2px;

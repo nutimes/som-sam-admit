@@ -1,5 +1,7 @@
 ---
-format: gfm
+format:
+  gfm:
+    mermaid-format: png
 ---
 #  Feature insights into Somalia’s severe acute malnutrition admissions (SAM): a  time series analysis spanning from January 2019 to December 2024
 

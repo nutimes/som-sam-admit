@@ -219,7 +219,7 @@ The figure below illustrates the trend line split into the times when there was 
 #| layout-nrow: 2
 
 slope_beforeJul2019
-slope_aug2019_oct2019
+slope_jul2019_oct2019
 slope_nov2019_feb2020
 slope_mar2020_jan2021
 slope_feb2021_mar2023

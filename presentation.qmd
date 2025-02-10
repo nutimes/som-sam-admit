@@ -262,7 +262,7 @@ cmpnts_plot_national
 #| layout-nrow: 2
 
 slope_beforeJul2019
-slope_aug2019_oct2019
+slope_jul2019_oct2019
 slope_nov2019_feb2020
 slope_mar2020_jan2021
 slope_feb2021_mar2023

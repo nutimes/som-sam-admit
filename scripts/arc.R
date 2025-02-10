@@ -28,14 +28,14 @@ arc_beforeJul2019 <- trend_national |>
 ### ---------------------------------- Piecewise trend; direction: decrease ----
 
 ### Slope ----
-slope_aug2019_oct2019 <- trend_national |> 
-  filter(Monthly >= yearmonth("2019 Aug") & Monthly <= yearmonth("2019 Oct")) |> 
+slope_jul2019_oct2019 <- trend_national |> 
+  filter(Monthly >= yearmonth("2019 Jul") & Monthly <= yearmonth("2019 Oct")) |> 
   autoplot(.vars = trend)
 
 ### ARC ----
 arc_aug2019_oct2019 <- trend_national |> 
   ARC(
-    start = yearmonth("2019 Aug"),
+    start = yearmonth("2019 Jul"),
     end = yearmonth("2019 Oct"),
     .for = "knots"
   )
@@ -150,7 +150,7 @@ slope_pastoral_oct2019_aug2020 <- trend_pastoral |>
 #### ARC ----
 arc_pastoral_oct2019_aug2020 <- ARC(
   ts = trend_pastoral,
-  start = yearmonth("2019 Sep"),
+  start = yearmonth("2019 Oct"),
   end = yearmonth("2020 Aug"), 
   .for = "knots"
 )
@@ -232,7 +232,7 @@ slope_agropastoral_feb2020_jan2021 <- trend_agropastoral |>
 #### ARC ----
 arc_agropastoral_feb2020_jan2021 <- ARC(
   ts = trend_agropastoral,
-  start = yearmonth("2020 Jan"),
+  start = yearmonth("2020 Feb"),
   end = yearmonth("2021 Jan"), 
   .for = "knots"
 )
@@ -487,7 +487,7 @@ slope_urban_idps_afterapr2023 <- trend_urban_idps |>
 #### ARC ----
 arc_urban_idps_afterapr2023 <- ARC(
   ts = trend_urban_idps,
-  start = yearmonth("2023 Oct"),
+  start = yearmonth("2023 Apr"),
   end = yearmonth("2024 Dec"), 
   .for = "knots"
 )

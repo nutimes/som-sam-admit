@@ -483,7 +483,28 @@ cmpnts_plot_urban_idps
 ## Trend {.smaller}
 
 ```{r}
-1+1
+#| label: fig-piecewise-slopes-urban-idps
+#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-subcap: 
+#|   - "Jan 2019-May 2019"
+#|   - "Jun 2019-Nov 2019"
+#|   - "Dec 2019-Feb 2020"
+#|   - "Mar 2019-Feb 2021"
+#|   - "Mar 2021-Apr 2021"
+#|   - "May 2021-Aug 2021"
+#|   - "Sep 2021-Mar 2023"
+#|   - "Apr 2023-Dec 2024"
+#| layout-ncol: 4
+#| layout-nrow: 2
+
+slope_urban_idps_beforemay2019
+slope_urban_idps_jun2019_nov2019
+slope_urban_idps_dec2019_feb2020
+slope_urban_idps_mar2019_feb2021
+slope_urban_idps_mar2021_apr2021
+slope_urban_idps_may2021_aug2021
+slope_urban_idps_sep2021_mar2023
+slope_urban_idps_afterapr2023
 ```
 
 ## Seasonal variation {.smaller}

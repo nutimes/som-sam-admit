@@ -229,7 +229,7 @@ slope_april2023_dec2024
 The ARC [@arc] was calculated for each slope. The results are summarized in @tbl-arc-national.
 
 ::: {#nte-read-arc .callout-note}
-## How to read the table 2 in conjuntion with the figure 10
+## How should Table 2 be read in conjunction with Figure 10?
 
 **Example 1: increase**  
 In slope (a), the trend starts in January 2019 with an average admission of `r format(round(arc_beforeJul2019[[1]]),F,big.mark=",")` cases. It increased to an average admission of `r format(round(arc_beforeJul2019[[3]]),F,big.mark=",")` cases by June of the same year. Between this period of `r arc_beforeJul2019[[5]]` months, the admissions increased by an average of `r round(arc_beforeJul2019[[6]])` cases each month.
@@ -248,6 +248,8 @@ In slope (e), the trend starts in April 2023, with an average of admission of `r
 | (f) | `r arc_april2023_dec2024[[5]]` | `r format(round(arc_april2023_dec2024[[1]]),F, big.mark=",")` | `r format(round(arc_april2023_dec2024[[3]]),F,big.mark=",")` | `r format(round(arc_april2023_dec2024[[6]]),big.mark=",")` | 
 
 : The average rate of change of admissions by month in the time-intervals represented in figure 10 {#tbl-arc-national}
+
+<br> 
 
 ##### Examining the seasonal component  {#sec-sp-national}  
 All in all, the seasonal component of the national-level data reveals a consistent seasonal pattern in the admissions, though it is **time-varying**. The **highest peak** of admissions occurs in **May-June**, preceded by a **lower trough consistently observed in April**, which starts in February. The first peak occurs in January, following an increase in admissions starting in November.
@@ -386,6 +388,8 @@ To read and interpret this table, refer to @nte-read-arc.
 
 : The average rate of change of admissions by month in the time-intervals represented in @fig-piecewise-slopes-agropastoral {#tbl-arc-agropastoral}  
 
+<br> 
+
 ###### Examining the seasonal component   
 In this livelihood system, the seasonal pattern largely mirrors those described in @sec-sp-national. The highest peak is observed in May-June, with a second peak in January, beginning its rise in December. The lowest trough is also observed in April.
 
@@ -455,6 +459,8 @@ To read and interpret this table, refer to @nte-read-arc.
 
 : The average rate of change of admissions by month in the time-intervals represented in @fig-piecewise-slopes-riverine {#tbl-arc-riverine}  
 
+<br> 
+
 
 ###### Examining the seasonal component   
 The seasonal pattern in this livelihood system demonstrates a distinctly time-varying nature, with significant changes in amplitude, as clearly shown in the “before and as of 2022” plots.
@@ -485,6 +491,7 @@ seasonal_cmpnt_riverine_a2022
 :::{.callout-note}
 The Riverine and Pastoral livelihood systems are the only ones where, after the drop in admissions in February, there is an increase in March before the higher trough in April.
 :::
+
 ##### Urban/IDPs  
 The figure below illustrates the components of admissions in the Urban/IDPs livelihood system, which are further detailed in the following sections
 
@@ -492,6 +499,53 @@ The figure below illustrates the components of admissions in the Urban/IDPs live
 #| label: fig-cmpnts-urban-idps
 cmpnts_plot_urban_idps
 ```
+
+###### Analyzing the trend component  
+The direction of the trend has undergone eight significant shifts, as illustrated below, with the ARC summarized in @tbl-arc-urban. 
+
+```{r}
+#| label: fig-piecewise-slopes-urban-idps
+#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-subcap: 
+#|   - "Jan 2019-May 2019"
+#|   - "Jun 2019-Nov 2019"
+#|   - "Dec 2019-Feb 2020"
+#|   - "Mar 2019-Feb 2021"
+#|   - "Mar 2021-Apr 2021"
+#|   - "May 2021-Aug 2021"
+#|   - "Sep 2021-Mar 2023"
+#|   - "Apr 2023-Dec 2024"
+#| layout-ncol: 4
+#| layout-nrow: 2
+
+slope_urban_idps_beforemay2019
+slope_urban_idps_jun2019_nov2019
+slope_urban_idps_dec2019_feb2020
+slope_urban_idps_mar2019_feb2021
+slope_urban_idps_mar2021_apr2021
+slope_urban_idps_may2021_aug2021
+slope_urban_idps_sep2021_mar2023
+slope_urban_idps_afterapr2023
+
+```
+
+
+To read and interpret this table, refer to @nte-read-arc.
+
+| Slope | Time interval | Admissions~i~ | Admissions~f~ | ARC |  
+| :---: | :---: | :---: | :---: | :---: |
+| (a) | `r arc_urban_idps_beforemay2019[[5]]` | `r format(round(arc_urban_idps_beforemay2019[[1]]),F,big.mark=",")` | `r format(round(arc_urban_idps_beforemay2019[[3]]),F,big.mark=",")` | `r round(arc_urban_idps_beforemay2019[[6]])` |  
+| (b) | `r arc_urban_idps_jun2019_nov2019[[5]]` | `r format(round(arc_urban_idps_jun2019_nov2019[[1]]),F, big.mark=",")` | `r format(round(arc_urban_idps_jun2019_nov2019[[3]]),F,big.mark=",")` | `r round(arc_urban_idps_jun2019_nov2019[[6]])` | 
+| (c) | `r arc_urban_idps_dec2019_feb2020[[5]]` | `r format(round(arc_urban_idps_dec2019_feb2020[[1]]),F,big.mark=",")` | `r format(round(arc_urban_idps_dec2019_feb2020[[3]]),F,big.mark=",")` | `r round(arc_urban_idps_dec2019_feb2020[[6]])` | 
+| (d) | `r arc_urban_idps_mar2019_feb2021[[5]]` | `r format(round(arc_urban_idps_mar2019_feb2021[[1]]),F,big.mark=",")` | `r format(round(arc_urban_idps_mar2019_feb2021[[3]]),F,big.mark=",")` | `r round(arc_urban_idps_mar2019_feb2021[[6]])` | 
+| (e) | `r arc_urban_idps_mar2021_apr2021[[5]]` | `r format(round(arc_urban_idps_mar2021_apr2021[[1]]),F,big.mark=",")` | `r format(round(arc_urban_idps_mar2021_apr2021[[3]]),F,big.mark=",")` | `r round(arc_urban_idps_mar2021_apr2021[[6]])` | 
+| (f) | `r arc_urban_idps_may2021_aug2021[[5]]` | `r format(round(arc_urban_idps_may2021_aug2021[[1]]),F,big.mark=",")` | `r format(round(arc_urban_idps_may2021_aug2021[[3]]),F, big.mark=",")` | `r format(round(arc_urban_idps_may2021_aug2021[[6]]),big.mark=",")` | 
+| (g) | `r arc_urban_idps_sep2021_mar2023[[5]]` | `r format(round(arc_urban_idps_sep2021_mar2023[[1]]),F,big.mark=",")` | `r format(round(arc_urban_idps_sep2021_mar2023[[3]]),F, big.mark=",")` | `r format(round(arc_urban_idps_sep2021_mar2023[[6]]),big.mark=",")` | 
+| (h) | `r arc_urban_idps_afterapr2023[[5]]` | `r format(round(arc_urban_idps_afterapr2023[[1]]),F,big.mark=",")` | `r format(round(arc_urban_idps_afterapr2023[[3]]),F, big.mark=",")` | `r format(round(arc_urban_idps_afterapr2023[[6]]),big.mark=",")` | 
+
+: The average rate of change of admissions by month in the time-intervals represented in @fig-piecewise-slopes-urban-idps {#tbl-arc-urban}  
+
+<br>
 
 ###### Examining the seasonal component   
 Interestingly, in the Urban/IDP livelihood system, the seasonal pattern shows that admissions in January tend to align with the trend level. From February onwards, admissions decrease to reach a lower trough in April. Between May and June, admissions rise to their higher peak, followed by a second peak in November.

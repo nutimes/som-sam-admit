@@ -440,7 +440,7 @@ seasonal_cmpnt_riverine_a2022 <- cmpnts_riverine |>
 #### Get component ----
 cmpnts_urban_idps <- mo |> 
   filter(lsystems == "Urban/IDPs") |> 
-  mutate(admissions = box_cox(x = admissions, lambda = lambda_agropastoral)) |> 
+  mutate(admissions = box_cox(x = admissions, lambda = lambda_urban_idps)) |> 
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |> 

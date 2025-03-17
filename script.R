@@ -2,8 +2,7 @@
 ###   WORKFLOW FOR CONDUCTING A TIME SERIES ANALYSIS ON SOMALIA'S SAM DATA   ###
 ################################################################################
 
-# ---- Load required libraries -------------------------------------------------
-library(readr)
+## ---- Load required libraries ------------------------------------------------
 library(tidyr)
 library(dplyr)
 library(lubridate)
@@ -12,21 +11,25 @@ library(feasts)
 library(ggplot2)
 library(fable)
 library(sf)
+library(cyphr)
 
-# ---- Data wrangling ----------------------------------------------------------
+## ---- Retrieve secret key ----------------------------------------------------
+secret_key <- data_key(".")
+
+## ---- Read project-specific functions ----------------------------------------
+lapply(list.files(path = "R", full.names = TRUE), FUN = source)
+
+## ---- Data wrangling ---------------------------------------------------------
 source("scripts/data-wrangling.R")
 
-# ---- Maps --------------------------------------------------------------------
+## ---- Maps -------------------------------------------------------------------
 source("scripts/maps.R")
 
-# ---- Exploratory Data Analysis -----------------------------------------------
+## ---- Exploratory Data Analysis ----------------------------------------------
 source("scripts/eda-graphics.R")
 
-# ---- Decomposition  ----------------------------------------------------------
+## ---- Decomposition  ---------------------------------------------------------
 source("scripts/decomposition.R")
 
-# ---- Average Rate of Change --------------------------------------------------
+## ---- Average Rate of Change -------------------------------------------------
 source("scripts/arc.R")
-
-# ---- Modeling  ---------------------------------------------------------------
-source("scripts/modeling.R")

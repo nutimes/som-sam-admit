@@ -3,16 +3,7 @@
 ################################################################################
 
 
-
-## ---- Load utility functions -------------------------------------------------
-source("R/utils.R")
-
-## ---- Read data --------------------------------------------------------------
-admissions <- read_csv(
-  file = "data-raw/admissions.csv"
-)
-
-## ---- Tidy the data ----------------------------------------------------------
+## ---------------------------------------------------------- Tidy the data ----
 monthly_admissions <- admissions |>
   pivot_longer(
     cols = !c(region, district, lsystems),
@@ -20,6 +11,8 @@ monthly_admissions <- admissions |>
     values_to = "admissions"
   ) |>
   mutate(
+    time = gsub("^X", "", time),
+    time = gsub("\\.", "/", time), 
     time = ymd(as.Date(time, format = "%d/%m/%Y")),
     Monthly = yearmonth(time)
   ) |>

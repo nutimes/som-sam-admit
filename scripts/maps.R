@@ -3,13 +3,12 @@
 ################################################################################
 
 
-## ---- Read in Somalia shapefile ----------------------------------------------
+## ---- Transform Somalia CRS to UTM -------------------------------------------
 
-somalia <- st_read(
-  dsn = "data/som_admbnda_adm2_ocha_20250108.shp",
-  quiet = TRUE
-) |>
-  st_transform(crs = 20538)
+somalia <- st_transform(
+  x = som2,
+  crs = 20538
+)
 
 ## ---- Plot a map of the excluded districts -----------------------------------
 
@@ -34,12 +33,10 @@ map_incl_excl <- somalia |>
     show.legend = TRUE,
     color = "grey",
   ) +
-  geom_sf_label(
+  geom_sf_text(
     aes(label = excl),
     na.rm = TRUE,
-    label.padding = unit(0.09, "mm"),
-    label.size = 0.01,
-    size = 0.8
+    size = 1.5
   ) +
   scale_fill_manual(
     values = c("0" = "#7AA691", "1" = "#FDFEFD"),

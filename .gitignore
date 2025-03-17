@@ -43,3 +43,5 @@ reports/report_files
 /.quarto/
 # dataset
 data-raw/admissions.csv
+# scripts 
+scripts/modeling.R

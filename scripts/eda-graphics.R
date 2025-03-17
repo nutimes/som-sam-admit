@@ -10,17 +10,17 @@ tsplot_national <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE,
   time = "M"
-)|> 
+) |>
   autoplot(.vars = admissions) +
   labs(
     title = "Somalia's SAM Admissions Over Time",
-    subtitle = "A changing trend with an upward rise in 2022, and a fall as of 2023, with an irregular seasonal pattern over time",
+    subtitle = "A changing trend with an rise in 2022, and a fall as of 2023, with an irregular seasonal pattern over time",
     caption = "Time span: Jan 2019-Dec 2024",
     y = "Cases admitted"
   ) +
   theme(
     plot.subtitle = element_text(colour = "#706E6D", size = 9.5),
-    plot.caption = element_text(colour = '#706E6D'), 
+    plot.caption = element_text(colour = "#706E6D"),
     axis.title.y = element_text(size = 10, margin = margin(r = 5)),
     axis.title.x = element_text(size = 10, margin = margin(t = 7)),
     plot.title = element_text(size = 12)
@@ -30,9 +30,9 @@ tsplot_national <- summarise_admissions(
 ssnplot_national <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE
-) |> 
+) |>
   gg_season(
-    y = admissions, 
+    y = admissions,
     labels = "right"
   ) +
   labs(
@@ -40,10 +40,10 @@ ssnplot_national <- summarise_admissions(
     subtitle = "An irregular seasonal pattern with changes in the amplitude before and after 2022",
     caption = "Time span: January 2019-November 2024",
     y = "Cases admitted"
-  ) + 
+  ) +
   theme(
     plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
+    plot.caption = element_text(colour = "#706E6D"),
     axis.title.y = element_text(size = 10, margin = margin(r = 5)),
     axis.title.x = element_text(size = 10, margin = margin(r = 5)),
     plot.title = element_text(size = 12)
@@ -54,8 +54,8 @@ ssplot_national_b2022 <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE,
   time = "M"
-) |> 
-  filter(year(Monthly) < 2022) |> 
+) |>
+  filter(year(Monthly) < 2022) |>
   gg_season(
     y = admissions,
     labels = "right"
@@ -68,7 +68,7 @@ ssplot_national_b2022 <- summarise_admissions(
   ) +
   theme(
     plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
+    plot.caption = element_text(colour = "#706E6D"),
     axis.title.y = element_text(size = 10, margin = margin(r = 5)),
     axis.title.x = element_text(size = 10, margin = margin(r = 5)),
     plot.title = element_text(size = 12)
@@ -79,8 +79,8 @@ ssplot_national_a2022 <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE,
   time = "M"
-) |> 
-  filter(year(Monthly) >= 2022) |> 
+) |>
+  filter(year(Monthly) >= 2022) |>
   gg_season(
     y = admissions,
     labels = "right"
@@ -93,7 +93,7 @@ ssplot_national_a2022 <- summarise_admissions(
   ) +
   theme(
     plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
+    plot.caption = element_text(colour = "#706E6D"),
     axis.title.y = element_text(size = 10, margin = margin(r = 5)),
     axis.title.x = element_text(size = 10, margin = margin(r = 5)),
     plot.title = element_text(size = 12)
@@ -105,7 +105,7 @@ sbsplot_national <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE,
   time = "M"
-) |> 
+) |>
   gg_subseries(y = admissions) +
   labs(
     title = "Somalia's SAM admissions",
@@ -115,7 +115,7 @@ sbsplot_national <- summarise_admissions(
   ) +
   theme(
     plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
+    plot.caption = element_text(colour = "#706E6D"),
     axis.title.y = element_text(size = 10, margin = margin(r = 5)),
     axis.title.x = element_text(size = 10, margin = margin(r = 5)),
     plot.title = element_text(size = 12)
@@ -126,8 +126,8 @@ sbsplot_national_b2022 <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE,
   time = "M"
-) |> 
-  filter(year(Monthly) < 2022) |> 
+) |>
+  filter(year(Monthly) < 2022) |>
   gg_subseries(y = admissions) +
   labs(
     title = "Somalia's SAM admissions",
@@ -136,7 +136,7 @@ sbsplot_national_b2022 <- summarise_admissions(
   ) +
   theme(
     plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
+    plot.caption = element_text(colour = "#706E6D"),
     axis.title.y = element_text(size = 10, margin = margin(r = 5)),
     axis.title.x = element_text(size = 10, margin = margin(r = 5)),
     plot.title = element_text(size = 12)
@@ -147,8 +147,8 @@ sbsplot_national_a2022 <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE,
   time = "M"
-) |> 
-  filter(year(Monthly) >= 2022) |> 
+) |>
+  filter(year(Monthly) >= 2022) |>
   gg_subseries(y = admissions) +
   labs(
     title = "Somalia's SAM admissions",
@@ -157,7 +157,7 @@ sbsplot_national_a2022 <- summarise_admissions(
   ) +
   theme(
     plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
+    plot.caption = element_text(colour = "#706E6D"),
     axis.title.y = element_text(size = 10, margin = margin(r = 5)),
     axis.title.x = element_text(size = 10, margin = margin(r = 5)),
     plot.title = element_text(size = 12)
@@ -167,10 +167,10 @@ sbsplot_national_a2022 <- summarise_admissions(
 
 ### ------------------------------------------------------------- Time plot ----
 tsplot_lsysttem <- summarise_admissions(
-  ts = monthly_admissions, 
+  ts = monthly_admissions,
   .group = TRUE,
   time = "M"
-) |> 
+) |>
   autoplot(.vars = admissions) +
   facet_wrap(vars(lsystems), scales = "free_y") +
   labs(
@@ -182,7 +182,7 @@ tsplot_lsysttem <- summarise_admissions(
   theme(
     legend.position = "none",
     plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
+    plot.caption = element_text(colour = "#706E6D"),
     axis.title.y = element_text(size = 10, margin = margin(r = 5)),
     axis.title.x = element_text(size = 10, margin = margin(r = 5)),
     plot.title = element_text(size = 12)
@@ -193,7 +193,7 @@ ssnplot_lsystem <- summarise_admissions(
   ts = monthly_admissions,
   .group = TRUE,
   time = "M"
-) |> 
+) |>
   gg_season(y = admissions) +
   facet_wrap(vars(lsystems), scales = "free_y") +
   labs(
@@ -201,10 +201,10 @@ ssnplot_lsystem <- summarise_admissions(
     subtitle = "",
     caption = "Time span: Jan 2019-Dec 2024",
     y = "Cases admitted"
-  )+
+  ) +
   theme(
     plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
+    plot.caption = element_text(colour = "#706E6D"),
     axis.title.y = element_text(size = 10, margin = margin(r = 5)),
     axis.title.x = element_text(size = 10, margin = margin(r = 5)),
     plot.title = element_text(size = 12)
@@ -215,7 +215,7 @@ sbsplot_lsystem <- summarise_admissions(
   ts = monthly_admissions,
   .group = TRUE,
   time = "M"
-) |> 
+) |>
   gg_subseries(y = admissions) +
   labs(
     title = "Somalia's Monthly SAM Admissions by Year by Livelihood Systems",
@@ -224,7 +224,7 @@ sbsplot_lsystem <- summarise_admissions(
   ) +
   theme(
     plot.subtitle = element_text(colour = "#706E6D"),
-    plot.caption = element_text(colour = '#706E6D'), 
+    plot.caption = element_text(colour = "#706E6D"),
     axis.title.y = element_text(size = 10, margin = margin(r = 5)),
     axis.title.x = element_text(size = 10, margin = margin(r = 5)),
     plot.title = element_text(size = 12)

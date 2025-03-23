@@ -8,6 +8,7 @@ format: revealjs
 
 ```{r}
 #| label: source-script
+Sys.setenv(path_secret_key = "~/.ssh/id_rsa")
 source("script.R")
 ```
 

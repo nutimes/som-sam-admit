@@ -30,7 +30,8 @@ read_somalia_shp <- function(
         x = paste0("som", x),
         value = sf::st_read(
           dsn = exdir,
-          layer = paste0("som_admbnda_adm", x, "_ocha_20250108")
+          layer = paste0("som_admbnda_adm", x, "_ocha_20250108"), 
+          quiet = TRUE
         )
       )
     }

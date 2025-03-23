@@ -26,7 +26,8 @@ read_somalia_shp(
 #### Somalia's admin 2 ----
 som2 <- st_read(
   dsn = "data-raw/som-shp",
-  layer = "som_admbnda_adm2_ocha_20250108"
+  layer = "som_admbnda_adm2_ocha_20250108", 
+  quiet = TRUE
 )
 
 ################################ End of workflow ###############################

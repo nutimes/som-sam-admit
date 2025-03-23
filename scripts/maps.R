@@ -36,7 +36,7 @@ map_incl_excl <- somalia |>
   geom_sf_text(
     aes(label = excl),
     na.rm = TRUE,
-    size = 1.5
+    size = 1.3
   ) +
   scale_fill_manual(
     values = c("0" = "#7AA691", "1" = "#FDFEFD"),

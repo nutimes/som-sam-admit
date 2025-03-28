@@ -31,6 +31,8 @@ format:
      width: 1280
      height: 720
      slide-number: true
+     preview-links: true
+     scale: 1.5
      math: mathjax
      css: styles-reveal.css
      execute:

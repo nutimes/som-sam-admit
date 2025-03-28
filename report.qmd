@@ -8,6 +8,7 @@ date: today
 ```{r}
 #| label: source-script
 #| message: false
+Sys.setenv(path_secret_key = "~/.ssh/id_rsa")
 source("script.R")
 ```
 
@@ -149,7 +150,7 @@ ssplot_national_a2022
 :::
 
 ### By livelihood systems  
-The majority of the districts in Somalia are pastoral (34 districts), followed by agropastoral (19 districts). See @tbl-lsystem-districts and @fig-livelihood-systems. The table counts districts after excluding those with missing values, as described in @sec-data-wrangling.
+The majority of the districts in Somalia are pastoral (34 districts), followed by agropastoral (19 districts). @tbl-lsystem-districts counts districts after excluding those with missing values while @fig-livelihood-systems depicts the spatial distribution of the livelihood system over the map of Somalia.
 
 #### The livelihood systems 
 ::: {.panel-tabset}
@@ -176,7 +177,7 @@ map_lsystems
 :::
 
 
-All in all, the admissions in each livelihood system seem to follow the same pattern described in @sec-glimpse-national.
+All in all, the admissions in each livelihood system seem to follow the same pattern described in @sec-glimpse-national. This is further unpacked in the subsequent sections.
 
 ```{r}
 #| label: fig-timeplot-lsystem

@@ -112,7 +112,7 @@ This analysis examines six years of severe acute malnutrition (SAM) admission da
 + Districts with consistent reporting rate >80%
 :::
 
-::: {.column width="50%" style="text-align: center;"}
+::: {.column style="text-align: center;"}
 ```{r}
 #| label: exclusion-inclusion
 #| fig-width: 10
@@ -176,7 +176,7 @@ ssplot_national_b2022
 ```
 :::
 
-::: {.column width="50%" style="text-align: center;"}
+::: {.column style="text-align: center;"}
 As of 2022
 
 ```{r}
@@ -209,7 +209,7 @@ By Livelihood Systems
 : Number of districts in each livelihood system {#tbl-lsystem-districts}
 :::
 
-::: {.column width="60%" style="text-align: center;"}
+::: {.column style="text-align: center;"}
 ```{r}
 #| label: livelihood-systems
 #| fig-width: 10
@@ -309,7 +309,7 @@ seasonal_cmpnt_national_b2022
 ```
 :::
 
-::: {.column width="50%" style="text-align: center;"}
+::: {.column style="text-align: center;"}
 ```{r}
 #| label: fig-seasonal-pattern-natioanal-a2022
 #| fig-height: 8
@@ -798,7 +798,7 @@ This suggests that the program response remained high even after. This means tha
 <br> 
 
 :::{.callout-note}
-These findings align with except for a slight deviation in the agropastoral system, where the second peak shifts from November (as identified by ?? to December in this analysis
+These findings align with except for a slight deviation in the agropastoral system, where the second peak shifts from November (as identified by ??) to December in this analysis
 :::
 
 ## Seasonal variation (2/4)

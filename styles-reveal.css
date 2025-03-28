@@ -10,7 +10,7 @@ h1.title {
 div.quarto-title-author-name {
   font-size: 25px;
   text-align: center;
-  color:#75a6e6;
+  color:#808B96;
   padding-top: 50px ;
 }
 
@@ -31,7 +31,13 @@ p.subtitle {
 p.date {
   font-size: 25px;
   text-align: center;
-  color:#75a6e6;
+  color:#808B96;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ---- Style the seasonal calendar ------------------------------------------*/

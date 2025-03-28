@@ -50,9 +50,9 @@ gantt
 + It is generally assumed that AMN in Somalia peaks from the end of the Jilaal season to the end of the Gu season.
 :::
 
-## The regional literature {.smaller}
+## Regional literature {.smaller}
 
-A few studies where conducted in the region using SMART survey data: 
+A few studies were conducted in the region using SMART survey data: 
 
 ::: {.incremental}
 + 2 studies using 15 years of SMART survey data **in African drylands** (excluding Somalia) underscored the complex relationship between AMN and acute food insecurity: 
@@ -70,7 +70,7 @@ A few studies where conducted in the region using SMART survey data:
 
 :::
 
-## What does this analysis add? {.smaller} 
+## What additional value or evidence does this analysis bring? {.smaller} 
 
 <br> 
 
@@ -118,7 +118,6 @@ This analysis examines six years of severe acute malnutrition (SAM) admission da
 #| fig-width: 10
 #| fig-height: 11
 #| fig-dpi: 300
-#| dev: "png"
 map_incl_excl
 ```
 :::

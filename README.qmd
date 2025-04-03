@@ -67,7 +67,7 @@ The repository is structured in the following way:
 The above flowchart can be implemented simply by running the `scrip.R` file found in the root directory.
 
 ## Reproducibility information
-The repository was created in `R` version 4.4.2. This project uses the `{renv}` framework to record `R` package dependencies and versions. Packages and versions used are recorded in `renv.lock` and code used to manage dependencies is in `renv/` and other files in the root project directory. On starting an `R` session in the working directory, run `renv::restore()` to install R package dependencies.
+The repository was created in `R` version 4.4.3. This project uses the `{renv}` framework to record `R` package dependencies and versions. Packages and versions used are recorded in `renv.lock` and code used to manage dependencies is in `renv/` and other files in the root project directory. On starting an `R` session in the working directory, run `renv::restore()` to install R package dependencies.
 
 ## Data encryption  
 This project uses `{cyphr}` to encrypt the raw data that lives in `data-raw/` directory. In order to be able to access and decrypt the encrypted data, the user will need to have created their own personal SSH key and make a request to be added to the project. An easy-to-grasp guide on how to make a request will be found [here](https://github.com/OxfordIHTM/cyphr-encryption-demonstration#)

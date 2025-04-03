@@ -100,7 +100,7 @@ file found in the root directory.
 
 ## Reproducibility information
 
-The repository was created in `R` version 4.4.2. This project uses the
+The repository was created in `R` version 4.4.3. This project uses the
 `{renv}` framework to record `R` package dependencies and versions.
 Packages and versions used are recorded in `renv.lock` and code used to
 manage dependencies is in `renv/` and other files in the root project

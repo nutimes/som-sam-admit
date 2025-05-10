@@ -684,18 +684,28 @@ gantt
     dateFormat M
     axisFormat %b
     todayMarker off
+
     section Local Seasons
     Peak :amn1, 1, 2
     Low nadir :amn2, 2, 5
     High peak :amn3, 5, 7
     Nadir :amn4, 7, 10
-    Peak : amn5, 10, 12
+    Peak :amn5, 10, 12
+
     section National Seasons
-    Peak :crit, ntl1, 1, 2
+    Peak :ntl1, 1, 2
     Low nadir :ntl2, 2, 5
-    High peak :crit, ntl3, 5, 7
+    High peak :ntl3, 5, 7
     Nadir :ntl4, 7, 11
-    Peak :crit, ntl5, 11, 12
+    Peak :ntl5, 11, 12
+
+    section Luc et al. (2024)
+    Not available :luc1, 1, 5
+    High peak :luc2, 5, 6
+    Not available :luc3, 6, 10
+    Peak :luc4, 10, 11
+    Not avail. :luc5, 11, 12
+
     section AFI National Seasons
     Jilaal :afi1, 1, 4
     Gu     :afi2, 4, 7
@@ -715,18 +725,28 @@ gantt
     dateFormat M
     axisFormat %b
     todayMarker off
+
     section Local Seasons
     High peak :amn1, 1, 2
     Lower nadir :amn2, 2, 5
     Higher peak :amn3, 5, 8
     Low nadir :amn4, 8, 11
     High peak : amn5, 11, 12
+
     section National Seasons
-    Peak :crit, ntl1, 1, 2
+    Peak :ntl1, 1, 2
     Low nadir :ntl2, 2, 5
-    High peak :crit, ntl3, 5, 7
+    High peak :ntl3, 5, 7
     Nadir :ntl4, 7, 11
-    Peak :crit, ntl5, 11, 12
+    Peak :ntl5, 11, 12
+
+    section Luc et al. (2024)
+    Not available :luc1, 1, 5
+    High peak :luc2, 5, 6
+    Not available :luc3, 6, 10
+    Peak :luc4, 10, 11
+    Not avail. :luc5, 11, 12
+
     section AFI National Seasons
     Jilaal :afi1, 1, 4
     Gu     :afi2, 4, 7
@@ -746,18 +766,28 @@ gantt
     dateFormat M
     axisFormat %b
     todayMarker off
+
     section Local Seasons
     High peak :amn1, 1, 3
     Low nadir :amn2, 3, 5
     High peak :amn3, 5, 9
     Lower nadir :amn5, 9, 11
     Higher peak :amn6, 11, 12
+
     section National Seasons
-    Peak :crit, ntl1, 1, 2
+    Peak :ntl1, 1, 2
     Low nadir :ntl2, 2, 5
-    High peak :crit, ntl3, 5, 7
+    High peak :ntl3, 5, 7
     Nadir :ntl4, 7, 11
-    Peak :crit, ntl5, 11, 12
+    Peak :ntl5, 11, 12
+
+    section Luc et al. (2024)
+    Not available :luc1, 1, 5
+    High peak :luc2, 5, 6
+    Not available :luc3, 6, 10
+    Peak :luc4, 10, 11
+    Not avail. :luc5, 11, 12
+
     section AFI National Seasons
     Jilaal :afi1, 1, 4
     Gu     :afi2, 4, 7
@@ -777,17 +807,27 @@ gantt
     dateFormat M
     axisFormat %b
     todayMarker off
+
     section Local Seasons
     Lower nadir :amn1, 1, 5
     Higher peak :amn2, 5, 8
     Low nadir :amn3, 8, 10
     High peak :amn4, 10, 12
+
     section National Seasons
     Peak :ntl1, 1, 2
     Low nadir :ntl2, 2, 5
     High peak :ntl3, 5, 7
     Nadir :ntl4, 7, 11
     Peak :ntl5, 11, 12
+
+    section Luc et al. (2024)
+    Not available :luc1, 1, 5
+    High peak :luc2, 5, 6
+    Not available :luc3, 6, 10
+    Peak :luc4, 10, 11
+    Not avail. :luc5, 11, 12
+
     section AFI National Seasons
     Jilaal :afi1, 1, 4
     Gu     :afi2, 4, 7

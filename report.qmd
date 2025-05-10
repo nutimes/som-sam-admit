@@ -599,12 +599,12 @@ gantt
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-    High AMN :1, 2
-    Low AMN :2, 5
-    High AMN :5, 7
-    Low AMN :7, 10
-    High AMN :10, 12
+    section AMN Seasons
+    Peak :1, 2
+    Low nadir :2, 5
+    High peak :5, 7
+    Nadir :7, 10
+    Peak :10, 12
 ```
 :::
 
@@ -620,12 +620,12 @@ gantt
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-    High AMN :1, 2
-    Low AMN :2, 5
-    High AMN :5, 8
-    Low AMN :8, 11
-    High AMN : 11, 12
+    section AMN Seasons
+    Peak :1, 2
+    Low nadir :2, 5
+    High peak :5, 8
+    Nadir :8, 11
+    Peak : 11, 12
 ```
 :::
 
@@ -641,12 +641,12 @@ gantt
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-    High AMN :1, 3
-    Low AMN :3, 5
-    High AMN :5, 9
-    Low AMN :9, 11
-    High AMN :11, 12
+    section AMN Seasons
+    Peak :1, 3
+    Nadir :3, 5
+    Peak :5, 9
+    Low nadir :9, 11
+    High peak :11, 12
 ```
 :::
 
@@ -662,11 +662,11 @@ gantt
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-    Low AMN :1, 5
-    High AMN :5, 8
-    Low AMN :8, 10
-    High AMN :10, 12
+    section AMN Seasons
+    Low nadir :1, 5
+    High peak :5, 8
+    Nadir :8, 10
+    Peak :10, 12
 ```
 :::
 
@@ -678,23 +678,30 @@ All in all, the unveiled AMN seasonal patterns do not fully agree with the seaso
 ::: {.gantt-afiamn-pastoral}
 ```{mermaid}
 %%| label: fig-afi-amn-calendar-pastoral
-%%| fig-cap: AFI seasonal calendar vs AMN seasonal calendar
+%%| fig-cap: AMN seasonal calendar *versus* AFI seasonal calendar
 
 gantt
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
+    section Local Seasons
+    Peak :amn1, 1, 2
+    Low nadir :amn2, 2, 5
+    High peak :amn3, 5, 7
+    Nadir :amn4, 7, 10
+    Peak : amn5, 10, 12
+    section National Seasons
+    Peak :crit, ntl1, 1, 2
+    Low nadir :ntl2, 2, 5
+    High peak :crit, ntl3, 5, 7
+    Nadir :ntl4, 7, 11
+    Peak :crit, ntl5, 11, 12
+    section AFI National Seasons
     Jilaal :afi1, 1, 4
-    High AMN :amn1, 1, 2
     Gu     :afi2, 4, 7
-    Low AMN :amn2, 2, 5
     Post-Gu:afi3, 7, 8
-    High AMN :amn3, 5, 7
     Hagaa  :afi4, 7, 10
-    Low AMN :amn4, 7, 10
     Deyr   :afi5, 10, 12
-    High AMN : amn5, 10, 12
 ```
 :::
 
@@ -702,23 +709,30 @@ gantt
 ::: {.gantt-afiamn-agropastoral}
 ```{mermaid}
 %%| label: fig-afi-amn-calendar-agropastoral
-%%| fig-cap: AFI seasonal calendar vs AMN seasonal calendar
+%%| fig-cap: AMN seasonal calendar *versus* AFI seasonal calendar
 
 gantt
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
+    section Local Seasons
+    High peak :amn1, 1, 2
+    Lower nadir :amn2, 2, 5
+    Higher peak :amn3, 5, 8
+    Low nadir :amn4, 8, 11
+    High peak : amn5, 11, 12
+    section National Seasons
+    Peak :crit, ntl1, 1, 2
+    Low nadir :ntl2, 2, 5
+    High peak :crit, ntl3, 5, 7
+    Nadir :ntl4, 7, 11
+    Peak :crit, ntl5, 11, 12
+    section AFI National Seasons
     Jilaal :afi1, 1, 4
-    High AMN :amn1, 1, 2
     Gu     :afi2, 4, 7
-    Low AMN :amn2, 2, 5
     Post-Gu:afi3, 7, 8
-    High AMN :amn3, 5, 8
     Hagaa  :afi4, 7, 10
-    Low AMN :amn4, 8, 11
     Deyr   :afi5, 10, 12
-    High AMN : amn5, 11, 12
 ```
 :::
 
@@ -726,23 +740,30 @@ gantt
 ::: {.gantt-afiamn-riverine}
 ```{mermaid}
 %%| label: fig-afi-amn-calendar-riverine
-%%| fig-cap: AFI seasonal calendar vs AMN seasonal calendar
+%%| fig-cap: AMN seasonal calendar *versus* AFI seasonal calendar
 
 gantt
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
+    section Local Seasons
+    High peak :amn1, 1, 3
+    Low nadir :amn2, 3, 5
+    High peak :amn3, 5, 9
+    Lower nadir :amn5, 9, 11
+    Higher peak :amn6, 11, 12
+    section National Seasons
+    Peak :crit, ntl1, 1, 2
+    Low nadir :ntl2, 2, 5
+    High peak :crit, ntl3, 5, 7
+    Nadir :ntl4, 7, 11
+    Peak :crit, ntl5, 11, 12
+    section AFI National Seasons
     Jilaal :afi1, 1, 4
-    High AMN :amn1, 1, 3
     Gu     :afi2, 4, 7
-    Low AMN :amn2, 3, 5
     Post-Gu:afi3, 7, 8
-    High AMN :amn3, 5, 9
     Hagaa  :afi4, 7, 10
     Deyr   :afi5, 10, 12
-    Low AMN : amn5, 9, 11
-    High AMN : amn6, 11, 12
 ```
 :::
 
@@ -750,21 +771,28 @@ gantt
 ::: {.gantt-afiamn-urban}
 ```{mermaid}
 %%| label: fig-afi-amn-calendar-urbanidps
-%%| fig-cap: AFI seasonal calendar vs AMN seasonal calendar
+%%| fig-cap: AMN seasonal calendar *versus* AFI seasonal calendar
 
 gantt
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
+    section Local Seasons
+    Lower nadir :amn1, 1, 5
+    Higher peak :amn2, 5, 8
+    Low nadir :amn3, 8, 10
+    High peak :amn4, 10, 12
+    section National Seasons
+    Peak :ntl1, 1, 2
+    Low nadir :ntl2, 2, 5
+    High peak :ntl3, 5, 7
+    Nadir :ntl4, 7, 11
+    Peak :ntl5, 11, 12
+    section AFI National Seasons
     Jilaal :afi1, 1, 4
-    Low AMN :amn1, 1, 5
     Gu     :afi2, 4, 7
-    High AMN :amn2, 5, 8
     Post-Gu:afi3, 7, 8
-    Low AMN :amn3, 8, 10
     Hagaa  :afi4, 7, 10
-    High AMN :amn4, 10, 12
     Deyr   :afi5, 10, 12
 ```
 :::

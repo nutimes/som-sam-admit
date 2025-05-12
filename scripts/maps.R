@@ -36,7 +36,7 @@ map_incl_excl <- somalia |>
   geom_sf_text(
     aes(label = excl),
     na.rm = TRUE,
-    size = 3
+    size = 1.9
   ) +
   scale_fill_manual(
     values = c("0" = "#7AA691", "1" = "#FDFEFD"),
@@ -46,7 +46,7 @@ map_incl_excl <- somalia |>
   theme_void() +
   theme(
     legend.position = "right",
-    plot.title = element_text(size = 14, face = "bold")
+    plot.title = element_text(size = 10, face = "bold")
   )
 
 ## ---- Plot a map of livelihood systems ---------------------------------------
@@ -119,7 +119,9 @@ map_lsystems <- somalia |>
   theme_void() +
   theme(
     legend.position = "right",
-    plot.title = element_text(size = 14, face = "bold")
+    plot.title = element_text(size = 10, face = "bold"), 
+    legend.text = element_text(size = 8),
+    axis.title = element_text(size = 8)
   )
 
 ############################## End of workflow #################################

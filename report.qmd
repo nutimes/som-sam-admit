@@ -23,7 +23,7 @@ In Somalia, the seasonality of AMN is generaly associated with the seasonality o
 
 ```{mermaid}
 %%| label: fig-seasonal-calendar
-%%| fig-cap: "Somalia Food Security Seasonal Calendar"
+%%| fig-cap: "Somalia food security seasonal calendar"
 %%| fig-cap-location: bottom
 gantt
     dateFormat M
@@ -91,10 +91,10 @@ Twelve districts were excluded for frequent missing of admissions data (see @fig
 
 ```{r}
 #| label: fig-exclusion-inclusion
-#| fig-width: 5
-#| fig-height: 3
-#| fig-dpi: 300
-#| dev: "png"
+#| fig-cap: "Districts included and excluded during data wrangling"
+#| fig-width: 4
+#| fig-height: 5
+#| fig-dpi: 200
 map_incl_excl
 ```
 
@@ -117,6 +117,7 @@ The figure below displays the total number of SAM cases admitted into the treatm
 
 ```{r}
 #| label: fig-timeplot-national
+#| fig-cap: "Evolution of admissions over time"
 tsplot_national
 ```
 
@@ -130,6 +131,7 @@ From this figure, the seasonal variation starts to be seen, though not clearly y
 
 ```{r}
 #| label: fig-seasonal-plot-national
+#| fig-cap: "A glance at the seasonal patterns over the past six years"
 ssnplot_national
 ```
 
@@ -139,12 +141,14 @@ The patterns in the above figure can further be visualized below with the data s
 ## Before 2022
 ```{r}
 #| label: fig-seasonal-plot-b2022
+#| fig-cap: "A glance at the seasonal patterns before 2022"
 ssplot_national_b2022
 ```
 
 ## As of 2022
 ```{r}
 #| label: fig-seasonal-plot-a2022
+#| fig-cap: "A glance at the seasonal patterns as of 2022"
 ssplot_national_a2022
 ```
 :::
@@ -167,6 +171,7 @@ The majority of the districts in Somalia are pastoral (34 districts), followed b
 ## Map
 ```{r}
 #| label: fig-livelihood-systems
+#| fig-cap: "Spatial distribution of the livelihood systems across Somalia"
 #| fig-width: 5
 #| fig-height: 3
 #| fig-dpi: 300
@@ -181,6 +186,7 @@ All in all, the admissions in each livelihood system seem to follow the same pat
 
 ```{r}
 #| label: fig-timeplot-lsystem
+#| fig-cap: "Evolution of admissions over time with data split by livelihood systems"
 tsplot_lsysttem
 ```
 
@@ -197,6 +203,7 @@ In the figure below, the first graph (top-down) is the whole data (the admission
 
 ```{r}
 #| label: fig-cmpnts-national
+#| fig-cap: "A glance at the components of the admissions at the national level"
 cmpnts_plot_national
 ```
 
@@ -259,6 +266,7 @@ While the patterns remain consistent over the years, the amplitude[^2] of both t
 
 ```{r}
 #| label: fig-seasonal-pattern-national
+#| fig-cap: "A glance at the seasonality of admissions with the data at the national level"
 seasonal_cmpnt_national
 ```
 
@@ -268,12 +276,14 @@ The seasonal component before and as of 2022 can be visualized in @fig-seasonal-
 ## Before 2022
 ```{r}
 #| label: fig-seasonal-pattern-natioanal-b2022
+#| fig-cap: "A glance at the seasonality of admissions with the data at the national level before 2022"
 seasonal_cmpnt_national_b2022
 ```
 
 ## As of 2022
 ```{r}
 #| label: fig-seasonal-pattern-natioanal-a2022
+#| fig-cap: "A glance at the seasonality of admissions with the data at the national level as of 2022"
 seasonal_cmpnt_national_a2022
 ```
 :::
@@ -285,6 +295,7 @@ The figure below illustrates the components of admissions in the pastoral liveli
 
 ```{r}
 #| label: fig-cmpnts-pastoral
+#| fig-cap: "A glance at the components of the admissions in the pastoral livelihood system"
 cmpnts_plot_pastoral
 ```
 
@@ -329,6 +340,7 @@ In this livelihood system, the seasonal pattern mirrors that observed in @sec-sp
 
 ```{r}
 #| label: fig-seasonal-pattern-pastoral
+#| fig-cap: "A glance at the seasonality of admissions in the pastoral livelihood system"
 seasonal_cmpnt_pastoral
 ```
 
@@ -344,12 +356,14 @@ As for nadir, two nadirs are observed: a lower one (high depth), and shorter, in
 ## Before 2022
 ```{r}
 #| label: fig-seasonal-pattern-pastoral-b2022
+#| fig-cap: "A glance at the seasonality of admissions in the pastoral livelihood system before 2022"
 seasonal_cmpnt_pastoral_b2022
 ```
 
 ## As of 2022
 ```{r}
 #| label: fig-seasonal-pattern-pastoral-a2022
+#| fig-cap: "A glance at the seasonality of admissions in the pastoral livelihood system as of 2022"
 seasonal_cmpnt_pastoral_a2022
 ```
 :::
@@ -359,6 +373,7 @@ The figure below illustrates the components of admissions in the agropastoral li
 
 ```{r}
 #| label: fig-cmpnts-agropastoral
+#| fig-cap: "A glance at the components of the admissions in the agropastoral livelihood system"
 cmpnts_plot_agropastoral
 ```
 
@@ -400,6 +415,7 @@ In this livelihood system, the seasonal pattern also mirrors those described in 
 
 ```{r}
 #| label: fig-seasonal-pattern-agropastoral
+#| fig-cap: "A glance at the seasonality of admissions in the agropastoral livelihood system"
 seasonal_cmpnt_agropastoral
 ```
 
@@ -411,12 +427,14 @@ As for nadir, there are two of them. The lowest nadir (with high depth) is obser
 ## Before 2022
 ```{r}
 #| label: fig-seasonal-pattern-agropastoral-b2022
+#| fig-cap: "A glance at the seasonality of admissions in the agropastoral livelihood system before 2022"
 seasonal_cmpnt_agropastoral_b2022
 ```
 
 ## As of 2022
 ```{r}
 #| label: fig-seasonal-pattern-agropastoral-a2022
+#| fig-cap: "A glance at the seasonality of admissions in the agropastoral livelihood system as of 2022"
 seasonal_cmpnt_agropastoral_a2022
 ```
 :::
@@ -426,6 +444,7 @@ The figure below illustrates the components of admissions in the riverine liveli
 
 ```{r}
 #| label: fig-cmpnts-riverine
+#| fig-cap: "A glance at the components of the admissions in the riverine livelihood system"
 cmpnts_plot_riverine
 ```
 
@@ -473,6 +492,7 @@ The seasonal pattern in this livelihood system exhibits a distinct time-varying 
 
 ```{r}
 #| label: fig-seasonal-pattern-riverine
+#| fig-cap: "A glance at the seasonality of admissions in the riverine livelihood system"
 seasonal_cmpnt_riverine
 ```
 
@@ -484,12 +504,14 @@ As for 2022, there was a significant change in the amplitude patterns. Several p
 ## Before 2022
 ```{r}
 #| label: fig-seasonal-pattern-riverine-b2022
+#| fig-cap: "A glance at the seasonality of admissions in the riverine livelihood system before 2022"
 seasonal_cmpnt_riverine_b2022
 ```
 
 ## As of 2022
 ```{r}
 #| label: fig-seasonal-pattern-riverine-a2022
+#| fig-cap: "A glance at the seasonality of admissions in the riverine livelihood system as of 2022"
 seasonal_cmpnt_riverine_a2022
 ```
 :::
@@ -503,6 +525,7 @@ The figure below illustrates the components of admissions in the Urban/IDPs live
 
 ```{r}
 #| label: fig-cmpnts-urban-idps
+#| fig-cap: "A glance at the components of the admissions in the urban/IDP livelihood system"
 cmpnts_plot_urban_idps
 ```
 
@@ -561,6 +584,7 @@ This is the only livelihood system in which, from December to April, admissions 
 :::
 ```{r}
 #| label: fig-seasonal-pattern-urban-idps
+#| fig-cap: "A glance at the seasonality of admissions in the urban/IDP livelihood system"
 seasonal_cmpnt_urban_idps
 ```
 
@@ -570,12 +594,14 @@ Although the pattern exhibits time-varying fluctuations, the only notable differ
 ## Before 2022
 ```{r}
 #| label: fig-seasonal-pattern-urban-idps-b2022
+#| fig-cap: "A glance at the seasonality of admissions in the urban/IDP livelihood system before 2022"
 seasonal_cmpnt_urban_idps_b2022
 ```
 
 ## As of 2022
 ```{r}
 #| label: fig-seasonal-pattern-urban-idps-a2022
+#| fig-cap: "A glance at the seasonality of admissions in the urban/IDP livelihood system as of 2022"
 seasonal_cmpnt_urban_idps_a2022
 ```
 :::
@@ -586,7 +612,7 @@ seasonal_cmpnt_urban_idps_a2022
 
 Currently, the analyses parameters of the AMN go hand-in-hand with those of the IPC AFI, as visually demostrated in @fig-afiamncalendar for Gu- and Deyr-based assessments.
 
-![Current Somalia's AFI and AMN seasonal calendar](data/som-ipc-parameters.png){#fig-afiamncalendar}
+![Current Somalia's AFI and AMN seasonal calendar for the IPC analyses](data/som-ipc-parameters.png){#fig-afiamncalendar}
 
 ::: {.callout-note}
 The findings of this analysis suggest that the parameters used in AMN analysis should be reconsidered to better align with the actual periods of change in AMN trends. These parameters should be sensitive to the distinct characteristics of existing livelihood systems.

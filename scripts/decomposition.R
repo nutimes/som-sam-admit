@@ -15,7 +15,13 @@ cmpnts_national <- na |>
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |>
-  components()
+  components() |> 
+  mutate(
+    admissions = inv_box_cox(x = admissions, lambda = lambda_national),
+    trend = inv_box_cox(x = trend, lambda = lambda_national),
+    season_year = inv_box_cox(x = season_year, lambda = lambda_national),
+    remainder = inv_box_cox(x = remainder, lambda = lambda_national)
+  ) 
 
 #### Visualize the components ----
 cmpnts_plot_national <- cmpnts_national |>
@@ -95,7 +101,13 @@ cmpnts_pastoral <- ls |>
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |>
-  components()
+  components() |> 
+  mutate(
+    admissions = inv_box_cox(x = admissions, lambda = lambda_pastoral),
+    trend = inv_box_cox(x = trend, lambda = lambda_pastoral),
+    season_year = inv_box_cox(x = season_year, lambda = lambda_pastoral),
+    remainder = inv_box_cox(x = remainder, lambda = lambda_pastoral)
+  ) 
 
 #### Visualize the components ----
 cmpnts_plot_pastoral <- cmpnts_pastoral |>
@@ -171,7 +183,25 @@ cmpnts_agropastoral <- ls |>
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |>
-  components()
+  components() |> 
+  mutate(
+    admissions = do.call(
+      what = inv_box_cox,
+      args = list(x = admissions, lambda = lambda_agropastoral)
+    ),
+    trend = do.call(
+      what = inv_box_cox,
+      args = list(x = trend, lambda = lambda_agropastoral)
+    ), 
+    season_year = do.call(
+      what = inv_box_cox,
+      args = list(x = season_year, lambda = lambda_agropastoral)
+    ),
+    remainder = do.call(
+      what = inv_box_cox,
+      args = list(x = remainder, lambda = lambda_agropastoral)
+    )
+  )
 
 #### Visualize the components ----
 cmpnts_plot_agropastoral <- cmpnts_agropastoral |>
@@ -245,7 +275,25 @@ cmpnts_riverine <- ls |>
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |>
-  components()
+  components() |> 
+  mutate(
+    admissions = do.call(
+      what = inv_box_cox,
+      args = list(x = admissions, lambda = lambda_riverine)
+    ),
+    trend = do.call(
+      what = inv_box_cox,
+      args = list(x = trend, lambda = lambda_riverine)
+    ), 
+    season_year = do.call(
+      what = inv_box_cox,
+      args = list(x = season_year, lambda = lambda_riverine)
+    ),
+    remainder = do.call(
+      what = inv_box_cox,
+      args = list(x = remainder, lambda = lambda_riverine)
+    )
+  )
 
 #### Visualize the components ----
 cmpnts_plot_riverine <- cmpnts_riverine |>
@@ -320,10 +368,28 @@ cmpnts_urban_idps <- ls |>
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |>
-  components()
+  components() |> 
+  mutate(
+    admissions = do.call(
+      what = inv_box_cox,
+      args = list(x = admissions, lambda = lambda_urban_idps)
+    ),
+    trend = do.call(
+      what = inv_box_cox,
+      args = list(x = trend, lambda = lambda_urban_idps)
+    ), 
+    season_year = do.call(
+      what = inv_box_cox,
+      args = list(x = season_year, lambda = lambda_urban_idps)
+    ),
+    remainder = do.call(
+      what = inv_box_cox,
+      args = list(x = remainder, lambda = lambda_urban_idps)
+    )
+  )
 
 #### Visualize the components ----
-cmpnts_plot_urban_idps <- cmpnts_urban_idps |>
+cmpnts_plot_urban_idps <- cmpnts_urban_idps |> 
   autoplot() +
   labs(
     title = "Trends and Seasonal Patterns in Urban/IDPs Livelihood System",

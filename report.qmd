@@ -200,7 +200,7 @@ In the figure below, the first graph (top-down) is the whole data (the admission
 cmpnts_plot_national
 ```
 
-##### Analyzing the trend component 
+##### Analysing the trend component 
 
 All in all, as highlighted in the @sec-glimpse-national, the trend pattern exhibits distinct characteristics. In terms of **shape**, it is non-linear. In terms of **stability**, the trend evolves over time, indicating a dynamic rather than a stable pattern. In terms of **direction**, it exhibits a notable rise in admissions starting in the last quarter of 2021, followed by a decline that began to decline in 2023.  
 
@@ -208,7 +208,7 @@ In the figure below, the trend line is split into the times when there was a not
 
 ```{r}
 #| label: fig-piecewise-slopes
-#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-cap: "Periods of significant shifts in the direction of the trend"
 #| fig-subcap: 
 #|   - "Jan-Jun 2019"
 #|   - "Jul-Oct 2019"
@@ -288,11 +288,11 @@ The figure below illustrates the components of admissions in the pastoral liveli
 cmpnts_plot_pastoral
 ```
 
-###### Analyzing the trend component  
+###### Analysing the trend component  
 The direction of the trend has undergone six significant shifts, as illustrated below, with the ARC summarised in @tbl-arc-pastoral.
 ```{r}
 #| label: fig-piecewise-slopes-pastoral
-#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-cap: "Periods of significant shifts in the direction of the trend"
 #| fig-subcap: 
 #|   - "Jan-May 2019"
 #|   - "Jun-Sep 2019"
@@ -433,7 +433,7 @@ cmpnts_plot_riverine
 The direction of the trend has undergone six significant shifts, as illustrated below, with the ARC summarised in @tbl-arc-riverine
 ```{r}
 #| label: fig-piecewise-slopes-riverine
-#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-cap: "Periods of significant shifts in the direction of the trend"
 #| fig-subcap: 
 #|   - "Jan 2019-May 2020"
 #|   - "Jun 2019-Nov 2020"
@@ -511,7 +511,7 @@ The direction of the trend has undergone eight significant shifts, as illustrate
 
 ```{r}
 #| label: fig-piecewise-slopes-urban-idps
-#| fig-cap: "Periods of significant shifts in trend direction"
+#| fig-cap: "Periods of significant shifts in the direction of the trend"
 #| fig-subcap: 
 #|   - "Jan 2019-May 2019"
 #|   - "Jun 2019-Nov 2019"

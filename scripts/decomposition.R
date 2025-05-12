@@ -10,38 +10,8 @@
 
 ## ---- Decomposition at National level ----------------------------------------
 
-### ------------------------------------------------- Box-Cox transformation ----
-
-#### Summarise data ----
-na <- monthly_admissions |>
-  summarise_admissions(
-    .group = FALSE,
-    time = "M"
-  )
-
-#### Get lambda ----
-lambda_national <- na |>
-  features(
-    .var = admissions,
-    features = guerrero
-  ) |>
-  pull(lambda_guerrero)
-
-#### Visualize the transformation ----
-na |>
-  autoplot(
-    box_cox(
-      x = admissions,
-      lambda = lambda_national
-    )
-  )
-
-
-### --------------------------------------------------------- Decomposition ----
-
 #### Get components ----
 cmpnts_national <- na |>
-  mutate(admissions = box_cox(x = admissions, lambda = lambda_national)) |>
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |>
@@ -66,7 +36,7 @@ seasonal_cmpnt_national <- cmpnts_national |>
   gg_season(y = season_year) +
   labs(
     title = "Seasonal Patterns Over Time at National Level",
-    subtitle = "The higher peak of admissions is reached in May-June every year, with a lower trough in April",
+    subtitle = "The higher peak of admissions is reached in May-June every year, with a lower nadir in April",
     y = "Seasonal effects",
     colour = "Year"
   ) +
@@ -84,7 +54,7 @@ seasonal_cmpnt_national_b2022 <- cmpnts_national |>
   gg_season(y = season_year) +
   labs(
     title = "Seasonal Patterns Before 2022",
-    subtitle = "The higher peak of admissions is reached in May-June every year, with a lower trough in April",
+    subtitle = "The higher peak of admissions is reached in May-June every year, with a lower nadir in April",
     y = "Seasonal effects",
     colour = "Year"
   ) +
@@ -102,7 +72,7 @@ seasonal_cmpnt_national_a2022 <- cmpnts_national |>
   gg_season(y = season_year) +
   labs(
     title = "Seasonal Patterns As Of 2022",
-    subtitle = "Two peaks: May-June and then Nov-Jan, and lower trough in April",
+    subtitle = "Two peaks: May-June and then Nov-Jan, and lower nadir in April",
     y = "Seasonal effects",
     colour = "Year"
   ) +
@@ -116,102 +86,11 @@ seasonal_cmpnt_national_a2022 <- cmpnts_national |>
 
 ## ---- Decomposition by Livelihood systems ------------------------------------
 
-### -------------------------------------------------------- Summarise data ----
-mo <- monthly_admissions |>
-  summarise_admissions(
-    .group = TRUE,
-    time = "M"
-  )
-
-### ------------------------------------------------ Box-Cox transformation ----
-
-#### Get lambda for livelihood systems ----
-##### For Pastoral ----
-lambda_pastoral <- mo |>
-  filter(lsystems == "Pastoral") |>
-  features(
-    .var = admissions,
-    features = guerrero
-  ) |>
-  pull(lambda_guerrero)
-
-##### For Agropastoral ----
-lambda_agropastoral <- mo |>
-  filter(lsystems == "Agropastoral") |>
-  features(
-    .var = admissions,
-    features = guerrero
-  ) |>
-  pull(lambda_guerrero)
-
-##### For Riverine ----
-lambda_riverine <- mo |>
-  filter(lsystems == "Riverine") |>
-  features(
-    .var = admissions,
-    features = guerrero
-  ) |>
-  pull(lambda_guerrero)
-
-##### For Urban/IDP's ----
-lambda_urban_idps <- mo |>
-  filter(lsystems == "Urban/IDPs") |>
-  features(
-    .var = admissions,
-    features = guerrero
-  ) |>
-  pull(lambda_guerrero)
-
-
-### ------------------------ Visualize the time series after transformation ----
-
-#### Pastoral ----
-mo |>
-  filter(lsystems == "Pastoral") |>
-  autoplot(
-    box_cox(
-      x = admissions,
-      lambda = lambda_pastoral
-    )
-  )
-
-#### Agropastoral ----
-mo |>
-  filter(lsystems == "Agropastoral") |>
-  autoplot(
-    box_cox(
-      x = admissions,
-      lambda = lambda_agropastoral
-    )
-  )
-
-#### Riverine ----
-mo |>
-  filter(lsystems == "Riverine") |>
-  autoplot(
-    box_cox(
-      x = admissions,
-      lambda = lambda_riverine
-    )
-  )
-
-#### Urban/IDPs ----
-mo |>
-  filter(lsystems == "Urban/IDPs") |>
-  autoplot(
-    box_cox(
-      x = admissions,
-      lambda = lambda_urban_idps
-    )
-  )
-
-
 ## ---- Decomposition ----------------------------------------------------------
 ### -------------------------------------------- Pastoral livelihood system ----
 
 #### Get components ----
-cmpnts_pastoral <- mo |>
-  mutate(admissions = box_cox(x = admissions, lambda = lambda_pastoral)) |>
+cmpnts_pastoral <- ls |>
   filter(lsystems == "Pastoral") |>
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
@@ -287,9 +166,8 @@ seasonal_cmpnt_pastoral_a2022 <- cmpnts_pastoral |>
 ### ---------------------------------------- Agropastoral livelihood system ----
 
 #### Get components ----
-cmpnts_agropastoral <- mo |>
+cmpnts_agropastoral <- ls |>
   filter(lsystems == "Agropastoral") |>
-  mutate(admissions = box_cox(x = admissions, lambda = lambda_agropastoral)) |>
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |>
@@ -331,7 +209,7 @@ seasonal_cmpnt_agropastoral_b2022 <- cmpnts_agropastoral |>
   gg_season(y = season_year) +
   labs(
     title = "Seasonal Patterns in Agropastoral Livelihood Systems",
-    subtitle = "One  higher peak in May-June, and lower troughs in February-April",
+    subtitle = "One  higher peak in May-June, and lower nadirs between February and April",
     y = "Seasonal effects",
     colour = "Year"
   ) +
@@ -349,7 +227,7 @@ seasonal_cmpnt_agropastoral_a2022 <- cmpnts_agropastoral |>
   gg_season(y = season_year) +
   labs(
     title = "Seasonal Patterns in Agropaastoral Livelihood Systems as of 2022",
-    subtitle = "two higher peaks in January and June, and one lower trough in April",
+    subtitle = "Two high peaks in January and June, and one lower nadir in April",
     y = "Seasonal effects"
   ) +
   theme(
@@ -362,9 +240,8 @@ seasonal_cmpnt_agropastoral_a2022 <- cmpnts_agropastoral |>
 ### -------------------------------------------- Riverine livelihood system ----
 
 #### Get components ----
-cmpnts_riverine <- mo |>
+cmpnts_riverine <- ls |>
   filter(lsystems == "Riverine") |>
-  mutate(admissions = box_cox(x = admissions, lambda = lambda_riverine)) |>
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |>
@@ -389,7 +266,7 @@ seasonal_cmpnt_riverine <- cmpnts_riverine |>
   gg_season(y = season_year) +
   labs(
     title = "Seasonal Patterns in Riverine Livelihood Systems",
-    subtitle = "Several high peaks in the admissions",
+    subtitle = "Several high peaks in admissions",
     y = "Seasonal effects",
     colours = "Year"
   ) +
@@ -406,7 +283,7 @@ seasonal_cmpnt_riverine_b2022 <- cmpnts_riverine |>
   gg_season(y = season_year) +
   labs(
     title = "Seasonal Patterns in Riverine Livelihood Systems Before 2022",
-    subtitle = "Two higher peaks in May-June, then December-January; and two lower troughs in April and in November",
+    subtitle = "Two higher peaks in May-June, then December-January; and two lower nadirs in April and in November",
     y = "Seasonal effects",
     colour = "Year"
   ) +
@@ -424,7 +301,7 @@ seasonal_cmpnt_riverine_a2022 <- cmpnts_riverine |>
   gg_season(y = season_year) +
   labs(
     title = "Seasonal Patterns in Riverine Livelihood Systems",
-    subtitle = "Several peaks and lower trough in November",
+    subtitle = "Several peaks and lower nadir in November",
     y = "Seasonal effects",
     colour = "Year"
   ) +
@@ -438,9 +315,8 @@ seasonal_cmpnt_riverine_a2022 <- cmpnts_riverine |>
 ### ------------------------------------------ Urban/IDPs livelihood system ----
 
 #### Get component ----
-cmpnts_urban_idps <- mo |>
+cmpnts_urban_idps <- ls |>
   filter(lsystems == "Urban/IDPs") |>
-  mutate(admissions = box_cox(x = admissions, lambda = lambda_urban_idps)) |>
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
   ) |>
@@ -465,7 +341,7 @@ seasonal_cmpnt_urban_idps <- cmpnts_urban_idps |>
   gg_season(y = season_year) +
   labs(
     title = "Seasonal Patterns Over Time in Urban/IDPs Systems",
-    subtitle = "The higher peak of admissions is reached in May-June, and lower trough in April",
+    subtitle = "The higher peak of admissions is reached in May-June, and lower nadir in April",
     y = "Seasonal effects",
     colour = "Year"
   ) +
@@ -482,7 +358,7 @@ seasonal_cmpnt_urban_idps_b2022 <- cmpnts_urban_idps |>
   gg_season(y = season_year) +
   labs(
     title = "Seasonal Patterns in Urban/IDPs Livelihood Systems Before 2022",
-    subtitle = "The higher peak of admissions is reached in May-June, and lower trough in April",
+    subtitle = "The higher peak of admissions is reached in May-June, and lower nadir in April",
     y = "Seasonal effects",
     colour = "Year"
   ) +
@@ -500,7 +376,7 @@ seasonal_cmpnt_urban_idps_a2022 <- cmpnts_urban_idps |>
   gg_season(y = season_year) +
   labs(
     title = "Seasonal Patterns in Urban/IDPs Livelihood Systems as of 2022",
-    subtitle = "The higher peak of admissions is reached in May-June, and lower trough in April",
+    subtitle = "The higher peak of admissions is reached in May-June, and lower nadir in April",
     y = "Seasonal effects",
     colour = "Year"
   ) +

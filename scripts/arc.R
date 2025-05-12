@@ -7,7 +7,7 @@
 
 ### Reverse Box-Cox transformation done in the `decomposition.R` file ----
 trend_national <- cmpnts_national |>
-  select(trend) |>
+  select(trend) |> 
   mutate(trend = inv_box_cox(x = trend, lambda = lambda_national))
 
 ### ---------------------------------- Piecewise trend; direction: increase ----

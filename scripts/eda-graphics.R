@@ -15,7 +15,6 @@ tsplot_national <- summarise_admissions(
   labs(
     title = "Somalia's SAM Admissions Over Time",
     subtitle = "A changing trend with an rise in 2022, and a fall as of 2023, with an irregular seasonal pattern over time",
-    caption = "Time span: Jan 2019-Dec 2024",
     y = "Cases admitted"
   ) +
   theme(
@@ -37,8 +36,7 @@ ssnplot_national <- summarise_admissions(
   ) +
   labs(
     title = "Somalia's Monthly SAM Admissions by Year",
-    subtitle = "An irregular seasonal pattern with changes in the amplitude before and after 2022",
-    caption = "Time span: January 2019-November 2024",
+    subtitle = "An irregular seasonal pattern with changes in the amplitude, and a shift in the seasonality before and after 2022",
     y = "Cases admitted"
   ) +
   theme(
@@ -63,7 +61,6 @@ ssplot_national_b2022 <- summarise_admissions(
   labs(
     title = "Somalia's Monthly SAM Admissions by Year Before 2022",
     subtitle = "A consistent rise in June, then in September, and then from November to December",
-    caption = "Time span: January 2019-December 2021",
     y = "Cases admitted"
   ) +
   theme(
@@ -88,7 +85,6 @@ ssplot_national_a2022 <- summarise_admissions(
   labs(
     title = "Somalia's Monthly SAM Admissions by Year as of 2022",
     subtitle = "A consistent fall in April, followed by a rise in May, and another rise from November to January",
-    caption = "Time span: Jan 2022-Dec 2024",
     y = "Cases admitted"
   ) +
   theme(
@@ -110,7 +106,6 @@ sbsplot_national <- summarise_admissions(
   labs(
     title = "Somalia's SAM admissions",
     subtitle = "Number of SAM cases admitted increased exponentially as of 2020 and started to decline as of 2023",
-    caption = "Time span: Jan 2019-Dec 2024",
     y = "Cases admitted",
   ) +
   theme(
@@ -131,7 +126,6 @@ sbsplot_national_b2022 <- summarise_admissions(
   gg_subseries(y = admissions) +
   labs(
     title = "Somalia's SAM admissions",
-    caption = "Time span: Jan 2019-Dec 2021",
     y = "Cases admitted"
   ) +
   theme(
@@ -152,7 +146,6 @@ sbsplot_national_a2022 <- summarise_admissions(
   gg_subseries(y = admissions) +
   labs(
     title = "Somalia's SAM admissions",
-    caption = "Time span: Jan 2022-Dec 2024",
     y = "Cases admitted"
   ) +
   theme(
@@ -176,7 +169,6 @@ tsplot_lsysttem <- summarise_admissions(
   labs(
     title = "Somalia's SAM admissions Over Time by Livelihood Systems",
     subtitle = "Nearly the same trend and seasonal patterns as the national, except the Riverines",
-    caption = "Time span: Jan 2019-Dec 2024",
     y = "Cases admitted"
   ) +
   theme(
@@ -199,7 +191,6 @@ ssnplot_lsystem <- summarise_admissions(
   labs(
     title = "Somalia's Monthly SAM Admissions by Year by Livelihood Systems",
     subtitle = "",
-    caption = "Time span: Jan 2019-Dec 2024",
     y = "Cases admitted"
   ) +
   theme(
@@ -219,7 +210,6 @@ sbsplot_lsystem <- summarise_admissions(
   gg_subseries(y = admissions) +
   labs(
     title = "Somalia's Monthly SAM Admissions by Year by Livelihood Systems",
-    subtitle = "Time span: Jan 2019-Dec 2024",
     y = "Cases admitted"
   ) +
   theme(

@@ -7,8 +7,7 @@
 
 ### Reverse Box-Cox transformation done in the `decomposition.R` file ----
 trend_national <- cmpnts_national |>
-  select(trend) |>
-  mutate(trend = inv_box_cox(x = trend, lambda = lambda_national))
+  select(trend)
 
 ### ---------------------------------- Piecewise trend; direction: increase ----
 
@@ -107,8 +106,7 @@ arc_april2023_dec2024 <- trend_national |>
 
 ### ------------------------------------ Inverte the box-cox transformation ----
 trend_pastoral <- cmpnts_pastoral |>
-  select(trend) |>
-  mutate(trend = inv_box_cox(x = trend, lambda = lambda_pastoral))
+  select(trend)
 
 ### ---------------------------------- Piecewise trend; direction: increase ----
 
@@ -203,8 +201,7 @@ arc_pastoral_jan2023_dec2024 <- ARC(
 ## ---- AGROPASTORAL LIVELIHOOD SYSTEM -----------------------------------------
 
 trend_agropastoral <- cmpnts_agropastoral |>
-  select(trend) |>
-  mutate(trend = inv_box_cox(x = trend, lambda = lambda_agropastoral))
+  select(trend)
 
 
 ### ---------------------------------- Piecewise trend; direction: increase ----
@@ -272,8 +269,7 @@ arc_agropastoral_mar2023_dec2024 <- ARC(
 
 ### ------------------------------------ Inverte the box-cox transformation ----
 trend_riverine <- cmpnts_riverine |>
-  select(trend) |>
-  mutate(trend = inv_box_cox(x = trend, lambda = lambda_riverine))
+  select(trend)
 
 ### ---------------------------------- Piecewise trend; direction: increase ----
 
@@ -369,8 +365,7 @@ arc_riverine_sep2023_dec2024 <- ARC(
 
 ### ------------------------------------ Inverte the box-cox transformation ----
 trend_urban_idps <- cmpnts_urban_idps |>
-  select(trend) |>
-  mutate(trend = inv_box_cox(x = trend, lambda = lambda_urban_idps))
+  select(trend)
 
 ### ---------------------------------- Piecewise trend; direction: increase ----
 

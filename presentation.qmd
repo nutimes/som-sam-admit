@@ -793,7 +793,7 @@ This suggests that the program response remained high even after. This means tha
 
     - The primary peak is consistently observed in May-June;
     - Secondary peak in January, with a start in **November for the pastoral**, and in **December for the agropastoral** systems.
-    - The lowest trough occurs in April in both systems. 
+    - The lowest nadir occurs in April in both systems. 
 
 <br> 
 
@@ -814,7 +814,7 @@ These patterns also diverge from Luc., et all (2024) observations, which identif
 :::
 
 ::: {.callout-important}
-An insteresting finding is that the riverine and pastoral, are the only livelihood systems where there is a peak in March before the lower trough in April.
+An insteresting finding is that the riverine and pastoral, are the only livelihood systems where there is a peak in March before the lower nadir in April.
 **Why is that??** *Question to the Nutrition Cluster members.*
 :::
 
@@ -823,7 +823,7 @@ An insteresting finding is that the riverine and pastoral, are the only liveliho
 + **Urban/IDPs livelihood system**: 
     - Exhibits a unique and intriguing pattern compared to the others.
     - While the highest peak consistently occurs in May-June, similar to most other systems (except the riverine), the admissions in January notably align with the trend line (baseline) every year; 
-    - From February onward, the admissions begin a continuous decline, reaching the common lowest trough in April.
+    - From February onward, the admissions begin a continuous decline, reaching the common lowest nadir in April.
 
 ::: {.callout-note}
 This distinct pattern could not be compared to previous studies, as they did not include a specific livelihood category for urban areas and/or IDPs.
@@ -836,6 +836,6 @@ This distinct pattern could not be compared to previous studies, as they did not
 
 <br>
 
-+ This also explains the absence of a trough in April in the author's study, as all surveys were undertook starting in May and then November to December.
++ This also explains the absence of a nadir in April in the author's study, as all surveys were undertook starting in May and then November to December.
 
 # ...Mahadsanid 😀

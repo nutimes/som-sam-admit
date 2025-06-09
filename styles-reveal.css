@@ -79,7 +79,8 @@ body {
 /* -------------------------------------------- Riverine High AMN season ---- */
 .gantt-riverine #task1,
 .gantt-riverine #task3,
-.gantt-riverine #task5 {
+.gantt-riverine #task5,
+.gantt-riverine #task7 {
   fill:#FF4500 !important;
   stroke:#FF4500  !important;
   stroke-width: 2px;
@@ -127,7 +128,12 @@ body {
 /* High AMN */
 .gantt-afiamn-pastoral #amn1,
 .gantt-afiamn-pastoral #amn3,
-.gantt-afiamn-pastoral #amn5 {
+.gantt-afiamn-pastoral #amn5, 
+.gantt-afiamn-pastoral #ntl1,
+.gantt-afiamn-pastoral #ntl3,
+.gantt-afiamn-pastoral #ntl5,
+.gantt-afiamn-pastoral #luc2,
+.gantt-afiamn-pastoral #luc4 {
   fill:#FF4500 !important;
   stroke:#FF4500  !important;
   stroke-width: 2px;
@@ -135,9 +141,20 @@ body {
 
 /* Low AMN */
 .gantt-afiamn-pastoral #amn2,
-.gantt-afiamn-pastoral #amn4 {
+.gantt-afiamn-pastoral #amn4, 
+.gantt-afiamn-pastoral #ntl2,
+.gantt-afiamn-pastoral #ntl4 {
   fill:#1E90FF !important;
   stroke:#1E90FF  !important;
+  stroke-width: 2px;
+}
+
+/* Not available in Luc et al., (2024) */
+.gantt-afiamn-pastoral #luc1,
+.gantt-afiamn-pastoral #luc3,
+.gantt-afiamn-pastoral #luc5 {
+  fill:#808080 !important;
+  stroke:#808080 !important;
   stroke-width: 2px;
 }
 
@@ -158,7 +175,12 @@ body {
 /* High AMN */
 .gantt-afiamn-agropastoral #amn1,
 .gantt-afiamn-agropastoral #amn3,
-.gantt-afiamn-agropastoral #amn5 {
+.gantt-afiamn-agropastoral #amn5, 
+.gantt-afiamn-agropastoral #ntl1,
+.gantt-afiamn-agropastoral #ntl3,
+.gantt-afiamn-agropastoral #ntl5,
+.gantt-afiamn-agropastoral #luc2,
+.gantt-afiamn-agropastoral #luc4 {
   fill:#FF4500 !important;
   stroke:#FF4500  !important;
   stroke-width: 2px;
@@ -166,9 +188,20 @@ body {
 
 /* Low AMN */
 .gantt-afiamn-agropastoral #amn2,
-.gantt-afiamn-agropastoral #amn4 {
+.gantt-afiamn-agropastoral #amn4,
+.gantt-afiamn-agropastoral #ntl2,
+.gantt-afiamn-agropastoral #ntl4 {
   fill:#1E90FF !important;
   stroke:#1E90FF  !important;
+  stroke-width: 2px;
+}
+
+/* Not available in Luc et al., (2024) */
+.gantt-afiamn-agropastoral #luc1,
+.gantt-afiamn-agropastoral #luc3,
+.gantt-afiamn-agropastoral #luc5 {
+  fill:#808080 !important;
+  stroke:#808080 !important;
   stroke-width: 2px;
 }
 
@@ -189,7 +222,13 @@ body {
 /* High AMN */
 .gantt-afiamn-riverine #amn1,
 .gantt-afiamn-riverine #amn3,
-.gantt-afiamn-riverine #amn5 {
+.gantt-afiamn-riverine #amn5,
+.gantt-afiamn-riverine #amn7,
+.gantt-afiamn-riverine #ntl1,
+.gantt-afiamn-riverine #ntl3,
+.gantt-afiamn-riverine #ntl5,
+.gantt-afiamn-riverine #luc2,
+.gantt-afiamn-riverine #luc4 {
   fill:#FF4500 !important;
   stroke:#FF4500  !important;
   stroke-width: 2px;
@@ -198,9 +237,20 @@ body {
 /* Low AMN */
 .gantt-afiamn-riverine #amn2,
 .gantt-afiamn-riverine #amn4,
-.gantt-afiamn-riverine #amn6 {
+.gantt-afiamn-riverine #amn6,
+.gantt-afiamn-riverine #ntl2,
+.gantt-afiamn-riverine #ntl4 {
   fill:#1E90FF !important;
   stroke:#1E90FF  !important;
+  stroke-width: 2px;
+}
+
+/* Not available in Luc et al., (2024) */
+.gantt-afiamn-riverine #luc1,
+.gantt-afiamn-riverine #luc3,
+.gantt-afiamn-riverine #luc5 {
+  fill:#808080 !important;
+  stroke:#808080 !important;
   stroke-width: 2px;
 }
 
@@ -220,7 +270,9 @@ body {
 /* --------------------------------------------------------- AMN seasons ---- */
 /* Low AMN */
 .gantt-afiamn-urban #amn1,
-.gantt-afiamn-urban #amn3 {
+.gantt-afiamn-urban #amn3,
+.gantt-afiamn-urban #ntl2,
+.gantt-afiamn-urban #ntl4 {
   fill:#1E90FF !important;
   stroke:#1E90FF  !important;
   stroke-width: 2px;
@@ -228,8 +280,22 @@ body {
 
 /* High AMN */
 .gantt-afiamn-urban #amn2,
-.gantt-afiamn-urban #amn4 {
+.gantt-afiamn-urban #amn4,
+.gantt-afiamn-urban #ntl1,
+.gantt-afiamn-urban #ntl3,
+.gantt-afiamn-urban #ntl5,
+.gantt-afiamn-urban #luc2,
+.gantt-afiamn-urban #luc4 {
   fill:#FF4500 !important;
   stroke:#FF4500  !important;
+  stroke-width: 2px;
+}
+
+/* Not available in Luc et al., (2024) */
+.gantt-afiamn-agropastoral #luc1,
+.gantt-afiamn-agropastoral #luc3,
+.gantt-afiamn-agropastoral #luc5 {
+  fill:#808080 !important;
+  stroke:#808080 !important;
   stroke-width: 2px;
 }

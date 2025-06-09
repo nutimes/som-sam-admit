@@ -2,7 +2,6 @@
 title: "Feature insights into Somalia’s severe acute malnutrition admissions"
 subtitle: "A time series analysis spanning from January 2019 to December 2024"
 author: "Tomás Zaba"
-date: today
 format: revealjs
 ---
 
@@ -33,8 +32,8 @@ source("script.R")
 ```{mermaid}
 %%| label: seasonal-calendar
 %%| fig-cap-location: bottom
-%%| fig-height: 4
-%%| fig-width: 13.7
+%%| fig-height: 8
+%%| fig-width: 14
 gantt
     dateFormat M
     axisFormat %b
@@ -113,13 +112,7 @@ This analysis examines six years of severe acute malnutrition (SAM) admission da
 :::
 
 ::: {.column style="text-align: center;"}
-```{r}
-#| label: exclusion-inclusion
-#| fig-width: 10
-#| fig-height: 11
-#| fig-dpi: 300
-map_incl_excl
-```
+![](reports/data/map-incl-excl.png)
 :::
 ::::
 
@@ -158,8 +151,8 @@ tsplot_national
 
 ```{r}
 #| label: fig-seasonal-plot-national
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 ssnplot_national
 ```
 
@@ -213,7 +206,7 @@ By Livelihood Systems
 ```{r}
 #| label: livelihood-systems
 #| fig-width: 10
-#| fig-height: 11
+#| fig-height: 9
 #| fig-dpi: 300
 #| out.width: "100%"
 #| dev: "png"
@@ -228,8 +221,8 @@ map_lsystems
 
 ```{r}
 #| label: fig-timeplot-lsystem
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 tsplot_lsysttem
 ```
 
@@ -242,8 +235,8 @@ The time series components: **National level**
 
 ```{r}
 #| label: fig-cmpnts-national
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 cmpnts_plot_national
 ```
 
@@ -290,8 +283,8 @@ slope_april2023_dec2024
 
 ```{r}
 #| label: fig-seasonal-pattern-national
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 seasonal_cmpnt_national
 ```
 
@@ -330,8 +323,8 @@ The time series components: **By Livelihood Systems**
 
 ```{r}
 #| label: fig-cmpnts-pastoral
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 cmpnts_plot_pastoral
 ```
 
@@ -363,8 +356,8 @@ slope_pastoral_jan2023_dec2024
 
 ```{r}
 #| label: fig-seasonal-pattern-pastoral
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 seasonal_cmpnt_pastoral
 ```
 
@@ -379,8 +372,8 @@ The time series components: **By Livelihood Systems**
 
 ```{r}
 #| label: fig-cmpnts-agropastoral
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 cmpnts_plot_agropastoral
 ```
 
@@ -395,9 +388,6 @@ cmpnts_plot_agropastoral
 #|   - "Mar 2023-Dec 2024"
 #| layout-ncol: 2
 #| layout-nrow: 2
-#| fig-width: 13
-#| fig-height: 7
-
 slope_agropastoral_beforefeb2020
 slope_agropastoral_feb2020_jan2021
 slope_agropastoral_feb2021_feb2023
@@ -410,8 +400,8 @@ slope_agropastoral_mar2023_dec2024
 
 ```{r}
 #| label: fig-seasonal-pattern-agropastoral
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 seasonal_cmpnt_agropastoral
 ```
 
@@ -426,8 +416,8 @@ The time series components: **By Livelihood Systems**
 
 ```{r}
 #| label: fig-cmpnts-riverine
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 cmpnts_plot_riverine
 ```
 
@@ -459,8 +449,8 @@ slope_riverine_sep2023_dec2024
 
 ```{r}
 #| label: fig-seasonal-pattern-riverine
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 seasonal_cmpnt_riverine
 ```
 
@@ -475,8 +465,8 @@ The time series components: **By Livelihood Systems**
 
 ```{r}
 #| label: fig-cmpnts-urban-idps
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 cmpnts_plot_urban_idps
 ```
 
@@ -513,8 +503,8 @@ slope_urban_idps_afterapr2023
 
 ```{r}
 #| label: fig-seasonal-pattern-urban-idps
-#| fig-width: 13
-#| fig-height: 7
+#| fig-width: 18
+#| fig-height: 8
 seasonal_cmpnt_urban_idps
 ```
 
@@ -539,23 +529,22 @@ seasonal_cmpnt_urban_idps
 ```{mermaid}
 %%| label: amn-seasonal-calendar-pastoral
 %%| fig-cap-location: bottom
-%%| fig-height: 4
-%%| fig-width: 13.7
+%%| fig-height: 5
+%%| fig-width: 14
 gantt
     title  AMN seasonal calendar for pastoral livelihood systems
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-        High AMN :1, 2
-        Low AMN :2, 5
-        High AMN :5, 7
-        Low AMN :7, 10
-        High AMN :10, 12
+    section AMN Seasons
+    Peak :1, 2
+    Low nadir :2, 5
+    High peak 1 :5, 7
+    Nadir :7, 10
+    High peak 2 :10, 12
 ```
 :::
 
- <br> 
 
  + **Summary:**
     - 2 High AMN seasons
@@ -567,23 +556,22 @@ gantt
 ```{mermaid}
 %%| label: amn-seasonal-calendar-agropastoral
 %%| fig-cap-location: bottom
-%%| fig-height: 4
-%%| fig-width: 13.7
+%%| fig-height: 5
+%%| fig-width: 14
 gantt
     title  AMN seasonal calendar for agropastoral livelihood systems
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-        High AMN :1, 2
-        Low AMN :2, 5
-        High AMN :5, 8
-        Low AMN :8, 11
-        High AMN : 11, 12
+    section AMN Seasons
+    Peak :1, 2
+    Low nadir :2, 5
+    High peak :5, 9
+    Nadir :9, 11
+    Peak : 11, 12
 ```
 :::
 
- <br>
 
  + **Summary:**
     - 2 High AMN seasons
@@ -595,23 +583,23 @@ gantt
 ```{mermaid}
 %%| label: amn-seasonal-calendar-riverine
 %%| fig-cap-location: bottom
-%%| fig-height: 4
-%%| fig-width: 13.7
+%%| fig-height: 5
+%%| fig-width: 14
 gantt
     title  AMN seasonal calendar for riverine livelihood systems
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-        High AMN :1, 3
-        Low AMN :3, 5
-        High AMN :5, 9
-        Low AMN :9, 11
-        High AMN :11, 12
+    section AMN Seasons
+    High peak :1, 3
+    Nadir :3, 4
+    Peak: 4, 5
+    Nadir :5, 7
+    Peak :7, 9
+    Low nadir :9, 11
+    High peak :11, 12
 ```
 :::
-
- <br>
 
  + **Summary:**
     - 3 High AMN seasons
@@ -628,29 +616,27 @@ gantt
 ```{mermaid}
 %%| label: amn-seasonal-calendar-urbanipds
 %%| fig-cap-location: bottom
-%%| fig-height: 4
-%%| fig-width: 13.7
+%%| fig-height: 5
+%%| fig-width: 14
 gantt
     title  AMN seasonal calendar for urban/IDPs livelihood systems
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-        Low AMN :1, 5
-        High AMN :5, 8
-        Low AMN :8, 10
-        High AMN :10, 12
+    section AMN Seasons
+    Low nadir :1, 5
+    High peak :5, 8
+    Nadir :8, 9
+    Peak :9, 12
 ```
 :::
-
- <br>
 
  + **Summary:**
     - 2 High AMN seasons
     - 2 Low AMN seasons
 
 
-# Do these seasonal patterns agree with the seasonality of food security 🧐 🤔 ?
+# Do these seasonal patterns align with the seasonality of food security 🧐 🤔 ?
 
 ## Pastoral livelihood system
 
@@ -658,25 +644,42 @@ gantt
 ```{mermaid}
 %%| label: afi-amn-calendar-pastoral
 %%| fig-cap-location: bottom
-%%| fig-height: 4
-%%| fig-width: 13.7
+%%| fig-height: 7
+%%| fig-width: 14
 
 gantt
     title AFI seasonal calendar vs AMN seasonal calendar
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-        Jilaal :afi1, 1, 4
-        High AMN :amn1, 1, 2
-        Gu     :afi2, 4, 7
-        Low AMN :amn2, 2, 5
-        Post-Gu:afi3, 7, 8
-        High AMN :amn3, 5, 7
-        Hagaa  :afi4, 7, 10
-        Low AMN :amn4, 7, 10
-        Deyr   :afi5, 10, 12
-        High AMN : amn5, 10, 12
+
+    section Local Seasons
+    High peak 2 :amn1, 1, 2
+    Low nadir :amn2, 2, 5
+    High peak 1 :amn3, 5, 7
+    Nadir :amn4, 7, 10
+    High peak 2 :amn5, 10, 12
+
+    section National Seasons
+    Peak :ntl1, 1, 2
+    Low nadir :ntl2, 2, 5
+    High peak :ntl3, 5, 7
+    Nadir :ntl4, 7, 11
+    Peak :ntl5, 11, 12
+
+    section Luc et al. (2024)
+    Not available :luc1, 1, 5
+    High peak :luc2, 5, 6
+    Not available :luc3, 6, 10
+    Peak :luc4, 10, 11
+    Not avail. :luc5, 11, 12
+
+    section AFI National Seasons
+    Jilaal :afi1, 1, 4
+    Gu     :afi2, 4, 7
+    Post-Gu:afi3, 7, 8
+    Hagaa  :afi4, 7, 10
+    Deyr   :afi5, 10, 12
 ```
 :::
 
@@ -686,25 +689,42 @@ gantt
 ```{mermaid}
 %%| label: afi-amn-calendar-agropastoral
 %%| fig-cap-location: bottom
-%%| fig-height: 4
-%%| fig-width: 13.7
+%%| fig-height: 7
+%%| fig-width: 14
 
 gantt
     title AFI seasonal calendar vs AMN seasonal calendar
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-        Jilaal :afi1, 1, 4
-        High AMN :amn1, 1, 2
-        Gu     :afi2, 4, 7
-        Low AMN :amn2, 2, 5
-        Post-Gu:afi3, 7, 8
-        High AMN :amn3, 5, 8
-        Hagaa  :afi4, 7, 10
-        Low AMN :amn4, 8, 11
-        Deyr   :afi5, 10, 12
-        High AMN : amn5, 11, 12
+
+    section Local Seasons
+    High peak :amn1, 1, 2
+    Lower nadir :amn2, 2, 5
+    Higher peak :amn3, 5, 9
+    Low nadir :amn4, 9, 11
+    High peak : amn5, 11, 12
+
+    section National Seasons
+    Peak :ntl1, 1, 2
+    Low nadir :ntl2, 2, 5
+    High peak :ntl3, 5, 7
+    Nadir :ntl4, 7, 11
+    Peak :ntl5, 11, 12
+
+    section Luc et al. (2024)
+    Not available :luc1, 1, 5
+    High peak :luc2, 5, 6
+    Not available :luc3, 6, 10
+    Peak :luc4, 10, 11
+    Not avail. :luc5, 11, 12
+
+    section AFI National Seasons
+    Jilaal :afi1, 1, 4
+    Gu     :afi2, 4, 7
+    Post-Gu:afi3, 7, 8
+    Hagaa  :afi4, 7, 10
+    Deyr   :afi5, 10, 12
 ```
 :::
 
@@ -714,26 +734,44 @@ gantt
 ```{mermaid}
 %%| label: afi-amn-calendar-riverine
 %%| fig-cap-location: bottom
-%%| fig-height: 4
-%%| fig-width: 13.7
+%%| fig-height: 7
+%%| fig-width: 14
 
 gantt
     title AFI seasonal calendar vs AMN seasonal calendar
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-        Jilaal :afi1, 1, 4
-        High AMN :amn1, 1, 3
-        Gu     :afi2, 4, 7
-        Low AMN :amn2, 3, 5
-        Post-Gu :afi3, 7, 8
-        High AMN :amn3, 5, 7
-        Hagaa  :afi4, 7, 10
-        Low AMN :amn4, 7, 8
-        Deyr   :afi5, 10, 12
-        High AMN : amn5, 8, 10
-        Low AMN  : amn6, 10, 12
+
+    section Local Seasons
+    High peak :amn1, 1, 3
+    Nadir :amn2, 3, 4
+    Peak :amn3, 4, 5
+    Nadir :amn4, 5, 7
+    Peak :amn5, 7, 9
+    Low nadir :amn6, 9, 11
+    High peak :amn7, 11, 12
+
+    section National Seasons
+    Peak :ntl1, 1, 2
+    Low nadir :ntl2, 2, 5
+    High peak :ntl3, 5, 7
+    Nadir :ntl4, 7, 11
+    Peak :ntl5, 11, 12
+
+    section Luc et al. (2024)
+    Not available :luc1, 1, 5
+    High peak :luc2, 5, 6
+    Not available :luc3, 6, 10
+    Peak :luc4, 10, 11
+    Not avail. :luc5, 11, 12
+
+    section AFI National Seasons
+    Jilaal :afi1, 1, 4
+    Gu     :afi2, 4, 7
+    Post-Gu:afi3, 7, 8
+    Hagaa  :afi4, 7, 10
+    Deyr   :afi5, 10, 12
 ```
 :::
 
@@ -743,24 +781,41 @@ gantt
 ```{mermaid}
 %%| label: afi-amn-calendar-urbanidps
 %%| fig-cap-location: bottom
-%%| fig-height: 4
-%%| fig-width: 13.7
+%%| fig-height: 7
+%%| fig-width: 14
 
 gantt
     title AFI seasonal calendar vs AMN seasonal calendar
     dateFormat M
     axisFormat %b
     todayMarker off
-    section Seasons
-        Jilaal :afi1, 1, 4
-        Low AMN :amn1, 1, 5
-        Gu     :afi2, 4, 7
-        High AMN :amn2, 5, 8
-        Post-Gu:afi3, 7, 8
-        Low AMN :amn3, 8, 10
-        Hagaa  :afi4, 7, 10
-        High AMN :amn4, 10, 12
-        Deyr   :afi5, 10, 12
+
+    section Local Seasons
+    Lower nadir :amn1, 1, 5
+    Higher peak :amn2, 5, 8
+    Low nadir :amn3, 8, 9
+    High peak :amn4, 9, 12
+
+    section National Seasons
+    Peak :ntl1, 1, 2
+    Low nadir :ntl2, 2, 5
+    High peak :ntl3, 5, 7
+    Nadir :ntl4, 7, 11
+    Peak :ntl5, 11, 12
+
+    section Luc et al. (2024)
+    Not available :luc1, 1, 5
+    High peak :luc2, 5, 6
+    Not available :luc3, 6, 10
+    Peak :luc4, 10, 11
+    Not avail. :luc5, 11, 12
+
+    section AFI National Seasons
+    Jilaal :afi1, 1, 4
+    Gu     :afi2, 4, 7
+    Post-Gu:afi3, 7, 8
+    Hagaa  :afi4, 7, 10
+    Deyr   :afi5, 10, 12
 ```
 :::
 
@@ -770,7 +825,7 @@ gantt
 ## An article on ENN 
 ![https://www.ennonline.net/fex-article/special-focus-wasting-patterns-somalia](data/enn-paper.png)
 
-## Trend
+## Trend {.smaller}
 
 <br> 
 
@@ -785,7 +840,7 @@ gantt
 This suggests that the program response remained high even after. This means that in case the program becomes underfunded in a short-term, many children will be left untreated due to the scale-down of program capacity.
 :::
 
-## Seasonal variation (1/4)
+## Seasonal variation (1/4) {.smaller}
 
 <br> 
 
@@ -801,7 +856,7 @@ This suggests that the program response remained high even after. This means tha
 These findings align with except for a slight deviation in the agropastoral system, where the second peak shifts from November (as identified by ??) to December in this analysis
 :::
 
-## Seasonal variation (2/4)
+## Seasonal variation (2/4) {.smaller}
 
 <br>
 
@@ -818,7 +873,7 @@ An insteresting finding is that the riverine and pastoral, are the only liveliho
 **Why is that??** *Question to the Nutrition Cluster members.*
 :::
 
-## Seasonal variation (3/4)
+## Seasonal variation (3/4) {.smaller}
 
 + **Urban/IDPs livelihood system**: 
     - Exhibits a unique and intriguing pattern compared to the others.

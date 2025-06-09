@@ -46,5 +46,7 @@ format:
      transition: fade
      fig-responsive: true
 
+date: today
+date-format: "DD MMMM YYYY"
 bibliography: references.bib
 cls: harvard-cite-them-right-11th-edition.csl

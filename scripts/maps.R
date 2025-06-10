@@ -1,6 +1,6 @@
-################################################################################
-#                     CREATE MAP OF THE LIVELIHOOD SYSTEM                      #
-################################################################################
+# ==============================================================================
+#                     CREATE MAP OF THE LIVELIHOOD SYSTEM                      
+# ==============================================================================
 
 
 ## ---- Transform Somalia CRS to UTM -------------------------------------------
@@ -12,7 +12,7 @@ somalia <- st_transform(
 
 ## ---- Plot a map of the excluded districts -----------------------------------
 
-### -------------------------------------------- List of excluded districts ----
+### List of excluded districts ----
 
 excluded <- c(
   "Ceel Dheer", "Jalalaqsi", "Jamaame", "Kurtunwaarey", "Sablaale",
@@ -20,7 +20,7 @@ excluded <- c(
   "Xarardheere"
 )
 
-### ------------------------------------------------------------ Plot a map ----
+### Plot a map ----
 
 map_incl_excl <- somalia |>
   mutate(
@@ -51,7 +51,7 @@ map_incl_excl <- somalia |>
 
 ## ---- Plot a map of livelihood systems ---------------------------------------
 
-### --------------------------- List of districts in each livelihood system ----
+### List of districts in each livelihood system ----
 
 #### Pastoral ----
 wrong_p <- c("Laas_Caanood", "Ceel_Afweyn", "Ceel_Waaq", "Belet_Xaawo")
@@ -84,7 +84,7 @@ urban_idps <- admissions |>
   pull(district)
 
 
-### ----------------------- Create a vector of livelihood system categories ----
+### Create a vector of livelihood system categories ----
 somalia <- somalia |>
   mutate(
     lsystem = case_when(
@@ -95,12 +95,12 @@ somalia <- somalia |>
     )
   )
 
-### -------------------------------------------- Create regional boundaries ----
+### Create regional boundaries ----
 regions <- somalia |>
   group_by(ADM1_EN) |>
   summarise(geometry = st_union(geometry))
 
-### ------------------------------------------------- Livelihood system map ----
+### Livelihood system map ----
 map_lsystems <- somalia |>
   ggplot() +
   geom_sf(
@@ -124,4 +124,4 @@ map_lsystems <- somalia |>
     axis.title = element_text(size = 8)
   )
 
-############################## End of workflow #################################
+# ============================  End of Workflow ================================

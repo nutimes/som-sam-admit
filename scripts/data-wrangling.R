@@ -1,9 +1,10 @@
-################################################################################
-#                                DATA WRANGLING                                #
-################################################################################
+# ==============================================================================
+#                                DATA WRANGLING                                
+# ==============================================================================
 
 
-## ---------------------------------------------------------- Tidy the data ----
+## ---- Tidy the data ----------------------------------------------------------
+
 monthly_admissions <- admissions |>
   pivot_longer(
     cols = !c(region, district, lsystems),
@@ -22,30 +23,30 @@ monthly_admissions <- admissions |>
   ) |>
   select(-time)
 
+
 ## ---- Remove districts with zero admissions ----------------------------------
 
-### --------------------------------------- List of district to be excluded ----
+### List of district to be excluded ----
 list <- c(
   "Ceel_Dheere", "Jalalaqsi", "Jamaame", "Kurtunwaarey", "Sablaale",
   "Adan Yabaal", "Bu'aale", "Jilib", "Saakow/Salagle", "Sheik", "Cadale",
   "Xarardheere"
 )
 
-### --------------------------------------------------- Apply the exclusion ----
+### Apply the exclusion ----
 monthly_admissions <- monthly_admissions |>
   filter(!(district %in% list))
 
-
 ## ---- Summarise admissions ---------------------------------------------------
 
-### ------------------------------------------------- At the National level ----
+### At the National level ----
 na <- monthly_admissions |>
   summarise_admissions(
     .group = FALSE,
     time = "M"
   )
 
-### ------------------------------------------------- By livelihood systems ----
+### By livelihood systems ----
 ls <- monthly_admissions |>
   summarise_admissions(
     .group = TRUE,
@@ -54,7 +55,7 @@ ls <- monthly_admissions |>
 
 ## ---- Box-Cox Transformation to stabilize variance ---------------------------
 
-### ---------------- Get lambda of the data summarised at the nationa level ----
+### Get lambda of the data summarised at the nationa level ----
 lambda_national <- na |>
   features(
     .var = admissions,
@@ -62,7 +63,7 @@ lambda_national <- na |>
   ) |>
   pull(lambda_guerrero)
 
-#### Apply transformation ----
+### Apply transformation ----
 na <- na |> 
   mutate(
     admissions = do.call(
@@ -71,15 +72,15 @@ na <- na |>
     )
   )
 
-#### Visualize the transformation ----
+### Visualize the transformation ----
 na |>
   autoplot(
     .vars = admissions
   )
 
-### ----- Get lambda of the data summarised at the livelihood systems level ----
+## ---- Get lambda of the data summarised at the livelihood systems level ------
 
-#### For Pastoral ----
+## For Pastoral ----
 lambda_pastoral <- ls |>
   filter(lsystems == "Pastoral") |>
   features(
@@ -88,7 +89,7 @@ lambda_pastoral <- ls |>
   ) |>
   pull(lambda_guerrero)
 
-#### For Agropastoral ----
+### For Agropastoral ----
 lambda_agropastoral <- ls |>
   filter(lsystems == "Agropastoral") |>
   features(
@@ -97,7 +98,7 @@ lambda_agropastoral <- ls |>
   ) |>
   pull(lambda_guerrero)
 
-#### For Riverine ----
+### For Riverine ----
 lambda_riverine <- ls |>
   filter(lsystems == "Riverine") |>
   features(
@@ -106,7 +107,7 @@ lambda_riverine <- ls |>
   ) |>
   pull(lambda_guerrero)
 
-#### For Urban/IDP's ----
+### For Urban/IDP's ----
 lambda_urban_idps <- ls |>
   filter(lsystems == "Urban/IDPs") |>
   features(
@@ -115,7 +116,7 @@ lambda_urban_idps <- ls |>
   ) |>
   pull(lambda_guerrero)
 
-### ----------------------------------------- Apply row-wise transformation ----
+### Apply row-wise transformation ----
 ls <- ls |>
   mutate(
     admissions = do.call(
@@ -124,7 +125,7 @@ ls <- ls |>
     )
   )
 
-### ------------------------ Visualize the time series after transformation ----
+## ---- Visualize the time series after transformation ------------------------
 
 #### Pastoral ----
 ls |>
@@ -154,4 +155,4 @@ ls |>
     .vars = admissions
   )
 
-############################## End of workflow #################################
+# ============================  End of Workflow ================================

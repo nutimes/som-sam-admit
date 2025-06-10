@@ -1,16 +1,15 @@
-################################################################################
+# ==============================================================================
 # As shown in the time, seasonal and subseries plot in the `eda-graphics.R` file,
 # the data shows variations that increase and decrease with the level of the serie
 # This necessitates the data to be transformed to stabelize the seasonal variation.
 
 #   Decomposition is done at national and then split into livelihood systems.
-################################################################################
-
+# ==============================================================================
 
 
 ## ---- Decomposition at National level ----------------------------------------
 
-#### Get components ----
+### Get components ----
 cmpnts_national <- na |>
   model(
     STL(admissions ~ trend(window = 9) + season(window = 7))
@@ -23,7 +22,7 @@ cmpnts_national <- na |>
     remainder = inv_box_cox(x = remainder, lambda = lambda_national)
   ) 
 
-#### Visualize the components ----
+### Visualize the components ----
 cmpnts_plot_national <- cmpnts_national |>
   autoplot() +
   labs(
@@ -92,10 +91,9 @@ seasonal_cmpnt_national_a2022 <- cmpnts_national |>
 
 ## ---- Decomposition by Livelihood systems ------------------------------------
 
-## ---- Decomposition ----------------------------------------------------------
-### -------------------------------------------- Pastoral livelihood system ----
+## ---- Pastoral livelihood system ---------------------------------------------
 
-#### Get components ----
+### Get components ----
 cmpnts_pastoral <- ls |>
   filter(lsystems == "Pastoral") |>
   model(
@@ -109,7 +107,7 @@ cmpnts_pastoral <- ls |>
     remainder = inv_box_cox(x = remainder, lambda = lambda_pastoral)
   ) 
 
-#### Visualize the components ----
+### Visualize the components ----
 cmpnts_plot_pastoral <- cmpnts_pastoral |>
   autoplot() +
   labs(
@@ -122,7 +120,7 @@ cmpnts_plot_pastoral <- cmpnts_pastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-#### Plot the seasonal component over years ----
+### Plot the seasonal component over years ----
 seasonal_cmpnt_pastoral <- cmpnts_pastoral |>
   select(season_year) |>
   gg_season(y = season_year) +
@@ -139,7 +137,7 @@ seasonal_cmpnt_pastoral <- cmpnts_pastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-##### Subset the seasonal component before 2022 ----
+#### Subset the seasonal component before 2022 ----
 seasonal_cmpnt_pastoral_b2022 <- cmpnts_pastoral |>
   filter(year(Monthly) < 2022) |>
   select(season_year) |>
@@ -157,7 +155,7 @@ seasonal_cmpnt_pastoral_b2022 <- cmpnts_pastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-##### Subset the seasonal component as of 2022 ----
+#### Subset the seasonal component as of 2022 ----
 seasonal_cmpnt_pastoral_a2022 <- cmpnts_pastoral |>
   filter(year(Monthly) >= 2022) |>
   select(season_year) |>
@@ -175,9 +173,9 @@ seasonal_cmpnt_pastoral_a2022 <- cmpnts_pastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-### ---------------------------------------- Agropastoral livelihood system ----
+## ---- Agropastoral livelihood system -----------------------------------------
 
-#### Get components ----
+### Get components ----
 cmpnts_agropastoral <- ls |>
   filter(lsystems == "Agropastoral") |>
   model(
@@ -203,7 +201,7 @@ cmpnts_agropastoral <- ls |>
     )
   )
 
-#### Visualize the components ----
+### Visualize the components ----
 cmpnts_plot_agropastoral <- cmpnts_agropastoral |>
   autoplot() +
   labs(
@@ -216,7 +214,7 @@ cmpnts_plot_agropastoral <- cmpnts_agropastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-#### Plot the seasonal component over years ----
+### Plot the seasonal component over years ----
 seasonal_cmpnt_agropastoral <- cmpnts_agropastoral |>
   select(season_year) |>
   gg_season(y = season_year) +
@@ -232,7 +230,7 @@ seasonal_cmpnt_agropastoral <- cmpnts_agropastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-#### Subset the seasonal component before 2022 ----
+### Subset the seasonal component before 2022 ----
 seasonal_cmpnt_agropastoral_b2022 <- cmpnts_agropastoral |>
   filter(year(Monthly) < 2022) |>
   select(season_year) |>
@@ -250,7 +248,7 @@ seasonal_cmpnt_agropastoral_b2022 <- cmpnts_agropastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-#### Subset the seasonal component as of 2022 ----
+### Subset the seasonal component as of 2022 ----
 seasonal_cmpnt_agropastoral_a2022 <- cmpnts_agropastoral |>
   filter(year(Monthly) >= 2022) |>
   select(season_year) |>
@@ -267,9 +265,9 @@ seasonal_cmpnt_agropastoral_a2022 <- cmpnts_agropastoral |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-### -------------------------------------------- Riverine livelihood system ----
+## ---- Riverine livelihood system ---------------------------------------------
 
-#### Get components ----
+### Get components ----
 cmpnts_riverine <- ls |>
   filter(lsystems == "Riverine") |>
   model(
@@ -295,7 +293,7 @@ cmpnts_riverine <- ls |>
     )
   )
 
-#### Visualize the components ----
+### Visualize the components ----
 cmpnts_plot_riverine <- cmpnts_riverine |>
   autoplot() +
   labs(
@@ -308,7 +306,7 @@ cmpnts_plot_riverine <- cmpnts_riverine |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-#### Plot the seasonal component over years ----
+### Plot the seasonal component over years ----
 seasonal_cmpnt_riverine <- cmpnts_riverine |>
   select(season_year) |>
   gg_season(y = season_year) +
@@ -324,7 +322,7 @@ seasonal_cmpnt_riverine <- cmpnts_riverine |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-##### Subset the seasonal component before 2022 ----
+#### Subset the seasonal component before 2022 ----
 seasonal_cmpnt_riverine_b2022 <- cmpnts_riverine |>
   filter(year(Monthly) < 2022) |>
   select(season_year) |>
@@ -342,7 +340,7 @@ seasonal_cmpnt_riverine_b2022 <- cmpnts_riverine |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-##### Subset the seasonal component as of 2022 ----
+#### Subset the seasonal component as of 2022 ----
 seasonal_cmpnt_riverine_a2022 <- cmpnts_riverine |>
   filter(year(Monthly) >= 2022) |>
   select(season_year) |>
@@ -360,9 +358,9 @@ seasonal_cmpnt_riverine_a2022 <- cmpnts_riverine |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-### ------------------------------------------ Urban/IDPs livelihood system ----
+## ---- Urban/IDPs livelihood system -------------------------------------------
 
-#### Get component ----
+### Get component ----
 cmpnts_urban_idps <- ls |>
   filter(lsystems == "Urban/IDPs") |>
   model(
@@ -388,7 +386,7 @@ cmpnts_urban_idps <- ls |>
     )
   )
 
-#### Visualize the components ----
+### Visualize the components ----
 cmpnts_plot_urban_idps <- cmpnts_urban_idps |> 
   autoplot() +
   labs(
@@ -401,7 +399,7 @@ cmpnts_plot_urban_idps <- cmpnts_urban_idps |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-#### Plot the seasonal component over years ----
+### Plot the seasonal component over years ----
 seasonal_cmpnt_urban_idps <- cmpnts_urban_idps |>
   select(season_year) |>
   gg_season(y = season_year) +
@@ -417,7 +415,7 @@ seasonal_cmpnt_urban_idps <- cmpnts_urban_idps |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-#### Subset the seasonal component before 2022 ----
+### Subset the seasonal component before 2022 ----
 seasonal_cmpnt_urban_idps_b2022 <- cmpnts_urban_idps |>
   filter(year(Monthly) < 2022) |>
   select(season_year) |>
@@ -435,7 +433,7 @@ seasonal_cmpnt_urban_idps_b2022 <- cmpnts_urban_idps |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-#### Subset the seasonal component as of 2022 ----
+### Subset the seasonal component as of 2022 ----
 seasonal_cmpnt_urban_idps_a2022 <- cmpnts_urban_idps |>
   filter(year(Monthly) >= 2022) |>
   select(season_year) |>
@@ -453,4 +451,4 @@ seasonal_cmpnt_urban_idps_a2022 <- cmpnts_urban_idps |>
     axis.title.x = element_text(size = 10, margin = margin(r = 5))
   )
 
-############################## End of workflow #################################
+# ============================  End of Workflow ================================

@@ -1,6 +1,6 @@
 /* Style for the main title */
 h1.title {
-  font-size: 40px;
+  font-size: 70px;
   color:#1A4D8F;
   font-weight: bold;
   text-align: center;
@@ -10,7 +10,7 @@ h1.title {
 div.quarto-title-author-name {
   font-size: 25px;
   text-align: center;
-  color:#808B96;
+  color:#1A4D8F;
   padding-top: 50px ;
 }
 
@@ -31,7 +31,7 @@ p.subtitle {
 p.date {
   font-size: 25px;
   text-align: center;
-  color:#808B96;
+  color:#1A4D8F;
 }
 
 body {

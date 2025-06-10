@@ -32,7 +32,7 @@ source("script.R")
 ```{mermaid}
 %%| label: seasonal-calendar
 %%| fig-cap-location: bottom
-%%| fig-height: 8
+%%| fig-height: 6
 %%| fig-width: 14
 gantt
     dateFormat M
@@ -60,7 +60,7 @@ A few studies were conducted in the region using SMART survey data:
 
 <br>
 
-+ Somalia specific analysis used 8 years FSNAU and ACF SMART surveys (2014-2021):  
++ Somalia-specific analysis used 8 years FSNAU and ACF SMART surveys (2014-2021):  
 
   - Seasonal peak 1: **May/June (the beginning of Gu)** 
   - Seasonal peak 2: **November (mid-Deyr)** with a decline during the lean season.
@@ -68,6 +68,10 @@ A few studies were conducted in the region using SMART survey data:
   - There were variations in the patterns according to the livelihood system (pastoralist, agropastoralist and farming)
 
 :::
+
+## 
+
+![https://www.ennonline.net/fex-article/special-focus-wasting-patterns-somalia](data/enn-paper.png)
 
 ## What additional value or evidence does this analysis bring? {.smaller} 
 
@@ -209,7 +213,6 @@ By Livelihood Systems
 #| fig-height: 9
 #| fig-dpi: 300
 #| out.width: "100%"
-#| dev: "png"
 map_lsystems
 ```
 :::
@@ -518,7 +521,7 @@ seasonal_cmpnt_urban_idps
 
 ![](data/som-ipc-parameters.png)
 
-+ This analysis's findings suggest that the AMN analysis parameters need to be rethought to match the times when AMN evolution changes de facto. 
++ This analysis's findings suggest that the AMN analyses parameters need to be re-thought to match the times when, de facto, AMN evolution changes. 
     - This should be sensitive to the existing livelihood systems. 
 
 :::
@@ -822,9 +825,6 @@ gantt
 
 # Discussion 
 
-## An article on ENN 
-![https://www.ennonline.net/fex-article/special-focus-wasting-patterns-somalia](data/enn-paper.png)
-
 ## Trend {.smaller}
 
 <br> 
@@ -837,7 +837,9 @@ gantt
     - even after the drought has passed, the magnitude of the admissions remained excessively high, compared to years before the drought, although it shows a downward trend
 
 ::: {.callout-caution}
-This suggests that the program response remained high even after. This means that in case the program becomes underfunded in a short-term, many children will be left untreated due to the scale-down of program capacity.
+This suggests that the programme response remained high even after. This means that in case the programme becomes underfunded in a short-term, many children will be left untreated due to the scale-down of its capacity.
+
+💡 What was forecasted in the March projection update, as a result of the defunding.
 :::
 
 ## Seasonal variation (1/4) {.smaller}
@@ -846,23 +848,17 @@ This suggests that the program response remained high even after. This means tha
 
 + **Pastoral and agropastoral** livelihood systems: 
 
-    - The primary peak is consistently observed in May-June;
-    - Secondary peak in January, with a start in **November for the pastoral**, and in **December for the agropastoral** systems.
+    - The high-peak is consistently observed in May-June;
+    - Another peak in January, with a start in **November for the pastoral**, and in **December for the agropastoral** systems.
     - The lowest nadir occurs in April in both systems. 
-
-<br> 
-
-:::{.callout-note}
-These findings align with except for a slight deviation in the agropastoral system, where the second peak shifts from November (as identified by ??) to December in this analysis
-:::
 
 ## Seasonal variation (2/4) {.smaller}
 
 <br>
 
 + **Riverine livelihood system**: 
-    - The highest peak occurs in December-January, followed by several smaller peaks throughout the year, indicating a more fragmented seasonal pattern.
-    - The pattern in the riverine differ remarkably from the other system. **It is the only system where the primary peak does not occur in May-June**
+    - The high-peak occurs in December-January, followed by several smaller peaks throughout the year, indicating a more fragmented seasonal pattern.
+    - The pattern in the riverine differ remarkably from the other system. **It is the only system where the high-peak does not occur in May-June**
 
 ::: {.callout-note}
 These patterns also diverge from Luc., et all (2024) observations, which identified the higher peak in November
@@ -891,6 +887,6 @@ This distinct pattern could not be compared to previous studies, as they did not
 
 <br>
 
-+ This also explains the absence of a nadir in April in the author's study, as all surveys were undertook starting in May and then November to December.
++ This also explains the absence of a nadir in April in the author's study, as all surveys were undertaken starting in May and then November to December.
 
 # ...Mahadsanid 😀

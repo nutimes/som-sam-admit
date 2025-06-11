@@ -28,13 +28,15 @@ format:
   revealjs:
      theme: default
      embed-resources: true
+     fig-dpi: 300
+     dev: svg
      width: 1280
      height: 720
      slide-number: true
      preview-links: true
      scale: 1.5
      math: mathjax
-     css: styles-reveal.css
+     css: styles-revealjs.css
      execute:
        eval: true
        echo: false
@@ -46,5 +48,7 @@ format:
      transition: fade
      fig-responsive: true
 
+date: today
+date-format: "DD MMMM YYYY"
 bibliography: references.bib
 cls: harvard-cite-them-right-11th-edition.csl

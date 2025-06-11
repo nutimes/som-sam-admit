@@ -1,6 +1,6 @@
-################################################################################
-#                          AVERAGE RATE OF CHANGE                              #
-################################################################################
+# ==============================================================================
+#                          AVERAGE RATE OF CHANGE                              
+# ==============================================================================
 
 
 ## ---- National ---------------------------------------------------------------
@@ -9,14 +9,13 @@
 trend_national <- cmpnts_national |>
   select(trend)
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
-### Slope ----
+### Piecewise trend; direction: increase ----
+#### Slope ----
 slope_beforeJul2019 <- trend_national |>
   filter(Monthly <= yearmonth("2019 Jun")) |>
   autoplot(.vars = trend)
 
-### ARC ----
+#### ARC ----
 arc_beforeJul2019 <- trend_national |>
   ARC(
     start = yearmonth("2019 Jan"),
@@ -24,14 +23,13 @@ arc_beforeJul2019 <- trend_national |>
     .for = "knots"
   )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
-### Slope ----
+### Piecewise trend; direction: decrease ----
+#### Slope ----
 slope_jul2019_oct2019 <- trend_national |>
   filter(Monthly >= yearmonth("2019 Jul") & Monthly <= yearmonth("2019 Oct")) |>
   autoplot(.vars = trend)
 
-### ARC ----
+#### ARC ----
 arc_aug2019_oct2019 <- trend_national |>
   ARC(
     start = yearmonth("2019 Jul"),
@@ -39,8 +37,7 @@ arc_aug2019_oct2019 <- trend_national |>
     .for = "knots"
   )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_nov2019_feb2020 <- trend_national |>
   filter(Monthly >= yearmonth("2019 Nov") & Monthly <= yearmonth("2020 Feb")) |>
@@ -54,8 +51,7 @@ arc_nov2019_feb2020 <- trend_national |>
     .for = "knots"
   )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_mar2020_jan2021 <- trend_national |>
   filter(Monthly >= yearmonth("2020 Mar") & Monthly <= yearmonth("2021 Jan")) |>
@@ -69,8 +65,7 @@ arc_mar2020_jan2021 <- trend_national |>
     .for = "knots"
   )
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_feb2021_mar2023 <- trend_national |>
   filter(Monthly >= yearmonth("2021 Feb") & Monthly <= yearmonth("2023 Mar")) |>
@@ -84,8 +79,7 @@ arc_feb2021_mar2023 <- trend_national |>
     .for = "knots"
   )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_april2023_dec2024 <- trend_national |>
   filter(Monthly >= yearmonth("2023 Apr")) |>
@@ -99,17 +93,15 @@ arc_april2023_dec2024 <- trend_national |>
     .for = "knots"
   )
 
-
 ## ---- By Livelihood systems --------------------------------------------------
 
-## ---- PASTORAL LIVELIHOOD SYSTEM ---------------------------------------------
+## ---- Pastoral ---------------------------------------------------------------
 
-### ------------------------------------ Inverte the box-cox transformation ----
+### Inverte the box-cox transformation ----
 trend_pastoral <- cmpnts_pastoral |>
   select(trend)
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_pastoral_beforemay2019 <- trend_pastoral |>
   filter(Monthly <= yearmonth("2019 May")) |>
@@ -123,8 +115,7 @@ arc_pastoral_beforemay2019 <- ARC(
   .for = "knots"
 )
 
-#### --------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_pastoral_jun_sep2019 <- trend_pastoral |>
   filter(Monthly >= yearmonth("2019 Jun") & Monthly <= yearmonth("2019 Sep")) |>
@@ -138,8 +129,7 @@ arc_pastoral_jun_sep2019 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_pastoral_oct2019_aug2020 <- trend_pastoral |>
   filter(Monthly >= yearmonth("2019 Oct") & Monthly <= yearmonth("2020 Aug")) |>
@@ -153,8 +143,7 @@ arc_pastoral_oct2019_aug2020 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_pastoral_sep2020_apr2021 <- trend_pastoral |>
   filter(Monthly >= yearmonth("2020 Sep") & Monthly <= yearmonth("2021 Apr")) |>
@@ -168,8 +157,7 @@ arc_pastoral_sep2020_apr2021 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_pastoral_may2021_dec2022 <- trend_pastoral |>
   filter(Monthly >= yearmonth("2021 May") & Monthly <= yearmonth("2022 Dec")) |>
@@ -183,8 +171,7 @@ arc_pastoral_may2021_dec2022 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_pastoral_jan2023_dec2024 <- trend_pastoral |>
   filter(Monthly >= yearmonth("2023 Jan") & Monthly <= yearmonth("2024 Dec")) |>
@@ -198,14 +185,13 @@ arc_pastoral_jan2023_dec2024 <- ARC(
   .for = "knots"
 )
 
-## ---- AGROPASTORAL LIVELIHOOD SYSTEM -----------------------------------------
+## ---- Agropastoral -----------------------------------------------------------
 
 trend_agropastoral <- cmpnts_agropastoral |>
   select(trend)
 
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_agropastoral_beforefeb2020 <- trend_agropastoral |>
   filter(Monthly <= yearmonth("2020 Jan")) |>
@@ -219,8 +205,7 @@ arc_agropastoral_beforefeb2020 <- ARC(
   .for = "knots"
 )
 
-### --------------------------------- Piecewise trend; direction: decrease -----
-
+### Piecewise trend; direction: decrease -----
 #### Slope ----
 slope_agropastoral_feb2020_jan2021 <- trend_agropastoral |>
   filter(Monthly >= yearmonth("2020 Feb") & Monthly <= yearmonth("2021 Jan")) |>
@@ -234,14 +219,13 @@ arc_agropastoral_feb2020_jan2021 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
-### Slope ----
+### Piecewise trend; direction: increase ----
+#### Slope ----
 slope_agropastoral_feb2021_feb2023 <- trend_agropastoral |>
   filter(Monthly >= yearmonth("2021 Feb") & Monthly <= yearmonth("2023 Feb")) |>
   autoplot(.vars = trend)
 
-### ARC ----
+#### ARC ----
 arc_agropastoral_feb2021_feb2023 <- ARC(
   ts = trend_agropastoral,
   start = yearmonth("2021 Feb"),
@@ -249,8 +233,7 @@ arc_agropastoral_feb2021_feb2023 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_agropastoral_mar2023_dec2024 <- trend_agropastoral |>
   filter(Monthly >= yearmonth("2023 Mar") & Monthly <= yearmonth("2024 Dec")) |>
@@ -264,15 +247,13 @@ arc_agropastoral_mar2023_dec2024 <- ARC(
   .for = "knots"
 )
 
+## ---- Riverine ---------------------------------------------------------------
 
-## --------------------------------------------- RIVERINE LIVELIHOOD SYSTEM ----
-
-### ------------------------------------ Inverte the box-cox transformation ----
+### Inverte the box-cox transformation ----
 trend_riverine <- cmpnts_riverine |>
   select(trend)
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_riverine_beforemay2020 <- trend_riverine |>
   filter(Monthly <= yearmonth("2020 May")) |>
@@ -286,8 +267,7 @@ arc_riverine_beforemay2020 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_riverine_jun_nov2020 <- trend_riverine |>
   filter(Monthly >= yearmonth("2020 Jun") & Monthly <= yearmonth("2020 Nov")) |>
@@ -301,8 +281,7 @@ arc_riverine_jun_nov2020 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_riverine_dec2020_apr2021 <- trend_riverine |>
   filter(Monthly >= yearmonth("2020 Dec") & Monthly <= yearmonth("2021 Apr")) |>
@@ -316,8 +295,7 @@ arc_riverine_dec2020_apr2021 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_riverine_may2021_sep2021 <- trend_riverine |>
   filter(Monthly >= yearmonth("2021 May") & Monthly <= yearmonth("2021 Sep")) |>
@@ -331,8 +309,7 @@ arc_riverine_may2021_sep2021 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_riverine_oct2021_aug2023 <- trend_riverine |>
   filter(Monthly >= yearmonth("2021 Oct") & Monthly <= yearmonth("2023 Aug")) |>
@@ -346,8 +323,7 @@ arc_riverine_oct2021_aug2023 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_riverine_sep2023_dec2024 <- trend_riverine |>
   filter(Monthly >= yearmonth("2023 Sep")) |>
@@ -361,14 +337,13 @@ arc_riverine_sep2023_dec2024 <- ARC(
   .for = "knots"
 )
 
-## ---- URBAN/IDPs LIVELIHOOD SYSTEM -------------------------------------------
+## ---- Urban/IDPs -------------------------------------------------------------
 
-### ------------------------------------ Inverte the box-cox transformation ----
+### Inverte the box-cox transformation ----
 trend_urban_idps <- cmpnts_urban_idps |>
   select(trend)
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_urban_idps_beforemay2019 <- trend_urban_idps |>
   filter(Monthly <= yearmonth("2019 May")) |>
@@ -382,8 +357,7 @@ arc_urban_idps_beforemay2019 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_urban_idps_jun2019_nov2019 <- trend_urban_idps |>
   filter(Monthly >= yearmonth("2019 Jun") & Monthly <= yearmonth("2019 Nov")) |>
@@ -397,8 +371,7 @@ arc_urban_idps_jun2019_nov2019 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_urban_idps_dec2019_feb2020 <- trend_urban_idps |>
   filter(Monthly >= yearmonth("2019 Dec") & Monthly <= yearmonth("2020 Feb")) |>
@@ -412,8 +385,7 @@ arc_urban_idps_dec2019_feb2020 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_urban_idps_mar2019_feb2021 <- trend_urban_idps |>
   filter(Monthly >= yearmonth("2020 Mar") & Monthly <= yearmonth("2021 Feb")) |>
@@ -427,8 +399,7 @@ arc_urban_idps_mar2019_feb2021 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_urban_idps_mar2021_apr2021 <- trend_urban_idps |>
   filter(Monthly >= yearmonth("2021 Mar") & Monthly <= yearmonth("2021 Apr")) |>
@@ -442,8 +413,7 @@ arc_urban_idps_mar2021_apr2021 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_urban_idps_may2021_aug2021 <- trend_urban_idps |>
   filter(Monthly >= yearmonth("2021 May") & Monthly <= yearmonth("2021 Aug")) |>
@@ -457,8 +427,7 @@ arc_urban_idps_may2021_aug2021 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: increase ----
-
+### Piecewise trend; direction: increase ----
 #### Slope ----
 slope_urban_idps_sep2021_mar2023 <- trend_urban_idps |>
   filter(Monthly >= yearmonth("2021 Sep") & Monthly <= yearmonth("2023 Mar")) |>
@@ -472,8 +441,7 @@ arc_urban_idps_sep2021_mar2023 <- ARC(
   .for = "knots"
 )
 
-### ---------------------------------- Piecewise trend; direction: decrease ----
-
+### Piecewise trend; direction: decrease ----
 #### Slope ----
 slope_urban_idps_afterapr2023 <- trend_urban_idps |>
   filter(Monthly >= yearmonth("2023 Apr")) |>
@@ -487,4 +455,4 @@ arc_urban_idps_afterapr2023 <- ARC(
   .for = "knots"
 )
 
-############################## End of worflow ##################################
+# ============================  End of Workflow ================================

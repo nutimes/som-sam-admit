@@ -24,6 +24,7 @@ format:
       message: false
     fig-width: 10
     fig-align: center
+    lang: en-GB
   
   revealjs:
      theme: default

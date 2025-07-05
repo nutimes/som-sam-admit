@@ -15,7 +15,7 @@ div.quarto-title-author-name {
 }
 
 /* Style for titles one, two and three */
-.reveal h1, .reveal h2, .reveal h3 {color:#1A4D8F;}
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {color:#1A4D8F;}
 
 /* Style for body text */
 .reveal p {color:#4A4A4A;}

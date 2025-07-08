@@ -292,9 +292,9 @@ body {
 }
 
 /* Not available in Luc et al., (2024) */
-.gantt-afiamn-agropastoral #luc1,
-.gantt-afiamn-agropastoral #luc3,
-.gantt-afiamn-agropastoral #luc5 {
+.gantt-afiamn-urban #luc1,
+.gantt-afiamn-urban #luc3,
+.gantt-afiamn-urban #luc5 {
   fill:#808080 !important;
   stroke:#808080 !important;
   stroke-width: 2px;

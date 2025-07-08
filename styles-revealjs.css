@@ -7,7 +7,7 @@ h1.title {
 }
 
 /* Style for the author's name */
-div.quarto-title-author-name {
+div.quarto-title-author-name{
   font-size: 25px;
   text-align: center;
   color:#1A4D8F;
@@ -15,7 +15,7 @@ div.quarto-title-author-name {
 }
 
 /* Style for titles one, two and three */
-.reveal h1, .reveal h2, .reveal h3 {color:#1A4D8F;}
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {color:#1A4D8F;}
 
 /* Style for body text */
 .reveal p {color:#4A4A4A;}
@@ -292,9 +292,9 @@ body {
 }
 
 /* Not available in Luc et al., (2024) */
-.gantt-afiamn-agropastoral #luc1,
-.gantt-afiamn-agropastoral #luc3,
-.gantt-afiamn-agropastoral #luc5 {
+.gantt-afiamn-urban #luc1,
+.gantt-afiamn-urban #luc3,
+.gantt-afiamn-urban #luc5 {
   fill:#808080 !important;
   stroke:#808080 !important;
   stroke-width: 2px;

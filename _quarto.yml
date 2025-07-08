@@ -24,6 +24,12 @@ format:
       message: false
     fig-width: 10
     fig-align: center
+    lang: en-GB
+    author:
+      - name: "Tomás Zaba"
+        title: "Nutrition Specialist, Quality Assurance and Risk Analysis"
+        affiliation: "IPC Global Support Unit (IPC GSU)"
+        email: "tomaselias.zaba@fao.org"
   
   revealjs:
      theme: default
@@ -47,6 +53,7 @@ format:
      progress: true
      transition: fade
      fig-responsive: true
+     author: "Tomás Zaba"
 
 date: today
 date-format: "DD MMMM YYYY"

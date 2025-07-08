@@ -10,14 +10,20 @@ Sys.setenv(path_secret_key = "~/.ssh/id_rsa")
 source("script.R")
 ```
 
+
+
+
 ## Context  
 Seasonality significantly impacts the underlying and immediate factors that contribute to acute malnutrition (AMN). It refers to recurring patterns within a year [@tsR], such as specific months or quarters when AMN cases rise or fall.  
 
 Understanding the seasonal variation of AMN is crucial for evidence-based decision-making. Nonetheless, despite a general awareness that AMN has a seasonal variation, limited evidence exists to substantiate it. Consequently, stakeholders often rely on assumptions of an AMN seasonal peak during the food security lean season [@africadry] and, to account for this, nutrition surveys are routinely timed to coincide with the lean season each year.
 
-The limited understanding of AMN’s seasonal variation has been attributed to two key challenges: (i) the availability of robust analytical methods and (ii) access to primary data [@africadry]. The first challenge can now be mitigated by employing the time series data science. The second challenge, in its turn, can be mitigated by leveraging high-quality secondary data, such as survey datasets or treatment programme admissions. Studies using 15 years of SMART survey data from African drylands have underscored the complex relationship between AMN and acute food insecurity (AFI), revealing that they do not always align across seasons or livelihoods [@africadry; @anastasia]. Notably, this research identified two AMN seasonal peaks: April-May and August-September [@africadry].  
+The limited understanding of AMN’s seasonal variation has been attributed to two key challenges: (i) the availability of robust analytical methods and (ii) access to primary data [@africadry]. The first challenge can now be mitigated by employing the time series data science. The second challenge, in its turn, can be mitigated by leveraging high-quality secondary data, such as survey datasets or treatment program admissions. Studies using 15 years of SMART survey data from African drylands have underscored the complex relationship between AMN and acute food insecurity (AFI), revealing that they do not always align across seasons or livelihoods [@africadry; @anastasia]. Notably, this research identified two AMN seasonal peaks: April-May and August-September [@africadry].  
 
 In Somalia, the seasonality of AMN is generaly associated with the seasonality of food security as well. There are five defined food security seasons as described by @ENN:  
+
+
+
 
 ```{mermaid}
 %%| label: fig-seasonal-calendar
@@ -34,6 +40,9 @@ gantt
     Hagaa  :7, 10
     Deyr   :10, 12
 ```
+
+
+
 
   + **Jilaal**: the most extended dry season, characterized by livestock migration and decreased milk production in the pastoralist livelihoods. 
   + **Gu**: characterized by heavy rainfall, it constitutes Somalia's 70% of the crop production season, and livestock production depends upon this season.
@@ -55,7 +64,15 @@ It is generally assumed that AMN in Somalia peaks from the end of the Jilaal sea
 
   + **Identify and describe the seasonal patterns**: recurring patterns that occur in a fixed and specific period every year. In this analysis, this refers to monthly recurring patterns over the years.
 
+
+
+
 {{< pagebreak >}}
+
+
+
+
+
 
 ## Methods
 ### Data source
@@ -65,6 +82,9 @@ The initial analysis aimed to use data on global acute malnutrition. However, da
 
 ### Data wrangling {#sec-data-wrangling} 
 It consisted in excluding districts with missing admissions from January to December; then by aggregating the sum of the total number of children admitted by month at the national level, and by livelihood systems (Pastoral, Agropastoral, Riverine and Urban/IDPs), as demonstrated in the flowchart below.
+
+
+
 ```{mermaid}
 %%| label: wrangling-workflow
 %%| fig-cap: Data wrangling workflow
@@ -83,9 +103,15 @@ flowchart LR
     E --> G
 ```
 
+
+
+
 ::: {.callout-note}
 Twelve districts were excluded for frequent missing of admissions data (see @fig-exclusion-inclusion): Ceel Dheere, Jalalaqsi, Jamaame, Kurtunwaarey, Sablaale, Adan Yabaal, Bu'aale, Jilib, Saakow/Salagle, Sheik, Cadale, and Xarardheere. 
 :::
+
+
+
 
 ```{r}
 #| label: fig-exclusion-inclusion
@@ -96,6 +122,9 @@ Twelve districts were excluded for frequent missing of admissions data (see @fig
 map_incl_excl
 ```
 
+
+
+
 ### Analysis approach  
 The data was first explored visually through graphs to identify patterns over time. Then, it was broken down into its components to examine the overall monthly trend and seasonal variation. The average rate of change (ARC) [^1] of the admissions was calculated to better understand the trend. To account for the different livelihood systems within Somalia, the data was split into four separate time series, each representing a different livelihood system.
 
@@ -103,7 +132,15 @@ The analysis was performed using standard statistical tools, which are available
 
 [^1]: The ARC describes the average or typical rate of change (in the admissions of SAM cases in this case) over a given time interval in the time series. 
 
+
+
+
 {{< pagebreak >}}
+
+
+
+
+
 
 ## Results  
 
@@ -113,11 +150,17 @@ The results will first be presented and described for data grouped at the nation
 #### A glance at admissions over time {#sec-glance-national}
 The figure below displays the total number of SAM cases admitted into the treatment programme in Somalia over the past six years, from January 2019 to December 2024. It highlights a shifting trend over time: with a relatively stable period before 2022, followed by a remarkable rise, and then a consistent decline that began in 2023. Furthermore, the figure exhibits the existence of a seasonal pattern (the ups and downs) that also varies over time.
 
+
+
+
 ```{r}
 #| label: fig-timeplot-national
 #| fig-cap: "Evolution of admissions over time"
 tsplot_national
 ```
+
+
+
 
 #### A glance at the seasonal variation  
 @fig-seasonal-plot-national displays the evolution of admissions across months (x-axis). Each line represents the evolution of the admissions throughout the months of a particular year. 
@@ -127,28 +170,46 @@ From this figure, the seasonal variation starts to be seen, though not clearly y
   1. Before 2022, the seasonal variation seemed to be regular each year, with a relatively shallow amplitude between each lines.  
   2. As of 2022, the amplitude between lines rose, and the seasonality shifted. 
 
+
+
+
 ```{r}
 #| label: fig-seasonal-plot-national
 #| fig-cap: "A glance at the seasonal patterns over the past six years"
 ssnplot_national
 ```
 
+
+
+
 The patterns in the above figure can further be visualized below with the data split into the admissions before 2022, and as of 2022.
 
 ::: {.panel-tabset}
 ## Before 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-plot-b2022
 #| fig-cap: "A glance at the seasonal patterns before 2022"
 ssplot_national_b2022
 ```
 
+
+
+
 ## As of 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-plot-a2022
 #| fig-cap: "A glance at the seasonal patterns as of 2022"
 ssplot_national_a2022
 ```
+
+
+
 :::
 
 ### By livelihood systems  
@@ -167,6 +228,9 @@ The majority of the districts in Somalia are pastoral (34 districts), followed b
 : Number of districts in each livelihood system {#tbl-lsystem-districts}
 
 ## Map
+
+
+
 ```{r}
 #| label: fig-livelihood-systems
 #| fig-cap: "Spatial distribution of the livelihood systems across Somalia"
@@ -177,10 +241,16 @@ The majority of the districts in Somalia are pastoral (34 districts), followed b
 #| dev: "png"
 map_lsystems
 ```
+
+
+
 :::
 
 
 All in all, the admissions in each livelihood system seem to follow the same pattern described in @sec-glance-national. This is further unpacked in the respective sections below.
+
+
+
 
 ```{r}
 #| label: fig-timeplot-lsystem
@@ -188,10 +258,21 @@ All in all, the admissions in each livelihood system seem to follow the same pat
 tsplot_lsysttem
 ```
 
+
+
+
 ::: {.callout-note}
 While this figure gives a glimpse of the underlying pattern of the trend and the seasonal variation of admissions over time, these components are further analysed and described in details in the following sections.
 :::
+
+
+
 {{< pagebreak >}}
+
+
+
+
+
 
 ### Decomposed components of admissions over time  
 A time series can exhibit a variety of underlying patterns that may not be easliy visible from a regular time plot (an attempt made in above sections, however without a clear visual). By decomposing the time series into its constituent components, these hidden patterns can be brought to light. The following sections reveal the extracted patterns from the admissions data, beginning with the national level analysis, followed by insights at the livelihood system. 
@@ -199,17 +280,26 @@ A time series can exhibit a variety of underlying patterns that may not be easli
 #### At the National level  
 In the figure below, the first graph (top-down) is the whole data (the admissions); this is the same graph shown in @fig-timeplot-national. The second graph is the **trend pattern alone** over time. The third graph is the **seasonal pattern alone** over time, after removing the trend. The fourth graph represents any other variation in the admissions that is not caused by neither of the above. This is referred to as remainder or noise.  
 
+
+
+
 ```{r}
 #| label: fig-cmpnts-national
 #| fig-cap: "A glance at the components of the admissions at the national level"
 cmpnts_plot_national
 ```
 
+
+
+
 ##### The trend component in focus 
 
 All in all, as highlighted in the @sec-glance-national, the trend pattern exhibits distinct characteristics. In terms of **shape**, it is non-linear. In terms of **stability**, the trend evolves over time, indicating a dynamic rather than a stable pattern. In terms of **direction**, it exhibits a notable rise in admissions starting in the last quarter of 2021, followed by a decline that began to decline in 2023.  
 
 In the figure below, the trend line is split into the times when there was a notable change in the direction of the trend over time. To quantify and understand the magnitude of the change in graphs, the ARC [@arc] was calculated for each slope. Their results are summarised in @tbl-arc-national.
+
+
+
 
 ```{r}
 #| label: fig-piecewise-slopes
@@ -231,6 +321,9 @@ slope_mar2020_jan2021
 slope_feb2021_mar2023
 slope_april2023_dec2024
 ```
+
+
+
 
 ::: {#nte-read-arc .callout-note}
 ## How to read Table 2 in conjunction with Figure 10?
@@ -262,28 +355,46 @@ While the patterns remain consistent over the years, the amplitude[^2] of both t
 
 [^2]: The amplitude of a peak or nadir refers to the difference between the peak or nadir's value and the average trend the level. The latter is represented by zero on the y-axis of the seasonal plot. 
 
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-national
 #| fig-cap: "A glance at the seasonality of admissions with the data at the national level"
 seasonal_cmpnt_national
 ```
 
+
+
+
 The seasonal component before and as of 2022 can be visualized in @fig-seasonal-pattern-natioanal-b2022, and in @fig-seasonal-pattern-natioanal-a2022 respectively
 
 ::: {.panel-tabset}
 ## Before 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-natioanal-b2022
 #| fig-cap: "A glance at the seasonality of admissions with the data at the national level before 2022"
 seasonal_cmpnt_national_b2022
 ```
 
+
+
+
 ## As of 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-natioanal-a2022
 #| fig-cap: "A glance at the seasonality of admissions with the data at the national level as of 2022"
 seasonal_cmpnt_national_a2022
 ```
+
+
+
 :::
 
 #### By Livelihood systems  
@@ -291,14 +402,23 @@ seasonal_cmpnt_national_a2022
 
 The figure below illustrates the components of admissions in the pastoral livelihood system, of which are further detailed below. 
 
+
+
+
 ```{r}
 #| label: fig-cmpnts-pastoral
 #| fig-cap: "A glance at the components of the admissions in the pastoral livelihood system"
 cmpnts_plot_pastoral
 ```
 
+
+
+
 ###### The trend component in focus  
 The direction of the trend has undergone six significant shifts, as illustrated below, with the ARC summarised in @tbl-arc-pastoral.
+
+
+
 ```{r}
 #| label: fig-piecewise-slopes-pastoral
 #| fig-cap: "Periods of significant shifts in the direction of the trend"
@@ -320,6 +440,9 @@ slope_pastoral_may2021_dec2022
 slope_pastoral_jan2023_dec2024
 ```
 
+
+
+
 To read and interpret this table, refer to @nte-read-arc.
 
 | Slope | Time interval | Admissions~i~ | Admissions~f~ | ARC |  
@@ -336,11 +459,17 @@ To read and interpret this table, refer to @nte-read-arc.
 ###### The seasonal component in focus  {#sec-sp-pastoral}   
 In this livelihood system, the seasonal pattern mirrors that observed in @sec-sp-national, with a few key differences. It underwent a shift as of 2022.
 
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-pastoral
 #| fig-cap: "A glance at the seasonality of admissions in the pastoral livelihood system"
 seasonal_cmpnt_pastoral
 ```
+
+
+
 
 Before 2022, it used to exhibit three peaks: one high peak in June. A short duration, however, with a higher and sharper amplitude. Thereafter, a second peak, and relatively longer, between September and November and then another short peak in January (@fig-seasonal-pattern-pastoral-b2022). 
 
@@ -352,22 +481,37 @@ As for nadir, two nadirs are observed: a lower one (high depth), and shorter, in
 
 ::: {.panel-tabset}
 ## Before 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-pastoral-b2022
 #| fig-cap: "A glance at the seasonality of admissions in the pastoral livelihood system before 2022"
 seasonal_cmpnt_pastoral_b2022
 ```
 
+
+
+
 ## As of 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-pastoral-a2022
 #| fig-cap: "A glance at the seasonality of admissions in the pastoral livelihood system as of 2022"
 seasonal_cmpnt_pastoral_a2022
 ```
+
+
+
 :::
 
 ##### Agropastoral  
 The figure below illustrates the components of admissions in the agropastoral livelihood system, of which are further detailed below. 
+
+
+
 
 ```{r}
 #| label: fig-cmpnts-agropastoral
@@ -375,8 +519,14 @@ The figure below illustrates the components of admissions in the agropastoral li
 cmpnts_plot_agropastoral
 ```
 
+
+
+
 ###### The trend component in focus
 The direction of the trend has undergone four significant shifts, as illustrated below, with the ARC summarised in @tbl-arc-riverine.
+
+
+
 ```{r}
 #| label: fig-piecewise-slopes-agropastoral
 #| fig-cap: "Periods of significant shifts in the direction of the trend"
@@ -395,6 +545,9 @@ slope_agropastoral_mar2023_dec2024
 ```
 
 
+
+
+
 To read and interpret this table, refer to @nte-read-arc.
 
 | Slope | Time interval | Admissions~i~ | Admissions~f~ | ARC |  
@@ -411,11 +564,17 @@ To read and interpret this table, refer to @nte-read-arc.
 ###### The seasonal component in focus  
 In this livelihood system, the seasonal pattern also mirrors those described in @sec-sp-national by far. Likewise, it has also suffered a shift that is exhibited as of 2022.
 
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-agropastoral
 #| fig-cap: "A glance at the seasonality of admissions in the agropastoral livelihood system"
 seasonal_cmpnt_agropastoral
 ```
+
+
+
 
 Before 2022, it used to exhibit one high peak between May and June, with a short duration, however, with a higher and sharper amplitude (@fig-seasonal-pattern-agropastoral-b2022). As of 2022, the pattern changes: two high peaks are observed. The first and the long-lasting is observed between May and August, and a second, and short-lasting, peak is observed between December and January (@fig-seasonal-pattern-agropastoral-a2022). 
 
@@ -423,22 +582,37 @@ As for nadir, there are two of them. The lowest nadir (with high depth) is obser
 
 ::: {.panel-tabset}
 ## Before 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-agropastoral-b2022
 #| fig-cap: "A glance at the seasonality of admissions in the agropastoral livelihood system before 2022"
 seasonal_cmpnt_agropastoral_b2022
 ```
 
+
+
+
 ## As of 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-agropastoral-a2022
 #| fig-cap: "A glance at the seasonality of admissions in the agropastoral livelihood system as of 2022"
 seasonal_cmpnt_agropastoral_a2022
 ```
+
+
+
 :::
 
 ##### Riverine  {#sec-riverine}
 The figure below illustrates the components of admissions in the riverine livelihood system, of which are further detailed below.
+
+
+
 
 ```{r}
 #| label: fig-cmpnts-riverine
@@ -446,8 +620,14 @@ The figure below illustrates the components of admissions in the riverine liveli
 cmpnts_plot_riverine
 ```
 
+
+
+
 ###### The trend component in focus  
 The direction of the trend has undergone six significant shifts, as illustrated below, with the ARC summarised in @tbl-arc-riverine
+
+
+
 ```{r}
 #| label: fig-piecewise-slopes-riverine
 #| fig-cap: "Periods of significant shifts in the direction of the trend"
@@ -470,6 +650,9 @@ slope_riverine_sep2023_dec2024
 ```
 
 
+
+
+
 To read and interpret this table, refer to @nte-read-arc.
 
 | Slope | Time interval | Admissions~i~ | Admissions~f~ | ARC |  
@@ -488,11 +671,17 @@ To read and interpret this table, refer to @nte-read-arc.
 ###### The seasonal component in focus   
 The seasonal pattern in this livelihood system exhibits a distinct time-varying nature, with several peaks and significant changes in theirs amplitude, as clearly shown in the “before and as of 2022” plots.
 
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-riverine
 #| fig-cap: "A glance at the seasonality of admissions in the riverine livelihood system"
 seasonal_cmpnt_riverine
 ```
+
+
+
 
 Before 2022, there used to be two peaks as well as two nadirs. Concerning the peaks, the high peak was observed in December, and another peak (lower than December's) between May and June. Concerning the nadirs, similar to that described in the agropastorals, there were two with the same level of depth, but different durations. The long-lasting nadir was observed between August and November, while a second, and short-lasting one, was observed in April (@fig-seasonal-pattern-riverine-b2022). 
 
@@ -500,18 +689,30 @@ As for 2022, there was a significant change in the amplitude patterns. Several p
 
 ::: {.panel-tabset}
 ## Before 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-riverine-b2022
 #| fig-cap: "A glance at the seasonality of admissions in the riverine livelihood system before 2022"
 seasonal_cmpnt_riverine_b2022
 ```
 
+
+
+
 ## As of 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-riverine-a2022
 #| fig-cap: "A glance at the seasonality of admissions in the riverine livelihood system as of 2022"
 seasonal_cmpnt_riverine_a2022
 ```
+
+
+
 :::
 
 :::{.callout-note}
@@ -521,14 +722,23 @@ The Riverine and Pastoral livelihood systems are the only ones where, after the 
 ##### Urban/IDPs  
 The figure below illustrates the components of admissions in the Urban/IDPs livelihood system, of which are further detailed below.
 
+
+
+
 ```{r}
 #| label: fig-cmpnts-urban-idps
 #| fig-cap: "A glance at the components of the admissions in the urban/IDP livelihood system"
 cmpnts_plot_urban_idps
 ```
 
+
+
+
 ###### The trend component in focus  
 The direction of the trend has undergone eight significant shifts, as illustrated below, with the ARC summarised in @tbl-arc-urban. 
+
+
+
 
 ```{r}
 #| label: fig-piecewise-slopes-urban-idps
@@ -557,6 +767,9 @@ slope_urban_idps_afterapr2023
 ```
 
 
+
+
+
 To read and interpret this table, refer to @nte-read-arc.
 
 | Slope | Time interval | Admissions~i~ | Admissions~f~ | ARC |  
@@ -580,33 +793,67 @@ Interestingly, in the Urban/IDP livelihood system, the seasonal pattern shows th
 :::{.callout-important}
 This is the only livelihood system in which, from December to April, admissions pattern consistently decrease each year. **What might be driving this pattern?**
 :::
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-urban-idps
 #| fig-cap: "A glance at the seasonality of admissions in the urban/IDP livelihood system"
 seasonal_cmpnt_urban_idps
 ```
 
+
+
+
 Although the pattern exhibits time-varying fluctuations, the only notable differences since 2022 are the changes observed in August and October, in which admissions tend to rise.  
 
 ::: {.panel-tabset}
 ## Before 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-urban-idps-b2022
 #| fig-cap: "A glance at the seasonality of admissions in the urban/IDP livelihood system before 2022"
 seasonal_cmpnt_urban_idps_b2022
 ```
 
+
+
+
 ## As of 2022
+
+
+
 ```{r}
 #| label: fig-seasonal-pattern-urban-idps-a2022
 #| fig-cap: "A glance at the seasonality of admissions in the urban/IDP livelihood system as of 2022"
 seasonal_cmpnt_urban_idps_a2022
 ```
+
+
+
 :::
+
+
+
 
 {{< pagebreak >}}  
 
+
+
+
+
+
 ###  From graphs to calendar: a simple view of AMN seasonality
+
+Currently, the analyses parameters of the AMN go hand-in-hand with those of the IPC AFI, as visually demostrated in @fig-afiamncalendar for Gu- and Deyr-based assessments.
+
+![Current Somalia's AFI and AMN seasonal calendar for the IPC analyses](data/som-ipc-parameters.png){#fig-afiamncalendar}
+
+::: {.callout-note}
+The findings of this analysis suggest that the parameters used in AMN analysis should be reconsidered to better align with the actual periods of change in AMN trends. These parameters should be sensitive to the distinct characteristics of existing livelihood systems.
+:::
 
 The seasonal calendars of AMN by livelihood system are presented below, based on the seasonal variation graphs shown in the preceding sections of this report, taking the patterns as of 2022 as a reference. These graphs illustrate the frequency and duration of AMN seasons, with peak periods shown in red and nadir periods in blue. Amongst the peaks and nadirs, the highest peak and lowest nadir are highlighted where applicable. 
 
@@ -617,6 +864,9 @@ In this livelihood system, the peak periods occur three times, while the nadirs 
 High peak 1 occurs from May towards the end of June, and high peak 2 from October towards the end of January. As for the nadir, there is only one deepest nadir that occurs from February towards the end of April.
 
 ::: {.gantt-pastoral}
+
+
+
 ```{mermaid}
 %%| label: fig-amn-seasonal-calendar-pastoral
 %%| fig-cap: Pastoral livelihood systems' AMN seasonal calendar
@@ -631,6 +881,9 @@ gantt
     Nadir :7, 10
     High peak 2 :10, 12
 ```
+
+
+
 :::
 
 #### Agropastoral livelihood system 
@@ -638,6 +891,9 @@ gantt
 In this livelihood system, both the peak and nadir periods occurs two times each. The highest peak occurs from May towards the end of September. The deepest nadir occurs from February towards the end of April.
 
 ::: {.gantt-agropastoral}
+
+
+
 ```{mermaid}
 %%| label: fig-amn-seasonal-calendar-agropastoral
 %%| fig-cap: Agropastoral livelihood systems' AMN seasonal calendar
@@ -652,6 +908,9 @@ gantt
     Nadir :9, 11
     Peak : 11, 12
 ```
+
+
+
 :::
 
 #### Riverine livelihood system 
@@ -659,6 +918,9 @@ gantt
 In this livelihood system, both the peak and nadir periods occurs three times each. The highest peak occurs from November towards the end of March. The deepest nadir occurs from September towards the end of October.
 
 ::: {.gantt-riverine}
+
+
+
 ```{mermaid}
 %%| label: fig-amn-seasonal-calendar-riverine
 %%| fig-cap: Riverine livelihood systems' AMN seasonal calendar
@@ -675,6 +937,9 @@ gantt
     Low nadir :9, 11
     High peak :11, 12
 ```
+
+
+
 :::
 
 #### Urban/IDPs livelihood system 
@@ -682,6 +947,9 @@ gantt
 In this livelihood system, both the peak and nadir periods occurs two times each. The highest peak occurs from May towards the end of August. The deepest nadir occurs from January towards the end of April.
 
 ::: {.gantt-urban-idps}
+
+
+
 ```{mermaid}
 %%| label: fig-amn-seasonal-calendar-urbanipds
 %%| fig-cap: Urban/IDPs livelihood systems' AMN seasonal calendar
@@ -695,6 +963,9 @@ gantt
     Nadir :8, 9
     Peak :9, 12
 ```
+
+
+
 :::
 
 ### Do AMN seasonal patterns align with food security seasonality?
@@ -703,6 +974,9 @@ All in all, the unveiled seasonal patterns of AMN do not fully align with the se
 
 #### Pastoral livelihood system
 ::: {.gantt-afiamn-pastoral}
+
+
+
 ```{mermaid}
 %%| label: fig-afi-amn-calendar-pastoral
 %%| fig-cap: AMN seasonal calendar *versus* AFI seasonal calendar
@@ -740,10 +1014,16 @@ gantt
     Hagaa  :afi4, 7, 10
     Deyr   :afi5, 10, 12
 ```
+
+
+
 :::
 
 #### Agropastoral livelihood system
 ::: {.gantt-afiamn-agropastoral}
+
+
+
 ```{mermaid}
 %%| label: fig-afi-amn-calendar-agropastoral
 %%| fig-cap: AMN seasonal calendar *versus* AFI seasonal calendar
@@ -781,10 +1061,16 @@ gantt
     Hagaa  :afi4, 7, 10
     Deyr   :afi5, 10, 12
 ```
+
+
+
 :::
 
 #### Riverine livelihood system
 ::: {.gantt-afiamn-riverine}
+
+
+
 ```{mermaid}
 %%| label: fig-afi-amn-calendar-riverine
 %%| fig-cap: AMN seasonal calendar *versus* AFI seasonal calendar
@@ -824,10 +1110,16 @@ gantt
     Hagaa  :afi4, 7, 10
     Deyr   :afi5, 10, 12
 ```
+
+
+
 :::
 
 #### Urban/IDPs livelihood system
 ::: {.gantt-afiamn-urban}
+
+
+
 ```{mermaid}
 %%| label: fig-afi-amn-calendar-urbanidps
 %%| fig-cap: AMN seasonal calendar *versus* AFI seasonal calendar
@@ -864,14 +1156,9 @@ gantt
     Hagaa  :afi4, 7, 10
     Deyr   :afi5, 10, 12
 ```
-:::
 
-Currently, the analyses parameters of the AMN go hand-in-hand with those of the IPC AFI, as visually demostrated in @fig-afiamncalendar for Gu- and Deyr-based assessments.
 
-![Current Somalia's AFI and AMN seasonal calendar for the IPC analyses](data/som-ipc-parameters.png){#fig-afiamncalendar}
 
-::: {.callout-note}
-This analysis' findings suggest that the parameters used in AMN analysis should be re-considered to better align with the actual periods of change in AMN. Moreover, these parameters should also be sensitive to the distinct livelihood systems.
 :::
 
 ## Discussion  
@@ -909,4 +1196,5 @@ This highlights the need for further analysis, including an understanding of the
 
 
 ## Limitations  
-As noted, MAM data were excluded from the analysis due to its variance being influenced by programme stockouts, resulting in the study not encompassing GAM data. This raises questions about whether similar patterns would emerge if GAM had been analysed. Additionally, the SAM reporting system does not differentiate admissions originating from IDPs versus those from other livelihood systems. This poses a significant limitation in understanding the specific patterns among IDPs. Furthermore, the results reveal that SAM admissions follow a distinct seasonality compared to acute food insecurity, with declines in admissions observed during the lean season. Understanding the factors potentially driving this decline would be critical, but this analysis could not explore these aspects further due to data limitations.
+As noted, MAM data were excluded from the analysis due to its variance being influenced by program stockouts, resulting in the study not encompassing GAM data. This raises questions about whether similar patterns would emerge if GAM had been analysed. Additionally, the SAM reporting system does not differentiate admissions originating from IDPs versus those from other livelihood systems. This poses a significant limitation in understanding the specific patterns among IDPs. Furthermore, the results reveal that SAM admissions follow a distinct seasonality compared to acute food insecurity, with declines in admissions observed during the lean season. Understanding the factors potentially driving this decline would be critical, but this analysis could not explore these aspects further due to data limitations.
+

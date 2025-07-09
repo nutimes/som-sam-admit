@@ -37,6 +37,37 @@ All in all, the analysis sought to:
 
 The above objectives were addressed by utilizing time series analyses techniques. 
 
+## A glance at the results 
+### The time series plot 
+
+```{r}
+#| label: source-project
+#| eval: true
+#| echo: false
+Sys.setenv(path_secret_key = "~/.ssh/id_rsa")
+suppressWarnings(suppressMessages(source("script.R")))
+
+```
+
+```{r}
+#| label: time-plot
+#| fig-height: 9.5
+#| fig-width: 20
+#| echo: false
+tsplot_national
+```
+
+
+### The components
+
+```{r}
+#| label: components
+#| fig-height: 9.5
+#| fig-width: 20
+#| echo: false
+cmpnts_plot_national
+```
+
 :::{.callout-note}
 The analysis results were presented to the Somalia Nutrition Cluster and partners on 8 July 2025, during a two-hour virtual session attended by approximately 60 participants. Attendees included representatives from local and international NGOs, UN agencies, and donors. The presentation was followed by a Q&A session, during which participants provided very positive and constructive feedback on the gleaned insights, and how useful they will be to shape the cluster's programming and information system.
 :::

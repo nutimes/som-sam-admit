@@ -56,6 +56,16 @@ exhibited a notable directional shift.
 The above objectives were addressed by utilizing time series analyses
 techniques.
 
+## A glance at the results
+
+### The time series plot
+
+![](README_files/figure-commonmark/time-plot-1.png)
+
+### The components
+
+![](README_files/figure-commonmark/components-1.png)
+
 > [!NOTE]
 >
 > The analysis results were presented to the Somalia Nutrition Cluster
@@ -77,10 +87,14 @@ The repository is structured in the following way:
   rate is defined as the number of catchment areas that submitted their
   reported in a given month, divided by the overall number of catchment
   areas that are expected to report.
+
 - `R/`: some handy user-defined functions for the project.  
+
 - `reports/`: Analysis report and presentation.
+
 - `scripts/`: A set of `R` scripts used for the analysis. These are
   split into different files, based on the specific task they address:
+
   - `read-in-data.R`: read input data and shapefiles.
   - `data-wrangling.R`: prepare the admission data for downstream
     worflow.
@@ -102,9 +116,11 @@ The repository is structured in the following way:
     F(Run eda-graphics.R)
     G(Run decomposition.R)
     H(Run arc.R)
-
+    
     A --> B --> C --> D --> E --> F --> G --> H
 ```
+
+    :::
 
 The above flowchart can be implemented simply by running the `scrip.R`
 file found in the root directory.

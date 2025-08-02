@@ -10,7 +10,7 @@ tsplot_national <- summarise_admissions(
   ts = monthly_admissions,
   .group = FALSE,
   time = "M"
-) |>
+) |> 
   autoplot(.vars = admissions) +
   labs(
     title = "Somalia's SAM Admissions Over Time",

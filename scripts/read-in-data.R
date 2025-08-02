@@ -11,6 +11,11 @@ admissions <- decrypt(
   key = secret_key
 )
 
+admissions2025 <- decrypt(
+  expr = read.csv("data-raw/sam-admissions2.csv"),
+  key = secret_key
+)
+
 ### Read shapefiles ----
 
 #### Download zipfile of Somalia shapefiles from Humanitarian Data Exchange ----

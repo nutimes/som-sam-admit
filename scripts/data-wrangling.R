@@ -5,7 +5,7 @@
 
 ## ---- Tidy the data ----------------------------------------------------------
 
-monthly_admissions <- admissions |>
+monthly_admissions <- admissions2025 |>
   pivot_longer(
     cols = !c(region, district, lsystems),
     names_to = "time",
@@ -21,7 +21,8 @@ monthly_admissions <- admissions |>
     Monthly,
     .before = admissions
   ) |>
-  select(-time)
+  select(-time) |> 
+  filter(year(Monthly) != 2025)
 
 
 ## ---- Remove districts with zero admissions ----------------------------------
